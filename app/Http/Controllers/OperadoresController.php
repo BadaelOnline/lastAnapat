@@ -44,7 +44,13 @@ class OperadoresController extends Controller
 
 
 
-        $operadores = new operadores($request->except('_token'));
+        $operadores = new operadores($request->except('_token','estado'));
+
+        if($request->estado == null){
+            $operadores->estado = 0;
+        }else{
+            $operadores->estado = 1;
+        }
 
         $foto = $request->file('foto');
         $dni_img = $request->file('dni_img');
@@ -125,7 +131,11 @@ class OperadoresController extends Controller
         $operadores->mail = $request->mail;
         $operadores->carnet = $request->carnet;
         $operadores->fecha = $request->fecha;
-        $operadores->estado = $request->estado;
+        if($request->estado == null){
+            $operadores->estado = 0;
+        }else{
+            $operadores->estado = 1;
+        }
 
         $foto = $request->file('foto');
         $dni_img = $request->file('dni_img');
