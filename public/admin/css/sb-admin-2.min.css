@@ -9241,3 +9241,15 @@ div.dataTables_wrapper div.dataTables_filter input {
   .slider.round:before {
     border-radius: 50%;
   }
+.btn-pass{
+    background-color: #056a99 !important;
+    color: #fff !important;
+}
+.btn-edit{
+    background-color: #0686c1 !important;
+    color: #fff !important;
+}
+.btn-delete{
+    background-color: #dd5959 !important;
+    color: #fff !important;+
+}
