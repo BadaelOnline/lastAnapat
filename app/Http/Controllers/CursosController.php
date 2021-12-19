@@ -201,7 +201,7 @@ class CursosController extends Controller
         $operador = Operadores::orderBy('id','desc')->get();
         $horario = Horario::orderBy('id','desc')->where('curso',$id)->get();
 
-        return view('admin.Cursos.edit',compact('cursos','horario','asistent','operador','entidad','formador','tipo_maquina','tipo_curso','examen_t','examen_p','formadors','formadors2','formadors3'));
+        return view('admin.cursos.edit',compact('cursos','horario','asistent','operador','entidad','formador','tipo_maquina','tipo_curso','examen_t','examen_p','formadors','formadors2','formadors3'));
     }
 
     /**

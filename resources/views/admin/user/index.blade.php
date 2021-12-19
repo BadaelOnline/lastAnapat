@@ -25,11 +25,11 @@
 <!-- DataTales Example -->
 
 <div class="card shadow mb-4">
-@can('isAdminOrResponsable')
-    <div class="card-header py-3">
-        <a href="{{ route('admin.user.create') }}" class="btn btn-success">{{__('message.add_new')}}</a>
-    </div>
-@endcan
+{{--@can('isAdminOrResponsable')--}}
+{{--    <div class="card-header py-3">--}}
+{{--        <a href="{{ route('admin.user.create') }}" class="btn btn-success">{{__('message.add_new')}}</a>--}}
+{{--    </div>--}}
+{{--@endcan--}}
     <div class="card-body">
 
         <div class="table-responsive">
