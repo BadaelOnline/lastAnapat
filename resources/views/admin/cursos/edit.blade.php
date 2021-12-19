@@ -64,8 +64,8 @@
                     </div>
 
                 </div>
-    
- 
+
+
                 <div class="col-md-4">
                     <label for="tipo_curso" class="col-sm-2 col-form-label">tipo_curso</label>
                     <div class="col-sm-9">
@@ -80,8 +80,8 @@
                         </div>
                     </div>
                 </div>
-      
-   
+
+
                 <div class="col-md-4">
                     <label for="tipo_maquina" class="col-sm-2 col-form-label">tipo_maquina</label>
                     <div class="col-sm-9">
@@ -95,13 +95,13 @@
                         @endforeach
                     </div>
                 </div>
-       
+
 
 
 
 
         {{--second row--}}
-   
+
                 <div class="col-md-4">
                     <label for="codigo" class="col-sm-2 col-form-label">codigo</label>
                     <div class="col-sm-9">
@@ -112,7 +112,7 @@
                     </div>
                 </div>
 
-  
+
                 <div class="col-md-4">
                     <label for="entidad" class="col-sm-2 col-form-label">entidad</label>
                     <div class="col-sm-9">
@@ -127,8 +127,8 @@
                         </div>
                     </div>
                 </div>
-    
-    
+
+
                 <div class="col-md-4">
                     <label for="formador" class="col-sm-2 col-form-label">formador</label>
                     <div class="col-sm-9">
@@ -143,14 +143,14 @@
                         </div>
                     </div>
                 </div>
-       
+
 
 
 
 
         {{--third row--}}
 
-    
+
                 <div class="col-md-4">
                     <label for="formador_apoyo_1" class="col-sm-3 col-form-label">Formador Apoyo 1</label>
                     <div class="col-sm-9">
@@ -162,7 +162,7 @@
                         </select>
                     </div>
                 </div>
-  
+
 
                 <div class="col-md-4">
                     <label for="formador_apoyo_2" class="col-sm-3 col-form-label">Formador Apoyo 2</label>
@@ -175,8 +175,8 @@
                         </select>
                     </div>
                 </div>
-       
-     
+
+
                 <div class="col-md-4">
                     <label for="formador_apoyo_3" class="col-sm-3 col-form-label">Formador Apoyo 3</label>
                     <div class="col-sm-9">
@@ -191,10 +191,10 @@
                         </div>
                     </div>
                 </div>
-   
+
 
         {{--fourth row--}}
-  
+
                 <div class="col-md-4">
                     <label for="fecha_inicio" class="col-sm-2 col-form-label">Fecha Inicio</label>
                     <div class="col-sm-9">
@@ -204,8 +204,8 @@
                         </div>
                     </div>
                 </div>
-      
-    
+
+
                 <div class="col-md-4">
                     <label for="direccion" class="col-sm-2 col-form-label">direccion</label>
                     <div class="col-sm-9">
@@ -215,8 +215,8 @@
                         </div>
                     </div>
                 </div>
-        
- 
+
+
                 <div class="col-md-4">
                     <label for="ciudad" class="col-sm-2 col-form-label">ciudad</label>
                     <div class="col-sm-9">
@@ -226,11 +226,11 @@
                         </div>
                     </div>
                 </div>
-    
+
 
 
         {{--fifth row--}}
- 
+
                 <div class="col-md-4">
                     <label for="provincia" class="col-sm-2 col-form-label">provincia</label>
                     <div class="col-sm-9">
@@ -240,8 +240,8 @@
                         </div>
                     </div>
                 </div>
-    
-    
+
+
                 <div class="col-md-4">
                     <label for="codigo_postal" class="col-sm-2 col-form-label">codigo_postal</label>
                     <div class="col-sm-9">
@@ -252,7 +252,7 @@
                     </div>
                 </div>
 
-     
+
                 <div class="col-md-4">
                     <label for="asistentes_pdf" class="col-sm-2 col-form-label">asistentes_pdf</label>
                     <div class="col-sm-9">
@@ -262,9 +262,9 @@
                         </div>
                     </div>
                 </div>
- 
+
         {{--sixth row--}}
-    
+
                 <div class="col-md-4">
                     <label for="examen-t" class="col-sm-2 col-form-label">examen-t</label>
                     <div class="col-sm-9">
@@ -276,8 +276,8 @@
                         </select>
                     </div>
                 </div>
- 
- 
+
+
                 <div class="col-md-4">
                     <label for="examen-p" class="col-sm-2 col-form-label">	examen-p</label>
                     <div class="col-sm-9">
@@ -289,8 +289,8 @@
                         </select>
                     </div>
                 </div>
-     
-    
+
+
                 <div class="col-md-4">
                     <label for="fecha_alta" class="col-sm-2 col-form-label">	fecha_alta</label>
                     <div class="col-sm-9">
@@ -300,8 +300,8 @@
                         </div>
                     </div>
                 </div>
-    
-  
+
+
                 <div class="col-md-4">
                     <label for="observaciones" class="col-sm-2 col-form-label">observaciones</label>
                     <div class="col-sm-9">
@@ -311,21 +311,21 @@
                         </div>
                     </div>
                 </div>
-     
+
         {{--seventh row--}}
- 
+
                 <div class="col-md-2 d-flex flex-column justify-content-center">
                 <label for="estado" class="col-sm-12 col-form-label text-center">publico-privado</label>
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" name="publico_privado" {{$cursos->publico_privado == 1 ? "checked" : ""}}>
                     <span class="slider round"></span>
                 </label>
                 </div>
-         
+
                 <div class="col-md-2 d-flex flex-column justify-content-center">
                 <label for="estado" class="col-sm-12 col-form-label text-center">cerrado</label>
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" name="cerrado" {{$cursos->cerrado == 1 ? "checked" : ""}}>
                     <span class="slider round"></span>
                 </label>
                 </div>
@@ -333,11 +333,11 @@
                 <div class="col-md-2 d-flex flex-column justify-content-center">
                 <label for="estado" class="col-sm-12 col-form-label text-center">estado</label>
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" name="estado" {{$cursos->estado == 1 ? "checked" : ""}}>
                     <span class="slider round"></span>
                 </label>
                 </div>
-         
+
         </div>
 
             <div class="row">
@@ -433,9 +433,9 @@
                     </div>
                 </div>
             </div>
-  
 
- 
+
+
             <div class="row">
                 <div class="col-sm" style="border: 2px solid #ddd;">
                     <label for="horario" class="col-sm-2 col-form-label">Horario</label>
@@ -505,7 +505,7 @@
                     </div>
                 </div>
             </div>
-  
+
 
         {{--        <div class="form-group">--}}
         {{--            <div class="picture-container">--}}
