@@ -1,19 +1,4 @@
 @extends('layouts.admin')
-@section('styles')
-<style>
-input[type="radio"] {
-    cursor: pointer;
-}
-input[type="radio"]:focus {
-    color: #495057;
-    background-color: #0477b1;
-    border-color: transparent;
-    outline: 0;
-    box-shadow: none;
-}
-</style>
-
-@endsection
 
 @section('styles')
 <style>
@@ -51,6 +36,19 @@ input[type="radio"]:focus {
   width: 100%;
   height: 100%;
 }
+input[type="radio"] {
+    cursor: pointer;
+    width: 10%;
+    margin: 0 auto;
+}
+input[type="radio"]:focus {
+    color: #495057;
+    background-color: #0477b1 !important;
+    border-color: transparent;
+    outline: 0;
+    box-shadow: none;
+}
+
 </style>
 @endsection
 @section('content')
@@ -94,8 +92,8 @@ input[type="radio"]:focus {
 
 
             <div class="col-md-4">
-                <label for="tipo_maquina" class="col-sm-9 col-form-label text-center">tipo_maquina</label>
-                <div class="col-sm-9 d-flex">
+                <label for="tipo_maquina" class="col-sm-9 col-form-label">tipo_maquina</label>
+                <div class="col-sm-9">
                 @foreach($tipo_maquina as $tipo_maquina)
                 <div class="form-check">
                     <input class="form-check-input" name="tipo_maquina[]" type="checkbox" value="{{$tipo_maquina->id}}" id="{{$tipo_maquina->id}}" onclick="updateSearchBox();">
@@ -325,45 +323,32 @@ input[type="radio"]:focus {
 
     {{--seventh row--}}
 
-            <div class="col-md-4">
-                <label for="publico-privado" class="col-sm-12 col-form-label text-center">publico-privado</label>
-                <div class="col-sm-12 text-center">
-
-                    <label for="publico-privado" class="col-sm-2 col-form-label">publico <input type="radio" name='publico_privado' class="form-control {{$errors->first('publico-privado') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador de certificación"></label>
-                    <label for="publico-privado" class="col-sm-2 col-form-label">privado <input type="radio" name='publico_privado' class="form-control {{$errors->first('publico-privado') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador de certificación" checked="checked"></label>
-
-{{--                    <input type="text" name='publico-privado' class="form-control {{$errors->first('publico-privado') ? "is-invalid" : "" }} " value="{{old('publico-privado')}}" id="publico-privado" >--}}
-                    <div class="invalid-feedback">
-                        {{ $errors->first('publico-privado') }}
-                    </div>
+    <div class="col-md-2 d-flex flex-column justify-content-center">
+                <label for="estado" class="col-sm-12 col-form-label text-center">publico-privado</label>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
                 </div>
-            </div>
-
-
-            <div class="col-md-4">
-                <label for="cerrado" class="col-sm-12 col-form-label text-center">cerrado</label>
-                <div class="col-sm-12 text-center">
-                    <label for="cerrado" class="col-sm-2 col-form-label">yes <input type="radio" name='cerrado' class="form-control {{$errors->first('cerrado') ? "is-invalid" : "" }} " value="1" id="cerrado" placeholder="Indicador de certificación"></label>
-                    <label for="cerrado" class="col-sm-2 col-form-label">no <input type="radio" name='cerrado' class="form-control {{$errors->first('cerrado') ? "is-invalid" : "" }} " value="0" id="cerrado" placeholder="Indicador de certificación" checked="checked"></label>
-
-                    <div class="invalid-feedback">
-                        {{ $errors->first('cerrado') }}
-                    </div>
+         
+                <div class="col-md-2 d-flex flex-column justify-content-center">
+                <label for="estado" class="col-sm-12 col-form-label text-center">cerrado</label>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
                 </div>
-            </div>
 
-            <div class="col-md-4">
+                <div class="col-md-2 d-flex flex-column justify-content-center">
                 <label for="estado" class="col-sm-12 col-form-label text-center">estado</label>
-                <div class="col-sm-12 text-center">
-                    <label for="estado" class="col-sm-2 col-form-label">Activo <input type="radio" name='estado' class="form-control {{$errors->first('estado') ? "is-invalid" : "" }} " value="1" id="estado" placeholder="Indicador de certificación"></label>
-                    <label for="estado" class="col-sm-2 col-form-label">Inactivo <input type="radio" name='estado' class="form-control {{$errors->first('estado') ? "is-invalid" : "" }} " value="0" id="estado" placeholder="Indicador de certificación" checked="checked"></label>
-
-                    <div class="invalid-feedback">
-                        {{ $errors->first('estado') }}
-                    </div>
-
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
                 </div>
-            </div>
+
+
+      
             </div>
 
 {{--        <div class="form-group">--}}
@@ -379,7 +364,7 @@ input[type="radio"]:focus {
 {{--            </div>--}}
 {{--        </div>--}}
 
-        <div class="form-group ">
+        <div class="form-group mt-5">
 
             <div class="col-sm-12">
 
