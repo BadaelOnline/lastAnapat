@@ -89,7 +89,7 @@
                                 <input type="hidden" name="_method" value="DELETE">
 
                                 <button type="submit" value="Delete" class="btn btn-danger btn-sm">
-                                <i class='fas fa-trash-alt'></i> 
+                                <i class='fas fa-trash-alt'></i>
                                 </button>
                             </form>
 
