@@ -25,13 +25,11 @@
 <!-- DataTales Example -->
 
 <div class="card shadow mb-4">
-
+@can('isAdminOrResponsable')
     <div class="card-header py-3">
-
         <a href="{{ route('admin.user.create') }}" class="btn btn-success">{{__('message.add_new')}}</a>
-
     </div>
-
+@endcan
     <div class="card-body">
 
         <div class="table-responsive">
@@ -45,7 +43,7 @@
 
                         <th>Email</th>
 
-                        <th>Role</th>
+                        <th>Perfil</th>
 
                         <th>Option</th>
 
@@ -62,19 +60,15 @@
                 @endphp
 
                 @foreach ($user as $user)
-
+                @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$user->entidad)
+                || (auth()->user()->perfil=='Formador' && auth()->user()->entidad==$user->entidad&& $user->perfil='Formador'))
                     <tr>
-
                         <td>{{ ++$no }}</td>
-
                         <td>{{ $user->name }}</td>
-
                         <td>{{ $user->email }}</td>
-
-                        <td>{{ $user->role }}</td>
-
+                        <td>{{ $user->perfil }}</td>
                         <td>
-
+                            @if(auth()->user()->id==$user->id || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$user->entidad && $user->perfil='Formador'))
                             <a href="#" data-toggle="modal" data-target="#changepasswordModal" class="btn btn-primary btn-sm">Change Password</a>
                             <a href="{{route('admin.user.edit', [$user->id])}}" class="btn btn-info btn-sm"> Edit </a>
 
@@ -87,11 +81,11 @@
                                 <input type="submit" value="Delete" class="btn btn-danger btn-sm">
 
                             </form>
-
+                            @endif
                         </td>
 
                     </tr>
-
+                    @endif
                     @endforeach
 
                 </tbody>
