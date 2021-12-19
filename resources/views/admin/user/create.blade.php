@@ -81,10 +81,14 @@ input[type="radio"]:focus {
             </div>
         </div>
 
+      
+          
+     
         @can('isAdmin')
+        <div class="form-group col-md-4 ">
             <label for="entidad" class="col-sm-2 col-form-label">Perfil</label>
             <div class="col-sm-9">
-                <select name='perfil' class="form-control {{$errors->first('perfil') ? "is-invalid" : "" }} " id="perfil">
+                <select name='perfil' class="form-control {{$errors->first('perfil') ? "is-invalid" : "" }} " id="perfil" style="appearance: auto;">
                     <option disabled selected>{{__('message.Choose_One')}}</option>
                         <option value="Administrador">Administrador</option>
                         <option value="Responsable_de_Formacion">Responsable de Formación</option>
@@ -94,7 +98,7 @@ input[type="radio"]:focus {
                     {{ $errors->first('perfil') }}
                 </div>
             </div>
-        </div>
+            </div>
         @endcan
 
         @can('isResponsable')
@@ -186,7 +190,7 @@ input[type="radio"]:focus {
         <div class="form-group col-md-4">
             <label for="entidad" class="col-sm-2 col-form-label">Entidad</label>
             <div class="col-sm-9">
-                <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
+                <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad" style="appearance: auto;">
                     <option disabled selected>{{__('message.Choose_One')}}</option>
                     @foreach ($entidad as $entidad)
                         <option value="{{ $entidad->id }}">{{ $entidad->nombre }}</option>
@@ -210,7 +214,7 @@ input[type="radio"]:focus {
                 </div>
             </div>
         </div>
-
+        </div>
         <div class="form-group col-md-12">
             <div class="col-sm-3">
                 <button type="submit" class="btn btn-info">Create</button>
