@@ -1,68 +1,68 @@
 @extends('layouts.admin')
 
 @section('styles')
-<style>
-   .picture-container {
-  position: relative;
-  cursor: pointer;
-  text-align: center;
-}
- .picture {
-  width: 800px;
-  height: 400px;
-  background-color: #999999;
-  border: 4px solid #CCCCCC;
-  color: #FFFFFF;
-  /* border-radius: 50%; */
-  margin: 5px auto;
-  overflow: hidden;
-  transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-}
-.picture:hover {
-  border-color: #2ca8ff;
-}
-.picture input[type="file"] {
-  cursor: pointer;
-  display: block;
-  height: 100%;
-  left: 0;
-  opacity: 0 !important;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-.picture-src {
-  width: 100%;
-  height: 100%;
-}
-input[type="radio"] {
-    cursor: pointer;
-    width: 10%;
-    margin: 0 auto;
-}
-input[type="radio"]:focus {
-    color: #495057;
-    background-color: #0477b1 !important;
-    border-color: transparent;
-    outline: 0;
-    box-shadow: none;
-}
+    <style>
+        .picture-container {
+            position: relative;
+            cursor: pointer;
+            text-align: center;
+        }
+        .picture {
+            width: 800px;
+            height: 400px;
+            background-color: #999999;
+            border: 4px solid #CCCCCC;
+            color: #FFFFFF;
+            /* border-radius: 50%; */
+            margin: 5px auto;
+            overflow: hidden;
+            transition: all 0.2s;
+            -webkit-transition: all 0.2s;
+        }
+        .picture:hover {
+            border-color: #2ca8ff;
+        }
+        .picture input[type="file"] {
+            cursor: pointer;
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 0 !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        .picture-src {
+            width: 100%;
+            height: 100%;
+        }
+        input[type="radio"] {
+            cursor: pointer;
+            width: 10%;
+            margin: 0 auto;
+        }
+        input[type="radio"]:focus {
+            color: #495057;
+            background-color: #0477b1 !important;
+            border-color: transparent;
+            outline: 0;
+            box-shadow: none;
+        }
 
-</style>
+    </style>
 @endsection
 @section('content')
 
-@if (session('error'))
-<div class="alert alert-danger">
-    {{ session('error') }}
-</div>
-@endif
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
 
-<form action="{{ route('admin.cursos.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-{{--first row--}}
-<div class="form-groups">
+    <form action="{{ route('admin.cursos.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        {{--first row--}}
+        <div class="form-groups">
             <div class="col-md-4">
                 <label for="curso" class="col-sm-12 col-form-label">curso</label>
                 <div class="col-sm-9">
@@ -94,20 +94,20 @@ input[type="radio"]:focus {
             <div class="col-md-4">
                 <label for="tipo_maquina" class="col-sm-9 col-form-label">tipo_maquina</label>
                 <div class="col-sm-9">
-                @foreach($tipo_maquina as $tipo_maquina)
-                <div class="form-check">
-                    <input class="form-check-input" name="tipo_maquina[]" type="checkbox" value="{{$tipo_maquina->id}}" id="{{$tipo_maquina->id}}" onclick="updateSearchBox();">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        {{$tipo_maquina->tipo_maquina}}
-                    </label>
-                </div>
+                    @foreach($tipo_maquina as $tipo_maquina)
+                        <div class="form-check">
+                            <input class="form-check-input" name="tipo_maquina[]" type="checkbox" value="{{$tipo_maquina->id}}" id="{{$tipo_maquina->id}}" onclick="updateSearchBox();">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                {{$tipo_maquina->tipo_maquina}}
+                            </label>
+                        </div>
                     @endforeach
                 </div>
             </div>
 
 
 
-    {{--second row--}}
+            {{--second row--}}
 
             <div class="col-md-4">
                 <label for="codigo" class="col-sm-12 col-form-label">codigo</label>
@@ -155,17 +155,17 @@ input[type="radio"]:focus {
 
 
 
-    {{--third row--}}
+            {{--third row--}}
 
             <div class="col-md-4">
                 <label for="formador_apoyo_1" class="col-sm-12 col-form-label">Formador Apoyo1</label>
                 <div class="col-sm-9">
-                <select name='formador_apoyo_1' class="form-control {{$errors->first('formador_apoyo_1') ? "is-invalid" : "" }} " id="formador_apoyo1">
-                    <option disabled selected>{{__('message.Choose_One')}}</option>
-                    @foreach ($formadors as $formadors)
-                        <option value="{{ $formadors->id }}">{{ $formadors->nombre }}</option>
-                    @endforeach
-                </select>
+                    <select name='formador_apoyo_1' class="form-control {{$errors->first('formador_apoyo_1') ? "is-invalid" : "" }} " id="formador_apoyo1">
+                        <option disabled selected>{{__('message.Choose_One')}}</option>
+                        @foreach ($formadors as $formadors)
+                            <option value="{{ $formadors->id }}">{{ $formadors->nombre }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
 
@@ -181,7 +181,7 @@ input[type="radio"]:focus {
                     </select>
                 </div>
 
-    </div>
+            </div>
 
             <div class="col-md-4">
                 <label for="formador_apoyo_3" class="col-sm-12 col-form-label">Formador Apoyo 3</label>
@@ -200,7 +200,7 @@ input[type="radio"]:focus {
 
 
 
-    {{--fourth row--}}
+            {{--fourth row--}}
 
             <div class="col-md-4">
                 <label for="fecha_inicio" class="col-sm-12 col-form-label">Fecha Inicio</label>
@@ -236,7 +236,7 @@ input[type="radio"]:focus {
 
 
 
-    {{--fifth row--}}
+            {{--fifth row--}}
 
             <div class="col-md-4">
                 <label for="provincia" class="col-sm-12 col-form-label">provincia</label>
@@ -271,7 +271,7 @@ input[type="radio"]:focus {
             </div>
 
 
-    {{--sixth row--}}
+            {{--sixth row--}}
 
             <div class="col-md-4">
                 <label for="examen-t" class="col-sm-12 col-form-label">examen-t</label>
@@ -321,48 +321,48 @@ input[type="radio"]:focus {
             </div>
 
 
-    {{--seventh row--}}
+            {{--seventh row--}}
 
-    <div class="col-md-2 d-flex flex-column justify-content-center">
+            <div class="col-md-2 d-flex flex-column justify-content-center">
                 <label for="estado" class="col-sm-12 col-form-label text-center">publico-privado</label>
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" name="publico_privado">
                     <span class="slider round"></span>
                 </label>
-                </div>
-
-                <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">cerrado</label>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-                </div>
-
-                <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">estado</label>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-                </div>
-
-
-
             </div>
 
-{{--        <div class="form-group">--}}
-{{--            <div class="picture-container">--}}
-{{--                <div class="picture">--}}
-{{--                    <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>--}}
-{{--                    <input type="file" id="wizard-picture" name="cover" class="form-control {{$errors->first('cover') ? "is-invalid" : "" }} ">--}}
-{{--                    <div class="invalid-feedback">--}}
-{{--                        {{ $errors->first('cover') }}--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <h6>Pilih Cover</h6>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+            <div class="col-md-2 d-flex flex-column justify-content-center">
+                <label for="estado" class="col-sm-12 col-form-label text-center">cerrado</label>
+                <label class="switch" >
+                    <input type="checkbox" name="cerrado">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <div class="col-md-2 d-flex flex-column justify-content-center">
+                <label for="estado" class="col-sm-12 col-form-label text-center">estado</label>
+                <label class="switch">
+                    <input type="checkbox" name="estado">
+                    <span class="slider round" ></span>
+                </label>
+            </div>
+
+
+
+        </div>
+
+        {{--        <div class="form-group">--}}
+        {{--            <div class="picture-container">--}}
+        {{--                <div class="picture">--}}
+        {{--                    <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>--}}
+        {{--                    <input type="file" id="wizard-picture" name="cover" class="form-control {{$errors->first('cover') ? "is-invalid" : "" }} ">--}}
+        {{--                    <div class="invalid-feedback">--}}
+        {{--                        {{ $errors->first('cover') }}--}}
+        {{--                    </div>--}}
+        {{--                </div>--}}
+        {{--                <h6>Pilih Cover</h6>--}}
+        {{--            </div>--}}
+        {{--        </div>--}}
 
         <div class="form-group mt-5">
 
@@ -374,7 +374,7 @@ input[type="radio"]:focus {
 
         </div>
 
-</form>
+    </form>
 @endsection
 
 @push('scripts')
@@ -431,20 +431,20 @@ input[type="radio"]:focus {
 
     </script>
 
-<script>
-    // Prepare the preview for profile picture
-    $("#wizard-picture").change(function(){
-      readURL(this);
-  });
-  //Function to show image before upload
-function readURL(input) {
-  if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-          $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
-      }
-      reader.readAsDataURL(input.files[0]);
-  }
-}
-</script>
+    <script>
+        // Prepare the preview for profile picture
+        $("#wizard-picture").change(function(){
+            readURL(this);
+        });
+        //Function to show image before upload
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 @endpush
