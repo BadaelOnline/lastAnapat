@@ -76,26 +76,11 @@ class CursosController extends Controller
     {
 //dd($request);
 
-        $cursos = new Cursos($request->except('_token','tipo_maquina','examen-t','examen-p','publico-privado','estado','cerrado'));
+        $cursos = new Cursos($request->except('_token','tipo_maquina','examen-t','examen-p','publico-privado'));
 //        dd($cursos);
 
 //        $cursos = new Cursos();
-        if($request->cerrado == null){
-            $cursos->cerrado = 0;
-        }else{
-            $cursos->cerrado = 1;
-        }
-        if($request->estado == null){
-            $cursos->estado = 0;
-        }else{
-            $cursos->estado = 1;
-        }
-        if($request->publico_privado == null){
-            $cursos->publico_privado = 0;
-        }else{
-            $cursos->publico_privado = 1;
-        }
-//dd($cursos->cerrado);
+
         if(!$request->formador_apoyo_2){
             $cursos->formador_apoyo_2 = 0;
         }
@@ -124,7 +109,7 @@ class CursosController extends Controller
         }
         $cursos->examen_t = $request->examen_t;
         $cursos->examen_p = $request->examen_p;
-//        $cursos->publico_privado = $request->publico_privado;
+        $cursos->publico_privado = $request->publico_privado;
 
 
 
@@ -237,27 +222,13 @@ class CursosController extends Controller
         $cursos->examen_t = $request->examen_t;
         $cursos->examen_p = $request->examen_p;
         $cursos->fecha_alta = $request->fecha_alta;
-//        $cursos->publico_privado = $request->publico_privado;
+        $cursos->publico_privado = $request->publico_privado;
         $cursos->observaciones = $request->observaciones;
-//        $cursos->cerrado = $request->cerrado;
-//        $cursos->estado = $request->estado;
+        $cursos->cerrado = $request->cerrado;
+        $cursos->estado = $request->estado;
         $x =$request->input('tipo_maquina');
 
-        if($request->cerrado == null){
-            $cursos->cerrado = 0;
-        }else{
-            $cursos->cerrado = 1;
-        }
-        if($request->estado == null){
-            $cursos->estado = 0;
-        }else{
-            $cursos->estado = 1;
-        }
-        if($request->publico_privado == null){
-            $cursos->publico_privado = 0;
-        }else{
-            $cursos->publico_privado = 1;
-        }
+
 
         for( $i=0 ; $i <= count($x)-1 ;$i++ ){
             if($i == 0){
