@@ -50,7 +50,7 @@ html {
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
     display: block;
 }
-body {
+body{
     margin: 0;
     font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1rem;
@@ -9057,7 +9057,7 @@ body.sidebar-toggled footer.sticky-footer {
         flex-wrap: wrap;
     }
     .sidebar .sidebar-brand {
-        margin: 10px 0;
+        margin: 10px 5px;
     }
     .item-side{
         width: 90%;
@@ -9109,6 +9109,23 @@ box-shadow: 1px 3px 25px #e6e2e2;
     display: flex;
     flex-wrap: wrap;
 }
+.form-groups .col-md-4{
+    border-bottom: 2px solid #eeecec;
+    padding: 30px 0;
+}
+.form-groups .col-md-4 .form-control{
+    border: 2px solid #bfbdbd !important;
+    color: #515151 !important;
+    padding: 0 10px !important;
+    border-radius: 3px !important;
+}
+.form-groups .col-md-4 .form-check-label{
+    color: #515151 !important;
+}
+.form-groups .col-md-4 .col-form-label{
+    color: #515151 !important;
+    font-weight: bold;
+}
 @media (max-width:568px) {
 .form-groups {
     justify-content: center;
@@ -9159,3 +9176,63 @@ div.dataTables_wrapper div.dataTables_filter input {
     background-color: #1a73e8 !important;
     border-color: #1a73e8 !important;
 }
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin: 0 auto;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }

@@ -37,6 +37,9 @@
             width: 100%;
             height: 100%;
         }
+
+
+
     </style>
 @endsection
 @section('content')
@@ -50,9 +53,8 @@
     <form action="{{ route('admin.cursos.update',$cursos->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         {{--first row--}}
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+        <div class="form-groups">
+                <div class="col-md-4">
                     <label for="curso" class="col-sm-2 col-form-label">curso</label>
                     <div class="col-sm-9">
                         <input type="text" name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " value="{{old('curso') ? old('curso') : $cursos->curso}}" id="curso" placeholder="Código del curso">
@@ -62,11 +64,9 @@
                     </div>
 
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+    
+ 
+                <div class="col-md-4">
                     <label for="tipo_curso" class="col-sm-2 col-form-label">tipo_curso</label>
                     <div class="col-sm-9">
                         <select name='tipo_curso' class="form-control {{$errors->first('tipo_curso') ? "is-invalid" : "" }} " id="tipo_curso">
@@ -80,11 +80,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+      
+   
+                <div class="col-md-4">
                     <label for="tipo_maquina" class="col-sm-2 col-form-label">tipo_maquina</label>
                     <div class="col-sm-9">
                         @foreach($tipo_maquina as $tipo_maquina)
@@ -97,16 +95,14 @@
                         @endforeach
                     </div>
                 </div>
-            </div>
-        </div>
+       
 
 
 
 
         {{--second row--}}
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+   
+                <div class="col-md-4">
                     <label for="codigo" class="col-sm-2 col-form-label">codigo</label>
                     <div class="col-sm-9">
                         <input type="text" readonly name='codigo' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('codigo') ? old('codigo') : $cursos->codigo}}" id="codigo" placeholder="Código de prácticas">
@@ -115,11 +111,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+
+  
+                <div class="col-md-4">
                     <label for="entidad" class="col-sm-2 col-form-label">entidad</label>
                     <div class="col-sm-9">
                         <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
@@ -133,11 +127,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+    
+    
+                <div class="col-md-4">
                     <label for="formador" class="col-sm-2 col-form-label">formador</label>
                     <div class="col-sm-9">
                         <select name='formador' class="form-control {{$errors->first('formador') ? "is-invalid" : "" }} " id="formador">
@@ -151,17 +143,15 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+       
 
 
 
 
         {{--third row--}}
 
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+    
+                <div class="col-md-4">
                     <label for="formador_apoyo_1" class="col-sm-3 col-form-label">Formador Apoyo 1</label>
                     <div class="col-sm-9">
                         <select name='formador_apoyo_1' class="form-control {{$errors->first('formador_apoyo1') ? "is-invalid" : "" }} " id="formador_apoyo1">
@@ -172,11 +162,9 @@
                         </select>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+  
+
+                <div class="col-md-4">
                     <label for="formador_apoyo_2" class="col-sm-3 col-form-label">Formador Apoyo 2</label>
                     <div class="col-sm-9">
                         <select name='formador_apoyo_2' class="form-control {{$errors->first('formador_apoyo2') ? "is-invalid" : "" }} " id="formador_apoyo2">
@@ -187,11 +175,9 @@
                         </select>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+       
+     
+                <div class="col-md-4">
                     <label for="formador_apoyo_3" class="col-sm-3 col-form-label">Formador Apoyo 3</label>
                     <div class="col-sm-9">
                         <select name='formador_apoyo_3' class="form-control {{$errors->first('formador_apoyo3') ? "is-invalid" : "" }} " id="formador_apoyo3">
@@ -205,14 +191,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
+   
 
         {{--fourth row--}}
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+  
+                <div class="col-md-4">
                     <label for="fecha_inicio" class="col-sm-2 col-form-label">Fecha Inicio</label>
                     <div class="col-sm-9">
                         <input type="datetime-local" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio') ? old('fecha_inicio') : $cursos->fecha_inicio}}" id="fecha_inicio" >
@@ -221,11 +204,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+      
+    
+                <div class="col-md-4">
                     <label for="direccion" class="col-sm-2 col-form-label">direccion</label>
                     <div class="col-sm-9">
                         <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion') ? old('direccion') : $cursos->direccion}}" id="direccion" placeholder="Dirección del curso">
@@ -234,11 +215,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+        
+ 
+                <div class="col-md-4">
                     <label for="ciudad" class="col-sm-2 col-form-label">ciudad</label>
                     <div class="col-sm-9">
                         <input type="text" name='ciudad' class="form-control {{$errors->first('ciudad') ? "is-invalid" : "" }} " value="{{old('ciudad') ? old('ciudad') : $cursos->ciudad}}" id="ciudad" placeholder="Ciudad del curso">
@@ -247,14 +226,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+    
 
 
         {{--fifth row--}}
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+ 
+                <div class="col-md-4">
                     <label for="provincia" class="col-sm-2 col-form-label">provincia</label>
                     <div class="col-sm-9">
                         <input type="text" name='provincia' class="form-control {{$errors->first('provincia') ? "is-invalid" : "" }} " value="{{old('provincia') ? old('provincia') : $cursos->provincia}}" id="provincia" placeholder="Provincia del curso">
@@ -263,11 +240,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+    
+    
+                <div class="col-md-4">
                     <label for="codigo_postal" class="col-sm-2 col-form-label">codigo_postal</label>
                     <div class="col-sm-9">
                         <input type="number" name='codigo_postal' class="form-control {{$errors->first('codigo_postal') ? "is-invalid" : "" }} " value="{{old('codigo_postal') ? old('codigo_postal') : $cursos->codigo_postal}}" id="codigo_postal" placeholder="Código postal del curso">
@@ -276,11 +251,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+
+     
+                <div class="col-md-4">
                     <label for="asistentes_pdf" class="col-sm-2 col-form-label">asistentes_pdf</label>
                     <div class="col-sm-9">
                         <input type="file" name='asistentes_pdf' class="form-control {{$errors->first('asistentes_pdf') ? "is-invalid" : "" }} " value="{{old('asistentes_pdf') ? old('asistentes_pdf') : $cursos->asistentes_pdf}}" id="asistentes_pdf" placeholder="asistentes_pdf">
@@ -289,13 +262,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
+ 
         {{--sixth row--}}
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+    
+                <div class="col-md-4">
                     <label for="examen-t" class="col-sm-2 col-form-label">examen-t</label>
                     <div class="col-sm-9">
                         <select name='examen_t' class="form-control {{$errors->first('examen-t') ? "is-invalid" : "" }} " id="examen-t">
@@ -306,11 +276,9 @@
                         </select>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+ 
+ 
+                <div class="col-md-4">
                     <label for="examen-p" class="col-sm-2 col-form-label">	examen-p</label>
                     <div class="col-sm-9">
                         <select name='examen_p' class="form-control {{$errors->first('examen-p') ? "is-invalid" : "" }} " id="examen_p">
@@ -321,11 +289,9 @@
                         </select>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+     
+    
+                <div class="col-md-4">
                     <label for="fecha_alta" class="col-sm-2 col-form-label">	fecha_alta</label>
                     <div class="col-sm-9">
                         <input type="date" name='fecha_alta' class="form-control {{$errors->first('fecha_alta') ? "is-invalid" : "" }} " value="{{old('fecha_alta') ? old('fecha_alta') : $cursos->fecha_alta}}" id="fecha_alta" >
@@ -334,11 +300,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+    
+  
+                <div class="col-md-4">
                     <label for="observaciones" class="col-sm-2 col-form-label">observaciones</label>
                     <div class="col-sm-9">
                         <input type="text" name='observaciones' class="form-control {{$errors->first('observaciones') ? "is-invalid" : "" }} " value="{{old('observaciones') ? old('observaciones') : $cursos->observaciones}}" id="observaciones" placeholder="Observaciones al curso">
@@ -347,71 +311,45 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
+     
         {{--seventh row--}}
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <label for="publico-privado" class="col-sm-2 col-form-label">publico-privado</label>
-                    <div class="col-sm-9">
-
-                        <label for="publico-privado" class="col-sm-2 col-form-label">publico</label><input type="radio" name='publico_privado' class="form-control {{$errors->first('publico-privado') ? "is-invalid" : "" }} " value="1" id="linkedin" {{$cursos->publico_privado == 1 ? "checked" : ""}}>
-                        <label for="publico-privado" class="col-sm-2 col-form-label">privado</label><input type="radio" name='publico_privado' class="form-control {{$errors->first('publico-privado') ? "is-invalid" : "" }} " value="0" id="linkedin" {{$cursos->publico_privado == 0 ? "checked" : ""}}>
-
-                        {{--                    <input type="text" name='publico-privado' class="form-control {{$errors->first('publico-privado') ? "is-invalid" : "" }} " value="{{old('publico-privado')}}" id="publico-privado" >--}}
-                        <div class="invalid-feedback">
-                            {{ $errors->first('publico-privado') }}
-                        </div>
-                    </div>
+ 
+                <div class="col-md-2 d-flex flex-column justify-content-center">
+                <label for="estado" class="col-sm-12 col-form-label text-center">publico-privado</label>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
                 </div>
-            </div>
+         
+                <div class="col-md-2 d-flex flex-column justify-content-center">
+                <label for="estado" class="col-sm-12 col-form-label text-center">cerrado</label>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+                </div>
+
+                <div class="col-md-2 d-flex flex-column justify-content-center">
+                <label for="estado" class="col-sm-12 col-form-label text-center">estado</label>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+                </div>
+         
         </div>
 
-        <div class="container">
             <div class="row">
-                <div class="col-sm">
-                    <label for="cerrado" class="col-sm-2 col-form-label">cerrado</label>
-                    <div class="col-sm-9">
-                        <label for="cerrado" class="col-sm-2 col-form-label">yes</label><input type="radio" name='cerrado' class="form-control {{$errors->first('cerrado') ? "is-invalid" : "" }} " value="1" id="cerrado" {{$cursos->cerrado == 1 ? "checked" : ""}}>
-                        <label for="cerrado" class="col-sm-2 col-form-label">no</label><input type="radio" name='cerrado' class="form-control {{$errors->first('cerrado') ? "is-invalid" : "" }} " value="0" id="cerrado" {{$cursos->cerrado == 0 ? "checked" : ""}}>
-
-                        <div class="invalid-feedback">
-                            {{ $errors->first('cerrado') }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <label for="estado" class="col-sm-2 col-form-label">estado</label>
-                    <div class="col-sm-9">
-                        <label for="estado" class="col-sm-2 col-form-label">Activo</label><input type="radio" name='estado' class="form-control {{$errors->first('estado') ? "is-invalid" : "" }} " value="1" id="estado" {{$cursos->estado == 1 ? "checked" : ""}}>
-                        <label for="estado" class="col-sm-2 col-form-label">Inactivo</label><input type="radio" name='estado' class="form-control {{$errors->first('estado') ? "is-invalid" : "" }} " value="0" id="estado" {{$cursos->estado == 0 ? "checked" : ""}}>
-
-                        <div class="invalid-feedback">
-                            {{ $errors->first('estado') }}
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
+                <div class="col-sm" style="border: 2px solid #ddd;">
                     <label for="asistent" class="col-sm-2 col-form-label">Asistent</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-12">
                         <div class="card-header py-3">
                             <a href="{{ route('admin.asistent.create',[$cursos->id]) }}" class="btn btn-success">{{__('message.add_new')}} Asistent</a>
                         </div>
                         <div class="table-responsive">
 
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table" id="dataTable" width="100%" cellspacing="0">
 
                                 <thead>
 
@@ -495,19 +433,19 @@
                     </div>
                 </div>
             </div>
-        </div>
+  
 
-        <div class="container">
+ 
             <div class="row">
-                <div class="col-sm">
+                <div class="col-sm" style="border: 2px solid #ddd;">
                     <label for="horario" class="col-sm-2 col-form-label">Horario</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-12">
                         <div class="card-header py-3">
                             <a href="{{ route('admin.horario.create',[$cursos->id]) }}" class="btn btn-success">{{__('message.add_new')}} Horario</a>
                         </div>
                         <div class="table-responsive">
 
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table" id="dataTable" width="100%" cellspacing="0">
 
                                 <thead>
 
@@ -567,7 +505,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+  
 
         {{--        <div class="form-group">--}}
         {{--            <div class="picture-container">--}}
@@ -582,11 +520,11 @@
         {{--            </div>--}}
         {{--        </div>--}}
 
-        <div class="form-group ml-5">
+        <div class="form-group mt-5">
 
             <div class="col-sm-3">
 
-                <button type="submit" class="btn btn-primary">Editar</button>
+                <button type="submit" class="btn btn-info">Editar</button>
 
             </div>
 

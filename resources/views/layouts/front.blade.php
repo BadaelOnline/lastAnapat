@@ -5,9 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>
-    @yield('title')
-    {{ $general->title }}</title>
+  <title>ANAPAT</title>
   <meta content="{{ $general->meta_desc }}" name="description">
   <meta content="{{ $general->keyword }}" name="keywords">
 
@@ -60,34 +58,34 @@
 
           <li class="drop-down"><a href="">Anapat</a>
             <ul>
-              <li ><a href="{{ route('about') }}">Anapat</a></li>
-              <li><a href="{{ route('testi') }}">Partner</a></li>
+              <li ><a href="{{ route('homepage') }}">Anapat</a></li>
+              <li><a href="{{ route('homepage') }}">Partner</a></li>
             </ul>
           </li>
           <li class="drop-down"><a href="">Training</a>
             <ul>
-              <li ><a href="{{ route('about') }}">Training Entity</a></li>
-              <li ><a href="{{ route('testi') }}">Courses</a></li>
-              <li ><a href="{{ route('testi') }}">Card Consultation</a></li>
+              <li ><a href="{{ route('homepage') }}">Training Entity</a></li>
+              <li ><a href="{{ route('homepage') }}">Courses</a></li>
+              <li ><a href="{{ route('homepage') }}">Card Consultation</a></li>
             </ul>
           </li>
           <li class="drop-down"><a href="">Documentation</a>
             <ul>
               <li class="drop-down"><a href="">Didactics</a>
             <ul>
-              <li ><a href="{{ route('about') }}">Guides</a></li>
-              <li ><a href="{{ route('testi') }}">Manuals</a></li>
+              <li ><a href="{{ route('homepage') }}">Guides</a></li>
+              <li ><a href="{{ route('homepage') }}">Manuals</a></li>
             </ul>
         
               </a></li>
               <li class="drop-down"><a href="">Forms</a>
             <ul>
-              <li ><a href="{{ route('about') }}">Inscription</a></li>
-              <li ><a href="{{ route('testi') }}">Come down </a></li>
+              <li ><a href="{{ route('homepage') }}">Inscription</a></li>
+              <li ><a href="{{ route('homepage') }}">Come down </a></li>
             </ul>
          
               </a></li>
-              <li ><a href="{{ route('testi') }}">Others</a></li>
+              <li ><a href="{{ route('homepage') }}">Others</a></li>
             </ul>
           </li>
           <li ><a href="">News</a></li>
@@ -96,7 +94,7 @@
       </nav><!-- .nav-menu -->
 
       <div class="header-social-links">
-        <a href=""><i class="icofont-ui-user"></i></a>
+        <a href="{{ route('login') }}"><i class="icofont-ui-user"></i></a>
       </div>
 
     </div>
