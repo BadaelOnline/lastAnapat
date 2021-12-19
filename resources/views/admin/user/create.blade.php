@@ -66,7 +66,7 @@ input[type="radio"]:focus {
             <div class="col-sm-9">
                 <input type="text" name='name' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('name')}}" id="name" placeholder="Ex: Susi Similikiti">
                 <div class="invalid-feedback">
-                    {{ $errors->first('name') }}    
+                    {{ $errors->first('name') }}
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@ input[type="radio"]:focus {
             <div class="col-sm-9">
                 <input type="email" name='email' class="form-control {{$errors->first('email') ? "is-invalid" : "" }} " value="{{old('email')}}" id="email" placeholder="Email">
                 <div class="invalid-feedback">
-                    {{ $errors->first('email') }}    
+                    {{ $errors->first('email') }}
                 </div>
             </div>
         </div>
@@ -114,7 +114,7 @@ input[type="radio"]:focus {
             <div class="col-sm-9">
                 <input type="password" name='password' class="form-control {{$errors->first('password') ? "is-invalid" : "" }} " value="{{old('password')}}" id="password" placeholder="Password">
                 <div class="invalid-feedback">
-                    {{ $errors->first('password') }}    
+                    {{ $errors->first('password') }}
                 </div>
             </div>
         </div>
