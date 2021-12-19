@@ -80,7 +80,7 @@
           <span>{{__('message.Blog')}}</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
+          <div class=" py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ route('admin.post') }}">{{__('message.Blog')}}</a>
             <a class="collapse-item" href="{{ route('admin.category') }}">{{__('message.Categories')}}</a>
             <a class="collapse-item" href="{{ route('admin.tag') }}">{{__('message.Tags')}}</a>
@@ -101,7 +101,7 @@
         <span>{{__('message.Settings')}}</span>
       </a>
       <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
+        <div class=" py-2 collapse-inner rounded">
           <a class="collapse-item" href="{{ route('admin.about') }}">{{__('message.About')}}</a>
           <a class="collapse-item" href="{{ route('admin.banner') }}">{{__('message.Banner')}}</a>
           <a class="collapse-item" href="{{ route('admin.general') }}">{{__('message.General Settings')}}</a>
@@ -142,7 +142,7 @@
             'admin.user',
         ])? 'active' : ''}}">
         <a class="nav-link" href="{{ route('admin.user') }}">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-fw fa-user"></i>
           <span>Usuarios</span></a>
       </li>
 
@@ -150,7 +150,7 @@
             'admin.entidades_formadoreas',
         ])? 'active' : ''}}">
         <a class="nav-link" href="{{ route('admin.entidades_formadoreas') }}">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-fw fa-address-card"></i>
           <span>Entidades Formadoreas</span></a>
       </li>
     @endcan
@@ -158,33 +158,52 @@
             'admin.formadores',
         ])? 'active' : ''}}">
       <a class="nav-link" href="{{ route('admin.formadores') }}">
-        <i class="fas fa-fw fa-table"></i>
+        <i class="fas fa-fw fa-users"></i>
         <span>Formadores</span></a>
     </li>
 
+    @can('isAdmin')
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.cursos',
             'admin.pcategory',
         ])? 'active' : ''}}" >
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-        <i class="fas fa-fw fa-table"></i>
+        <i class="fas fa-fw fa-book-open"></i>
         <span>Cursos</span>
       </a>
+ 
       <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
+        <div class=" py-2 collapse-inner rounded">
           <a class="collapse-item" href="{{ route('admin.cursos') }}">Cursos</a>
           <a class="collapse-item" href="{{ route('admin.inactiveCursos') }}">Inactivo Cursos</a>
         </div>
       </div>
     </li>
+  @endcan
+    @can('isResponsableOrFormador')
+    <li class="nav-item {{ in_array(Route::currentRouteName(),[
+            'admin.cursos',
+        ])? 'active' : ''}}">
+        <a class="nav-link" href="{{ route('admin.cursos') }}">
+          <i class="fas fa-fw fa-book-open"></i>
+          <span>Cursos</span></a>
+      </li>
+    @endcan
+    <!-- Nav Item - Pages Collapse Menu -->
+    
 
     <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.operadores',
         ])? 'active' : ''}}">
       <a class="nav-link" href="{{ route('admin.operadores') }}">
-        <i class="fas fa-fw fa-table"></i>
+        <i class="fas fa-fw fa-allergies"></i>
         <span>Operadores</span></a>
+    </li>
+    <li class="nav-item ">
+    <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Salir</span></a>
     </li>
 
 

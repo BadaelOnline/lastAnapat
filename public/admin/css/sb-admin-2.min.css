@@ -7551,10 +7551,7 @@ a.text-dark:focus, a.text-dark:hover {
     visibility: hidden!important;
 }
 @media print {
-    *, : :after, ::before {
-        text-shadow: none!important;
-        box-shadow: none!important;
-    }
+ 
     a:not(.btn) {
         text-decoration: underline;
     }
@@ -8974,7 +8971,15 @@ body.sidebar-toggled footer.sticky-footer {
 #accordionSidebar{
  width: 100% !important;     
 }
-
+#accordionSidebar .collapse-inner{
+    background-color: #4f4e4e;
+}
+#accordionSidebar .collapse-inner a{
+   color: #fff;
+}
+#accordionSidebar .collapse-inner a:hover{
+    color: #4f4e4e;
+ }
 @media (max-width:768px) {
     
     .show-list{
