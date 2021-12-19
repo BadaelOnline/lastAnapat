@@ -39,7 +39,7 @@
                     <tr>
                         <th>No.</th>
 
-                        <th>Name</th>
+                        <th>Nombre</th>
 
                         <th>Email</th>
 
@@ -64,7 +64,7 @@
                 || (auth()->user()->perfil=='Formador' && auth()->user()->entidad==$user->entidad&& $user->perfil='Formador'))
                     <tr>
                         <td>{{ ++$no }}</td>
-                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->nombre }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->perfil }}</td>
                         <td>
