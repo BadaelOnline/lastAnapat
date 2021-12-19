@@ -95,7 +95,7 @@
             'admin.about',
             'admin.banner',
             'admin.general',
-        ])? 'active' : ''}}"">
+        ])? 'active' : ''}}">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-fw fa-wrench"></i>
         <span>{{__('message.Settings')}}</span>
@@ -205,7 +205,7 @@
 {{--        <i class="fas fa-fw fa-table"></i>--}}
 {{--        <span>Asistent</span></a>--}}
 {{--    </li>--}}
-   
+
 
   {{--<li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
   {{--'admin.page',--}}
