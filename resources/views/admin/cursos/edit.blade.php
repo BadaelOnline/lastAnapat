@@ -89,7 +89,7 @@
                     <div class="col-sm-9">
                         @foreach($tipo_maquina as $tipo_maquina)
                             <div class="form-check">
-                                <input class="form-check-input" name="tipo_maquina[]" type="checkbox" value="{{$tipo_maquina->id}}" id="{{$tipo_maquina->id}}" {{$cursos->tipo_maquina_1 == $tipo_maquina->id ? "checked" : ""}} {{$cursos->tipo_maquina_2 == $tipo_maquina->id ? "checked" : ""}} {{$cursos->tipo_maquina_3 == $tipo_maquina->id ? "checked" : ""}} {{$cursos->tipo_maquina_4 == $tipo_maquina->id ? "checked" : ""}}>
+                                <input class="form-check-input" name="tipo_maquina[]" type="checkbox" value="{{$tipo_maquina->id}}" id="{{$tipo_maquina->id}}" {{$cursos->tipo_maquina_1 == $tipo_maquina->id ? "checked" : ""}} {{$cursos->tipo_maquina_2 == $tipo_maquina->id ? "checked" : ""}} {{$cursos->tipo_maquina_3 == $tipo_maquina->id ? "checked" : ""}} {{$cursos->tipo_maquina_4 == $tipo_maquina->id ? "checked" : ""}} onclick="updateSearchBox();">
                                 <label class="form-check-label" for="flexCheckDefault">
                                     {{$tipo_maquina->tipo_maquina}}
                                 </label>
@@ -109,7 +109,7 @@
                 <div class="col-sm">
                     <label for="codigo" class="col-sm-2 col-form-label">codigo</label>
                     <div class="col-sm-9">
-                        <input type="text" name='codigo' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('codigo') ? old('codigo') : $cursos->codigo}}" id="codigo" placeholder="Código de prácticas">
+                        <input type="text" readonly name='codigo' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('codigo') ? old('codigo') : $cursos->codigo}}" id="codigo" placeholder="Código de prácticas">
                         <div class="invalid-feedback">
                             {{ $errors->first('codigo') }}
                         </div>
@@ -597,6 +597,57 @@
 
 @push('scripts')
 
+    <script>
+        var a1CheckBox = document.getElementById('1');
+        var b1CheckBox = document.getElementById('2');
+        var a2CheckBox = document.getElementById('3');
+        var b2CheckBox = document.getElementById('4');
+        var a3CheckBox = document.getElementById('5');
+        var b3CheckBox = document.getElementById('6');
+
+        var searchBox = document.getElementById('codigo');
+        var code = document.getElementById('curso').value;
+
+
+        function updateSearchBox() {
+            if (a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked) {
+                searchBox.value = 'B01-' + code;
+            }else if (!a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked) {
+                searchBox.value = 'B02-' + code;
+            }else if (!a1CheckBox.checked && !b1CheckBox.checked && a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked) {
+                searchBox.value = 'B03-' + code;
+            }else if (!a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked) {
+                searchBox.value ='B04-' + code;
+            }else if (!a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && !b3CheckBox.checked) {
+                searchBox.value = 'B05-' + code;
+            }else if (!a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && b3CheckBox.checked) {
+                searchBox.value = 'B06-' + code;
+            }else if (a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked) {
+                searchBox.value = 'B07-' + code;
+            }else if (a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && !b3CheckBox.checked) {
+                searchBox.value = 'B08-' + code;
+            }else if (a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && b3CheckBox.checked) {
+                searchBox.value = 'B09-' + code;
+            }else if (!a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && !b3CheckBox.checked) {
+                searchBox.value = 'B10-' + code;
+            }else if (!a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && b3CheckBox.checked) {
+                searchBox.value = 'B11-' + code;
+            }else if (!a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && b3CheckBox.checked) {
+                searchBox.value = 'B12-' + code;
+            }else if (a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && !b3CheckBox.checked) {
+                searchBox.value = 'B13-' + code;
+            }else if (a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && b3CheckBox.checked) {
+                searchBox.value = 'B14-' + code;
+            }else if (a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && b3CheckBox.checked) {
+                searchBox.value = 'B15-' + code;
+            }else if (a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && b3CheckBox.checked) {
+                searchBox.value = 'B16-' + code;
+            } else {
+                searchBox.value = 'you can not choose this type of machine togother';
+            }
+        }
+
+    </script>
     <script>
         // Prepare the preview for profile picture
         $("#wizard-picture").change(function(){
