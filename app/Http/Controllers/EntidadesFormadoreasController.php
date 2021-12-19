@@ -39,7 +39,17 @@ class EntidadesFormadoreasController extends Controller
      */
     public function store(Request $request)
     {
-        $entidades_formadoreas = new EntidadesFormadoreas($request->except('_token'));
+        $entidades_formadoreas = new EntidadesFormadoreas($request->except('_token','certificado','estado'));
+        if($request->estado == null){
+            $entidades_formadoreas->estado = 0;
+        }else{
+            $entidades_formadoreas->estado = 1;
+        }
+        if($request->certificado == null){
+            $entidades_formadoreas->certificado = 0;
+        }else{
+            $entidades_formadoreas->certificado = 1;
+        }
         $logo = $request->file('logo');
         $doc_medios_pdf =$request->file('doc_medios_pdf');
         if($logo){
@@ -113,8 +123,16 @@ class EntidadesFormadoreasController extends Controller
         $entidades_formadoreas->web = $request->web;
         $entidades_formadoreas->mail = $request->mail;
         $entidades_formadoreas->fecha = $request->fecha;
-        $entidades_formadoreas->estado = $request->estado;
-        $entidades_formadoreas->certificado = $request->certificado;
+        if($request->estado == null){
+            $entidades_formadoreas->estado = 0;
+        }else{
+            $entidades_formadoreas->estado = 1;
+        }
+        if($request->certificado == null){
+            $entidades_formadoreas->certificado = 0;
+        }else{
+            $entidades_formadoreas->certificado = 1;
+        }
 
         $new_logo = $request->file('logo');
         $new_doc_medios_pdf = $request->file('doc_medios_pdf');

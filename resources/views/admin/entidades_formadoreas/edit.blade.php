@@ -269,38 +269,24 @@ input[type="radio"]:focus {
 
                 </div>
 
-            </div><div class="form-group col-md-4">
-
-                <label for="estado" class="col-sm-12 col-form-label text-center">estado</label>
-
-                <div class="col-sm-12 text-center">
-
-                    <label for="estado" class="col-sm-2 col-form-label">yes <input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador: Activa/Inactiva"></label> 
-                    <label for="estado" class="col-sm-2 col-form-label">no <input type="radio" name='estado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador: Activa/Inactiva" checked="checked"></label> 
-
-                    <div class="invalid-feedback">
-                        {{ $errors->first('linkedin') }}
-                    </div>
-
-                </div>
-
             </div>
-            <div class="form-group col-md-4">
-
-                <label for="certificado" class="col-sm-12 col-form-label text-center">certificado</label>
-
-                <div class="col-sm-12 text-center">
-
-                    <label for="certificado" class="col-sm-2 col-form-label">yes <input type="radio" name='certificado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="1" id="linkedin" placeholder="Indicador de certificación"></label>
-                    <label for="certificado" class="col-sm-2 col-form-label">no <input type="radio" name='certificado' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="0" id="linkedin" placeholder="Indicador de certificación" checked="checked"></label>
-
-                    <div class="invalid-feedback">
-                        {{ $errors->first('linkedin') }}
-                    </div>
-
-                </div>
-
+            <div class="col-md-2 d-flex flex-column justify-content-center">
+                <label for="estado" class="col-sm-12 col-form-label text-center">Estado</label>
+                <label class="switch">
+                    <input type="checkbox" name="estado" {{$entidades_formadoreas->estado == 1 ? "checked" : ""}}>
+                    <span class="slider round" ></span>
+                </label>
             </div>
+
+            <div class="col-md-2 d-flex flex-column justify-content-center">
+                <label for="certificado" class="col-sm-12 col-form-label text-center">Certificado</label>
+                <label class="switch">
+                    <input type="checkbox" name="certificado" {{$entidades_formadoreas->certificado == 1 ? "checked" : ""}}>
+                    <span class="slider round" ></span>
+                </label>
+            </div>
+
+
             <div class="form-group col-md-12">
                 <div class="col-sm-3">
                     <button type="submit" class="btn btn-info">Editar</button>

@@ -208,15 +208,13 @@ input[type="radio"]:focus {
                     {{ $errors->first('linkedin') }}
                 </div>
             </div>
-        </div><div class="form-group col-md-4">
+        </div>
+        <div class="col-md-2 d-flex flex-column justify-content-center">
             <label for="estado" class="col-sm-12 col-form-label text-center">Estado</label>
-            <div class="col-sm-12 text-center">
-                <label for="estado" class="col-sm-2 col-form-label">yes  <input type="radio" name='estado' class="form-control {{$errors->first('estado') ? "is-invalid" : "" }} " value="1" id="estado" placeholder="Indicador: Activa/Inactiva"></label>
-                <label for="estado" class="col-sm-2 col-form-label">no <input type="radio" name='estado' class="form-control {{$errors->first('estado') ? "is-invalid" : "" }} " value="0" id="estado" placeholder="Indicador: Activa/Inactiva" checked="checked"></label> 
-                <div class="invalid-feedback">
-                    {{ $errors->first('linkedin') }}
-                </div>
-            </div>
+            <label class="switch">
+                <input type="checkbox" name="estado">
+                <span class="slider round" ></span>
+            </label>
         </div>
         </div>
         </div>

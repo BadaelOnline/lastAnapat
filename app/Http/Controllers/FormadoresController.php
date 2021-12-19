@@ -53,7 +53,7 @@ class FormadoresController extends Controller
 
 
 
-        $formadores = new formadores($request->except('_token'));
+        $formadores = new formadores($request->except('_token','estado'));
         $dni = $request->file('dni_img');
         $operador_pdf =$request->file('operador_pdf');
         $cert_empresa_pdf =$request->file('cert_empresa_pdf');
@@ -61,6 +61,14 @@ class FormadoresController extends Controller
         $prl_pdf =$request->file('prl_pdf');
         $pemp_pdf =$request->file('pemp_pdf');
         $cap_pdf =$request->file('cap_pdf');
+
+        if($request->estado == null){
+            $formadores->estado = 0;
+        }else{
+            $formadores->estado = 1;
+        }
+
+
         if($dni){
             $dni_path = $dni->store('formadores/'.$request->nombre, 'public');
 
@@ -167,7 +175,12 @@ class FormadoresController extends Controller
         $formadores->nombre = $request->nombre;
         $formadores->dni = $request->dni;
         $formadores->fecha = $request->fecha;
-        $formadores->estado = $request->estado;
+
+        if($request->estado == null){
+            $formadores->estado = 0;
+        }else{
+            $formadores->estado = 1;
+        }
 
 
         $dni_img = $request->file('dni_img');
