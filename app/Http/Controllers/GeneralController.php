@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EntidadesFormadoreas;
 use Illuminate\Http\Request;
 use App\Models\{About, Cursos, Formadores, General, Operadores, Page, Post, Team, User};
 
@@ -12,8 +13,10 @@ class GeneralController extends Controller
         $formadores = Formadores::count();
         $operador = Operadores::count();
         $activo_Curso = Cursos::orderBy('id','desc')->where('estado',1)->count();
+        $last_curso=Cursos::orderBy('id','desc')->get();
+        $entidad=EntidadesFormadoreas::select('id','nombre','cif','direccion','logo')->get();
 //        $x = count($activo_Curso);
-        return view ('admin.dashboard', compact('admin','operador','activo_Curso','formadores'));
+        return view ('admin.dashboard', compact('admin','operador','activo_Curso','formadores','last_curso','entidad'));
     }
 
     public function general(){
