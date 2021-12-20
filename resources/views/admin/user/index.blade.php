@@ -27,7 +27,7 @@
 <div class="card shadow mb-4">
 {{--@can('isAdminOrResponsable')--}}
 {{--    <div class="card-header py-3">--}}
-{{--        <a href="{{ route('admin.user.create') }}" class="btn btn-success">{{__('message.add_new')}}</a>--}}
+{{--        <a href="{{ route('admin.user.create') }}" class="btn btn-pass">{{__('message.add_new')}}</a>--}}
 {{--    </div>--}}
 {{--@endcan--}}
     <div class="card-body">
@@ -69,8 +69,8 @@
                         <td>{{ $user->perfil }}</td>
                         <td>
                             @if(auth()->user()->id==$user->id || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$user->entidad && $user->perfil='Formador'))
-                            <a href="#" data-toggle="modal" data-target="#changepasswordModal" class="btn btn-primary btn-sm">Change Password</a>
-                            <a href="{{route('admin.user.edit', [$user->id])}}" class="btn btn-info btn-sm"> Edit </a>
+                            <a href="#" data-toggle="modal" data-target="#changepasswordModal" class="btn btn-pass btn-sm">Change Password</a>
+                            <a href="{{route('admin.user.edit', [$user->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
 
                             <form method="POST" action="{{route('admin.user.destroy', [$user->id])}}" class="d-inline" onsubmit="return confirm('Delete this user permanently?')">
 
@@ -78,7 +78,9 @@
 
                                 <input type="hidden" name="_method" value="DELETE">
 
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                <button type="submit" value="Delete" class="btn btn-delete btn-sm">
+                                <i class='fas fa-trash-alt'></i> 
+                                </button>
 
                             </form>
                             @endif

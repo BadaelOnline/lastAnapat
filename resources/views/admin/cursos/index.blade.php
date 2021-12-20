@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.cursos.create') }}" class="btn btn-success">{{__('message.add_new')}}</a>
+        <a href="{{ route('admin.cursos.create') }}" class="btn btn-pass">{{__('message.add_new')}}</a>
 
     </div>
 
@@ -83,7 +83,7 @@
 
                         <td>
 
-                            <a href="{{route('admin.cursos.edit', [$cursos->id])}}" class="btn btn-info btn-sm"> <i class="fas fa-edit"></i> </a>
+                            <a href="{{route('admin.cursos.edit', [$cursos->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
 
                             <form method="POST" action="{{route('admin.cursos.destroy', [$cursos->id])}}" class="d-inline" onsubmit="return confirm('Delete this cursos permanently?')">
 
@@ -91,12 +91,12 @@
 
                                 <input type="hidden" name="_method" value="DELETE">
 
-                                <button type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                <button type="submit" value="Delete" class="btn btn-delete btn-sm">
                                 <i class='fas fa-trash-alt'></i> 
                                 </button>
 
                             </form>
-{{--                            <a href="{{route('admin.cursos.activo', [$cursos->id])}}" class="btn btn-info btn-sm"> Activo </a>--}}
+{{--                            <a href="{{route('admin.cursos.activo', [$cursos->id])}}" class="btn btn-edit btn-sm"> Activo </a>--}}
 
 
 
