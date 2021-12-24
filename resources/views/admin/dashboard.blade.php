@@ -3,7 +3,7 @@
 @section('content')
               <!-- Page Heading -->
               <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                <h1 class="h3 mb-0 text-gray-800">{{__('message.Dashboard')}}</h1>
               </div>
 
               <!-- Content Row -->
@@ -18,13 +18,13 @@
                           <i class="material-icons opacity-10">face</i>
                         </div>
                         <div class="text-end pt-1">
-                          <p class="text-sm mb-0 text-capitalize">USERS</p>
+                          <p class="text-sm mb-0 text-capitalize">{{__('message.users')}}</p>
                           <h4 class="mb-0">{{ $admin }}</h4>
                         </div>
                       </div>
                       <hr class="dark horizontal my-0">
                       <div class="card-footer p-3">
-                        <p class="mb-0"><span class="text-success text-sm font-weight-bolder">{{ $admin }}</span>  last month</p>
+                        <p class="mb-0"><span class="text-success text-sm font-weight-bolder">{{ $admin }} </span>{{__('message.last month') }} </p>
                       </div>
                     </div>
                   </div>
@@ -35,13 +35,13 @@
                           <i class="material-icons opacity-10">group</i>
                         </div>
                         <div class="text-end pt-1">
-                          <p class="text-sm mb-0 text-capitalize">FORMADOR</p>
+                          <p class="text-sm mb-0 text-capitalize">{{__('message.FORMADOR') }}</p>
                           <h4 class="mb-0">{{$formadores}}</h4>
                         </div>
                       </div>
                       <hr class="dark horizontal my-0">
                       <div class="card-footer p-3">
-                        <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span> last month</p>
+                        <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span> {{__('message.last month') }}</p>
                       </div>
                     </div>
                   </div>
@@ -52,13 +52,13 @@
                           <i class="material-icons opacity-10">person</i>
                         </div>
                         <div class="text-end pt-1">
-                          <p class="text-sm mb-0 text-capitalize">OPERADOR</p>
+                          <p class="text-sm mb-0 text-capitalize">{{__('message.OPERADOR') }}</p>
                           <h4 class="mb-0">{{$operador}}</h4>
                         </div>
                       </div>
                       <hr class="dark horizontal my-0">
                       <div class="card-footer p-3">
-                        <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"></span>last month</p>
+                        <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"></span>{{__('message.last month') }}</p>
                       </div>
                     </div>
                   </div>
@@ -69,13 +69,13 @@
                           <i class="material-icons opacity-10">school</i>
                         </div>
                         <div class="text-end pt-1">
-                          <p class="text-sm mb-0 text-capitalize">ACTIVE CURSO</p>
+                          <p class="text-sm mb-0 text-capitalize">{{__('message.ACTIVE CURSO') }}</p>
                           <h4 class="mb-0">{{$activo_Curso}}</h4>
                         </div>
                       </div>
                       <hr class="dark horizontal my-0">
                       <div class="card-footer p-3">
-                        <p class="mb-0"><span class="text-success text-sm font-weight-bolder"> </span>last month</p>
+                        <p class="mb-0"><span class="text-success text-sm font-weight-bolder"> </span>{{__('message.last month') }}</p>
                       </div>
                     </div>
                   </div>
@@ -148,10 +148,10 @@
                       <div class="card-header pb-0">
                         <div class="row">
                           <div class="col-lg-6 col-7">
-                            <h6>Ultimos Cursos</h6>
+                            <h6>{{__('message.Ultimos Cursos') }}</h6>
                             <p class="text-sm mb-0">
                               <i class="fa fa-check text-info" aria-hidden="true"></i>
-                              <span class="font-weight-bold ms-1"></span> this month
+                              <span class="font-weight-bold ms-1"></span> {{__('message.this month') }}
                             </p>
                           </div>
                           <div class="col-lg-6 col-5 my-auto text-end">
@@ -173,10 +173,10 @@
                           <table class="table align-items-center mb-0">
                             <thead>
                             <tr>
-                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Curso</th>
-                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Codigo</th>
-                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Provincia</th>
-                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Direccion</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('message.Curso') }}</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">{{__('message.Codigo') }}</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('message.Provincia') }}</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('message.Direccion') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -212,10 +212,10 @@
                   <div class="col-lg-4 col-md-6">
                     <div class="card h-100">
                       <div class="card-header pb-0">
-                        <h6> Entidades Formadores</h6>
+                        <h6> {{__('message.Entidades Formadoras') }}</h6>
                         <p class="text-sm">
                           <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
-                          <span class="font-weight-bold"></span> this month
+                          <span class="font-weight-bold"></span>{{__('message.this month') }}
                         </p>
                       </div>
 

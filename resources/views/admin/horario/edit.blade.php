@@ -82,7 +82,7 @@
             </div>
             <div class="form-group col-md-4">
                 <div class="col-sm-3">
-                    <button type="submit" class="btn btn-info">Editar</button>
+                    <button type="submit" class="btn btn-info">{{__('message.Update')}}</button>
                 </div>
             </div>
         </div>

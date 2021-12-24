@@ -67,7 +67,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="socio" class="col-sm-2 col-form-label">socio</label>
+                <label for="socio" class="col-sm-2 col-form-label">Socio</label>
 
                 <div class="col-sm-12">
 
@@ -83,7 +83,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="cif" class="col-sm-2 col-form-label">cif</label>
+                <label for="cif" class="col-sm-2 col-form-label">CIF</label>
 
                 <div class="col-sm-12">
 
@@ -100,7 +100,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="nombre" class="col-sm-2 col-form-label">nombre</label>
+                <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
 
                 <div class="col-sm-12">
 
@@ -116,7 +116,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="razon_social" class="col-sm-2 col-form-label">razon_social</label>
+                <label for="razon_social" class="col-sm-2 col-form-label">Razon Social</label>
 
                 <div class="col-sm-12">
 
@@ -132,7 +132,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="province" class="col-sm-2 col-form-label">province</label>
+                <label for="province" class="col-sm-2 col-form-label">Province</label>
 
                 <div class="col-sm-12">
 
@@ -148,7 +148,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="ciudad" class="col-sm-2 col-form-label">ciudad</label>
+                <label for="ciudad" class="col-sm-2 col-form-label">Ciudad</label>
 
                 <div class="col-sm-12">
 
@@ -167,7 +167,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="direccion" class="col-sm-2 col-form-label">direccion</label>
+                <label for="direccion" class="col-sm-2 col-form-label">Direccion</label>
 
                 <div class="col-sm-12">
 
@@ -182,7 +182,7 @@ input[type="radio"]:focus {
             </div>
             <div class="form-group col-md-4">
 
-                <label for="codigo_postal" class="col-sm-2 col-form-label">codigo_postal</label>
+                <label for="codigo_postal" class="col-sm-2 col-form-label">Codigo Postal</label>
 
                 <div class="col-sm-12">
 
@@ -197,7 +197,7 @@ input[type="radio"]:focus {
             </div>
             <div class="form-group col-md-4">
 
-                <label for="logo" class="col-sm-2 col-form-label">logo</label>
+                <label for="logo" class="col-sm-2 col-form-label">Logo</label>
 
                 <div class="col-sm-12">
 
@@ -213,7 +213,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="web" class="col-sm-2 col-form-label">web</label>
+                <label for="web" class="col-sm-2 col-form-label">WEB</label>
 
                 <div class="col-sm-12">
 
@@ -228,7 +228,7 @@ input[type="radio"]:focus {
             </div>
             <div class="form-group col-md-4">
 
-                <label for="mail" class="col-sm-2 col-form-label">mail</label>
+                <label for="mail" class="col-sm-2 col-form-label">Mail</label>
 
                 <div class="col-sm-12">
 
@@ -243,7 +243,7 @@ input[type="radio"]:focus {
             </div>
             <div class="form-group col-md-4">
 
-                <label for="doc_medios_pdf" class="col-sm-2 col-form-label">doc_medios_pdf</label>
+                <label for="doc_medios_pdf" class="col-sm-2 col-form-label">Doc Medios PDF</label>
 
                 <div class="col-sm-12">
 
@@ -257,7 +257,7 @@ input[type="radio"]:focus {
 
             </div><div class="form-group col-md-4">
 
-                <label for="fecha" class="col-sm-2 col-form-label">fecha</label>
+                <label for="fecha" class="col-sm-2 col-form-label">Fecha</label>
 
                 <div class="col-sm-12">
 
@@ -289,7 +289,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-12">
                 <div class="col-sm-3">
-                    <button type="submit" class="btn btn-info">Editar</button>
+                    <button type="submit" class="btn btn-info">{{__('message.Update')}}</button>
                 </div>
             </div>
         </div>

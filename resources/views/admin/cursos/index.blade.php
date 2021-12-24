@@ -10,7 +10,7 @@
 
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">Cursos</h1>
+<h1 class="h3 mb-2 text-gray-800">{{__('message.Cursos')}}</h1>
 
 @if (session('success'))
 
@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.cursos.create') }}" class="btn btn-success">{{__('message.add_new')}}</a>
+        <a href="{{ route('admin.cursos.create') }}" class="btn btn-pass">{{__('message.add_new')}}</a>
 
     </div>
 
@@ -42,15 +42,15 @@
 
                     <tr>
 
-                        <th>curso</th>
+                        <th>{{__('message.Cursos')}}</th>
 
-                        <th>codigo</th>
+                        <th>{{__('message.Codigo')}}</th>
 
-                        <th>provincia</th>
+                        <th>{{__('message.Provincia')}}</th>
 
-                        <th>direccion</th>
+                        <th>{{__('message.Direccion')}}</th>
 
-                        <th>Option</th>
+                        <th>{{__('message.Option')}}</th>
 
 
 
@@ -67,47 +67,30 @@
                 @endphp
 
                 @foreach ($cursos as $cursos)
-
+                    @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$cursos->entidad)
+                                           || (auth()->user()->perfil=='Formador' && auth()->user()->entidad==$cursos->entidad))
                     <tr>
-
                         <td>{{ $cursos->curso }}</td>
-
                         <td>
                             {{ $cursos->codigo }}
-
                         </td>
-
                         <td>{{ $cursos->provincia }}</td>
-
                         <td>{{ $cursos->direccion }}</td>
-
                         <td>
-
-                            <a href="{{route('admin.cursos.edit', [$cursos->id])}}" class="btn btn-info btn-sm"> <i class="fas fa-edit"></i> </a>
-
-                            <form method="POST" action="{{route('admin.cursos.destroy', [$cursos->id])}}" class="d-inline" onsubmit="return confirm('Delete this cursos permanently?')">
-
+                            <a href="{{route('admin.cursos.edit', [$cursos->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
+                            <form method="POST" action="{{route('admin.cursos.destroy', [$cursos->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete this cursos permanently?")}}')">
                                 @csrf
-
                                 <input type="hidden" name="_method" value="DELETE">
-
-                                <button type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                <button type="submit" value="Delete" class="btn btn-delete btn-sm">
                                 <i class='fas fa-trash-alt'></i> 
                                 </button>
-
                             </form>
-{{--                            <a href="{{route('admin.cursos.activo', [$cursos->id])}}" class="btn btn-info btn-sm"> Activo </a>--}}
-
-
-
+{{--                            <a href="{{route('admin.cursos.activo', [$cursos->id])}}" class="btn btn-edit btn-sm"> Activo </a>--}}
                         </td>
-
                     </tr>
-
+                    @endif
                     @endforeach
-
                 </tbody>
-
             </table>
 
         </div>

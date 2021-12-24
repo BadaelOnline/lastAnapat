@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.formadores.create') }}" class="btn btn-success">{{__('message.add_new')}} formadores</a>
+        <a href="{{ route('admin.formadores.create') }}" class="btn btn-pass">{{__('message.add_new')}} Formadores</a>
 
     </div>
 
@@ -42,15 +42,15 @@
 
                     <tr>
 
-                        <th>Codigo</th>
+                        <th>{{__('message.Codigo')}}</th>
 
-                        <th>Nombre </th>
+                        <th>{{__('message.Nombre')}} </th>
 
-                        <th>Apellidos </th>
+                        <th>{{__('message.Apellidos')}} </th>
 
-                        <th>DNI</th>
+                        <th>{{__('message.DNI')}}</th>
 
-                        <th>Option</th>
+                        <th>{{__('message.Option')}}</th>
 
                     </tr>
 
@@ -65,48 +65,33 @@
                 @endphp
 
                 @foreach ($formadores as $formadores)
-
+                    @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$formadores->entidad)
+                        || (auth()->user()->perfil=='Formador' && auth()->user()->entidad==$formadores->entidad))
                     <tr>
-
                         <td>{{ $formadores->codigo }}</td>
-
                         <td> {{ $formadores->nombre }} </td>
-
                         <td>{{ $formadores->apellidos }}</td>
-
                         <td>
                             <img src="{{asset('storage/' . $formadores->dni_img)}}" width="96px"/>
                         </td>
-
                         <td>
+                        <a href="{{route('admin.formadores.edit', [$formadores->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
 
-                        <a href="{{route('admin.formadores.edit', [$formadores->id])}}" class="btn btn-info btn-sm"> <i class="fas fa-edit"></i> </a>
-
-                            <form method="POST" action="{{route('admin.formadores.destroy', [$formadores->id])}}" class="d-inline" onsubmit="return confirm('Delete this formadores permanently?')">
-
+                            <form method="POST" action="{{route('admin.formadores.destroy', [$formadores->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
                                 @csrf
-
                                 <input type="hidden" name="_method" value="DELETE">
-
-                                <button type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                <button type="submit" value="Delete" class="btn btn-delete btn-sm">
                                 <i class='fas fa-trash-alt'></i>
                                 </button>
                             </form>
-
                         </td>
-
                     </tr>
-
-                    @endforeach
-
+                        @endif
+                @endforeach
                 </tbody>
-
             </table>
-
         </div>
-
     </div>
-
 </div>
 
 @endsection

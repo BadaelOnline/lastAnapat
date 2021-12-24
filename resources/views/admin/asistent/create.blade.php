@@ -57,7 +57,7 @@
                     <label for="curso" class="col-sm-2 col-form-label">curso</label>
                     <div class="col-sm-9">
                         <select disabled name='test' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
-                            <option disabled selected>Choose One!</option>
+                            <option disabled selected>{{__('message.Choose_One')}}</option>
                             @foreach ($curso as $curso)
                                 <option value="{{ $curso->id }}" {{$id == $curso->id ? "selected" : ""}}>{{ $curso->codigo }}</option>
                             @endforeach
@@ -91,7 +91,7 @@
                     <label for="operador" class="col-sm-2 col-form-label">Operador</label>
                     <div class="col-sm-9">
                         <select name='operador' class="form-control {{$errors->first('operador') ? "is-invalid" : "" }} " id="operador">
-                            <option disabled selected>Choose One!</option>
+                            <option disabled selected>{{__('message.Choose_One')}}</option>
                             @foreach ($operador as $operador)
                                 <option value="{{ $operador->id }}">{{ $operador->nombre }}</option>
                             @endforeach
@@ -109,7 +109,7 @@
                     <label for="tipo_carnet" class="col-sm-2 col-form-label">Tipo Carnet</label>
                     <div class="col-sm-9">
                         <select name='tipo_carnet' class="form-control {{$errors->first('tipo_carnet') ? "is-invalid" : "" }} " id="tipo_carnet">
-                            <option disabled selected>Choose One!</option>
+                            <option disabled selected>{{__('message.Choose_One')}}</option>
                             @foreach ($tipo_carnet as $tipo_carnet)
                                 <option value="{{ $tipo_carnet->id }}">{{ $tipo_carnet->formacion }}</option>
                             @endforeach
@@ -302,7 +302,7 @@
 
                     <div class="col-sm-3">
 
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="submit" class="btn btn-primary">{{__('message.Create')}}</button>
 
                     </div>
 

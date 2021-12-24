@@ -161,7 +161,7 @@ input[type="radio"]:focus {
         </div>
 
         <div class="form-group col-md-4">
-            <label for="direccion" class="col-sm-12 col-form-label">direccion</label>
+            <label for="direccion" class="col-sm-12 col-form-label">Direccion</label>
             <div class="col-sm-7">
                 <input type="text" name='direccion' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Dirección del formador">
                 <div class="invalid-feedback">
@@ -182,7 +182,7 @@ input[type="radio"]:focus {
 
 
         <div class="form-group col-md-4">
-            <label for="mail" class="col-sm-12 col-form-label">mail</label>
+            <label for="mail" class="col-sm-12 col-form-label">Mail</label>
             <div class="col-sm-7">
                 <input type="text" name='mail' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Cuenta de correo">
                 <div class="invalid-feedback">
@@ -201,7 +201,7 @@ input[type="radio"]:focus {
             </div>
         </div>
        <div class="form-group col-md-4">
-            <label for="fecha" class="col-sm-12 col-form-label">fecha</label>
+            <label for="fecha" class="col-sm-12 col-form-label">Fecha</label>
             <div class="col-sm-7">
                 <input type="date" name='fecha' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Fecha de alta">
                 <div class="invalid-feedback">
@@ -220,7 +220,7 @@ input[type="radio"]:focus {
         </div>
       <div class="form-group col-md-4">
         <div class="col-sm-3">
-            <button type="submit" class="btn btn-info">Create</button>
+            <button type="submit" class="btn btn-info">{{__('message.Create')}}</button>
           </div>
       </div>
     </div>
