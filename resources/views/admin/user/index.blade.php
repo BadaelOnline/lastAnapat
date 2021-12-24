@@ -10,7 +10,7 @@
 
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">Usuarios</h1>
+<h1 class="h3 mb-2 text-gray-800">{{__('message.users')}}</h1>
 
 @if (session('success'))
 
@@ -37,15 +37,15 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>No.</th>
+                        <th>{{__('message.No.')}}</th>
 
-                        <th>Nombre</th>
+                        <th>{{__('message.Nombre')}}</th>
 
-                        <th>Email</th>
+                        <th>{{__('message.Email')}}</th>
 
-                        <th>Perfil</th>
+                        <th>{{__('message.Perfil')}}</th>
 
-                        <th>Option</th>
+                        <th>{{__('message.Option')}}</th>
 
                     </tr>
 
@@ -69,17 +69,19 @@
                         <td>{{ $user->perfil }}</td>
                         <td>
                             @if(auth()->user()->id==$user->id || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$user->entidad && $user->perfil='Formador'))
-                            <a href="#" data-toggle="modal" data-target="#changepasswordModal" class="btn btn-pass btn-sm">Change Password</a>
+
+                            <a href="#" data-toggle="modal" data-target="#changepasswordModal" class="btn btn-pass btn-sm">{{__('message.Change Password')}}</a>
+
                             <a href="{{route('admin.user.edit', [$user->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
 
-                            <form method="POST" action="{{route('admin.user.destroy', [$user->id])}}" class="d-inline" onsubmit="return confirm('Delete this user permanently?')">
+                            <form method="POST" action="{{route('admin.user.destroy', [$user->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete this user permanently?")}}')">
 
                                 @csrf
 
                                 <input type="hidden" name="_method" value="DELETE">
 
                                 <button type="submit" value="Delete" class="btn btn-delete btn-sm">
-                                <i class='fas fa-trash-alt'></i> 
+                                <i class='fas fa-trash-alt'></i>
                                 </button>
 
                             </form>
@@ -105,7 +107,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{__('message.Change Password')}}</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -114,13 +116,13 @@
             @csrf
         <div class="modal-body">
 
-            <input type="password" name='password' class="form-control {{$errors->first('password') ? "is-invalid" : "" }} " id="password" placeholder="New Password">
+            <input type="password" name='password' class="form-control {{$errors->first('password') ? "is-invalid" : "" }} " id="password" placeholder="{{__('message.New Password')}}">
 
         </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">{{__('message.Cancel')}}</button>
 
-          <button type="submit" class="btn btn-primary">Update</button>
+          <button type="submit" class="btn btn-primary">{{__('message.Update')}}</button>
 
         </div>
     </form>

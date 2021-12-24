@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.horario.create') }}" class="btn btn-success">Create horario</a>
+        <a href="{{ route('admin.horario.create') }}" class="btn btn-success">{{__('message.add_new')}} Horario</a>
 
     </div>
 
@@ -42,17 +42,17 @@
 
                     <tr>
 
-                        <th>curso</th>
+                        <th>{{__('message.Curso')}}</th>
 
-                        <th>contenido</th>
+                        <th>{{__('message.Contenido')}}</th>
 
-                        <th>fecha_inicio</th>
+                        <th>{{__('message.Fecha Inicio')}} </th>
 
-                        <th>final</th>
+                        <th>{{__('message.Final')}}</th>
 
-                        <th>alumnos</th>
+                        <th>{{__('message.Alumnos')}}</th>
 
-                        <th>Option</th>
+                        <th>{{__('message.Option')}}</th>
 
                     </tr>
 
@@ -84,7 +84,7 @@
 
                             <a href="{{route('admin.horario.edit', [$horario->id])}}" class="btn btn-info btn-sm"> <i class="fas fa-edit"></i> </a>
 
-                            <form method="POST" action="{{route('admin.horario.destroy', [$horario->id])}}" class="d-inline" onsubmit="return confirm('Delete this horario permanently?')">
+                            <form method="POST" action="{{route('admin.horario.destroy', [$horario->id])}}" class="d-inline" onsubmit="return confirm({{__('message.add_new')}}'Delete permanently?')">
 
                                 @csrf
 

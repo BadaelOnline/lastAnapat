@@ -61,12 +61,24 @@ input[type="radio"]:focus {
     @csrf
 
     <div class="form-groups">
+        {{--<div class="form-group col-md-4">--}}
+            {{--<label for="name" class="col-sm-2 col-form-label">Name</label>--}}
+            {{--<div class="col-sm-9">--}}
+                {{--<input type="text" name='name' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('name')}}" id="name" placeholder="Ex: Susi Similikiti">--}}
+                {{--<div class="invalid-feedback">--}}
+                    {{--{{ $errors->first('name') }}--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+
         <div class="form-group col-md-4">
-            <label for="name" class="col-sm-2 col-form-label">Name</label>
+            <label for="nombre" class="col-sm-2 col-form-label">Nombre </label>
             <div class="col-sm-9">
-                <input type="text" name='name' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('name')}}" id="name" placeholder="Ex: Susi Similikiti">
+                {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
+
+                <input type="text" name="nombre" placeholder="Nombre del formador" id="nombre" cols="40" rows="10"  class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} ">{{old('nombre')}}</input>
                 <div class="invalid-feedback">
-                    {{ $errors->first('name') }}
+                    {{ $errors->first('nombre') }}
                 </div>
             </div>
         </div>
@@ -146,17 +158,7 @@ input[type="radio"]:focus {
             </div>
         </div>
 
-        <div class="form-group col-md-4">
-            <label for="nombre" class="col-sm-2 col-form-label">Nombre </label>
-            <div class="col-sm-9">
-                {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                <input type="text" name="nombre" placeholder="Nombre del formador" id="nombre" cols="40" rows="10"  class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} ">{{old('nombre')}}</input>
-                <div class="invalid-feedback">
-                    {{ $errors->first('nombre') }}
-                </div>
-            </div>
-        </div>
      <div class="form-group col-md-4">
             <label for="ciudad" class="col-sm-2 col-form-label">Ciudad</label>
             <div class="col-sm-7">
@@ -217,7 +219,7 @@ input[type="radio"]:focus {
         </div>
         <div class="form-group col-md-12">
             <div class="col-sm-3">
-                <button type="submit" class="btn btn-info">Create</button>
+                <button type="submit" class="btn btn-info">{{__('message.Create')}}</button>
             </div>
         </div>
     </div>

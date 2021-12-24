@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Osama - Admin Login</title>
+  <title>Anapat - Admin Login</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -43,7 +43,7 @@
           <div class="login__field">
             <i class="login__icon fas fa-lock"></i>
             <input id="password" type="password" class="login__input" name="password" required autocomplete="current-password" placeholder="Password">
-            
+
             @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -58,9 +58,9 @@
                       Login
                     </a> --}}
           <button class="button login__submit">
-        
+
             <span class="button__text">  {{ __('Login') }}</span>
-          </button>				
+          </button>
         </form>
         <!-- <div class="social-login">
           <h3>log in via</h3>
@@ -73,10 +73,10 @@
       </div>
       <div class="screen__background">
         <span class="screen__background__shape screen__background__shape4"></span>
-        <span class="screen__background__shape screen__background__shape3"></span>		
+        <span class="screen__background__shape screen__background__shape3"></span>
         <span class="screen__background__shape screen__background__shape2"></span>
         <span class="screen__background__shape screen__background__shape1"></span>
-      </div>		
+      </div>
     </div>
   </div>
 </div>
