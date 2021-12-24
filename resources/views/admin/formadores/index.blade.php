@@ -28,7 +28,9 @@
 
     <div class="card-header py-3">
 
+
         <a href="{{ route('admin.formadores.create') }}" class="btn btn-pass">{{__('message.add_new')}} Formadores</a>
+
 
     </div>
 
@@ -77,9 +79,12 @@
                         <td>
                         <a href="{{route('admin.formadores.edit', [$formadores->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
 
+
                             <form method="POST" action="{{route('admin.formadores.destroy', [$formadores->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
+
                                 @csrf
                                 <input type="hidden" name="_method" value="DELETE">
+
                                 <button type="submit" value="Delete" class="btn btn-delete btn-sm">
                                 <i class='fas fa-trash-alt'></i>
                                 </button>

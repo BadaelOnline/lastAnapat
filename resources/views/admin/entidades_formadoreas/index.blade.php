@@ -61,6 +61,7 @@
                             <td>
                                 <a href="{{route('admin.entidades_formadoreas.edit', [$entidadesFormadores->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
                                 <form method="POST" action="{{route('admin.entidades_formadoreas.destroy', [$entidadesFormadores->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?'=")}}')">
+
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" value="Delete" class="btn btn-delete btn-sm">

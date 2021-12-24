@@ -69,7 +69,9 @@
                         <td>{{ $user->perfil }}</td>
                         <td>
                             @if(auth()->user()->id==$user->id || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$user->entidad && $user->perfil='Formador'))
+
                             <a href="#" data-toggle="modal" data-target="#changepasswordModal" class="btn btn-pass btn-sm">{{__('message.Change Password')}}</a>
+
                             <a href="{{route('admin.user.edit', [$user->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
 
                             <form method="POST" action="{{route('admin.user.destroy', [$user->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete this user permanently?")}}')">
@@ -79,7 +81,7 @@
                                 <input type="hidden" name="_method" value="DELETE">
 
                                 <button type="submit" value="Delete" class="btn btn-delete btn-sm">
-                                <i class='fas fa-trash-alt'></i> 
+                                <i class='fas fa-trash-alt'></i>
                                 </button>
 
                             </form>

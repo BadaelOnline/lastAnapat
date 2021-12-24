@@ -77,15 +77,19 @@
                         <td>{{ $cursos->provincia }}</td>
                         <td>{{ $cursos->direccion }}</td>
                         <td>
+
                             <a href="{{route('admin.cursos.edit', [$cursos->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
                             <form method="POST" action="{{route('admin.cursos.destroy', [$cursos->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete this cursos permanently?")}}')">
+
                                 @csrf
                                 <input type="hidden" name="_method" value="DELETE">
+
                                 <button type="submit" value="Delete" class="btn btn-delete btn-sm">
-                                <i class='fas fa-trash-alt'></i> 
+                                <i class='fas fa-trash-alt'></i>
                                 </button>
                             </form>
 {{--                            <a href="{{route('admin.cursos.activo', [$cursos->id])}}" class="btn btn-edit btn-sm"> Activo </a>--}}
+
                         </td>
                     </tr>
                     @endif
