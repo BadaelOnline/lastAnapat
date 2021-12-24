@@ -106,6 +106,9 @@ return [
     'Contenido' => 'Contenido',
     'Alumnos' => 'Alumnos',
     'Final' => 'Final',
+    'tipo' => 'Tipo',
+    'url' => 'URL',
+    'Examen' => 'Examen',
 
 
 ];

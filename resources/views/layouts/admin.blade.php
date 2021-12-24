@@ -172,7 +172,7 @@
         <i class="fas fa-fw fa-book-open"></i>
         <span>{{__('message.Cursos')}}</span>
       </a>
- 
+
       <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class=" py-2 collapse-inner rounded">
           <a class="collapse-item" href="{{ route('admin.cursos') }}">{{__('message.Cursos')}}</a>
@@ -191,7 +191,7 @@
       </li>
     @endcan
     <!-- Nav Item - Pages Collapse Menu -->
-    
+
 
     <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.operadores',
@@ -200,6 +200,14 @@
         <i class="fas fa-fw fa-allergies"></i>
         <span>{{__('message.Operadores')}}</span></a>
     </li>
+      <li class="nav-item {{ in_array(Route::currentRouteName(),[
+            'admin.examen',
+        ])? 'active' : ''}}">
+          <a class="nav-link" href="{{ route('admin.examen') }}">
+              <i class="fas fa-fw fa-allergies"></i>
+              <span>{{__('message.Examen')}}</span></a>
+      </li>
+
     <li class="nav-item ">
     <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
         <i class="fas fa-sign-out-alt"></i>
