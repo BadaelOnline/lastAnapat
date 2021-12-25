@@ -109,6 +109,11 @@ return [
     'tipo' => 'Tipo',
     'url' => 'URL',
     'Examen' => 'Examen',
+    'carnet' => 'Carnet',
+    'numero' => 'Numero',
+    'fecha_de_alta' => 'Fecha De Alta',
+    'fecha_de_emision' => 'Fecha De Emision',
+    'foto' => 'Foto',
 
 
 ];
