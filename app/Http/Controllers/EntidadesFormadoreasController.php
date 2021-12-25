@@ -39,6 +39,19 @@ class EntidadesFormadoreasController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'socio' => 'required|max:255|unique:entidades_formadoreas',
+            'cif' => 'required',
+            'nombre' => 'required',
+            'razon_social' => 'required',
+            'province' => 'required',
+            'ciudad' => 'required',
+            'direccion' => 'required',
+            'codigo_postal' => 'required',
+            'logo' => 'required',
+            'web' => 'required',
+            'mail' => 'required',
+        ]);
         $entidades_formadoreas = new EntidadesFormadoreas($request->except('_token','certificado','estado'));
         if($request->estado == null){
             $entidades_formadoreas->estado = 0;
@@ -111,6 +124,18 @@ class EntidadesFormadoreasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'socio' => 'required|max:255',
+            'cif' => 'required',
+            'nombre' => 'required',
+            'razon_social' => 'required',
+            'province' => 'required',
+            'ciudad' => 'required',
+            'direccion' => 'required',
+            'codigo_postal' => 'required',
+            'web' => 'required',
+            'mail' => 'required',
+        ]);
         $entidades_formadoreas = EntidadesFormadoreas::findOrFail($id);
         $entidades_formadoreas->socio = $request->socio;
         $entidades_formadoreas->cif = $request->cif;
