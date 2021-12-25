@@ -77,22 +77,21 @@
               <li data-filter="">Truck Mounts</li>
             </ul>
           </div>
-
-          <div class=" " data-aos="fade-up">
-        <h2>Reach height: 3.60m – 5.10m</h2>
-        <h3>IPAF category: PAV</h3>
-        <p>
-        Push around vertical platforms, often called PAVs or personnel lifts, are a small type of mobile vertical lift with scissor operation. PAVs are ideal for indoor low level access making them suitable for smaller warehouses and factories, replacing ladders and steps that are not recommended for safe access.
-        </p>
-        <p>
-        They are compact and lightweight, which allows them to navigate aisles, doorways and narrow corners, and can be easily moved from location to location, including between floors in multistory buildings.
-        </p>
-        <p>
-        PAVs meet the requirements of the Work at Height regulations by ensuring the safety of workers on the platform with a low entry point.
-
-        </p>
-      
-        </div>
+          <transition-group class="kinds" name="kinds" >
+            <div>
+              <h2 class="port-title">Reach height: <span>3.60m – 5.10m</span></h2>
+              <h3 class="port-title">IPAF category: <span>PAV</span></h3>
+              <p>
+              Push around vertical platforms, often called PAVs or personnel lifts, are a small type of mobile vertical lift with scissor operation. PAVs are ideal for indoor low level access making them suitable for smaller warehouses and factories, replacing ladders and steps that are not recommended for safe access.
+              </p>
+              <p>
+              They are compact and lightweight, which allows them to navigate aisles, doorways and narrow corners, and can be easily moved from location to location, including between floors in multistory buildings.
+              </p>
+              <p>
+              PAVs meet the requirements of the Work at Height regulations by ensuring the safety of workers on the platform with a low entry point.
+              </p>
+            </div>
+          </transition-group>
       </div>
     </section>
     <!-- End about us Section -->
@@ -101,17 +100,26 @@
       <div class="container">
 
       <div class="section-title">
-          <h2>Inform About ANAPAT Training</h2>
+          <h2 >Inform About ANAPAT Training</h2>
         </div>
 
         <div class="row">
-            <ul class="col-md-3 col-sm-12 about-filter" id="portfolio-flters">
-              <li data-filter="" class="filter-active">about ANAPAT</li>
-              <li data-filter="">Characteristics</li>
-              <li data-filter="">certifications</li>
-            </ul>
+        <ul class="hList">
+  <li>
+    <a href="#click" class="menu">
+      <h2 class="menu-title menu-title_2nd">about ANAPAT</h2>
+      <ul class="menu-dropdown col-md-3 col-sm-12" >
+        <li>about ANAPAT</li>
+        <li>Characteristics</li>
+        <li>certifications</li>
+      </ul>
+    </a>
+  </li>
+</ul>  
+
+          
             <div class="col-md-9 col-sm-12 info" data-aos="fade-up">
-        <h2 >Reach height: 3.60m – 5.10m</h2>
+        <h2>Reach height: <span>3.60m – 5.10m</span></h2>
      
         <p>
         Push around vertical platforms, often called PAVs or personnel lifts, are a small type of mobile vertical lift with scissor operation. PAVs are ideal for indoor low level access making them suitable for smaller warehouses and factories, replacing ladders and steps that are not recommended for safe access.

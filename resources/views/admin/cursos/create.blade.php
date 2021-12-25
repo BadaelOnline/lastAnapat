@@ -48,7 +48,7 @@
             outline: 0;
             box-shadow: none;
         }
-
+       
     </style>
 @endsection
 @section('content')
@@ -59,14 +59,14 @@
         </div>
     @endif
 
-    <form action="{{ route('admin.cursos.store') }}" method="POST" enctype="multipart/form-data">
+    <form class="errors" action="{{ route('admin.cursos.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         {{--first row--}}
         <div class="form-groups">
             <div class="col-md-4">
                 <label for="curso" class="col-sm-12 col-form-label">curso</label>
                 <div class="col-sm-9">
-                    <input type="text" name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " value="{{$course_code}}" id="curso" placeholder="Código del curso">
+                    <input type="text"  name='curso' class="form-control {{$errors->first('curso') ? 'is-invalid' : '' }} " value="{{$course_code}}" id="curso" placeholder="Código del curso">
                     <div class="invalid-feedback">
                         {{ $errors->first('curso') }}
                     </div>
