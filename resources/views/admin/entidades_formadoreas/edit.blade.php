@@ -71,10 +71,10 @@ input[type="radio"]:focus {
 
                 <div class="col-sm-12">
 
-                    <input type="number" name='socio' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->socio}}" id="name" placeholder="Código de socio">
+                    <input type="number" name='socio' class="form-control {{$errors->first('socio') ? "is-invalid" : "" }} " value="{{old('socio') ? old('socio') : $entidades_formadoreas->socio}}" id="socio" placeholder="Código de socio">
 
                     <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
+                        {{ $errors->first('socio') }}
                     </div>
 
                 </div>
@@ -87,10 +87,10 @@ input[type="radio"]:focus {
 
                 <div class="col-sm-12">
 
-                    <input type="text" name='cif' class="form-control {{$errors->first('position') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->cif}}" id="position" placeholder="Código de identificación">
+                    <input type="text" name='cif' class="form-control {{$errors->first('cif') ? "is-invalid" : "" }} " value="{{old('cif') ? old('cif') : $entidades_formadoreas->cif}}" id="cif" placeholder="Código de identificación">
 
                     <div class="invalid-feedback">
-                        {{ $errors->first('position') }}
+                        {{ $errors->first('cif') }}
                     </div>
 
                 </div>
@@ -104,10 +104,10 @@ input[type="radio"]:focus {
 
                 <div class="col-sm-12">
 
-                    <input type="text" name='nombre' class="form-control {{$errors->first('twitter') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->nombre}}" id="twitter" placeholder="Nombre comercial">
+                    <input type="text" name='nombre' class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} " value="{{old('nombre') ? old('nombre') : $entidades_formadoreas->nombre}}" id="nombre" placeholder="Nombre comercial">
 
                     <div class="invalid-feedback">
-                        {{ $errors->first('twitter') }}
+                        {{ $errors->first('nombre') }}
                     </div>
 
                 </div>
@@ -120,10 +120,10 @@ input[type="radio"]:focus {
 
                 <div class="col-sm-12">
 
-                    <input type="text" name='razon_social' class="form-control {{$errors->first('facebook') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->razon_social}}" id="facebook" placeholder="Nombre de la empresa">
+                    <input type="text" name='razon_social' class="form-control {{$errors->first('razon_social') ? "is-invalid" : "" }} " value="{{old('razon_social') ? old('razon_social') : $entidades_formadoreas->razon_social}}" id="razon_social" placeholder="Nombre de la empresa">
 
                     <div class="invalid-feedback">
-                        {{ $errors->first('facebook') }}
+                        {{ $errors->first('razon_social') }}
                     </div>
 
                 </div>
@@ -136,10 +136,10 @@ input[type="radio"]:focus {
 
                 <div class="col-sm-12">
 
-                    <input type="text" name='province' class="form-control {{$errors->first('instagram') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->province}}" id="instagram" placeholder="Provincia de la sede">
+                    <input type="text" name='province' class="form-control {{$errors->first('province') ? "is-invalid" : "" }} " value="{{old('province') ? old('province') : $entidades_formadoreas->province}}" id="province" placeholder="Provincia de la sede">
 
                     <div class="invalid-feedback">
-                        {{ $errors->first('instagram') }}
+                        {{ $errors->first('province') }}
                     </div>
 
                 </div>
@@ -152,10 +152,10 @@ input[type="radio"]:focus {
 
                 <div class="col-sm-12">
 
-                    <input type="text" name='ciudad' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->ciudad}}" id="linkedin" placeholder="Ciudad de la sede">
+                    <input type="text" name='ciudad' class="form-control {{$errors->first('ciudad') ? "is-invalid" : "" }} " value="{{old('ciudad') ? old('ciudad') : $entidades_formadoreas->ciudad}}" id="ciudad" placeholder="Ciudad de la sede">
 
                     <div class="invalid-feedback">
-                        {{ $errors->first('linkedin') }}
+                        {{ $errors->first('ciudad') }}
                     </div>
 
                 </div>
@@ -171,10 +171,10 @@ input[type="radio"]:focus {
 
                 <div class="col-sm-12">
 
-                    <input type="text" name='direccion' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->direccion}}" id="linkedin" placeholder="Domicilio de la sede">
+                    <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion') ? old('direccion') : $entidades_formadoreas->direccion}}" id="direccion" placeholder="Domicilio de la sede">
 
                     <div class="invalid-feedback">
-                        {{ $errors->first('linkedin') }}
+                        {{ $errors->first('direccion') }}
                     </div>
 
                 </div>
@@ -186,10 +186,10 @@ input[type="radio"]:focus {
 
                 <div class="col-sm-12">
 
-                    <input type="number" name='codigo_postal' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->codigo_postal}}" id="linkedin" placeholder="Código postal de la sede">
+                    <input type="number" name='codigo_postal' class="form-control {{$errors->first('codigo_postal') ? "is-invalid" : "" }} " value="{{old('codigo_postal') ? old('codigo_postal') : $entidades_formadoreas->codigo_postal}}" id="codigo_postal" placeholder="Código postal de la sede">
 
                     <div class="invalid-feedback">
-                        {{ $errors->first('linkedin') }}
+                        {{ $errors->first('codigo_postal') }}
                     </div>
 
                 </div>
@@ -201,10 +201,10 @@ input[type="radio"]:focus {
 
                 <div class="col-sm-12">
 
-                    <input type="file" name='logo' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->logo}}" id="linkedin" placeholder="Link Linkedin">
+                    <input type="file" name='logo' class="form-control {{$errors->first('logo') ? "is-invalid" : "" }} " value="{{old('logo') ? old('logo') : $entidades_formadoreas->logo}}" id="logo" placeholder="Link Linkedin">
 
                     <div class="invalid-feedback">
-                        {{ $errors->first('linkedin') }}
+                        {{ $errors->first('logo') }}
                     </div>
 
                 </div>
@@ -217,10 +217,10 @@ input[type="radio"]:focus {
 
                 <div class="col-sm-12">
 
-                    <input type="text" name='web' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->web}}" id="linkedin" placeholder="URL de la web">
+                    <input type="text" name='web' class="form-control {{$errors->first('web') ? "is-invalid" : "" }} " value="{{old('web') ? old('web') : $entidades_formadoreas->web}}" id="web" placeholder="URL de la web">
 
                     <div class="invalid-feedback">
-                        {{ $errors->first('linkedin') }}
+                        {{ $errors->first('web') }}
                     </div>
 
                 </div>
@@ -232,10 +232,10 @@ input[type="radio"]:focus {
 
                 <div class="col-sm-12">
 
-                    <input type="text" name='mail' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->mail}}" id="linkedin" placeholder="Correo electrónico">
+                    <input type="text" name='mail' class="form-control {{$errors->first('mail') ? "is-invalid" : "" }} " value="{{old('mail') ? old('mail') : $entidades_formadoreas->mail}}" id="mail" placeholder="Correo electrónico">
 
                     <div class="invalid-feedback">
-                        {{ $errors->first('linkedin') }}
+                        {{ $errors->first('mail') }}
                     </div>
 
                 </div>
@@ -247,10 +247,10 @@ input[type="radio"]:focus {
 
                 <div class="col-sm-12">
 
-                    <input type="file" name='doc_medios_pdf' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->doc_medios_pdf}}" id="linkedin" placeholder="Link Linkedin">
+                    <input type="file" name='doc_medios_pdf' class="form-control {{$errors->first('doc_medios_pdf') ? "is-invalid" : "" }} " value="{{old('doc_medios_pdf') ? old('doc_medios_pdf') : $entidades_formadoreas->doc_medios_pdf}}" id="doc_medios_pdf" placeholder="Link Linkedin">
 
                     <div class="invalid-feedback">
-                        {{ $errors->first('linkedin') }}
+                        {{ $errors->first('doc_medios_pdf') }}
                     </div>
 
                 </div>
@@ -261,10 +261,10 @@ input[type="radio"]:focus {
 
                 <div class="col-sm-12">
 
-                    <input type="date" name='fecha' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $entidades_formadoreas->fecha}}" id="linkedin" placeholder="Fecha de alta">
+                    <input type="date" name='fecha' class="form-control {{$errors->first('fecha') ? "is-invalid" : "" }} " value="{{old('fecha') ? old('fecha') : $entidades_formadoreas->fecha}}" id="fecha" placeholder="Fecha de alta">
 
                     <div class="invalid-feedback">
-                        {{ $errors->first('linkedin') }}
+                        {{ $errors->first('fecha') }}
                     </div>
 
                 </div>

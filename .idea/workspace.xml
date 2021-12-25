@@ -21,10 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4b9c3d3c-a351-4ab6-90ca-e38cb16d2c4d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Carnet.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Carnet.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/message.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EntidadesFormadoreasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EntidadesFormadoreasController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/entidades_formadoreas/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/entidades_formadoreas/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/entidades_formadoreas/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/entidades_formadoreas/edit.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +198,7 @@
       <workItem from="1639912507274" duration="1186000" />
       <workItem from="1639916223597" duration="12775000" />
       <workItem from="1639941854297" duration="666000" />
-      <workItem from="1640294300652" duration="13418000" />
+      <workItem from="1640294300652" duration="15787000" />
     </task>
     <servers />
   </component>
@@ -259,5 +258,9 @@
       <screen x="1366" y="0" width="1600" height="860" />
     </state>
     <state x="2000" y="353" key="NewPhpFileDialog/0.0.1366.728/1366.0.1600.860@1366.0.1600.860" timestamp="1639645102669" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1640445030248">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1640445030248" />
   </component>
 </project>
