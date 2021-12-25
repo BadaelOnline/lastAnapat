@@ -21,9 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4b9c3d3c-a351-4ab6-90ca-e38cb16d2c4d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EntidadesFormadoreasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EntidadesFormadoreasController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/entidades_formadoreas/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/entidades_formadoreas/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/entidades_formadoreas/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/entidades_formadoreas/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FormadoresController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FormadoresController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/formadores/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/formadores/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/formadores/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/formadores/edit.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +198,7 @@
       <workItem from="1639912507274" duration="1186000" />
       <workItem from="1639916223597" duration="12775000" />
       <workItem from="1639941854297" duration="666000" />
-      <workItem from="1640294300652" duration="15787000" />
+      <workItem from="1640294300652" duration="18145000" />
     </task>
     <servers />
   </component>
