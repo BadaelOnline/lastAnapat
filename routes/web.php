@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{BannerController,
+    CarnetController,
     EntidadesFormadoreasController,
     ExamenController,
     OperadoresController,
@@ -198,13 +199,21 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('entidades_formadores/edit/{id}', [EntidadesFormadoreasController::class, 'update'])->middleware('can:isAdminOrResponsable')->name('admin.entidades_formadoreas.update');
     Route::delete('entidades_formadores/destroy/{id}',[EntidadesFormadoreasController::class, 'destroy'])->middleware('can:isAdmin')->name('admin.entidades_formadoreas.destroy');
 
-    // Manage Team
+    // Manage Examen
     Route::get('examen', [ExamenController::class, 'index'])->middleware('can:isAdminOrResponsable')->name('admin.examen');
     Route::get('examen/create', [ExamenController::class, 'create'])->middleware('can:isAdminOrResponsable')->name('admin.examen.create');
     Route::post('examen/create', [ExamenController::class, 'store'])->middleware('can:isAdminOrResponsable')->name('admin.examen.store');
     Route::get('examen/edit/{id}', [ExamenController::class, 'edit'])->middleware('can:isAdminOrResponsable')->name('admin.examen.edit');
     Route::post('examen/edit/{id}', [ExamenController::class, 'update'])->middleware('can:isAdminOrResponsable')->name('admin.examen.update');
     Route::delete('examen/destroy/{id}',[ExamenController::class, 'destroy'])->middleware('can:isAdmin')->name('admin.examen.destroy');
+
+    // Manage Carnet
+    Route::get('carnet', [CarnetController::class, 'index'])->middleware('can:isAdminOrResponsable')->name('admin.carnet');
+    Route::get('carnet/create', [CarnetController::class, 'create'])->middleware('can:isAdminOrResponsable')->name('admin.carnet.create');
+    Route::post('carnet/create', [CarnetController::class, 'store'])->middleware('can:isAdminOrResponsable')->name('admin.carnet.store');
+    Route::get('carnet/edit/{id}', [CarnetController::class, 'edit'])->middleware('can:isAdminOrResponsable')->name('admin.carnet.edit');
+    Route::post('carnet/edit/{id}', [CarnetController::class, 'update'])->middleware('can:isAdminOrResponsable')->name('admin.carnet.update');
+    Route::delete('carnet/destroy/{id}',[CarnetController::class, 'destroy'])->middleware('can:isAdmin')->name('admin.carnet.destroy');
 
     // Manage Admin
      Route::get('users', [UserController::class, 'index'])->middleware('can:isAdminOrResponsable')->name('admin.user');
