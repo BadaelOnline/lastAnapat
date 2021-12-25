@@ -50,7 +50,14 @@ class FormadoresController extends Controller
      */
     public function store(Request $request)
     {
-
+        $request->validate([
+            'codigo' => 'required',
+            'entidad' => 'required',
+            'apellidos' => 'required',
+            'nombre' => 'required',
+            'dni' => 'required',
+            'dni_img' => 'required',
+        ]);
 
 
         $formadores = new formadores($request->except('_token','estado'));
@@ -166,7 +173,13 @@ class FormadoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $request->validate([
+            'codigo' => 'required',
+            'entidad' => 'required',
+            'apellidos' => 'required',
+            'nombre' => 'required',
+            'dni' => 'required',
+        ]);
 
         $formadores = Formadores::findOrFail($id);
         $formadores->codigo = $request->codigo;

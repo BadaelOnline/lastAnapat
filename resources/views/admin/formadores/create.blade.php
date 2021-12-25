@@ -70,7 +70,7 @@
                 <label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
 
                 <div class="col-sm-9">
-                    <input type="text" name='codigo' class="form-control {{$errors->first('codigo') ? "is-invalid" : "" }} " value="{{old('name')}}" id="codigo" placeholder="Código del Formador
+                    <input type="text" name='codigo' class="form-control {{$errors->first('codigo') ? "is-invalid" : "" }} " value="{{old('codigo')}}" id="codigo" placeholder="Código del Formador
 Name">
                     <div class="invalid-feedback">
                         {{ $errors->first('codigo') }}
@@ -106,7 +106,7 @@ Name">
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="text" placeholder="Apellidos del Formador Name" name="apellidos" id="apellidos" cols="40" rows="10"  class="form-control {{$errors->first('apellidos') ? "is-invalid" : "" }} " value="{{old('name')}}">
+                    <input type="text" placeholder="Apellidos del Formador Name" name="apellidos" id="apellidos"  class="form-control {{$errors->first('apellidos') ? "is-invalid" : "" }} " value="{{old('apellidos')}}">
                     <div class="invalid-feedback">
                         {{ $errors->first('apellidos') }}
                     </div>
@@ -117,7 +117,7 @@ Name">
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="text" name="nombre" placeholder="Nombre del formador" id="nombre" cols="40" rows="10"  class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} " value="{{old('name')}}"></input>
+                    <input type="text" name="nombre" placeholder="Nombre del formador" id="nombre"  class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} " value="{{old('nombre')}}">
                     <div class="invalid-feedback">
                         {{ $errors->first('nombre') }}
                     </div>
@@ -128,7 +128,7 @@ Name">
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="text" placeholder="Documento identificación" name="dni" id="dni" cols="40" rows="10"  class="form-control {{$errors->first('dni') ? "is-invalid" : "" }} " value="{{old('name')}}"></input>
+                    <input type="text" placeholder="Documento identificación" name="dni" id="dni"   class="form-control {{$errors->first('dni') ? "is-invalid" : "" }} " value="{{old('dni')}}">
                     <div class="invalid-feedback">
                         {{ $errors->first('dni') }}
                     </div>
@@ -139,7 +139,7 @@ Name">
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="file" name="dni_img" id="dni_img" cols="40" rows="10"  class="form-control {{$errors->first('dni_img') ? "is-invalid" : "" }} " value="{{old('name')}}"></input>
+                    <input type="file" name="dni_img" id="dni_img" cols="40" rows="10"  class="form-control {{$errors->first('dni_img') ? "is-invalid" : "" }} " value="{{old('dni_img')}}">
                     <div class="invalid-feedback">
                         {{ $errors->first('dni_img') }}
                     </div>
@@ -150,7 +150,7 @@ Name">
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="file" name="operador_pdf" id="operador_pdf" cols="40" rows="10"  class="form-control {{$errors->first('operador_pdf') ? "is-invalid" : "" }} ">{{old('operador_pdf')}}</input>
+                    <input type="file" name="operador_pdf" id="operador_pdf"  class="form-control {{$errors->first('operador_pdf') ? "is-invalid" : "" }} " value="{{old('operador_pdf')}}">
                     <div class="invalid-feedback">
                         {{ $errors->first('operador_pdf') }}
                     </div>
@@ -161,7 +161,7 @@ Name">
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="file" name="cert_empresa_pdf" id="cert_empresa_pdf" cols="40" rows="10"  class="form-control {{$errors->first('cert_empresa_pdf	') ? "is-invalid" : "" }} ">{{old('cert_empresa_pdf	')}}</input>
+                    <input type="file" name="cert_empresa_pdf" id="cert_empresa_pdf"   class="form-control {{$errors->first('cert_empresa_pdf	') ? "is-invalid" : "" }} " value="{{old('cert_empresa_pdf	')}}">
                     <div class="invalid-feedback">
                         {{ $errors->first('cert_empresa_pdf	') }}
                     </div>
@@ -172,7 +172,7 @@ Name">
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="file" name="vida_laboral_pdf" id="vida_laboral_pdf" cols="40" rows="10"  class="form-control {{$errors->first('vida_laboral_pdf') ? "is-invalid" : "" }} ">{{old('vida_laboral_pdf')}}</input>
+                    <input type="file" name="vida_laboral_pdf" id="vida_laboral_pdf"   class="form-control {{$errors->first('vida_laboral_pdf') ? "is-invalid" : "" }} " value="{{old('vida_laboral_pdf')}}">
                     <div class="invalid-feedback">
                         {{ $errors->first('vida_laboral_pdf') }}
                     </div>
@@ -183,7 +183,7 @@ Name">
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="file" name="prl_pdf" id="prl_pdf" cols="40" rows="10"  class="form-control {{$errors->first('prl_pdf') ? "is-invalid" : "" }} ">{{old('prl_pdf')}}</input>
+                    <input type="file" name="prl_pdf" id="prl_pdf" cols="40" rows="10"  class="form-control {{$errors->first('prl_pdf') ? "is-invalid" : "" }} " value="{{old('prl_pdf')}}">
                     <div class="invalid-feedback">
                         {{ $errors->first('prl_pdf') }}
                     </div>
@@ -194,7 +194,7 @@ Name">
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="file" name="pemp_pdf" id="pemp_pdf" cols="40" rows="10"  class="form-control {{$errors->first('pemp_pdf') ? "is-invalid" : "" }} ">{{old('pemp_pdf')}}</input>
+                    <input type="file" name="pemp_pdf" id="pemp_pdf" cols="40" rows="10"  class="form-control {{$errors->first('pemp_pdf') ? "is-invalid" : "" }} " value="{{old('pemp_pdf')}}">
                     <div class="invalid-feedback">
                         {{ $errors->first('pemp_pdf') }}
                     </div>
@@ -205,7 +205,7 @@ Name">
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="file" name="cap_pdf" id="cap_pdf" cols="40" rows="10"  class="form-control {{$errors->first('cap_pdf') ? "is-invalid" : "" }} ">{{old('cap_pdf')}}</input>
+                    <input type="file" name="cap_pdf" id="cap_pdf"   class="form-control {{$errors->first('cap_pdf') ? "is-invalid" : "" }} " value="{{old('cap_pdf')}}">
                     <div class="invalid-feedback">
                         {{ $errors->first('cap_pdf') }}
                     </div>
@@ -216,7 +216,7 @@ Name">
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="date" name="fecha" id="fecha" cols="40" rows="10"  class="form-control {{$errors->first('fecha') ? "is-invalid" : "" }} " value="{{old('name')}}">{{old('fecha')}}</input>
+                    <input type="date" name="fecha" id="fecha" cols="40" rows="10"  class="form-control {{$errors->first('fecha') ? "is-invalid" : "" }} " value="{{old('fecha')}}">
                     <div class="invalid-feedback">
                         {{ $errors->first('fecha') }}
                     </div>
