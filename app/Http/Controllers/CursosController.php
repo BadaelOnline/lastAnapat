@@ -75,7 +75,18 @@ class CursosController extends Controller
     public function store(Request $request)
     {
 //dd($request);
-
+        $request->validate([
+            'curso' => 'required|max:255|unique:cursos',
+            'tipo_curso' => 'required',
+            'codigo' => 'required',
+            'entidad' => 'required',
+            'formador' => 'required',
+            'ciudad' => 'required',
+            'direccion' => 'required',
+            'tipo_maquina' => 'required',
+            'examen_t' => 'required',
+            'examen_p' => 'required',
+        ]);
         $cursos = new Cursos($request->except('_token','tipo_maquina','examen-t','examen-p','publico-privado','estado','cerrado'));
 //        dd($cursos);
 
@@ -122,32 +133,10 @@ class CursosController extends Controller
             }
 
         }
+
         $cursos->examen_t = $request->examen_t;
         $cursos->examen_p = $request->examen_p;
-//        $cursos->publico_privado = $request->publico_privado;
 
-
-
-//        $cursos->curso = $request->curso;
-//        $cursos->tipo_curso = $request->tipo_curso;
-//        $cursos->codigo = $request->codigo;
-//        $cursos->entidad = $request->entidad;
-//        $cursos->formador = $request->formador;
-//        $cursos->formador_apoyo_1 = $request->formador_apoyo_1;
-//        $cursos->formador_apoyo_2 = $request->formador_apoyo_2;
-//        $cursos->formador_apoyo_3 = $request->formador_apoyo_3;
-//        $cursos->fecha_inicio = $request->fecha_inicio;
-//        $cursos->direccion = $request->direccion;
-//        $cursos->ciudad = $request->ciudad;
-//        $cursos->provincia = $request->provincia;
-//        $cursos->codigo_postal = $request->codigo_postal;
-////        $cursos->examen-t = $request->examen-t;
-////        $cursos->examen-p = $request->examen-p;
-//        $cursos->fecha_alta = $request->fecha_alta;
-//        $cursos->observaciones = $request->observaciones;
-////        $cursos->publico-privado = $request->publico-privado;
-//        $cursos->cerrado = $request->cerrado;
-//        $cursos->estado = $request->estado;
 
 
         $asistentes_pdf = $request->file('asistentes_pdf');
@@ -213,10 +202,18 @@ class CursosController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        \Validator::make($request->all(), [
-//            "category" => "required",
-//            "desc" => "required"
-//        ])->validate();
+        $request->validate([
+            'curso' => 'required|max:255',
+            'tipo_curso' => 'required',
+            'codigo' => 'required',
+            'entidad' => 'required',
+            'formador' => 'required',
+            'ciudad' => 'required',
+            'direccion' => 'required',
+            'tipo_maquina' => 'required',
+            'examen_t' => 'required',
+            'examen_p' => 'required',
+        ]);
 
         $cursos = Cursos::findOrFail($id);
 //        dd($request);
@@ -239,6 +236,9 @@ class CursosController extends Controller
         $cursos->fecha_alta = $request->fecha_alta;
 //        $cursos->publico_privado = $request->publico_privado;
         $cursos->observaciones = $request->observaciones;
+        if(!$request->formador_apoyo_2){
+            $cursos->formador_apoyo_2 = 0;
+        }
 //        $cursos->cerrado = $request->cerrado;
 //        $cursos->estado = $request->estado;
         $x =$request->input('tipo_maquina');
