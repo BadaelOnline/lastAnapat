@@ -66,7 +66,7 @@
             <div class="col-md-4">
                 <label for="curso" class="col-sm-12 col-form-label">Curso</label>
                 <div class="col-sm-9">
-                    <input type="text" name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " value="{{$course_code}}" id="curso" placeholder="Código del curso">
+                    <input type="text" readonly name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " value="{{$course_code}}" id="curso" placeholder="Código del curso">
                     <div class="invalid-feedback">
                         {{ $errors->first('curso') }}
                     </div>
@@ -81,7 +81,7 @@
                     <select name='tipo_curso' class="form-control {{$errors->first('tipo_curso') ? "is-invalid" : "" }} " id="tipo_curso">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($tipo_curso as $tipo_curso)
-                            <option value="{{ $tipo_curso->id }}">{{ $tipo_curso->tipo_curso }}</option>
+                            <option value="{{ $tipo_curso->id }}" {{old('tipo_curso') == $tipo_curso->id ? "selected" : ""}}>{{ $tipo_curso->tipo_curso }}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -96,12 +96,15 @@
                 <div class="col-sm-9">
                     @foreach($tipo_maquina as $tipo_maquina)
                         <div class="form-check">
-                            <input class="form-check-input" name="tipo_maquina[]" type="checkbox" value="{{$tipo_maquina->id}}" id="{{$tipo_maquina->id}}" onclick="updateSearchBox();">
+                            <input class="form-check-input {{$errors->first('tipo_maquina') ? "is-invalid" : "" }}" name="tipo_maquina[]" type="checkbox" value="{{$tipo_maquina->id}}" id="{{$tipo_maquina->id}}" onclick="updateSearchBox();" >
                             <label class="form-check-label" for="flexCheckDefault">
                                 {{$tipo_maquina->tipo_maquina}}
                             </label>
                         </div>
                     @endforeach
+                        <div class="invalid-feedback">
+                            {{ $errors->first('tipo_maquina') }}
+                        </div>
                 </div>
             </div>
 
@@ -112,7 +115,7 @@
             <div class="col-md-4">
                 <label for="codigo" class="col-sm-12 col-form-label">Codigo</label>
                 <div class="col-sm-9">
-                    <input  type="text" readonly name='codigo' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('codigo')}}" id="codigo" placeholder="Código de prácticas">
+                    <input  type="text" readonly name='codigo' class="form-control {{$errors->first('codigo') ? "is-invalid" : "" }} " value="{{old('codigo')}}" id="codigo" placeholder="Código de prácticas">
                     <div class="invalid-feedback">
                         {{ $errors->first('codigo') }}
                     </div>
@@ -126,7 +129,7 @@
                     <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($entidad as $entidad)
-                            <option value="{{ $entidad->id }}">{{ $entidad->nombre }}</option>
+                            <option value="{{ $entidad->id }}" {{old('entidad') == $entidad->id ? "selected" : ""}}>{{ $entidad->nombre }}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -142,7 +145,7 @@
                     <select name='formador' class="form-control {{$errors->first('formador') ? "is-invalid" : "" }} " id="formador">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($formador as $formador)
-                            <option value="{{ $formador->id }}">{{ $formador->nombre }}</option>
+                            <option value="{{ $formador->id }}" {{old('formador') == $formador->id ? "selected" : ""}}>{{ $formador->nombre }}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -160,7 +163,7 @@
                     <select name='formador_apoyo_1' class="form-control {{$errors->first('formador_apoyo_1') ? "is-invalid" : "" }} " id="formador_apoyo1">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($formadors as $formadors)
-                            <option value="{{ $formadors->id }}">{{ $formadors->nombre }}</option>
+                            <option value="{{ $formadors->id }}" {{old('formador_apoyo_1') == $formadors->id ? "selected" : ""}}>{{ $formadors->nombre }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -173,7 +176,7 @@
                     <select name='formador_apoyo_2' class="form-control {{$errors->first('formador_apoyo2') ? "is-invalid" : "" }} " id="formador_apoyo2">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($formadors2 as $formador)
-                            <option value="{{ $formador->id }}">{{ $formador->nombre }}</option>
+                            <option value="{{ $formador->id }}" {{old('formador_apoyo_2') == $formador->id ? "selected" : ""}}>{{ $formador->nombre }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -186,7 +189,7 @@
                     <select name='formador_apoyo_3' class="form-control {{$errors->first('formador_apoyo3') ? "is-invalid" : "" }} " id="formador_apoyo3">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($formadors3 as $formador)
-                            <option value="{{ $formador->id }}">{{ $formador->nombre }}</option>
+                            <option value="{{ $formador->id }}" {{old('formador_apoyo_3') == $formador->id ? "selected" : ""}}>{{ $formador->nombre }}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -215,7 +218,7 @@
                 <div class="col-sm-9">
                     <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion')}}" id="direccion" placeholder="Dirección del curso">
                     <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
+                        {{ $errors->first('direccion') }}
                     </div>
                 </div>
             </div>
@@ -273,12 +276,15 @@
             <div class="col-md-4">
                 <label for="examen-t" class="col-sm-12 col-form-label">Examen T</label>
                 <div class="col-sm-9">
-                    <select name='examen_t' class="form-control {{$errors->first('examen-t') ? "is-invalid" : "" }} " id="examen-t">
+                    <select name='examen_t' class="form-control {{$errors->first('examen_t') ? "is-invalid" : "" }} " id="examen-t">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($examen_t as $examen_t)
-                            <option value="{{ $examen_t->id }}">{{ $examen_t->nombre }}</option>
+                            <option value="{{ $examen_t->id }}" {{old('examen_t') == $examen_t->id ? "selected" : ""}}>{{ $examen_t->nombre }}</option>
                         @endforeach
                     </select>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('examen_t') }}
+                    </div>
                 </div>
             </div>
 
@@ -286,12 +292,15 @@
             <div class="col-md-4">
                 <label for="examen-p" class="col-sm-12 col-form-label">Examen P</label>
                 <div class="col-sm-9">
-                    <select name='examen_p' class="form-control {{$errors->first('examen-p') ? "is-invalid" : "" }} " id="examen_p">
+                    <select name='examen_p' class="form-control {{$errors->first('examen_p') ? "is-invalid" : "" }} " id="examen_p">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($examen_p as $examen_p)
-                            <option value="{{ $examen_p->id }}">{{ $examen_p->nombre }}</option>
+                            <option value="{{ $examen_p->id }}" {{old('examen_p') == $examen_p->id ? "selected" : ""}}>{{ $examen_p->nombre }}</option>
                         @endforeach
                     </select>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('examen_p') }}
+                    </div>
                 </div>
             </div>
 
@@ -323,7 +332,7 @@
             <div class="col-md-2 d-flex flex-column justify-content-center">
                 <label for="estado" class="col-sm-12 col-form-label text-center">Publico - Privado</label>
                 <label class="switch">
-                    <input type="checkbox" name="publico_privado">
+                    <input type="checkbox" name="publico_privado" {{old('publico_privado') == "on" ? "checked" : ""}} >
                     <span class="slider round"></span>
                 </label>
             </div>
@@ -331,7 +340,7 @@
             <div class="col-md-2 d-flex flex-column justify-content-center">
                 <label for="estado" class="col-sm-12 col-form-label text-center">Cerrado</label>
                 <label class="switch" >
-                    <input type="checkbox" name="cerrado">
+                    <input type="checkbox" name="cerrado" {{old('cerrado') == "on" ? "checked" : ""}}>
                     <span class="slider round"></span>
                 </label>
             </div>
@@ -339,7 +348,7 @@
             <div class="col-md-2 d-flex flex-column justify-content-center">
                 <label for="estado" class="col-sm-12 col-form-label text-center">Estado</label>
                 <label class="switch">
-                    <input type="checkbox" name="estado">
+                    <input type="checkbox" name="estado" {{old('estado') == "on" ? "checked" : ""}}>
                     <span class="slider round" ></span>
                 </label>
             </div>
