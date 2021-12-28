@@ -93,7 +93,7 @@
                         <select name='operador' class="form-control {{$errors->first('operador') ? "is-invalid" : "" }} " id="operador">
                             <option disabled selected>{{__('message.Choose_One')}}</option>
                             @foreach ($operador as $operador)
-                                <option value="{{ $operador->id }}">{{ $operador->nombre }}</option>
+                                <option value="{{ $operador->id }}" {{old('operador') == $operador->id ? "selected" : ""}}>{{ $operador->nombre }}</option>
                             @endforeach
                         </select>
                         <div class="invalid-feedback">
@@ -111,7 +111,7 @@
                         <select name='tipo_carnet' class="form-control {{$errors->first('tipo_carnet') ? "is-invalid" : "" }} " id="tipo_carnet">
                             <option disabled selected>{{__('message.Choose_One')}}</option>
                             @foreach ($tipo_carnet as $tipo_carnet)
-                                <option value="{{ $tipo_carnet->id }}">{{ $tipo_carnet->formacion }}</option>
+                                <option value="{{ $tipo_carnet->id }}" {{old('tipo_carnet') == $tipo_carnet->id ? "selected" : ""}}>{{ $tipo_carnet->formacion }}</option>
                             @endforeach
                         </select>
                         <div class="invalid-feedback">
@@ -244,7 +244,7 @@
                         <select name='tipo_1' class="form-control {{$errors->first('tipo_1') ? "is-invalid" : "" }} " id="tipo_1">
                             <option disabled selected>Choose One!</option>
                             @foreach ($tipo as $tipo_1)
-                                <option value="{{ $tipo_1->id }}">{{ $tipo_1->practica }}</option>
+                                <option value="{{ $tipo_1->id }}" {{old('tipo_1') == $tipo_1->id ? "selected" : ""}}>{{ $tipo_1->practica }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -259,22 +259,7 @@
                         <select name='tipo_2' class="form-control {{$errors->first('tipo_2') ? "is-invalid" : "" }} " id="tipo_2">
                             <option disabled selected>Choose One!</option>
                             @foreach ($tipo as $tipo_2)
-                                <option value="{{ $tipo_2->id }}">{{ $tipo_2->practica }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <label for="tipo_4" class="col-sm-2 col-form-label">Tipo_4</label>
-                    <div class="col-sm-9">
-                        <select name='tipo_4' class="form-control {{$errors->first('tipo_4') ? "is-invalid" : "" }} " id="tipo_4">
-                            <option disabled selected>Choose One!</option>
-                            @foreach ($tipo as $tipo_4)
-                                <option value="{{ $tipo_4->id }}">{{ $tipo_4->practica }}</option>
+                                <option value="{{ $tipo_2->id }}" {{old('tipo_2') == $tipo_2->id ? "selected" : ""}}>{{ $tipo_2->practica }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -289,13 +274,29 @@
                         <select name='tipo_3' class="form-control {{$errors->first('tipo_3') ? "is-invalid" : "" }} " id="tipo_3">
                             <option disabled selected>Choose One!</option>
                             @foreach ($tipo as $tipo_3)
-                                <option value="{{ $tipo_3->id }}">{{ $tipo_3->practica }}</option>
+                                <option value="{{ $tipo_3->id }}" {{old('tipo_3') == $tipo_3->id ? "selected" : ""}}>{{ $tipo_3->practica }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <label for="tipo_4" class="col-sm-2 col-form-label">Tipo_4</label>
+                    <div class="col-sm-9">
+                        <select name='tipo_4' class="form-control {{$errors->first('tipo_4') ? "is-invalid" : "" }} " id="tipo_4">
+                            <option disabled selected>Choose One!</option>
+                            @foreach ($tipo as $tipo_4)
+                                <option value="{{ $tipo_4->id }}" {{old('tipo_4') == $tipo_4->id ? "selected" : ""}}>{{ $tipo_4->practica }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
             <div class="row">
                 <div class="form-group ml-5">

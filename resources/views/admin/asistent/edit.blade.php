@@ -52,15 +52,16 @@
         @csrf
         {{--first row--}}
         <div class="form-groups">
-        
+
                 <div class="form-group col-md-4">
                     <label for="curso" class="col-sm-2 col-form-label">curso</label>
                     <div class="col-sm-9">
-                        <select name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
+                        <select name='test' disabled class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
                             @foreach ($curso as $curso)
                                 <option value="{{ $curso->id }}" {{$asistent->curso == $curso->id ? "selected" : ""}}>{{ $curso->codigo }}</option>
                             @endforeach
                         </select>
+                        <input type="hidden" name="curso" value="{{$asistent->curso}}">
                         <div class="invalid-feedback">
                             {{ $errors->first('curso') }}
                         </div>
@@ -80,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-     
+
 
                 <div class="form-group col-md-4">
                     <label for="operador" class="col-sm-2 col-form-label">Operador</label>
@@ -112,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-   
+
 
 
 
@@ -122,7 +123,7 @@
                 <div class="form-group col-md-4">
                     <label for="nota_t" class="col-sm-2 col-form-label">Nota_t</label>
                     <div class="col-sm-9">
-                        <input type="number" name='nota_t' class="form-control {{$errors->first('nota_t') ? "is-invalid" : "" }} " value="{{old('nota_t') ? old('nota_t') : $asistent->nota_t}}" id="Nota examen teórico" >
+                        <input type="number" name='nota_t' class="form-control {{$errors->first('nota_t') ? "is-invalid" : "" }} " value="{{old('nota_t') ? old('nota_t') : $asistent->nota_t}}" placeholder="Nota examen teórico" id="nota_t" >
                         <div class="invalid-feedback">
                             {{ $errors->first('nota_t') }}
                         </div>
@@ -132,17 +133,17 @@
                 <div class="form-group col-md-4">
                     <label for="nota_p" class="col-sm-2 col-form-label">Nota_p</label>
                     <div class="col-sm-9">
-                        <input type="number" name='nota_p' class="form-control {{$errors->first('nota_p') ? "is-invalid" : "" }} " value="{{old('nota_p') ? old('nota_p') : $asistent->nota_p}}" id="Nota examen práctico" >
+                        <input type="number" name='nota_p' class="form-control {{$errors->first('nota_p') ? "is-invalid" : "" }} " value="{{old('nota_p') ? old('nota_p') : $asistent->nota_p}}" placeholder="Nota examen práctico" id="nota_p" >
                         <div class="invalid-feedback">
                             {{ $errors->first('nota_p') }}
                         </div>
                     </div>
                 </div>
-   
+
 
 
         {{--fourth row--}}
- 
+
                 <div class="form-group col-md-4">
                     <label for="examen_t_pdf" class="col-sm-2 col-form-label">Examen_t_pdf</label>
                     <div class="col-sm-9">
@@ -163,7 +164,7 @@
                         </div>
                     </div>
                 </div>
-  
+
                 <div class="form-group col-md-4">
                     <label for="observaciones" class="col-sm-2 col-form-label">Observaciones</label>
                     <div class="col-sm-9">
@@ -173,11 +174,11 @@
                         </div>
                     </div>
                 </div>
- 
+
 
 
         {{--fifth row--}}
-  
+
                 <div class="form-group col-md-4">
                     <label for="emision" class="col-sm-2 col-form-label">Emision</label>
                     <div class="col-sm-9">
@@ -187,8 +188,8 @@
                         </div>
                     </div>
                 </div>
-    
- 
+
+
                 <div class="form-group col-md-4">
                     <label for="vencimiento" class="col-sm-2 col-form-label">Vencimiento</label>
                     <div class="col-sm-9">
@@ -198,23 +199,8 @@
                         </div>
                     </div>
                 </div>
-          
- 
-        {{--    <div class="container">--}}
-        {{--        <div class="row">--}}
-        {{--            <div class="col-sm">--}}
-        {{--                <label for="rememberToken" class="col-sm-2 col-form-label">RememberToken</label>--}}
-        {{--                <div class="col-sm-9">--}}
-        {{--                    <input type="text" name='rememberToken' class="form-control {{$errors->first('rememberToken') ? "is-invalid" : "" }} " value="{{old('rememberToken')}}" id="rememberToken" >--}}
-        {{--                    <div class="invalid-feedback">--}}
-        {{--                        {{ $errors->first('rememberToken') }}--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
-        {{--    </div>--}}
 
-        {{--sixth row--}}
+
 
                 <div class="form-group col-md-4">
                     <label for="tipo_1" class="col-sm-2 col-form-label">Tipo_1</label>
@@ -227,7 +213,7 @@
                         </select>
                     </div>
                 </div>
-   
+
 
                 <div class="form-group col-md-4">
                     <label for="tipo_2" class="col-sm-2 col-form-label">Tipo_2</label>
@@ -241,7 +227,17 @@
                     </div>
                 </div>
 
-
+            <div class="form-group col-md-4">
+                <label for="tipo_3" class="col-sm-2 col-form-label">Tipo_3</label>
+                <div class="col-sm-9">
+                    <select name='tipo_3' class="form-control {{$errors->first('tipo_3') ? "is-invalid" : "" }} " id="tipo_3">
+                        <option disabled selected>Choose One!</option>
+                        @foreach ($tipo as $tipo_3)
+                            <option value="{{ $tipo_3->id }}" {{$asistent->tipo_3 == $tipo_3->id ? "selected" : ""}}>{{ $tipo_3->practica }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
                 <div class="form-group col-md-4">
                     <label for="tipo_4" class="col-sm-2 col-form-label">Tipo_4</label>
                     <div class="col-sm-9">
@@ -253,20 +249,10 @@
                         </select>
                     </div>
                 </div>
-   
 
 
-                <div class="form-group col-md-4">
-                    <label for="tipo_3" class="col-sm-2 col-form-label">Tipo_3</label>
-                    <div class="col-sm-9">
-                        <select name='tipo_3' class="form-control {{$errors->first('tipo_3') ? "is-invalid" : "" }} " id="tipo_3">
-                            <option disabled selected>Choose One!</option>
-                            @foreach ($tipo as $tipo_3)
-                                <option value="{{ $tipo_3->id }}" {{$asistent->tipo_3 == $tipo_3->id ? "selected" : ""}}>{{ $tipo_3->practica }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
+
+
                 </div>
         <div class="container">
             <div class="row">
