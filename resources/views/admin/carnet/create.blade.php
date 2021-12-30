@@ -86,7 +86,7 @@
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
-                        {{ $errors->first('curso') }}
+                        {{ $errors->first('operador') }}
                     </div>
                 </div>
             </div>

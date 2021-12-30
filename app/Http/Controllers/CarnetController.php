@@ -53,6 +53,13 @@ class CarnetController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'numero' => 'required',
+            'operador' => 'required',
+            'foto' => 'required',
+            'curso' => 'required',
+            'examen_teorico_realizado' => 'required',
+        ]);
         $carnet = new Carnet($request->except('_token','estado'));
         if($request->estado == null){
             $carnet->estado = 0;
@@ -119,6 +126,12 @@ class CarnetController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'numero' => 'required',
+            'operador' => 'required',
+            'curso' => 'required',
+            'examen_teorico_realizado' => 'required',
+        ]);
         $carnet = Carnet::findOrFail($id);
         $carnet->numero = $request->numero;
         $carnet->operador = $request->operador;

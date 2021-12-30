@@ -34,7 +34,7 @@
         </div>
         <div class="container">
             <div class="form-group ml-2">
-                <label for="category" class="col-sm-2 col-form-label">Contenido</label>
+                <label for="contenido" class="col-sm-2 col-form-label">Contenido</label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="contenido" value="1" id=1>
                     <label class="form-check-label" for="flexRadioDefault1">
@@ -54,9 +54,9 @@
 
         <div class="container">
             <div class="form-group ml-2">
-                <label for="title" class="col-sm-2 col-form-label">Alumnos</label>
+                <label for="alumnos" class="col-sm-2 col-form-label">Alumnos</label>
                 <div class="col-sm-10">
-                    <input type="text" name='alumnos' class="form-control {{$errors->first('title') ? "is-invalid" : "" }} " value="{{old('alumnos')}}" id="alumnos" placeholder="Número de asistentes
+                    <input type="text" name='alumnos' class="form-control {{$errors->first('alumnos') ? "is-invalid" : "" }} " value="{{old('alumnos')}}" id="alumnos" placeholder="Número de asistentes
 
 ">
                     <div class="invalid-feedback">
@@ -65,18 +65,18 @@
                 </div>
             </div>
 
-            <label for="date" class="col-sm-2 col-form-label">Fecha Inicio</label>
+            <label for="fecha_inicio" class="col-sm-2 col-form-label">Fecha Inicio</label>
             <div class="col-sm-9">
                 <input type="datetime-local" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio')}}" id="fecha_inicio" >
                 <div class="invalid-feedback">
                     {{ $errors->first('fecha_inicio') }}
                 </div>
             </div>
-            <label for="date" class="col-sm-2 col-form-label">	final</label>
+            <label for="final" class="col-sm-2 col-form-label">	final</label>
             <div class="col-sm-9">
                 <input type="datetime-local" name='final' class="form-control {{$errors->first('final') ? "is-invalid" : "" }} " value="{{old('final')}}" id="final" >
                 <div class="invalid-feedback">
-                    {{ $errors->first('	final') }}
+                    {{ $errors->first('final') }}
                 </div>
             </div>
 
