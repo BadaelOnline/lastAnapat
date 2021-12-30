@@ -10,7 +10,7 @@
 
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">asistent</h1>
+<h1 class="h3 mb-2 text-gray-800">{{__('message.asistent')}}</h1>
 
 @if (session('success'))
 
@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.asistent.create') }}" class="btn btn-success">Create asistent</a>
+        <a href="{{ route('admin.asistent.create') }}" class="btn btn-success">{{__('message.Create')}}</a>
 
     </div>
 
@@ -42,17 +42,17 @@
 
                     <tr>
 
-                        <th>Apellido.</th>
+                        <th>{{__('message.Apellido')}}.</th>
 
-                        <th>Nombre</th>
+                        <th>{{__('message.Nombre')}}</th>
 
-                        <th>Número de asistente</th>
+                        <th>{{__('message.Número de asistente')}}</th>
 
-                        <th>Nota Examen teorico	</th>
+                        <th>{{__('message.Nota Examen teorico')}}	</th>
 
-                        <th>Nota Examen Practico	</th>
+                        <th>{{__('message.Nota Examen Practico')}}	</th>
 
-                        <th>Option</th>
+                        <th>{{__('message.Option')}}</th>
 
                     </tr>
 
@@ -96,7 +96,7 @@
 
                             <a href="{{route('admin.asistent.edit', [$asistent->id])}}" class="btn btn-info btn-sm"> <i class="fas fa-edit"></i> </a>
 
-                            <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('Delete this asistent permanently?')">
+                            <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete this asistent permanently?")}}')">
 
                                 @csrf
 

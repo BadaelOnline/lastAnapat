@@ -44,15 +44,15 @@
 
 
 
-                        <th>Logo</th>
+                        <th>{{__('message.Logo')}}</th>
 
-                        <th>Nombre</th>
+                        <th>{{__('message.Nombre')}}</th>
 
-                        <th>Apellidos </th>
+                        <th>{{__('message.Apellidos')}} </th>
 
-                        <th>Dirección </th>
+                        <th>{{__('message.Direccion')}} </th>
 
-                        <th>Option</th>
+                        <th>{{__('message.Option')}}</th>
 
                     </tr>
 
@@ -88,7 +88,7 @@
 
                             <a href="{{route('admin.operadores.edit', [$operadores->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
 
-                            <form method="POST" action="{{route('admin.operadores.destroy', [$operadores->id])}}" class="d-inline" onsubmit="return confirm('Delete this $operadores permanently?')">
+                            <form method="POST" action="{{route('admin.operadores.destroy', [$operadores->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
 
                                 @csrf
 

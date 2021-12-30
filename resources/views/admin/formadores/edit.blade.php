@@ -109,7 +109,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="operador_pdf" class="col-sm-2 col-form-label">Operador pdf</label>
+                <label for="operador_pdf" class="col-sm-2 col-form-label">Operador PDF</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -120,7 +120,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="cert_empresa_pdf" class="col-sm-2 col-form-label">Cert empresa pdf</label>
+                <label for="cert_empresa_pdf" class="col-sm-2 col-form-label">Cert Empresa PDF</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -142,7 +142,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="prl_pdf" class="col-sm-2 col-form-label">PRL pdf</label>
+                <label for="prl_pdf" class="col-sm-2 col-form-label">PRL PDF</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -153,7 +153,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="pemp_pdf" class="col-sm-2 col-form-label">PEMP pdf</label>
+                <label for="pemp_pdf" class="col-sm-2 col-form-label">PEMP PDF</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -164,7 +164,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="cap_pdf" class="col-sm-2 col-form-label">CAP pdf</label>
+                <label for="cap_pdf" class="col-sm-2 col-form-label">CAP PDF</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -197,7 +197,7 @@ Name">
 
                 <div class="col-sm-3">
 
-                    <button type="submit" class="btn btn-info">Editar</button>
+                    <button type="submit" class="btn btn-info">{{__('message.Update')}}</button>
 
                 </div>
 

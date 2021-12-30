@@ -75,7 +75,7 @@
     
                 </div>
     
-                <h6>Pilih Logo</h6>
+                <h6>{{__('message.Upload')}}</h6>
     
             </div>
     
@@ -374,7 +374,7 @@
    
             <div class="col-sm-3">
    
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary">{{__('message.Update')}}</button>
    
             </div>
    

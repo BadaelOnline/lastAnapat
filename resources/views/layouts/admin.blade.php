@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>ANAPAT_FORMACION</title>
+  <title>ANAPAT-FORMACION</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -143,7 +143,7 @@
         ])? 'active' : ''}}">
         <a class="nav-link" href="{{ route('admin.user') }}">
           <i class="fas fa-fw fa-user"></i>
-          <span>Usuarios</span></a>
+          <span>{{__('message.users')}}</span></a>
       </li>
 
       <li class="nav-item {{ in_array(Route::currentRouteName(),[
@@ -151,7 +151,7 @@
         ])? 'active' : ''}}">
         <a class="nav-link" href="{{ route('admin.entidades_formadoreas') }}">
           <i class="fas fa-fw fa-address-card"></i>
-          <span>Entidades Formadoreas</span></a>
+          <span>{{__('message.Entidades Formadoras')}}</span></a>
       </li>
     @endcan
     <li class="nav-item {{ in_array(Route::currentRouteName(),[
@@ -159,7 +159,7 @@
         ])? 'active' : ''}}">
       <a class="nav-link" href="{{ route('admin.formadores') }}">
         <i class="fas fa-fw fa-users"></i>
-        <span>Formadores</span></a>
+        <span>{{__('message.Formadores')}}</span></a>
     </li>
 
     @can('isAdmin')
@@ -170,13 +170,13 @@
         ])? 'active' : ''}}" >
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
         <i class="fas fa-fw fa-book-open"></i>
-        <span>Cursos</span>
+        <span>{{__('message.Cursos')}}</span>
       </a>
- 
+
       <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class=" py-2 collapse-inner rounded">
-          <a class="collapse-item" href="{{ route('admin.cursos') }}">Cursos</a>
-          <a class="collapse-item" href="{{ route('admin.inactiveCursos') }}">Inactivo Cursos</a>
+          <a class="collapse-item" href="{{ route('admin.cursos') }}">{{__('message.Cursos')}}</a>
+          <a class="collapse-item" href="{{ route('admin.inactiveCursos') }}">{{__('message.Inactivo Cursos')}}</a>
         </div>
       </div>
     </li>
@@ -187,23 +187,31 @@
         ])? 'active' : ''}}">
         <a class="nav-link" href="{{ route('admin.cursos') }}">
           <i class="fas fa-fw fa-book-open"></i>
-          <span>Cursos</span></a>
+          <span>{{__('message.Cursos')}}</span></a>
       </li>
     @endcan
     <!-- Nav Item - Pages Collapse Menu -->
-    
+
 
     <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.operadores',
         ])? 'active' : ''}}">
       <a class="nav-link" href="{{ route('admin.operadores') }}">
         <i class="fas fa-fw fa-allergies"></i>
-        <span>Operadores</span></a>
+        <span>{{__('message.Operadores')}}</span></a>
     </li>
+      <li class="nav-item {{ in_array(Route::currentRouteName(),[
+            'admin.examen',
+        ])? 'active' : ''}}">
+          <a class="nav-link" href="{{ route('admin.examen') }}">
+              <i class="fas fa-fw fa-allergies"></i>
+              <span>{{__('message.Examen')}}</span></a>
+      </li>
+
     <li class="nav-item ">
     <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
         <i class="fas fa-sign-out-alt"></i>
-        <span>Salir</span></a>
+        <span>{{__('message.Salir')}}</span></a>
     </li>
 
 
@@ -328,7 +336,7 @@
         <a class="btn btn-primary" href="{{ route('logout') }}"
            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-          {{ __('Logout') }}
+          {{ __('message.Logout') }}
         </a>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

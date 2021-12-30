@@ -1,7 +1,26 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{BannerController,EntidadesFormadoreasController,OperadoresController, CategoryController,AsistentController, FaqController, FrontController, GeneralController, LinkController, HorarioController, PartnerController, PcategoryController, CursosController, PostController, FormadoresController, TagController, TestimonialController, TeamController, UserController};
+use App\Http\Controllers\{BannerController,
+    EntidadesFormadoreasController,
+    ExamenController,
+    OperadoresController,
+    CategoryController,
+    AsistentController,
+    FaqController,
+    FrontController,
+    GeneralController,
+    LinkController,
+    HorarioController,
+    PartnerController,
+    PcategoryController,
+    CursosController,
+    PostController,
+    FormadoresController,
+    TagController,
+    TestimonialController,
+    TeamController,
+    UserController};
 
 /*
 |--------------------------------------------------------------------------
@@ -179,7 +198,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('entidades_formadores/edit/{id}', [EntidadesFormadoreasController::class, 'update'])->middleware('can:isAdminOrResponsable')->name('admin.entidades_formadoreas.update');
     Route::delete('entidades_formadores/destroy/{id}',[EntidadesFormadoreasController::class, 'destroy'])->middleware('can:isAdmin')->name('admin.entidades_formadoreas.destroy');
 
-     // Manage Admin
+    // Manage Team
+    Route::get('examen', [ExamenController::class, 'index'])->middleware('can:isAdminOrResponsable')->name('admin.examen');
+    Route::get('examen/create', [ExamenController::class, 'create'])->middleware('can:isAdminOrResponsable')->name('admin.examen.create');
+    Route::post('examen/create', [ExamenController::class, 'store'])->middleware('can:isAdminOrResponsable')->name('admin.examen.store');
+    Route::get('examen/edit/{id}', [ExamenController::class, 'edit'])->middleware('can:isAdminOrResponsable')->name('admin.examen.edit');
+    Route::post('examen/edit/{id}', [ExamenController::class, 'update'])->middleware('can:isAdminOrResponsable')->name('admin.examen.update');
+    Route::delete('examen/destroy/{id}',[ExamenController::class, 'destroy'])->middleware('can:isAdmin')->name('admin.examen.destroy');
+
+    // Manage Admin
      Route::get('users', [UserController::class, 'index'])->middleware('can:isAdminOrResponsable')->name('admin.user');
      Route::post('users/{id}', [UserController::class, 'changepassword'])->middleware('can:isAdminOrResponsable')->name('admin.user.changepassword');
      Route::get('users/create', [UserController::class, 'create'])->middleware('can:isAdminOrResponsable')->name('admin.user.create');

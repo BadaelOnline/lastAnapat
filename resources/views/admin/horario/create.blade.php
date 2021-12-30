@@ -82,7 +82,7 @@
 
             <div class="form-group ml-2">
                 <div class="col-sm-3">
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary">{{__('message.Create')}}</button>
                 </div>
             </div>
         </div>
