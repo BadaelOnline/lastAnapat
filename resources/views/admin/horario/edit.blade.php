@@ -31,10 +31,10 @@
                     </div>
                 </div>
             </div>
-      
-     
+
+
             <div class="form-group col-md-4">
-                <label for="category" class="col-sm-2 col-form-label">Contenido</label>
+                <label for="contenido" class="col-sm-2 col-form-label">Contenido</label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" {{$horario->contenido == "Teoría" ? "checked" : ""}} name="contenido" value="1" id=1>
                     <label class="form-check-label" for="flexRadioDefault1">
@@ -48,15 +48,15 @@
                     </label>
                 </div>
             </div>
- 
+
 
 
 
 
             <div class="form-group col-md-4">
-                <label for="title" class="col-sm-2 col-form-label">Alumnos</label>
+                <label for="alumnos" class="col-sm-2 col-form-label">Alumnos</label>
                 <div class="col-sm-10">
-                    <input type="text" name='alumnos' class="form-control {{$errors->first('title') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $horario->alumnos}} " id="alumnos" placeholder="Número de asistentes
+                    <input type="text" name='alumnos' class="form-control {{$errors->first('alumnos') ? "is-invalid" : "" }} " value="{{old('alumnos') ? old('alumnos') : $horario->alumnos}} " id="alumnos" placeholder="Número de asistentes
 
 ">
                     <div class="invalid-feedback">
@@ -67,16 +67,16 @@
 
             <label for="date" class="col-sm-2 col-form-label">Fecha Inicio</label>
             <div class="col-sm-9">
-                <input type="datetime" dataformatas="" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{ $horario->fecha_inicio}} " id="fecha_inicio" >
+                <input type="datetime" dataformatas="" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio') ? old('fecha_inicio') : $horario->fecha_inicio}}" id="fecha_inicio" >
                 <div class="invalid-feedback">
                     {{ $errors->first('fecha_inicio') }}
                 </div>
             </div>
             <label for="date" class="col-sm-2 col-form-label">final</label>
             <div class="col-sm-9">
-                <input type="datetime" name='final' class="form-control {{$errors->first('final') ? "is-invalid" : "" }} " value="{{ $horario->final}} "  id="final" >
+                <input type="datetime" name='final' class="form-control {{$errors->first('final') ? "is-invalid" : "" }} " value="{{old('final') ? old('final') : $horario->final}}"  id="final" >
                 <div class="invalid-feedback">
-                    {{ $errors->first('	final') }}
+                    {{ $errors->first('final') }}
                 </div>
             </div>
             </div>
