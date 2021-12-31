@@ -21,12 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="4b9c3d3c-a351-4ab6-90ca-e38cb16d2c4d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CarnetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CarnetController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HorarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HorarioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExamenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExamenController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OperadoresController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OperadoresController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/carnet/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/carnet/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/carnet/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/carnet/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/horario/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/horario/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/horario/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/horario/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/examen/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/examen/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/examen/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/examen/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/operadores/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/operadores/create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +202,7 @@
       <workItem from="1639916223597" duration="12775000" />
       <workItem from="1639941854297" duration="666000" />
       <workItem from="1640294300652" duration="23716000" />
-      <workItem from="1640627573707" duration="6613000" />
+      <workItem from="1640627573707" duration="8333000" />
     </task>
     <servers />
   </component>

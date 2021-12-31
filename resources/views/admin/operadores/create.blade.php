@@ -103,7 +103,7 @@ input[type="radio"]:focus {
                 <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
                     <option disabled selected>{{__('message.Choose_One')}}</option>
                     @foreach ($entidad as $entidad)
-                        <option value="{{ $entidad->id }}">{{ $entidad->nombre }}</option>
+                        <option value="{{ $entidad->id }}" {{old('entidad') == $entidad->id ? "selected" : ""}}>{{ $entidad->nombre }}</option>
                     @endforeach
                 </select>
                 <div class="invalid-feedback">
@@ -163,9 +163,9 @@ input[type="radio"]:focus {
         <div class="form-group col-md-4">
             <label for="direccion" class="col-sm-12 col-form-label">Direccion</label>
             <div class="col-sm-7">
-                <input type="text" name='direccion' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Dirección del formador">
+                <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion')}}" id="direccion" placeholder="Dirección del formador">
                 <div class="invalid-feedback">
-                    {{ $errors->first('linkedin') }}
+                    {{ $errors->first('direccion') }}
                 </div>
             </div>
         </div>
@@ -173,9 +173,9 @@ input[type="radio"]:focus {
         <div class="form-group col-md-4">
             <label for="codigo_postal" class="col-sm-12 col-form-label">Codigo Postal</label>
             <div class="col-sm-7">
-                <input type="number" name='codigo_postal' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Código postal">
+                <input type="number" name='codigo_postal' class="form-control {{$errors->first('codigo_postal') ? "is-invalid" : "" }} " value="{{old('codigo_postal')}}" id="codigo_postal" placeholder="Código postal">
                 <div class="invalid-feedback">
-                    {{ $errors->first('linkedin') }}
+                    {{ $errors->first('codigo_postal') }}
                 </div>
             </div>
         </div>
@@ -184,9 +184,9 @@ input[type="radio"]:focus {
         <div class="form-group col-md-4">
             <label for="mail" class="col-sm-12 col-form-label">Mail</label>
             <div class="col-sm-7">
-                <input type="text" name='mail' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Cuenta de correo">
+                <input type="text" name='mail' class="form-control {{$errors->first('mail') ? "is-invalid" : "" }} " value="{{old('mail')}}" id="mail" placeholder="Cuenta de correo">
                 <div class="invalid-feedback">
-                    {{ $errors->first('linkedin') }}
+                    {{ $errors->first('mail') }}
                 </div>
             </div>
         </div>
@@ -203,9 +203,9 @@ input[type="radio"]:focus {
        <div class="form-group col-md-4">
             <label for="fecha" class="col-sm-12 col-form-label">Fecha</label>
             <div class="col-sm-7">
-                <input type="date" name='fecha' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Fecha de alta">
+                <input type="date" name='fecha' class="form-control {{$errors->first('fecha') ? "is-invalid" : "" }} " value="{{old('fecha')}}" id="fecha" placeholder="Fecha de alta">
                 <div class="invalid-feedback">
-                    {{ $errors->first('linkedin') }}
+                    {{ $errors->first('fecha') }}
                 </div>
             </div>
         </div>
