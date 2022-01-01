@@ -60,12 +60,13 @@ class FrontController extends Controller
 
     public function portfolio()
     {
+        $service = Service::orderBy('title','asc')->get();
         $general = General::find(1);
         $link = Link::orderBy('name','asc')->get();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $pcategories = Pcategory::all();
         $portfolio = Portfolio::all();
-        return view ('front.portfolio',compact('general','link','lpost','pcategories','portfolio'));
+        return view ('front.portfolio',compact('general','service','link','lpost','pcategories','portfolio'));
     }
 
     public function portfolioshow($slug)
@@ -86,7 +87,7 @@ class FrontController extends Controller
         $posts = Post::where('status','=','PUBLISH')->orderBy('id','desc')->paginate(3);
         $recent = Post::orderBy('id','desc')->limit(5)->get();
         $tags = Tag::all();
-        
+
         return view ('front.blog',compact('categories','general','link','lpost','posts','recent','tags'));
     }
 
@@ -133,17 +134,17 @@ class FrontController extends Controller
 
     public function search()
     {
-       
+
         $query = request("query");
-        
+
         $categories = Category::all();
-        $general = General::find(1); 
+        $general = General::find(1);
         $link = Link::orderBy('name','asc')->get();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $posts = Post::where("title","like","%$query%")->latest()->paginate(9);
         $recent = Post::orderBy('id','desc')->limit(5)->get();
         $tags = Tag::all();
-        
+
         return view('front.blog',compact('categories','general','link','lpost','posts','query','recent','tags'));
     }
 
@@ -159,7 +160,7 @@ class FrontController extends Controller
     public function subscribe(Request $request)
     {
         \Validator::make($request->all(), [
-            "email" => "required|unique:subscribers,email",        
+            "email" => "required|unique:subscribers,email",
         ])->validate();
 
         $subs = new Subscriber();
@@ -167,11 +168,11 @@ class FrontController extends Controller
         if ( $subs->save()) {
 
             return redirect()->route('homepage')->with('success', 'You have successfully subscribed');
-    
+
            } else {
-               
+
             return redirect()->back();
-    
+
            }
     }
 
