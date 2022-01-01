@@ -47,9 +47,27 @@ class AsistentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'curso' => 'required',
+            'orden' => 'required',
+            'operador' => 'required',
+            'tipo_carnet' => 'required',
+            'nota_t' => 'required',
+            'nota_p' => 'required',
+            'tipo_1' => 'required',
+        ]);
 //dd($request);
 
         $asistent = new Asistent($request->except('_token'));
+        if(!$request->tipo_2){
+            $asistent->tipo_2 = 0;
+        }
+        if(!$request->tipo_3){
+            $asistent->tipo_3 = 0;
+        }
+        if(!$request->tipo_4){
+            $asistent->tipo_4 = 0;
+        }
 
         $examen_t_pdf = $request->file('examen_t_pdf');
         if($examen_t_pdf){
@@ -141,7 +159,15 @@ class AsistentController extends Controller
 //            "category" => "required",
 //            "desc" => "required"
 //        ])->validate();
-
+        $request->validate([
+            'curso' => 'required',
+            'orden' => 'required',
+            'operador' => 'required',
+            'tipo_carnet' => 'required',
+            'nota_t' => 'required',
+            'nota_p' => 'required',
+            'tipo_1' => 'required',
+        ]);
         $asistent = Asistent::findOrFail($id);
         $asistent->curso = $request->curso;
         $asistent->orden = $request->orden;
@@ -153,9 +179,21 @@ class AsistentController extends Controller
         $asistent->emision = $request->emision;
         $asistent->vencimiento = $request->vencimiento;
         $asistent->tipo_1 = $request->tipo_1;
-        $asistent->tipo_2 = $request->tipo_2;
-        $asistent->tipo_4 = $request->tipo_4;
-        $asistent->tipo_3 = $request->tipo_3;
+        if(!$request->tipo_2){
+            $asistent->tipo_2 = 0;
+        }else{
+            $asistent->tipo_2 = $request->tipo_2;
+        }
+        if(!$request->tipo_3){
+            $asistent->tipo_3 = 0;
+        }else{
+            $asistent->tipo_3 = $request->tipo_3;
+        }
+        if(!$request->tipo_4){
+            $asistent->tipo_4 = 0;
+        }else{
+            $asistent->tipo_4 = $request->tipo_4;
+        }
 
 
         $examen_t_pdf = $request->file('examen_t_pdf');
@@ -186,7 +224,7 @@ class AsistentController extends Controller
 
         if ($asistent->save()) {
 
-            return redirect()->route('admin.asistent')->with('success', 'Data updated successfully');
+            return redirect()->route('admin.cursos.edit', [$asistent->curso])->with('success', 'Data updated successfully');
 
         } else {
 

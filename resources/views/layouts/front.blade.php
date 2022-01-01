@@ -58,14 +58,14 @@
 
           <li class="drop-down"><a href="">Anapat</a>
             <ul>
-              <li ><a href="{{ route('homepage') }}">Anapat</a></li>
+              <li ><a href="{{ route('about') }}">Quienes somos</a></li>
               <li><a href="{{ route('homepage') }}">Partner</a></li>
             </ul>
           </li>
           <li class="drop-down"><a href="">Training</a>
             <ul>
               <li ><a href="{{ route('homepage') }}">Training Entity</a></li>
-              <li ><a href="{{ route('homepage') }}">Courses</a></li>
+              <li ><a href="{{ route('service') }}">Courses</a></li>
               <li ><a href="{{ route('homepage') }}">Card Consultation</a></li>
             </ul>
           </li>
@@ -88,7 +88,7 @@
               <li ><a href="{{ route('homepage') }}">Others</a></li>
             </ul>
           </li>
-          <li ><a href="">News</a></li>
+          <li ><a href="{{ route('blog') }}">blog</a></li>
           <li><a href="">Contact</a></li>
         </ul>
       </nav><!-- .nav-menu -->

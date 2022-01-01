@@ -207,7 +207,13 @@
               <i class="fas fa-fw fa-allergies"></i>
               <span>{{__('message.Examen')}}</span></a>
       </li>
-
+      <li class="nav-item {{ in_array(Route::currentRouteName(),[
+            'admin.carnet',
+        ])? 'active' : ''}}">
+          <a class="nav-link" href="{{ route('admin.carnet') }}">
+              <i class="fas fa-fw fa-allergies"></i>
+              <span>{{__('message.carnet')}}</span></a>
+      </li>
     <li class="nav-item ">
     <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
         <i class="fas fa-sign-out-alt"></i>

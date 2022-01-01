@@ -21,7 +21,7 @@ class CreateCursosTable extends Migration {
 			$table->integer('entidad')->unsigned();
 			$table->integer('formador')->unsigned();
 			$table->integer('formador_apoyo_1')->unsigned()->nullable();
-			$table->integer('formador_apoyo_2')->unsigned();
+			$table->integer('formador_apoyo_2')->unsigned()->nullable();
 			$table->integer('formador_apoyo_3')->unsigned()->nullable();
 			$table->datetime('fecha_inicio')->nullable();
 			$table->string('direccion', 255)->nullable();

@@ -28,33 +28,57 @@
 @section('content')
 <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Blog</h2>
-          <ol>
-            <li><a href="/">Home</a></li>
-            <li>Blog</li>
-          </ol>
-        </div>
-
-      </div>
-    </section><!-- End Breadcrumbs -->
 
     <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
       <div class="container">
+      <h2 class="title">Blog show</h2>
+        <div class="row" style="margin-top: 50px;">
+        <div class="col-lg-4">
 
-        <div class="row">
+<div class="sidebar">
+  <h3 class="sidebar-title">Categories</h3>
+  <div class="sidebar-item categories">
+    <ul>
+      @foreach ($categories as $category)
+      <li><a href="{{ route('category',$category->slug) }}">{{ $category->name }} <span>({{ $category->count() }})</span></a></li>
+      @endforeach
+    </ul>
 
+  </div><!-- End sidebar categories-->
+
+  <h3 class="sidebar-title">Recent Posts</h3>
+  <div class="sidebar-item recent-posts">
+
+    @foreach ($recent as $recent)
+    <div class="post-item clearfix">
+     
+      <h4><a href="{{route('blogshow',$recent->slug)}}">{{ $recent->title }}</a></h4>
+      <time datetime="2020-01-01">{{ Carbon\Carbon::parse($recent->created_at)->format("d F, Y") }}</time>
+    </div>
+    @endforeach
+
+  </div><!-- End sidebar recent posts-->
+
+  <h3 class="sidebar-title">Tags</h3>
+  <div class="sidebar-item tags">
+    <ul>
+      @foreach ($tags as $tag)
+       <li><a href="{{ route('tag',$tag->slug) }}">{{ $tag->name }}</a></li>
+      @endforeach 
+    </ul>
+
+  </div><!-- End sidebar tags-->
+
+</div><!-- End sidebar -->
+
+</div><!-- End blog sidebar -->
           <div class="col-lg-8 entries">
 
             <article class="entry entry-single" data-aos="fade-up">
 
               <div class="entry-img">
-                <img src="{{ asset('storage/'.$post->cover) }}" alt="" class="img-fluid">
+              <img src="{{ asset('front/img/haulotte.png') }}" alt="{{ $post->title }}" class="img-fluid">
               </div>
 
               <h2 class="entry-title">
@@ -75,82 +99,49 @@
                 </p>
               </div>
 
-              <div class="entry-footer clearfix">
-                <div class="float-left">
+              <!-- <div class="entry-footer clearfix">
+                <div >
                   <i class="icofont-folder"></i>
                   <ul class="cats">
                     <li><a href="{{ route('category',$post->category->slug) }}">{{ $post->category->name }}</a></li>
                   </ul>
-
+                  </div>
+                  <div >
                   <i class="icofont-tags"></i>
                   <ul class="tags">
                     @foreach ($tags as $tag)
                    <li><a href="{{ route('tag',$tag->slug) }}">{{ $tag->name }}</a></li>
                     @endforeach 
                   </ul>
-                </div>
-
-              </div>
+               
+                  </div>
+              </div> -->
 
             </article><!-- End blog entry -->
 
             <div class="blog-comments" data-aos="fade-up">
 
-              <div id="disqus_thread"></div>
+              <h4>Leave a Comment </h4>
+              <p>Your email address will not be published. Required fields are marked</p>
+              <textarea placeholder="Type here" cols="20" rows="4"></textarea>
+              <div class="val-info" >
+                <input type="text" placeholder="Name">
+                <input type="email" placeholder="Email">
+                <input type="text" placeholder="Website">
+              </div>
+              <div class="save-info" >
+                <input type="checkbox">
+                <p>Save my name, email, and website in this browser for the next time I comment.</p>
+              </div>
+              <div class="send">
+                <button>Post Comment    <i class="icofont-send-mail"></i></button>
+             
+              </div>
 
             </div><!-- End blog comments -->
 
           </div><!-- End blog entries list -->
 
-          <div class="col-lg-4">
-
-            <div class="sidebar" data-aos="fade-left">
-
-              <h3 class="sidebar-title">Search</h3>
-              <div class="sidebar-item search-form">
-                <form action="{{ route("search") }}" method="GET">
-                  <input type="text" name="query">
-                  <button type="submit"><i class="icofont-search"></i></button>
-                </form>
-
-              </div><!-- End sidebar search formn-->
-
-              <h3 class="sidebar-title">Categories</h3>
-              <div class="sidebar-item categories">
-                <ul>
-                  @foreach ($categories as $category)
-                  <li><a href="{{ route('category',$category->slug) }}">{{ $category->name }} <span>({{ $category->count() }})</span></a></li>
-                  @endforeach
-                </ul>
-
-              </div><!-- End sidebar categories-->
-
-              <h3 class="sidebar-title">Recent Posts</h3>
-              <div class="sidebar-item recent-posts">
-
-                @foreach ($recent as $recent)
-                <div class="post-item clearfix">
-                  <img src="{{ asset('storage/'.$recent->cover) }}" alt="">
-                  <h4><a href="{{route('blogshow',$post->slug)}}">{{ $recent->title }}</a></h4>
-                  <time datetime="2020-01-01">{{ Carbon\Carbon::parse($post->created_at)->format("d F, Y") }}</time>
-                </div>
-                @endforeach
-              
-              </div><!-- End sidebar recent posts-->
-
-              <h3 class="sidebar-title">Tags</h3>
-              <div class="sidebar-item tags">
-                <ul>
-                  @foreach ($tags as $tag)
-                   <li><a href="{{ route('tag',$tag->slug) }}">{{ $tag->name }}</a></li>
-                  @endforeach 
-                </ul>
-
-              </div><!-- End sidebar tags-->
-
-            </div><!-- End sidebar -->
-
-          </div><!-- End blog sidebar -->
 
         </div>
 

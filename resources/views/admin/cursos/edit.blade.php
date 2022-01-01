@@ -102,7 +102,7 @@
             <div class="col-md-4">
                 <label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
                 <div class="col-sm-9">
-                    <input type="text" readonly name='codigo' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('codigo') ? old('codigo') : $cursos->codigo}}" id="codigo" placeholder="Código de prácticas">
+                    <input type="text" readonly name='codigo' class="form-control {{$errors->first('codigo') ? "is-invalid" : "" }} " value="{{old('codigo') ? old('codigo') : $cursos->codigo}}" id="codigo" placeholder="Código de prácticas">
                     <div class="invalid-feedback">
                         {{ $errors->first('codigo') }}
                     </div>
@@ -157,6 +157,9 @@
                             <option value="{{ $formador->id }}" {{$cursos->formador_apoyo_1 == $formador->id ? "selected" : ""}}>{{ $formador->nombre }}</option>
                         @endforeach
                     </select>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('formador_apoyo_1') }}
+                    </div>
                 </div>
             </div>
 
@@ -164,12 +167,15 @@
             <div class="col-md-4">
                 <label for="formador_apoyo_2" class="col-sm-3 col-form-label">Formador Apoyo 2</label>
                 <div class="col-sm-9">
-                    <select name='formador_apoyo_2' class="form-control {{$errors->first('formador_apoyo2') ? "is-invalid" : "" }} " id="formador_apoyo2">
+                    <select name='formador_apoyo_2' class="form-control {{$errors->first('formador_apoyo_2') ? "is-invalid" : "" }} " id="formador_apoyo2">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($formadors2 as $formador)
                             <option value="{{ $formador->id }}" {{$cursos->formador_apoyo_2 == $formador->id ? "selected" : ""}}>{{ $formador->nombre }}</option>
                         @endforeach
                     </select>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('formador_apoyo_2') }}
+                    </div>
                 </div>
             </div>
 
@@ -177,14 +183,14 @@
             <div class="col-md-4">
                 <label for="formador_apoyo_3" class="col-sm-3 col-form-label">Formador Apoyo 3</label>
                 <div class="col-sm-9">
-                    <select name='formador_apoyo_3' class="form-control {{$errors->first('formador_apoyo3') ? "is-invalid" : "" }} " id="formador_apoyo3">
+                    <select name='formador_apoyo_3' class="form-control {{$errors->first('formador_apoyo_3') ? "is-invalid" : "" }} " id="formador_apoyo3">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($formadors3 as $formador)
                             <option value="{{ $formador->id }}" {{$cursos->formador_apoyo_3 == $formador->id ? "selected" : ""}}>{{ $formador->nombre }}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
-                        {{ $errors->first('formador_apoyo3') }}
+                        {{ $errors->first('formador_apoyo_3') }}
                     </div>
                 </div>
             </div>
@@ -208,7 +214,7 @@
                 <div class="col-sm-9">
                     <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion') ? old('direccion') : $cursos->direccion}}" id="direccion" placeholder="Dirección del curso">
                     <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
+                        {{ $errors->first('direccion') }}
                     </div>
                 </div>
             </div>
@@ -265,7 +271,7 @@
             <div class="col-md-4">
                 <label for="examen-t" class="col-sm-2 col-form-label">Examen T</label>
                 <div class="col-sm-9">
-                    <select name='examen_t' class="form-control {{$errors->first('examen-t') ? "is-invalid" : "" }} " id="examen-t">
+                    <select name='examen_t' class="form-control {{$errors->first('examen_t') ? "is-invalid" : "" }} " id="examen-t">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($examen_t as $examen_t)
                             <option value="{{ $examen_t->id }}" {{$cursos->examen_t == $examen_t->id ? "selected" : ""}}>{{ $examen_t->nombre }}</option>
@@ -278,7 +284,7 @@
             <div class="col-md-4">
                 <label for="examen-p" class="col-sm-2 col-form-label">Examen P</label>
                 <div class="col-sm-9">
-                    <select name='examen_p' class="form-control {{$errors->first('examen-p') ? "is-invalid" : "" }} " id="examen_p">
+                    <select name='examen_p' class="form-control {{$errors->first('examen_p') ? "is-invalid" : "" }} " id="examen_p">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($examen_p as $examen_p)
                             <option value="{{ $examen_p->id }}" {{$cursos->examen_p == $examen_p->id ? "selected" : ""}}>{{ $examen_p->nombre }}</option>
