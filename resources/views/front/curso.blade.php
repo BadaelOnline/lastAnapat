@@ -102,15 +102,15 @@
 
                                 <tr>
 
-                                    <th>Apellido.</th>
+                                    <th style="vertical-align: top;">Apellido.</th>
 
-                                    <th>Nombre</th>
+                                    <th style="vertical-align: top;">Nombre</th>
 
-                                    <th>Número de asistente</th>
+                                    <th style="vertical-align: top;">Número de asistente</th>
 
-                                    <th>Nota Examen teorico	</th>
+                                    <th style="vertical-align: top;">Nota Examen teorico	</th>
 
-                                    <th>Nota Examen Practico	</th>
+                                    <th style="vertical-align: top;">Nota Examen Practico	</th>
 
                                 </tr>
 
@@ -166,9 +166,13 @@
             </div>
             <p></p>
               <div class="d-flex justify-content-center">
+                  @if(isset($curso->asistentes_pdf))
               <a href="{{asset('storage/' . $curso->asistentes_pdf)}}">Show Assistants</a>
               <span class="ml-3 mr-3">or</span>
-              <a href="{{asset('storage/' . $curso->asistentes_pdf)}}" download>Download</a>
+              <a href="{{asset('storage/' . $curso->asistentes_pdf)}}" download>Descargar</a>
+                  @else
+                      <span>no Asistentes</span>
+                      @endif
               </div>
         </div>
       </div>

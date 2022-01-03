@@ -64,7 +64,7 @@
           </li>
           <li class="drop-down"><a href="">Training</a>
             <ul>
-              <li ><a href="{{ route('portfolio') }}">Training Entity</a></li>
+              <li ><a href="{{ route('entidades_formadoras') }}">Training Entity</a></li>
               <li ><a href="{{ route('cursos') }}">Courses</a></li>
               <li ><a href="{{ route('homepage') }}">Card Consultation</a></li>
             </ul>
@@ -73,22 +73,22 @@
             <ul>
               <li class="drop-down"><a href="">Didactics</a>
             <ul>
-              <li ><a href="{{ route('homepage') }}">Guides</a></li>
-              <li ><a href="{{ route('homepage') }}">Manuals</a></li>
+              <li ><a href="{{ route('blog') }}">Guides</a></li>
+              <li ><a href="{{ route('blog') }}">Manuals</a></li>
             </ul>
 
               </li>
               <li class="drop-down"><a href="">Forms</a>
             <ul>
-              <li ><a href="{{ route('homepage') }}">Inscription</a></li>
-              <li ><a href="{{ route('homepage') }}">Come down </a></li>
+              <li ><a href="{{ route('blog') }}">Inscription</a></li>
+              <li ><a href="{{ route('blog') }}">Come down </a></li>
             </ul>
 
               </li>
-              <li ><a href="{{ route('homepage') }}">Others</a></li>
+              <li ><a href="{{ route('blog') }}">Others</a></li>
             </ul>
           </li>
-          <li ><a href="">News</a></li>
+          <li ><a href="{{ route('blog') }}">News</a></li>
           <li><a href="{{ route('contact') }}">Contact</a></li>
         </ul>
       </nav><!-- .nav-menu -->

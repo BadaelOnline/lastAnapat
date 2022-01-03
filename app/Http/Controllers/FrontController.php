@@ -110,7 +110,7 @@ class FrontController extends Controller
         return view ('front.curso',compact('general','operador','asistent','horario','tipo','entidad','link','lpost','curso'));
     }
 
-    public function portfolio()
+    public function entidades_formadoras()
     {
         $service = Service::orderBy('title','asc')->get();
         $general = General::find(1);
@@ -118,16 +118,17 @@ class FrontController extends Controller
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $pcategories = Pcategory::all();
         $portfolio = Portfolio::all();
-        return view ('front.portfolio',compact('general','service','link','lpost','pcategories','portfolio'));
+        $entidadesFormadores = EntidadesFormadoreas::orderBy('id','desc')->get();
+        return view ('front.entidades_formadoras',compact('general','entidadesFormadores','service','link','lpost','pcategories','portfolio'));
     }
 
-    public function portfolioshow($slug)
+    public function entidade_formadora($slug)
     {
         $general = General::find(1);
         $link = Link::orderBy('name','asc')->get();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
-        $portfolio = Portfolio::where('slug', $slug)->firstOrFail();
-        return view ('front.portfolioshow',compact('general','link','lpost','portfolio'));
+        $entidadesFormadore = EntidadesFormadoreas::where('id', $slug)->firstOrFail();
+        return view ('front.entidade_formadora',compact('general','link','lpost','entidadesFormadore'));
     }
 
     public function blog()
