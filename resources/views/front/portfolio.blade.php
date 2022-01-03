@@ -16,7 +16,7 @@
             </div>
             <h4><a href="{{ route('serviceshow',$service->slug) }}">2100001</a></h4>
             <p>, RENTAIRE MACHINERY RENTAL</p>
-           <a href="{{ route('serviceshow',$service->slug) }}"> <button>Details</button></a>
+           <a href="{{ route('portfolio',$service->slug) }}"> <button>Details</button></a>
           </div>
         </div>
         @endforeach
