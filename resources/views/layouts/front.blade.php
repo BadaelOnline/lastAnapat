@@ -73,22 +73,22 @@
             <ul>
               <li class="drop-down"><a href="">Didactics</a>
             <ul>
-              <li ><a href="{{ route('blog') }}">Guides</a></li>
-              <li ><a href="{{ route('blog') }}">Manuals</a></li>
+              <li ><a href="{{ route('category',"guides") }}">Guides</a></li>
+              <li ><a href="{{ route('category',"manuals") }}">Manuals</a></li>
             </ul>
 
               </li>
               <li class="drop-down"><a href="">Forms</a>
             <ul>
-              <li ><a href="{{ route('blog') }}">Inscription</a></li>
-              <li ><a href="{{ route('blog') }}">Come down </a></li>
+              <li ><a href="{{ route('category',"inscription") }}">Inscription</a></li>
+              <li ><a href="{{ route('category',"come-down") }}">Come down </a></li>
             </ul>
 
               </li>
-              <li ><a href="{{ route('blog') }}">Others</a></li>
+              <li ><a href="{{ route('category',"others") }}">Others</a></li>
             </ul>
           </li>
-          <li ><a href="{{ route('blog') }}">News</a></li>
+          <li ><a href="{{ route('category',"news") }}">News</a></li>
           <li><a href="{{ route('contact') }}">Contact</a></li>
         </ul>
       </nav><!-- .nav-menu -->
@@ -108,7 +108,9 @@
     <div class="footer-top">
       <div class="container">
         <div class="row">
-
+            <div class="col-lg-3 col-md-6 footer-links">
+                <img src="{{ asset('admin/img/logo-anpat.png')}}" alt="">
+            </div>
           <div class="col-lg-3 col-md-6 footer-links">
           <h3>Company</h3>
             <ul>
@@ -124,24 +126,22 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h3>Site Map</h3>
             <ul>
-              <li> <a href="">Home</a></li>
-              <li> <a href="">About</a></li>
-              <li><a href="">Contact</a></li>
-              <li> <a href="">blog</a></li>
+              <li> <a href="{{ route('homepage') }}">Home</a></li>
+              <li> <a href="{{ route('about') }}">About</a></li>
+              <li><a href="{{ route('contact') }}">Contact</a></li>
+              <li> <a href="{{ route('blog') }}">blog</a></li>
             </ul>
           </div>
           <div class="col-lg-3 col-md-6 footer-links">
             <h3>useful link</h3>
             <ul>
-              <li> <a href="">Training Entity</a></li>
+              <li> <a href="{{ route('entidades_formadoras') }}">Training Entity</a></li>
               <li> <a href="">Partner</a></li>
-              <li><a href="">Course</a></li>
+              <li><a href="{{ route('cursos') }}">Course</a></li>
               <li> <a href="">Card</a></li>
             </ul>
           </div>
-          <div class="col-lg-3 col-md-6 footer-links">
-         <img src="{{ asset('admin/img/logo-anpat.png')}}" alt="">
-          </div>
+
         </div>
       </div>
     </div>

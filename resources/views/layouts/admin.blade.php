@@ -103,7 +103,7 @@
       <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
         <div class=" py-2 collapse-inner rounded">
           <a class="collapse-item" href="{{ route('admin.about') }}">{{__('message.About')}}</a>
-          <a class="collapse-item" href="{{ route('admin.banner') }}">{{__('message.Banner')}}</a>
+          <a class="collapse-item" href="{{ route('admin.partner') }}">{{__('message.partner')}}</a>
           <a class="collapse-item" href="{{ route('admin.general') }}">{{__('message.General Settings')}}</a>
         </div>
       </div>
