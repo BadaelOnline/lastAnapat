@@ -163,14 +163,14 @@ class FrontController extends Controller
 
     public function category(Category $category)
     {
-        $categories = Category::all();
+        $categories = Category::where('id',$category->id)->firstOrFail();
         $general = General::find(1);
         $link = Link::orderBy('name','asc')->get();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $posts = $category->posts()->latest()->paginate(6);
         $recent = Post::orderBy('id','desc')->limit(5)->get();
         $tags = Tag::all();
-        return view ('front.blog',compact('categories','general','link','lpost','posts','recent','tags'));
+        return view ('front.category',compact('categories','general','link','lpost','posts','recent','tags'));
     }
 
     public function tag(Tag $tag)

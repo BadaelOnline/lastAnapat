@@ -114,6 +114,7 @@ return [
     'fecha_de_alta' => 'Fecha De Alta',
     'fecha_de_emision' => 'Fecha De Emision',
     'foto' => 'Foto',
+    'partner' => 'Partner',
 
 
 ];

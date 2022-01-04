@@ -47,7 +47,7 @@ class PostController extends Controller
             "cover" => "required",
             "body" => "required",
             "category" => "required",
-            "tags" => "array|required",  
+            "tags" => "array|required",
             "keyword" => "required",
             "meta_desc" => "required"
         ])->validate();
@@ -59,7 +59,7 @@ class PostController extends Controller
         $data['category_id'] = request('category');
 
         $data['status'] = 'PUBLISH';
-        
+
         $data['author_id'] = Auth::user()->id;
 
         $cover = $request->file('cover');
@@ -77,11 +77,11 @@ class PostController extends Controller
         if ($post) {
 
                 return redirect()->route('admin.post')->with('success', 'Post added successfully');
-        
+
                } else {
-                   
+
                 return redirect()->route('admin.post.create')->with('error', 'Post failed to add');
-        
+
                }
     }
 
@@ -123,7 +123,7 @@ class PostController extends Controller
             "title" => "required",
             "body" => "required",
             "category" => "required",
-            "tags" => "array|required",  
+            "tags" => "array|required",
             "keyword" => "required",
             "meta_desc" => "required"
         ])->validate();
@@ -156,11 +156,11 @@ class PostController extends Controller
         if ($update) {
 
                 return redirect()->route('admin.post')->with('success', 'Data added successfully');
-        
+
                } else {
-                   
+
                 return redirect()->route('admin.post.create')->with('error', 'Data failed to add');
-        
+
                }
     }
 
@@ -198,17 +198,17 @@ class PostController extends Controller
     }
 
     public function deletePermanent($id){
-        
+
         $post = Post::withTrashed()->findOrFail($id);
 
         if (!$post->trashed()) {
-        
+
             return redirect()->route('admin.post.trash')->with('error','Data is not in trash');
-        
+
         }else {
-        
+
             $post->tags()->detach();
-            
+
 
             if($post->cover && file_exists(storage_path('app/public/' . $post->cover))){
                 \Storage::delete('public/'. $post->cover);
