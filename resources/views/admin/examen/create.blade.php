@@ -70,7 +70,7 @@
                 <label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
 
                 <div class="col-sm-9">
-                    <input type="text" name='codigo' class="form-control {{$errors->first('codigo') ? "is-invalid" : "" }} " value="{{old('name')}}" id="codigo" placeholder="Código del Examen">
+                    <input type="text" name='codigo' class="form-control {{$errors->first('codigo') ? "is-invalid" : "" }} " value="{{old('codigo')}}" id="codigo" placeholder="Código del Examen">
                     <div class="invalid-feedback">
                         {{ $errors->first('codigo') }}
                     </div>
@@ -84,7 +84,7 @@
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="text" name="nombre" placeholder="Nombre del Examen" id="nombre"  class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} " value="{{old('name')}}">
+                    <input type="text" name="nombre" placeholder="Nombre del Examen" id="nombre"  class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} " value="{{old('nombre')}}">
                     <div class="invalid-feedback">
                         {{ $errors->first('nombre') }}
                     </div>
@@ -96,12 +96,12 @@
                     <select name='tipo' class="form-control {{$errors->first('tipo') ? "is-invalid" : "" }} " id="tipo">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
 
-                            <option value="T-Theoretical">T-Theoretical</option>
-                            <option value="P-Practical">P-Practical</option>
+                            <option value="T-Theoretical" {{old('tipo') == "T-Theoretical" ? "selected" : ""}}>T-Theoretical</option>
+                            <option value="P-Practical" {{old('tipo') == "P-Practical" ? "selected" : ""}}>P-Practical</option>
 
                     </select>
                     <div class="invalid-feedback">
-                        {{ $errors->first('tipo_curso') }}
+                        {{ $errors->first('tipo') }}
                     </div>
                 </div>
             </div>

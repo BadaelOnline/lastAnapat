@@ -101,7 +101,7 @@
 
                     </select>
                     <div class="invalid-feedback">
-                        {{ $errors->first('tipo_curso') }}
+                        {{ $errors->first('tipo') }}
                     </div>
                 </div>
             </div>

@@ -41,7 +41,12 @@ class OperadoresController extends Controller
      */
     public function store(Request $request)
     {
-
+        $request->validate([
+            'dni' => 'required',
+            'apellidos' => 'required',
+            'nombre' => 'required',
+            'entidad' => 'required',
+        ]);
 
 
         $operadores = new operadores($request->except('_token','estado'));
@@ -116,7 +121,12 @@ class OperadoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $request->validate([
+            'dni' => 'required',
+            'apellidos' => 'required',
+            'nombre' => 'required',
+            'entidad' => 'required',
+        ]);
 
         $operadores = Operadores::findOrFail($id);
         $operadores->dni = $request->dni;

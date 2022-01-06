@@ -82,11 +82,11 @@
                     <select name='operador' class="form-control {{$errors->first('operador') ? "is-invalid" : "" }} " id="operador">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($operadores as $operadores)
-                            <option value="{{ $operadores->id }}" >{{ $operadores->nombre }} {{ $operadores->apellidos }}</option>
+                            <option value="{{ $operadores->id }}" {{old('operador') == $operadores->id  ? "selected" : ""}}>{{ $operadores->nombre }} {{ $operadores->apellidos }}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
-                        {{ $errors->first('curso') }}
+                        {{ $errors->first('operador') }}
                     </div>
                 </div>
             </div>
@@ -142,7 +142,7 @@
                     <select name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
                         @foreach ($cursos as $cursos)
-                            <option value="{{ $cursos->id }}" >{{ $cursos->codigo }}</option>
+                            <option value="{{ $cursos->id }}" {{old('curso') == $cursos->id  ? "selected" : ""}}>{{ $cursos->codigo }}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -156,8 +156,8 @@
                     <select name='examen_teorico_realizado' class="form-control {{$errors->first('examen_teorico_realizado') ? "is-invalid" : "" }} " id="examen_teorico_realizado">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
 
-                        <option value="básico">Básico</option>
-                        <option value="Extendido">Extendido</option>
+                        <option value="básico" {{old('examen_teorico_realizado') == "básico"  ? "selected" : ""}}>Básico</option>
+                        <option value="Extendido" {{old('examen_teorico_realizado') == "Extendido"  ? "selected" : ""}}>Extendido</option>
 
                     </select>
                     <div class="invalid-feedback">

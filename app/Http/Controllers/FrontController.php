@@ -3,7 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{About, Banner, Category, Faq, General, Link, Page, Partner, Pcategory, Portfolio, Post, Tag, Team, Testimonial, Service, Subscriber};
+use App\Models\{About,
+    Asistent,
+    Banner,
+    Category,
+    Cursos,
+    EntidadesFormadoreas,
+    Faq,
+    General,
+    Horario,
+    Link,
+    Operadores,
+    Page,
+    Partner,
+    Pcategory,
+    Portfolio,
+    Post,
+    Tag,
+    Team,
+    Testimonial,
+    Service,
+    Subscriber,
+    Tipo_Maquina};
 class FrontController extends Controller
 {
     public function home()
@@ -32,6 +53,30 @@ class FrontController extends Controller
         return view ('front.about',compact('about','faq','general','link','lpost','partner','team'));
     }
 
+    public function contact()
+    {
+        $about = About::find(1);
+        $faq = Faq::all();
+        $general = General::find(1);
+        $link = Link::orderBy('name','asc')->get();
+        $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
+        $partner = Partner::orderBy('name','asc')->get();
+        $team = Team::orderBy('id','asc')->get();
+        return view ('front.cotact',compact('about','faq','general','link','lpost','partner','team'));
+    }
+
+    public function entidades()
+    {
+        $about = About::find(1);
+        $faq = Faq::all();
+        $general = General::find(1);
+        $link = Link::orderBy('name','asc')->get();
+        $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
+        $partner = Partner::orderBy('name','asc')->get();
+        $team = Team::orderBy('id','asc')->get();
+        return view ('front.entidades_formadoreas',compact('about','faq','general','link','lpost','partner','team'));
+    }
+
     public function testi()
     {
         $general = General::find(1);
@@ -40,41 +85,50 @@ class FrontController extends Controller
         $testi = Testimonial::orderBy('name','asc')->paginate(6);
         return view ('front.testi',compact('general','link','lpost','testi'));
     }
-    public function service()
+    public function cursos()
+    {
+        $general = General::find(1);
+        $cursos = Cursos::orderBy('id','desc')->where('publico_privado',1)->where('estado',1)->get();
+        $entidades = EntidadesFormadoreas::orderBy('id','desc')->get();
+        return view ('front.cursos',compact('general','cursos','entidades'));
+    }
+
+    public function curso($cursoo)
     {
         $general = General::find(1);
         $link = Link::orderBy('name','asc')->get();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
+//        $service = Service::where('slug', $slug)->firstOrFail();
+        $curso = Cursos::where('curso',$cursoo)->firstOrFail();
+        $entidad = EntidadesFormadoreas::where('id',$curso->entidad)->firstOrFail();
+        $tipo = Tipo_Maquina::orderBy('id','desc')->get();
+        $horario = Horario::orderBy('id','desc')->where('curso',$curso->id)->get();
+        $asistent = Asistent::orderBy('id','desc')->where('curso',$curso->id)->get();
+
+        $operador = Operadores::orderBy('id','desc')->get();
+
+        return view ('front.curso',compact('general','operador','asistent','horario','tipo','entidad','link','lpost','curso'));
+    }
+
+    public function entidades_formadoras()
+    {
         $service = Service::orderBy('title','asc')->get();
-        return view ('front.service',compact('general','link','lpost','service'));
-    }
-
-    public function serviceshow($slug)
-    {
-        $general = General::find(1);
-        $link = Link::orderBy('name','asc')->get();
-        $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
-        $service = Service::where('slug', $slug)->firstOrFail();
-        return view ('front.serviceshow',compact('general','link','lpost','service'));
-    }
-
-    public function portfolio()
-    {
         $general = General::find(1);
         $link = Link::orderBy('name','asc')->get();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $pcategories = Pcategory::all();
         $portfolio = Portfolio::all();
-        return view ('front.portfolio',compact('general','link','lpost','pcategories','portfolio'));
+        $entidadesFormadores = EntidadesFormadoreas::orderBy('id','desc')->get();
+        return view ('front.entidades_formadoras',compact('general','entidadesFormadores','service','link','lpost','pcategories','portfolio'));
     }
 
-    public function portfolioshow($slug)
+    public function entidade_formadora($slug)
     {
         $general = General::find(1);
         $link = Link::orderBy('name','asc')->get();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
-        $portfolio = Portfolio::where('slug', $slug)->firstOrFail();
-        return view ('front.portfolioshow',compact('general','link','lpost','portfolio'));
+        $entidadesFormadore = EntidadesFormadoreas::where('id', $slug)->firstOrFail();
+        return view ('front.entidade_formadora',compact('general','link','lpost','entidadesFormadore'));
     }
 
     public function blog()
@@ -86,7 +140,7 @@ class FrontController extends Controller
         $posts = Post::where('status','=','PUBLISH')->orderBy('id','desc')->paginate(3);
         $recent = Post::orderBy('id','desc')->limit(5)->get();
         $tags = Tag::all();
-        
+
         return view ('front.blog',compact('categories','general','link','lpost','posts','recent','tags'));
     }
 
@@ -109,14 +163,14 @@ class FrontController extends Controller
 
     public function category(Category $category)
     {
-        $categories = Category::all();
+        $categories = Category::where('id',$category->id)->firstOrFail();
         $general = General::find(1);
         $link = Link::orderBy('name','asc')->get();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $posts = $category->posts()->latest()->paginate(6);
         $recent = Post::orderBy('id','desc')->limit(5)->get();
         $tags = Tag::all();
-        return view ('front.blog',compact('categories','general','link','lpost','posts','recent','tags'));
+        return view ('front.category',compact('categories','general','link','lpost','posts','recent','tags'));
     }
 
     public function tag(Tag $tag)
@@ -133,17 +187,17 @@ class FrontController extends Controller
 
     public function search()
     {
-       
+
         $query = request("query");
-        
+
         $categories = Category::all();
-        $general = General::find(1); 
+        $general = General::find(1);
         $link = Link::orderBy('name','asc')->get();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $posts = Post::where("title","like","%$query%")->latest()->paginate(9);
         $recent = Post::orderBy('id','desc')->limit(5)->get();
         $tags = Tag::all();
-        
+
         return view('front.blog',compact('categories','general','link','lpost','posts','query','recent','tags'));
     }
 
@@ -159,7 +213,7 @@ class FrontController extends Controller
     public function subscribe(Request $request)
     {
         \Validator::make($request->all(), [
-            "email" => "required|unique:subscribers,email",        
+            "email" => "required|unique:subscribers,email",
         ])->validate();
 
         $subs = new Subscriber();
@@ -167,11 +221,11 @@ class FrontController extends Controller
         if ( $subs->save()) {
 
             return redirect()->route('homepage')->with('success', 'You have successfully subscribed');
-    
+
            } else {
-               
+
             return redirect()->back();
-    
+
            }
     }
 

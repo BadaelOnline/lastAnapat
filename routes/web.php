@@ -40,11 +40,13 @@ use App\Http\Controllers\{BannerController,
 Route::get('/', [FrontController::class, 'home'])->name('homepage');
 Route::post('/', [FrontController::class, 'subscribe'])->name('subscribe');
 Route::get('about-us', [FrontController::class, 'about'])->name('about');
+Route::get('contact', [FrontController::class, 'contact'])->name('contact');
+Route::get('entidades', [FrontController::class, 'entidades'])->name('entidades');
 Route::get('testimonials', [FrontController::class, 'testi'])->name('testi');
-Route::get('services', [FrontController::class, 'service'])->name('service');
-Route::get('services/{slug}', [FrontController::class, 'serviceshow'])->name('serviceshow');
-Route::get('portfolio', [FrontController::class, 'portfolio'])->name('portfolio');
-Route::get('portfolio/{slug}', [FrontController::class, 'portfolioshow'])->name('portfolioshow');
+Route::get('cursos', [FrontController::class, 'cursos'])->name('cursos');
+Route::get('curso/{slug}', [FrontController::class, 'curso'])->name('curso');
+Route::get('entidades_formadoras', [FrontController::class, 'entidades_formadoras'])->name('entidades_formadoras');
+Route::get('entidade_formadora/{slug}', [FrontController::class, 'entidade_formadora'])->name('entidade_formadora');
 Route::get('blog', [FrontController::class, 'blog'])->name('blog');
 Route::get('blog/search',[FrontController::class, 'search'])->name('search');
 Route::get('blog/{slug}', [FrontController::class, 'blogshow'])->name('blogshow');

@@ -48,7 +48,7 @@
             outline: 0;
             box-shadow: none;
         }
-       
+
     </style>
 @endsection
 @section('content')
@@ -59,7 +59,7 @@
         </div>
     @endif
 
-    <form class="errors" action="{{ route('admin.cursos.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.cursos.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         {{--first row--}}
         <div class="form-groups">

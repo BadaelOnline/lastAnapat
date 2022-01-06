@@ -45,6 +45,13 @@ class HorarioController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'curso' => 'required',
+            'contenido' => 'required',
+            'fecha_inicio' => 'required',
+            'final' => 'required',
+            'alumnos' => 'required',
+        ]);
         $data = $request->all();
 
 
@@ -105,6 +112,13 @@ class HorarioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'curso' => 'required',
+            'contenido' => 'required',
+            'fecha_inicio' => 'required',
+            'final' => 'required',
+            'alumnos' => 'required',
+        ]);
         $horario = horario::findOrFail($id);
 
         $horario->curso = $request->curso;
@@ -119,7 +133,7 @@ class HorarioController extends Controller
 
         if ($horario->save()) {
 
-            return redirect()->route('admin.horario')->with('success', 'Data Berhasil Diperbarui');
+            return redirect()->route('admin.cursos.edit', [$horario->curso])->with('success', 'Data updated successfully');
 
         } else {
 

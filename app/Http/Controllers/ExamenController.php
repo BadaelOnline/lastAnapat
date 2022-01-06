@@ -43,6 +43,12 @@ class ExamenController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+        'codigo' => 'required',
+        'tipo' => 'required',
+        'nombre' => 'required',
+        'url' => 'required',
+    ]);
 
         $examen = new Examen($request->except('_token','url'));
         $url = $request->file('url');
@@ -98,6 +104,11 @@ class ExamenController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'codigo' => 'required',
+            'tipo' => 'required',
+            'nombre' => 'required',
+        ]);
         $examen = Examen::findOrFail($id);
         $examen->codigo = $request->codigo;
         $examen->nombre = $request->nombre;
