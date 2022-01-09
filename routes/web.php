@@ -45,6 +45,8 @@ Route::get('entidades', [FrontController::class, 'entidades'])->name('entidades'
 Route::get('testimonials', [FrontController::class, 'testi'])->name('testi');
 Route::get('cursos', [FrontController::class, 'cursos'])->name('cursos');
 Route::get('curso/{slug}', [FrontController::class, 'curso'])->name('curso');
+Route::get('carnets', [FrontController::class, 'carnets'])->name('carnets');
+Route::get('carnet/{slug}', [FrontController::class, 'carnet'])->name('carnet');
 Route::get('entidades_formadoras', [FrontController::class, 'entidades_formadoras'])->name('entidades_formadoras');
 Route::get('entidade_formadora/{slug}', [FrontController::class, 'entidade_formadora'])->name('entidade_formadora');
 Route::get('blog', [FrontController::class, 'blog'])->name('blog');
