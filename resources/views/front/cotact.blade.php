@@ -6,8 +6,9 @@
             <!-- ======= contact  Section ======= -->
             <section id="contact" class="contact">
             <div class="container">
+            <h2 class="title">Contact Us</h2>
                   <div class="contain">
-                  <h2>Contact Us</h2>
+                
                   <div class="info">
                    <div class="info-icon">
                    <i class="icofont-phone"></i>
