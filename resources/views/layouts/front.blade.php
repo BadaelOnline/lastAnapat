@@ -66,7 +66,7 @@
             <ul>
               <li ><a href="{{ route('entidades_formadoras') }}">Training Entity</a></li>
               <li ><a href="{{ route('cursos') }}">Courses</a></li>
-              <li ><a href="{{ route('homepage') }}">Card Consultation</a></li>
+              <li ><a href="{{ route('carnets') }}">Card Consultation</a></li>
             </ul>
           </li>
           <li class="drop-down"><a href="">Documentation</a>
@@ -138,7 +138,7 @@
               <li> <a href="{{ route('entidades_formadoras') }}">Training Entity</a></li>
               <li> <a href="">Partner</a></li>
               <li><a href="{{ route('cursos') }}">Course</a></li>
-              <li> <a href="">Card</a></li>
+              <li> <a href="{{ route('carnets') }}">Card</a></li>
             </ul>
           </div>
 

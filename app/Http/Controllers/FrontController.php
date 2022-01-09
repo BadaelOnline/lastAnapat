@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\{About,
     Asistent,
     Banner,
+    Carnet,
     Category,
     Cursos,
     EntidadesFormadoreas,
@@ -108,6 +109,26 @@ class FrontController extends Controller
         $operador = Operadores::orderBy('id','desc')->get();
 
         return view ('front.curso',compact('general','operador','asistent','horario','tipo','entidad','link','lpost','curso'));
+    }
+
+    public function carnets()
+    {
+        $general = General::find(1);
+        $cursos = Cursos::orderBy('id','desc')->where('publico_privado',1)->where('estado',1)->get();
+        $carnets = Carnet::orderBy('id','desc')->get();
+        $operadores = Operadores::orderBy('id','desc')->get();
+        return view ('front.carnets',compact('general','operadores','carnets'));
+    }
+
+    public function carnet($id)
+    {
+        $general = General::find(1);
+        $carnet = Carnet::where('id',$id)->firstOrFail();
+
+        $operador = Operadores::where('id',$carnet->operador)->firstOrFail();
+        $curso = Cursos::where('id',$carnet->curso)->firstOrFail();
+
+        return view ('front.carnet',compact('general','operador','carnet','curso'));
     }
 
     public function entidades_formadoras()
