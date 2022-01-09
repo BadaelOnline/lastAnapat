@@ -38,10 +38,7 @@
                          <p>28037 Madrid </p>
                    </div>
                   </div>
-                  <div class="info">
-                   <div class="info-icon">
-                   <i class="icofont-send-mail"></i>
-                   </div>
+                  <div class="info-input">
                    <div class="info-text">
                          <h3>Send Us a Message</h3>
                          <div class="webflow-style-input">

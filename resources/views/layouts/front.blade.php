@@ -46,11 +46,12 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
+  <header id="header" class="fixed-top  d-flex">
+  <a href="/" class="logo ml-5">
+        <img src="{{ asset('admin/img/logo-anpat.png')}}" alt="" class="img-fluid"></a>
     <div class="container d-flex align-items-center">
 
-      <a href="/" class="logo ">
-        <img src="{{ asset('admin/img/logo-anpat.png')}}" alt="" class="img-fluid"></a>
+    
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
@@ -116,10 +117,8 @@
             <ul>
               <li> ANAPAT</li>
               <li>   C / Albasanz, 67– 2º – Office 47.</li>
-              <li>     28037 Madrid</li>
               <li> 28037 Madrid</li>
-              <li> <strong>Tel:</strong> 91 375 81 22</li>
-              <li> <strong>FAX:</strong> 91 327 23 55</li>
+              <li> <strong>Tel:</strong> 91 375 81 22 /  <strong> FAX:</strong> 91 327 23 55</li>
               <li> <a href="">secretario@anapat.es</a></li>
             </ul>
           </div>
