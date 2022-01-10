@@ -131,6 +131,22 @@ class FrontController extends Controller
         return view ('front.carnet',compact('general','operador','carnet','curso'));
     }
 
+    public function partners()
+    {
+        $general = General::find(1);
+
+        $partners = Partner::orderBy('id','desc')->get();
+        return view ('front.partners',compact('general','partners'));
+    }
+
+    public function partner($id)
+    {
+        $general = General::find(1);
+        $partner = Partner::where('id',$id)->firstOrFail();
+
+        return view ('front.partner',compact('general','partner'));
+    }
+
     public function entidades_formadoras()
     {
         $service = Service::orderBy('title','asc')->get();

@@ -51,7 +51,7 @@
         <img src="{{ asset('admin/img/logo-anpat.png')}}" alt="" class="img-fluid"></a>
     <div class="container d-flex align-items-center">
 
-    
+
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
@@ -60,7 +60,7 @@
           <li class="drop-down"><a href="">Anapat</a>
             <ul>
               <li ><a href="{{ route('about') }}">Anapat</a></li>
-              <li><a href="{{ route('homepage') }}">Partner</a></li>
+              <li><a href="{{ route('partners') }}">Partner</a></li>
             </ul>
           </li>
           <li class="drop-down"><a href="">Training</a>

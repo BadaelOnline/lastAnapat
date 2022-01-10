@@ -27,15 +27,21 @@
 
             <div class="carousel-inner" role="listbox">
 
-                @foreach ($banner as $key => $banner)
+                <div class="carousel-item active" style="background-image: url('{{ asset('front/img/1.jpg')}}')">
+                    <div class="carousel-container">
 
-                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" style="background-image: url(http://anapat.e-dalely.com/wp-content/uploads/2021/10/EstudioAlquiler_ANAPAT_2020-e1634196672288.jpg);">
-                        <div class="carousel-container">
-
-                        </div>
                     </div>
+                </div>
+                <div class="carousel-item " style="background-image: url('{{ asset('front/img/2.jpg')}}')">
+                    <div class="carousel-container">
 
-                @endforeach
+                    </div>
+                </div>
+                <div class="carousel-item " style="background-image: url('{{ asset('front/img/3.jpg')}}')">
+                    <div class="carousel-container">
+
+                    </div>
+                </div>
 
 
             </div>
@@ -76,7 +82,7 @@
                     </ul>
                 </div>
                 <transition-group id="kinds" class="kinds" name="kinds" >
-             
+
                     <div class="item active animate__animated animate__backInDown" id="1">
                         <h2 class="port-title">Reach height: <span>3.60m – 5.10m</span></h2>
                         <h3 class="port-title">IPAF category: <span>PAV</span></h3>
@@ -90,7 +96,7 @@
                             PAVs meet the requirements of the Work at Height regulations by ensuring the safety of workers on the platform with a low entry point.
                         </p>
                     </div>
-                  
+
                     <div class="item animate__animated animate__backInDown" id="2">
                         <h2 class="port-title">Reach height: <span> 4.20m – 10.00m</span></h2>
                         <h3 class="port-title">IPAF category: <span>3a & 3b</span></h3>
@@ -196,7 +202,7 @@
                     </ul>
 
 
-               
+
                 <div class="col-md-9 col-sm-12 info info1 active animate__animated animate__backInLeft" data-aos="fade-up">
                         <h2><span>About us</span></h2>
                         <p>
@@ -219,7 +225,7 @@
                         <button>show more</button>
                     </div>
                 </div>
-              
+
 
             </div>
         </section>
@@ -235,28 +241,16 @@
                 <div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">
 
 
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class="client-logo">
-                            <a href=" target="_blank" rel="noopener noreferrer">
-                            <img src="http://anapat.e-dalely.com/wp-content/uploads/2021/11/jlg-logo-sims-crane.jpg" class="img-fluid" alt="">
-                            </a>
+                    @foreach($partner as $partner)
+                        <div class="col-lg-3 col-md-4 col-6">
+                            <div class="client-logo">
+                                <a href=""  rel="noopener noreferrer">
+                                    <img src="{{ asset('storage/'.$partner->cover) }}" class="img-fluid" alt="">
+                                    <h2 style="text-align: center;"> {{$partner->name}}</h2>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class="client-logo">
-                            <a href=" target="_blank" rel="noopener noreferrer">
-                            <img src="http://anapat.e-dalely.com/wp-content/uploads/2021/10/Genie_BluBlk_2-e1634564636678.jpg" class="img-fluid" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class="client-logo">
-                            <a href=" target="_blank" rel="noopener noreferrer">
-                            <img src="http://anapat.e-dalely.com/wp-content/uploads/2021/10/HAULOTTE_Logo2017-2.jpg" class="img-fluid" alt="">
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
 
                 </div>
 
