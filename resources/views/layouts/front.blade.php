@@ -55,42 +55,42 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li {{ request()->is('/') ? 'class=active' : '' }}><a href="{{ route('homepage') }}">Home</a></li>
+          <li {{ request()->is('/') ? 'class=active' : '' }}><a href="{{ route('homepage') }}">inicio</a></li>
 
           <li class="drop-down"><a href="">Anapat</a>
             <ul>
               <li ><a href="{{ route('about') }}">Anapat</a></li>
-              <li><a href="{{ route('partners') }}">Partner</a></li>
+              <li><a href="{{ route('partners') }}">Compañera</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="">Training</a>
+          <li class="drop-down"><a href="">Capacitación</a>
             <ul>
-              <li ><a href="{{ route('entidades_formadoras') }}">Training Entity</a></li>
-              <li ><a href="{{ route('cursos') }}">Courses</a></li>
-              <li ><a href="{{ route('carnets') }}">Card Consultation</a></li>
+              <li ><a href="{{ route('entidades_formadoras') }}">Entidad Formadora</a></li>
+              <li ><a href="{{ route('cursos') }}">Cursos</a></li>
+              <li ><a href="{{ route('carnets') }}">Consulta de carnet</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="">Documentation</a>
+          <li class="drop-down"><a href="">Documentación</a>
             <ul>
-              <li class="drop-down"><a href="">Didactics</a>
+              <li class="drop-down"><a href="">Cosas didácticas</a>
             <ul>
-              <li ><a href="{{ route('category',"guides") }}">Guides</a></li>
-              <li ><a href="{{ route('category',"manuals") }}">Manuals</a></li>
+              <li ><a href="{{ route('category',"guides") }}">Guías</a></li>
+              <li ><a href="{{ route('category',"manuals") }}">Manuales</a></li>
             </ul>
 
               </li>
               <li class="drop-down"><a href="">Forms</a>
             <ul>
-              <li ><a href="{{ route('category',"inscription") }}">Inscription</a></li>
-              <li ><a href="{{ route('category',"come-down") }}">Come down </a></li>
+              <li ><a href="{{ route('category',"inscription") }}">Inscripción</a></li>
+              <li ><a href="{{ route('category',"come-down") }}">Baja </a></li>
             </ul>
 
               </li>
-              <li ><a href="{{ route('category',"others") }}">Others</a></li>
+              <li ><a href="{{ route('category',"others") }}">Otras</a></li>
             </ul>
           </li>
-          <li ><a href="{{ route('category',"news") }}">News</a></li>
-          <li><a href="{{ route('contact') }}">Contact</a></li>
+          <li ><a href="{{ route('category',"news") }}">Noticias</a></li>
+          <li><a href="{{ route('contact') }}">Contacto</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
