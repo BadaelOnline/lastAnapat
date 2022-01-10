@@ -67,8 +67,8 @@
                 @endphp
 
                 @foreach ($examen as $examen)
-                    @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$formadores->entidad)
-                        || (auth()->user()->perfil=='Formador' && auth()->user()->entidad==$formadores->entidad))
+{{--                    @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$formadores->entidad)--}}
+{{--                        || (auth()->user()->perfil=='Formador' && auth()->user()->entidad==$formadores->entidad))--}}
                     <tr>
                         <td>{{ $examen->codigo }}</td>
                         <td> {{ $examen->nombre }} </td>
@@ -92,7 +92,7 @@
                             </form>
                         </td>
                     </tr>
-                        @endif
+{{--                        @endif--}}
                 @endforeach
                 </tbody>
             </table>
