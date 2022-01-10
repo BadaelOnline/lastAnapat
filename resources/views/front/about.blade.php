@@ -9,7 +9,9 @@
      <div class="container">
          
       <div class="contain">
-            <h2>Quienes somos</h2>    
+            <div class="d-flex justify-content-center">
+                  <h2>Quienes somos</h2>  
+            </div>  
             <p>
             La "Asociación Nacional de Alquiladores de Plataformas Aéreas de Trabajo" (ANAPAT) es una organización profesional empresarial de ámbito nacional, constituida en noviembre de 1993 para defender los intereses generales de los alquiladores de plataformas elevadoras móviles de personal (PEMP, denominación actual vigente en Europa y ya oficial en España), acorde con la concepción, diseño, fabricación y destino de estas máquinas, manejadas habitualmente por personas ajenas a la empresa del propietario o arrendador y que dependen del arrendatario o usuario.<br>
 
@@ -19,7 +21,6 @@
 
             Gracias por su interés.
             </p> 
-            <br>
             <div class="detalis">
             <p>
             ANAPAT <br>

@@ -126,13 +126,24 @@
     $('#portfolio-flters li').on('click', function() {
       $("#portfolio-flters li").removeClass('filter-active');
       $(this).addClass('filter-active');
-
-      portfolioIsotope.isotope({
-        filter: $(this).data('filter')
-      });
-      aos_init();
+      $("#kinds .item").removeClass('active');
+      $(`#kinds #${$(this).attr("id")}`).addClass('active');
     });
 
+    $('#Inform-list li').on('click', function() {
+      $("#Inform-list li").removeClass('li-active');
+      $(this).addClass('li-active');
+      $("#portfolio .info").removeClass('active');
+      if($(this).attr("id") == 1){
+        $("#portfolio .info1").addClass('active');
+      }
+      if($(this).attr("id") == 2){
+        $("#portfolio .info2").addClass('active');
+      }
+      if($(this).attr("id") == 3){
+        $("#portfolio .info3").addClass('active');
+      }
+    });
     // Initiate venobox (lightbox feature used in portofilo)
     $(document).ready(function() {
       $('.venobox').venobox();
@@ -167,4 +178,6 @@
     aos_init();
   });
 
+
+  
 })(jQuery);

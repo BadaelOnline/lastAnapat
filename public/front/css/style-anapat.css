@@ -133,7 +133,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
-    color: #4ea7d9;
+    color: #0f76b0;
 }
 
 .nav-menu .drop-down ul {
@@ -563,30 +563,30 @@ section {
 .about-us{
     margin: 20px 0 0 0;
     overflow: visible;
-    background-image: url(../img/haulotte.png);
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .about-us .contain {
     padding: 20px;
     height: 100%;
 }
-.about-us .contain h2,.about-us .contain p{
-   width: 80%;
-   color: #242424;
+.about-us .contain h2{
+   color: #484848;
+   margin-bottom: 40px;
+   border-bottom: 2px solid #484848;
+}
+.about-us .contain p{
+    font-size: 18px;
 }
 .about-us .contain a{
-    color: #256f99;
+    color: #1c5a7d;
+    font-size: 18px;
+    transition: .5s;
 }
 .about-us .contain a:hover{
+    color: #256f99;
     text-decoration: underline;
 }
-.about-us .contain .detalis{
-    padding: 10px;
-    box-shadow: 1px 3px 10px;
-    margin-top: 60px;
-}
+
 /*--------------------------------------------------------------
 # blog
 --------------------------------------------------------------*/
@@ -733,6 +733,27 @@ section {
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
+.services .search{
+    height: 35px;
+    margin-top: auto;
+    display: flex;
+}
+.services .search input{
+    outline: none;
+    border: 1px solid #ddd;
+    border-right: none;
+    padding-inline-start: 10px;
+}
+.services .search i{
+    padding: 9px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-left: none;
+    color: #6ab6e2;
+    font-weight: bold;
+    cursor: pointer;
+    }
+
 .services .icon-box {
     text-align: center;
     padding: 50px 20px 50px 20px;
@@ -780,10 +801,13 @@ section {
       padding: 20px;
   }
 .services .icon-box2 .imag {
-width: 100%;
+    width: 40%;
+    height: 140px;
+    margin: 0 auto;
   }
   .services .icon-box2 .imag img{
     width: 100%;
+    height: 100%;
       }
 /* courses show */
   .courses .contain-card {
@@ -1055,23 +1079,23 @@ width: 100%;
     opacity: 1;
     bottom: 20px;
 }
-.portfolio .kinds-enter {
-    transform: scale(0.5) translatey(-80px);
-    opacity:0;
+.portfolio .kinds .item{
+    display: none;
 }
-.portfolio .kinds-leave-to{
-    transform: translatey(30px);
-    opacity:0;
-}
-.portfolio .kinds-leave-active {
-    position: absolute;
-    z-index:-1;
+.portfolio .kinds .active{
+    display: block;
 }
 .portfolio .port-title {
     text-align: center;
 }
 .portfolio h2 span,.portfolio h3 span{
     color: #4ea7d9;
+}
+.portfolio .info{
+    display: none;
+}
+.portfolio .info.active{
+    display: block;
 }
 /*--------------------------------------------------------------
 # about
@@ -1172,13 +1196,17 @@ width: 100%;
 .contact .contain .info-text h3 {
     color: #428bb0;
 }
-.contact .contain .info textarea {
+.contact .contain .info-input{
+    width: 80%;
+    margin: 0 auto;
+}
+.contact .contain .info-input textarea {
     border-style: none;
     background: transparent;
     outline: none;
     resize: none;
 }
-.contact .contain .info button {
+.contact .contain .info-input button {
     padding: 0;
     background: none;
     border: none;
@@ -1192,22 +1220,23 @@ width: 100%;
         background-position: 100% 0;
    }
 }
-.contact .contain .info .webflow-style-input {
+.contact .contain .info-input .webflow-style-input {
     position: relative;
     display: flex;
     flex-direction: row;
     width: 100%;
     border-radius: 2px;
     padding: 1rem;
-    background: rgba(57, 63, 84, 0.8);
+    background: #fff;
+    border: 2px solid #ddd;
 }
 @media (max-width:568px) {
-.contact .contain .info .webflow-style-input {
+.contact .contain .info-input .webflow-style-input {
     width: 90%;
     margin: 0 auto;
 }
     }
-.contact .contain .info .webflow-style-input:after {
+.contact .contain .info-input .webflow-style-input:after {
     content: "";
     position: absolute;
     left: 0px;
@@ -1222,23 +1251,23 @@ width: 100%;
     background-size: 500% auto;
     animation: gradient 3s linear infinite;
 }
-.contact .contain .info .webflow-style-input textarea {
+.contact .contain .info-input .webflow-style-input textarea {
     flex-grow: 1;
-    color: #bfd2ff;
+    color: #142b62;
     line-height: 2.4rem;
     vertical-align: middle;
 }
-.contact .contain .info .webflow-style-input textarea::-webkit-input-placeholder {
+.contact .contain .info-input .webflow-style-input textarea::-webkit-input-placeholder {
     color: #7881a1;
 }
-.contact .contain .info .webflow-style-input button {
+.contact .contain .info-input .webflow-style-input button {
     color: #7881a1;
     font-size: 2.4rem;
     line-height: 2.4rem;
     vertical-align: middle;
     transition: color 0.25s;
 }
-.contact .contain .info .webflow-style-input button:hover {
+.contact .contain .info-input .webflow-style-input button:hover {
     color: #bfd2ff;
 }
 /*--------------------------------------------------------------
@@ -1523,6 +1552,9 @@ width: 100%;
     transition: 0.5s height cubic-bezier(0.73, 0.32, 0.34, 1.5), 0.5s padding cubic-bezier(0.73, 0.32, 0.34, 1.5), 0.5s margin cubic-bezier(0.73, 0.32, 0.34, 1.5), 0.5s 0.2s color, 0.2s background-color;
 }
 .menu-dropdown > *:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+.menu-dropdown .li-active{
     background: rgba(0, 0, 0, 0.1);
 }
 .menu:not(:hover) > .menu-dropdown > * {
