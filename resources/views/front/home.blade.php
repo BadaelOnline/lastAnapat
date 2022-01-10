@@ -68,7 +68,7 @@
             <div class="container">
 
                 <div class="section-title">
-                    <h2>Types of MEWPs</h2>
+                    <h2>TIPOS DE PEMPAs</h2>
                 </div>
                 <div class="col-lg-12 d-flex justify-content-center">
                     <ul id="portfolio-flters">
@@ -244,7 +244,7 @@
                     @foreach($partner as $partner)
                         <div class="col-lg-3 col-md-4 col-6">
                             <div class="client-logo">
-                                <a href=""  rel="noopener noreferrer">
+                                <a href="{{ route('partners',$partner->id) }}"  rel="noopener noreferrer">
                                     <img src="{{ asset('storage/'.$partner->cover) }}" class="img-fluid" alt="">
                                     <h2 style="text-align: center;"> {{$partner->name}}</h2>
                                 </a>

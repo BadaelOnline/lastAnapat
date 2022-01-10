@@ -20,6 +20,7 @@ class ExamenController extends Controller
 
             $examen = Examen::orderBy('id','desc')->get();
 
+
         else
             $examen = Examen::orderBy('id','desc')->get();
         return view('admin.examen.index',compact('examen'));
