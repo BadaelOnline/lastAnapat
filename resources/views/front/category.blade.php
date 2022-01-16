@@ -27,7 +27,7 @@
                             <article class="entry" data-aos="fade-up">
 
                                 <div class="entry-img">
-                                    <img src="{{ asset('front/img/haulotte.png') }}" alt="{{ $post->title }}" class="img-fluid">
+                                    <img src="{{asset('storage/' . $post->cover)}}" alt="{{ $post->title }}" class="img-fluid">
                                 </div>
 
                                 <h2 class="entry-title">
