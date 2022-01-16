@@ -12,7 +12,7 @@
   <title>Anapat - Admin Login</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
@@ -28,7 +28,7 @@
   <div class="container">
     <div class="screen">
       <div class="screen__content">
-        <img width="207" height="97" src="http://anapat.e-dalely.com/wp-content/uploads/2021/11/cropped-anpat-removebg-preview-1-207x97-1-180x84.png" class="attachment-medium size-medium" alt="" loading="lazy" srcset="http://anapat.e-dalely.com/wp-content/uploads/2021/11/cropped-anpat-removebg-preview-1-207x97-1.png 1x, http://anapat.e-dalely.com/wp-content/uploads/2021/10/cropped-cropped-anpat-removebg-preview.png 2x" sizes="(max-width: 207px) 100vw, 207px">
+        <img width="207" height="97" src="{{ asset('admin/img/logo-anpat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="{{ asset('admin/img/logo-anpat.png')}}" sizes="(max-width: 207px) 100vw, 207px">
         <form class="login" method="POST" action="{{ route('login') }}">
         @csrf
           <div class="login__field">
