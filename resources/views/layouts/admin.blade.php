@@ -52,7 +52,7 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
-      <img width="207" height="97" src="{{ asset('admin/img/logo-anpat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="http://anapat.e-dalely.com/wp-content/uploads/2021/11/cropped-anpat-removebg-preview-1-207x97-1.png 1x, http://anapat.e-dalely.com/wp-content/uploads/2021/10/cropped-cropped-anpat-removebg-preview.png 2x" sizes="(max-width: 207px) 100vw, 207px">
+      <img width="207" height="97" src="{{ asset('admin/img/logo-anpat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">
     </a>
 
     <!-- Divider -->
@@ -61,7 +61,7 @@
 
         <!-- Sidebar Toggle (Topbar) -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center d-md-none" href="{{ route('admin.dashboard') }}">
-      <img width="207" height="97" src="{{ asset('admin/img/logo-anpat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="http://anapat.e-dalely.com/wp-content/uploads/2021/11/cropped-anpat-removebg-preview-1-207x97-1.png 1x, http://anapat.e-dalely.com/wp-content/uploads/2021/10/cropped-cropped-anpat-removebg-preview.png 2x" sizes="(max-width: 207px) 100vw, 207px">
+      <img width="207" height="97" src="{{ asset('admin/img/logo-anpat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">
     </a>
         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
           <i class="fa fa-bars"></i>

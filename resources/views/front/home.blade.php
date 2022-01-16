@@ -244,7 +244,7 @@
                     @foreach($partner as $partner)
                         <div class="col-lg-3 col-md-4 col-6">
                             <div class="client-logo">
-                                <a href="{{ route('partners',$partner->id) }}"  rel="noopener noreferrer">
+                                <a href="{{ route('partner',$partner->id) }}"  rel="noopener noreferrer">
                                     <img src="{{ asset('storage/'.$partner->cover) }}" class="img-fluid" alt="">
                                     <h2 style="text-align: center;"> {{$partner->name}}</h2>
                                 </a>
