@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('title')
-{{ $post->title }} - 
+{{ $post->title }} -
 @endsection
 @section('meta')
 
@@ -52,7 +52,7 @@
 
     @foreach ($recent as $recent)
     <div class="post-item clearfix">
-     
+
       <h4><a href="{{route('blogshow',$recent->slug)}}">{{ $recent->title }}</a></h4>
       <time datetime="2020-01-01">{{ Carbon\Carbon::parse($recent->created_at)->format("d F, Y") }}</time>
     </div>
@@ -65,7 +65,7 @@
     <ul>
       @foreach ($tags as $tag)
        <li><a href="{{ route('tag',$tag->slug) }}">{{ $tag->name }}</a></li>
-      @endforeach 
+      @endforeach
     </ul>
 
   </div><!-- End sidebar tags-->
@@ -78,7 +78,7 @@
             <article class="entry entry-single" data-aos="fade-up">
 
               <div class="entry-img">
-              <img src="{{ asset('front/img/haulotte.png') }}" alt="{{ $post->title }}" class="img-fluid">
+              <img src="{{asset('storage/' . $post->cover)}}" alt="{{ $post->title }}" class="img-fluid">
               </div>
 
               <h2 class="entry-title">
@@ -111,9 +111,9 @@
                   <ul class="tags">
                     @foreach ($tags as $tag)
                    <li><a href="{{ route('tag',$tag->slug) }}">{{ $tag->name }}</a></li>
-                    @endforeach 
+                    @endforeach
                   </ul>
-               
+
                   </div>
               </div> -->
 
@@ -135,7 +135,7 @@
               </div>
               <div class="send">
                 <button>Post Comment    <i class="icofont-send-mail"></i></button>
-             
+
               </div>
 
             </div><!-- End blog comments -->
