@@ -68,7 +68,7 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->perfil }}</td>
                         <td>
-                            @if(auth()->user()->id==$user->id || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$user->entidad && $user->perfil='Formador'))
+                            @if(auth()->user()->id==$user->id || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$user->entidad && $user->perfil='Formador' && auth()->user()->id==$user->id))
 
                             <a href="#" data-toggle="modal" data-target="#changepasswordModal" class="btn btn-pass btn-sm">{{__('message.Change Password')}}</a>
 
