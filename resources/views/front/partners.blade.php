@@ -16,8 +16,7 @@
                                 </div>
                                 {{--            <h4><a href="{{ route('serviceshow',$service->slug) }}">2100001</a></h4>--}}
                                 <p>{{$partners->name}}</p>
-                                <hr>
-                                <p>Web: <a href="{{$partners->link}}" > {{$partners->link}}</a></p>
+
                                 <hr>
 
                                 <a href="{{ route('partner',$partners->id) }}"> <button>Details</button></a>

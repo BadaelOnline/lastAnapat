@@ -8,7 +8,7 @@
 </div>
 @endif
 
-<form action="{{ route('admin.user.update',$user->id) }}" method="POST">
+<form action="{{ route('admin.users.update',$user->id) }}" method="POST">
     @csrf
 
     <div class="form-groups">
@@ -17,7 +17,7 @@
             <div class="col-sm-9">
                 <input type="text" name='name' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('name') ? old('name') : $user->name}}" id="name" placeholder="Ex: Susi Similikiti">
                 <div class="invalid-feedback">
-                    {{ $errors->first('name') }}    
+                    {{ $errors->first('name') }}
                 </div>
             </div>
         </div>
@@ -47,11 +47,11 @@
             <div class="col-sm-9">
                 <input type="password" name='password' class="form-control {{$errors->first('password') ? "is-invalid" : "" }} " value="{{old('password') ? old('password') : $user->password}}" id="password" placeholder="Password">
                 <div class="invalid-feedback">
-                    {{ $errors->first('password') }}    
-                </div>   
+                    {{ $errors->first('password') }}
+                </div>
             </div>
         </div> --}}
-   
+
         <div class="form-group col-md-12">
             <div class="col-sm-3">
                 <button type="submit" class="btn btn-info">{{__('message.Update')}}</button>

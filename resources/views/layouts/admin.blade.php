@@ -139,9 +139,9 @@
     </li>
     @can('isAdminOrResponsable')
       <li class="nav-item {{ in_array(Route::currentRouteName(),[
-            'admin.user',
+            'admin.users.index',
         ])? 'active' : ''}}">
-        <a class="nav-link" href="{{ route('admin.user') }}">
+        <a class="nav-link" href="{{ route('admin.users.index') }}">
           <i class="fas fa-fw fa-user"></i>
           <span>{{__('message.users')}}</span></a>
       </li>
