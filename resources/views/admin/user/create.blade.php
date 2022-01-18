@@ -57,7 +57,7 @@ input[type="radio"]:focus {
 </div>
 @endif
 
-<form action="{{ route('admin.user.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('admin.users.store') }}" method="POST">
     @csrf
 
     <div class="form-groups">
@@ -93,9 +93,9 @@ input[type="radio"]:focus {
             </div>
         </div>
 
-      
-          
-     
+
+
+
         @can('isAdmin')
         <div class="form-group col-md-4 ">
             <label for="entidad" class="col-sm-2 col-form-label">Perfil</label>
@@ -172,9 +172,9 @@ input[type="radio"]:focus {
         <div class="form-group col-md-4">
             <label for="direccion" class="col-sm-2 col-form-label">direccion</label>
             <div class="col-sm-7">
-                <input type="text" name='direccion' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Domicilio de la sede">
+                <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion')}}" id="linkedin" placeholder="Domicilio de la sede">
                 <div class="invalid-feedback">
-                    {{ $errors->first('linkedin') }}
+                    {{ $errors->first('direccion') }}
                 </div>
             </div>
         </div>
@@ -182,9 +182,9 @@ input[type="radio"]:focus {
         <div class="form-group col-md-4">
             <label for="codigo_postal" class="col-sm-2 col-form-label">codigo_postal</label>
             <div class="col-sm-7">
-                <input type="number" name='codigo_postal' class="form-control {{$errors->first('linkedin') ? "is-invalid" : "" }} " value="{{old('linkedin')}}" id="linkedin" placeholder="Código postal de la sede">
+                <input type="number" name='codigo_postal' class="form-control {{$errors->first('codigo_postal') ? "is-invalid" : "" }} " value="{{old('codigo_postal')}}" id="codigo_postal" placeholder="Código postal de la sede">
                 <div class="invalid-feedback">
-                    {{ $errors->first('linkedin') }}
+                    {{ $errors->first('codigo_postal') }}
                 </div>
             </div>
         </div>

@@ -25,11 +25,11 @@
 <!-- DataTales Example -->
 
 <div class="card shadow mb-4">
-{{--@can('isAdminOrResponsable')--}}
-{{--    <div class="card-header py-3">--}}
-{{--        <a href="{{ route('admin.user.create') }}" class="btn btn-pass">{{__('message.add_new')}}</a>--}}
-{{--    </div>--}}
-{{--@endcan--}}
+@can('isAdmin')
+    <div class="card-header py-3">
+        <a href="{{ route('admin.users.create') }}" class="btn btn-pass">{{__('message.add_new')}}</a>
+    </div>
+@endcan
     <div class="card-body">
 
         <div class="table-responsive">
@@ -72,9 +72,9 @@
 
                             <a href="#" data-toggle="modal" data-target="#changepasswordModal" class="btn btn-pass btn-sm">{{__('message.Change Password')}}</a>
 
-                            <a href="{{route('admin.user.edit', [$user->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
+{{--                            <a href="{{route('admin.users.edit', [$user->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>--}}
 
-                            <form method="POST" action="{{route('admin.user.destroy', [$user->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete this user permanently?")}}')">
+                            <form method="POST" action="{{route('admin.users.destroy', [$user->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete this user permanently?")}}')">
 
                                 @csrf
 
@@ -112,7 +112,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <form action="{{ route('admin.user.changepassword',$user->id) }}" method="POST">
+        <form action="{{ route('admin.users.changepassword',$user->id) }}" method="POST">
             @csrf
         <div class="modal-body">
 

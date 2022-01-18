@@ -41,24 +41,48 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+//        dd($request);
         \Validator::make($request->all(), [
-            "name" => "required",
+            "nombre" => "required",
             "email" => "required|email|unique:users",
-            "password" => "required|min:8"
+            "password" => "required|min:6",
+            "alias" => "required",
+            "apellidos" => "required",
+            "ciudad" => "required",
+            "direccion" => "required",
+            "codigo_postal" => "required",
+            "entidad" => "required",
         ])->validate();
 
         $user = new User();
-        $user->name = $request->name;
+//        dd($user);
+        $user->name = $request->nombre;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->role=$request->role;
+        $user->perfil=$request->perfil;
+        $user->remember_token = $request->_token;
+        $user->alias = $request->alias;
+        $user->apellidos = $request->apellidos;
+        $user->nombre = $request->nombre;
+        $user->ciudad = $request->ciudad;
+        $user->direccion = $request->direccion;
+        $user->codigo_postal = $request->codigo_postal;
+        if($request->perfil != "Administrador"){
+            $user->entidad = $request->entidad;
+        }else{
+            $user->entidad = 0;
+        }
+
+        $user->estado = $request->estado;
+        $user->provincia = "";
+
+//dd($user);
 
         if ($user->save()) {
-            return redirect()->route('admin.user')->with('success', 'Data added successfully');
+            return redirect()->route('admin.users.index')->with('success', 'Data added successfully');
         }else {
 
-            return redirect()->route('admin.user.create')->with('error', 'Data failed to add');
+            return redirect()->route('admin.users.create')->with('error', 'Data failed to add');
 
            }
     }
@@ -82,10 +106,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+//        dd($id);
         $user = User::findOrFail($id);
-        return view('admin.user.edit',[
-            'user' => $user
-        ]);
+//        dd($user);
+        return view('admin.users.edit',compact('user'));
     }
 
     /**
@@ -119,11 +143,11 @@ class UserController extends Controller
 
         if ( $user->save()) {
 
-            return redirect()->route('admin.user')->with('success', 'Password updated successfully');
+            return redirect()->route('admin.users.index')->with('success', 'Password updated successfully');
 
            } else {
 
-            return redirect()->route('admin.user')->with('error', 'Password failed to update');
+            return redirect()->route('admin.users.index')->with('error', 'Password failed to update');
 
            }
     }
@@ -140,6 +164,6 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect()->route('admin.user')->with('success', 'Data deleted successfully');
+        return redirect()->route('admin.users.index')->with('success', 'Data deleted successfully');
     }
 }
