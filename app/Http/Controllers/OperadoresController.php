@@ -16,7 +16,14 @@ class OperadoresController extends Controller
      */
     public function index()
     {
-        $operadores = Operadores::orderBy('id','desc')->get();
+        $user = auth()->user();
+        if($user->perfil=='Responsable_de_Formacion' || $user->perfil=='Formador')
+
+            $operadores = Operadores::orderBy('id','desc')->where('entidad','=',$user->entidad)->get();
+
+        else
+            $operadores = Operadores::orderBy('id','desc')->get();
+
 
         return view('admin.operadores.index',compact('operadores'));
     }
