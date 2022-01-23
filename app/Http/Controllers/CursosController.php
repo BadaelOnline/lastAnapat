@@ -36,6 +36,7 @@ class CursosController extends Controller
      */
     public function index2()
     {
+
         $cursos = Cursos::orderBy('id','desc')->where('estado',0)->get();
 
         return view('admin.cursos.index',compact('cursos'));
@@ -48,15 +49,29 @@ class CursosController extends Controller
      */
     public function create()
     {
-        $entidad=EntidadesFormadoreas::select('id','nombre')->get();
-        $formador=Formadores::select('id','nombre')->get();
+
+        $user = auth()->user();
+        if($user->perfil=='Administrador'){
+            $entidad=EntidadesFormadoreas::select('id','nombre')->get();
+            $formador=Formadores::select('id','nombre')->get();
+            $formadors=Formadores::select('id','nombre')->get();
+            $formadors2=Formadores::select('id','nombre')->get();
+            $formadors3=Formadores::select('id','nombre')->get();
+        }else{
+            $entidad=EntidadesFormadoreas::select('id','nombre')->where('id','=',$user->entidad)->get();
+            $formador=Formadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
+            $formadors=Formadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
+            $formadors2=Formadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
+            $formadors3=Formadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
+        }
+
+
+
         $tipo_maquina=Tipo_Maquina::select('id','tipo_maquina')->get();
         $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
         $examen_t=Examen::select('id','nombre')->where('tipo',1)->get();
         $examen_p=Examen::select('id','nombre')->where('tipo',2)->get();
-        $formadors=Formadores::select('id','nombre')->get();
-        $formadors2=Formadores::select('id','nombre')->get();
-        $formadors3=Formadores::select('id','nombre')->get();
+
         $x =Cursos::select('curso')->orderBy('id','desc')->latest()->get();
         $course_code = $x[0]->curso +1;
 
@@ -92,9 +107,9 @@ class CursosController extends Controller
 
 //        $cursos = new Cursos();
         if($request->cerrado == null){
-            $cursos->cerrado = 0;
-        }else{
             $cursos->cerrado = 1;
+        }else{
+            $cursos->cerrado = 0;
         }
         if($request->estado == null){
             $cursos->estado = 0;
@@ -102,9 +117,9 @@ class CursosController extends Controller
             $cursos->estado = 1;
         }
         if($request->publico_privado == null){
-            $cursos->publico_privado = 0;
-        }else{
             $cursos->publico_privado = 1;
+        }else{
+            $cursos->publico_privado = 0;
         }
 //dd($cursos->cerrado);
         if(!$request->formador_apoyo_2){
@@ -176,16 +191,25 @@ class CursosController extends Controller
      */
     public function edit($id)
     {
+        $user = auth()->user();
+        if($user->perfil=='Administrador'){
+            $entidad=EntidadesFormadoreas::select('id','nombre')->get();
+            $formador=Formadores::select('id','nombre')->get();
+            $formadors=Formadores::select('id','nombre')->get();
+            $formadors2=Formadores::select('id','nombre')->get();
+            $formadors3=Formadores::select('id','nombre')->get();
+        }else{
+            $entidad=EntidadesFormadoreas::select('id','nombre')->where('id','=',$user->entidad)->get();
+            $formador=Formadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
+            $formadors=Formadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
+            $formadors2=Formadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
+            $formadors3=Formadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
+        }
         $cursos = Cursos::findOrFail($id);
-        $entidad=EntidadesFormadoreas::select('id','nombre')->get();
-        $formador=Formadores::select('id','nombre')->get();
         $tipo_maquina=Tipo_Maquina::select('id','tipo_maquina')->get();
         $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
         $examen_t=Examen::select('id','nombre')->where('tipo',1)->get();
         $examen_p=Examen::select('id','nombre')->where('tipo',2)->get();
-        $formadors=Formadores::select('id','nombre')->get();
-        $formadors2=Formadores::select('id','nombre')->get();
-        $formadors3=Formadores::select('id','nombre')->get();
         $asistent = Asistent::orderBy('id','desc')->where('curso',$id)->get();
         $operador = Operadores::orderBy('id','desc')->get();
         $horario = Horario::orderBy('id','desc')->where('curso',$id)->get();

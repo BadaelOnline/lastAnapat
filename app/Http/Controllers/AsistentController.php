@@ -30,8 +30,14 @@ class AsistentController extends Controller
      */
     public function create($id)
     {
+        $user = auth()->user();
+        if($user->perfil=='Administrador'){
+            $operador=Operadores::select('id','nombre')->get();
+        }else{
+            $operador=Operadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
+        }
         $curso=Cursos::select('id','codigo')->get();
-        $operador=Operadores::select('id','nombre')->get();
+
         $tipo_carnet=Teoria::select('id','formacion')->get();
         $tipo=Practica::select('id','practica')->get();
 
