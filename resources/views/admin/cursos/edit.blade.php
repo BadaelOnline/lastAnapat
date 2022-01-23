@@ -316,7 +316,7 @@
             </div>
 
             {{--seventh row--}}
-
+            @if(auth()->user()->perfil=='Administrador' )
             <div class="col-md-2 d-flex flex-column justify-content-center">
                 <label for="estado" class="col-sm-12 col-form-label text-center">Publico - Privado</label>
                 <label class="switch">
@@ -340,7 +340,7 @@
                     <span class="slider round"></span>
                 </label>
             </div>
-
+            @endif
         </div>
 
         <div class="row">

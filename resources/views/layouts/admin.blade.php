@@ -182,13 +182,23 @@
     </li>
   @endcan
     @can('isResponsableOrFormador')
-    <li class="nav-item {{ in_array(Route::currentRouteName(),[
+      <!-- Nav Item - Pages Collapse Menu -->
+          <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.cursos',
-        ])? 'active' : ''}}">
-        <a class="nav-link" href="{{ route('admin.cursos') }}">
-          <i class="fas fa-fw fa-book-open"></i>
-          <span>{{__('message.Cursos')}}</span></a>
-      </li>
+            'admin.pcategory',
+        ])? 'active' : ''}}" >
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                  <i class="fas fa-fw fa-book-open"></i>
+                  <span>{{__('message.Cursos')}}</span>
+              </a>
+
+              <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                  <div class=" py-2 collapse-inner rounded">
+                      <a class="collapse-item" href="{{ route('admin.cursos') }}">{{__('message.Cursos')}}</a>
+                      <a class="collapse-item" href="{{ route('admin.inactiveCursos') }}">{{__('message.Inactivo Cursos')}}</a>
+                  </div>
+              </div>
+          </li>
     @endcan
     <!-- Nav Item - Pages Collapse Menu -->
 
