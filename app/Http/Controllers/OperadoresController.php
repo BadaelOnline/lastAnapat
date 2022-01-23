@@ -28,7 +28,13 @@ class OperadoresController extends Controller
      */
     public function create()
     {
-        $entidad=EntidadesFormadoreas::select('id','nombre')->get();
+        $user = auth()->user();
+        if($user->perfil=='Administrador'){
+            $entidad=EntidadesFormadoreas::select('id','nombre')->get();
+        }else{
+            $entidad=EntidadesFormadoreas::select('id','nombre')->where('id','=',$user->entidad)->get();
+        }
+
         return view('admin.operadores.create',compact('entidad'));
 
     }
