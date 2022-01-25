@@ -104,6 +104,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::delete('asistent/destroy/{id}',[AsistentController::class, 'destroy'])->name('asistent.destroy');
 
     // Manage Portfolio
+//    Route::resource('cursos',CursosController::class);
     Route::get('cursos', [CursosController::class, 'index'])->name('cursos');
     Route::get('inactiveCursos', [CursosController::class, 'index2'])->name('inactiveCursos');
     Route::get('cursos/create', [CursosController::class, 'create'])->name('cursos.create');
@@ -214,7 +215,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::delete('examen/destroy/{id}',[ExamenController::class, 'destroy'])->middleware('can:isAdmin')->name('examen.destroy');
 
     // Manage Carnet
-    Route::get('carnet', [CarnetController::class, 'index'])->middleware('can:isAdminOrResponsable')->name('carnet');
+    Route::get('carnet', [CarnetController::class, 'index'])->name('carnet');
     Route::get('carnet/create', [CarnetController::class, 'create'])->middleware('can:isAdminOrResponsable')->name('carnet.create');
     Route::post('carnet/create', [CarnetController::class, 'store'])->middleware('can:isAdminOrResponsable')->name('carnet.store');
     Route::get('carnet/edit/{id}', [CarnetController::class, 'edit'])->middleware('can:isAdminOrResponsable')->name('carnet.edit');

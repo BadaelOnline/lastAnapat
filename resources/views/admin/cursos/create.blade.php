@@ -126,331 +126,364 @@
             <div class="col-md-4">
                 <label for="entidad" class="col-sm-12 col-form-label">Entidad</label>
                 <div class="col-sm-9">
-                    <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
-                        <option disabled selected>{{__('message.Choose_One')}}</option>
-                        @foreach ($entidad as $entidad)
-                            <option value="{{ $entidad->id }}" {{old('entidad') == $entidad->id ? "selected" : ""}}>{{ $entidad->nombre }}</option>
-                        @endforeach
-                    </select>
+                    @if(auth()->user()->perfil=='Administrador')
+                        <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
+                            <option disabled selected>{{__('message.Choose_One')}}</option>
+                            @foreach ($entidad as $entidad)
+                                <option value="{{ $entidad->id }}" {{old('entidad') == $entidad->id ? "selected" : ""}}>{{ $entidad->nombre }}</option>
+                            @endforeach
+                        </select>
+                    @else
+                        <input type="text" readonly class="form-control" value="{{$entidad->nombre}}" placeholder="">
+                        <input type="hidden" name="entidad" class="form-control" value="{{$entidad->id}}">
+                    @endif
                     <div class="invalid-feedback">
                         {{ $errors->first('entidad') }}
                     </div>
-                </div>
-            </div>
+</div>
+</div>
 
 
-            <div class="col-md-4">
-                <label for="formador" class="col-sm-12 col-form-label">Formador</label>
-                <div class="col-sm-9">
-                    <select name='formador' class="form-control {{$errors->first('formador') ? "is-invalid" : "" }} " id="formador">
-                        <option disabled selected>{{__('message.Choose_One')}}</option>
-                        @foreach ($formador as $formador)
-                            <option value="{{ $formador->id }}" {{old('formador') == $formador->id ? "selected" : ""}}>{{ $formador->nombre }}</option>
-                        @endforeach
-                    </select>
-                    <div class="invalid-feedback">
-                        {{ $errors->first('formador') }}
-                    </div>
-                </div>
-            </div>
+<div class="col-md-4">
+<label for="formador" class="col-sm-12 col-form-label">Formador</label>
+<div class="col-sm-9">
+    <select name='formador' class="form-control {{$errors->first('formador') ? "is-invalid" : "" }} " id="formador">
+        <option disabled selected>{{__('message.Choose_One')}}</option>
+        @foreach ($formador as $formador)
+            <option value="{{ $formador->id }}" {{old('formador') == $formador->id ? "selected" : ""}}>{{ $formador->nombre }}</option>
+        @endforeach
+    </select>
+    <div class="invalid-feedback">
+        {{ $errors->first('formador') }}
+    </div>
+</div>
+</div>
 
 
-            {{--third row--}}
+{{--third row--}}
 
-            <div class="col-md-4">
-                <label for="formador_apoyo_1" class="col-sm-12 col-form-label">Formador Apoyo 1</label>
-                <div class="col-sm-9">
-                    <select name='formador_apoyo_1' class="form-control {{$errors->first('formador_apoyo_1') ? "is-invalid" : "" }} " id="formador_apoyo1">
-                        <option disabled selected>{{__('message.Choose_One')}}</option>
-                        @foreach ($formadors as $formadors)
-                            <option value="{{ $formadors->id }}" {{old('formador_apoyo_1') == $formadors->id ? "selected" : ""}}>{{ $formadors->nombre }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="col-md-4">
-                <label for="formador_apoyo_2" class="col-sm-12 col-form-label">Formador Apoyo 2</label>
-                <div class="col-sm-9">
-                    <select name='formador_apoyo_2' class="form-control {{$errors->first('formador_apoyo2') ? "is-invalid" : "" }} " id="formador_apoyo2">
-                        <option disabled selected>{{__('message.Choose_One')}}</option>
-                        @foreach ($formadors2 as $formador)
-                            <option value="{{ $formador->id }}" {{old('formador_apoyo_2') == $formador->id ? "selected" : ""}}>{{ $formador->nombre }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-            </div>
-
-            <div class="col-md-4">
-                <label for="formador_apoyo_3" class="col-sm-12 col-form-label">Formador Apoyo 3</label>
-                <div class="col-sm-9">
-                    <select name='formador_apoyo_3' class="form-control {{$errors->first('formador_apoyo3') ? "is-invalid" : "" }} " id="formador_apoyo3">
-                        <option disabled selected>{{__('message.Choose_One')}}</option>
-                        @foreach ($formadors3 as $formador)
-                            <option value="{{ $formador->id }}" {{old('formador_apoyo_3') == $formador->id ? "selected" : ""}}>{{ $formador->nombre }}</option>
-                        @endforeach
-                    </select>
-                    <div class="invalid-feedback">
-                        {{ $errors->first('formador_apoyo3') }}
-                    </div>
-                </div>
-            </div>
+<div class="col-md-4">
+<label for="formador_apoyo_1" class="col-sm-12 col-form-label">Formador Apoyo 1</label>
+<div class="col-sm-9">
+    <select name='formador_apoyo_1' class="form-control {{$errors->first('formador_apoyo_1') ? "is-invalid" : "" }} " id="formador_apoyo1">
+        <option disabled selected>{{__('message.Choose_One')}}</option>
+        @foreach ($formadors as $formadors)
+            <option value="{{ $formadors->id }}" {{old('formador_apoyo_1') == $formadors->id ? "selected" : ""}}>{{ $formadors->nombre }}</option>
+        @endforeach
+    </select>
+</div>
+</div>
 
 
+<div class="col-md-4">
+<label for="formador_apoyo_2" class="col-sm-12 col-form-label">Formador Apoyo 2</label>
+<div class="col-sm-9">
+    <select name='formador_apoyo_2' class="form-control {{$errors->first('formador_apoyo2') ? "is-invalid" : "" }} " id="formador_apoyo2">
+        <option disabled selected>{{__('message.Choose_One')}}</option>
+        @foreach ($formadors2 as $formador)
+            <option value="{{ $formador->id }}" {{old('formador_apoyo_2') == $formador->id ? "selected" : ""}}>{{ $formador->nombre }}</option>
+        @endforeach
+    </select>
+</div>
 
-            {{--fourth row--}}
+</div>
 
-            <div class="col-md-4">
-                <label for="fecha_inicio" class="col-sm-12 col-form-label">Fecha Inicio</label>
-                <div class="col-sm-9">
-                    <input type="date" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio')}}" id="fecha_inicio" >
-                    <div class="invalid-feedback">
-                        {{ $errors->first('fecha_inicio') }}
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-4">
-                <label for="direccion" class="col-sm-12 col-form-label">Direccion</label>
-                <div class="col-sm-9">
-                    <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion')}}" id="direccion" placeholder="Dirección del curso">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('direccion') }}
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-4">
-                <label for="ciudad" class="col-sm-12 col-form-label">Ciudad</label>
-                <div class="col-sm-9">
-                    <input type="text" name='ciudad' class="form-control {{$errors->first('ciudad') ? "is-invalid" : "" }} " value="{{old('ciudad')}}" id="ciudad" placeholder="Ciudad del curso">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('ciudad') }}
-                    </div>
-                </div>
-            </div>
+<div class="col-md-4">
+<label for="formador_apoyo_3" class="col-sm-12 col-form-label">Formador Apoyo 3</label>
+<div class="col-sm-9">
+    <select name='formador_apoyo_3' class="form-control {{$errors->first('formador_apoyo3') ? "is-invalid" : "" }} " id="formador_apoyo3">
+        <option disabled selected>{{__('message.Choose_One')}}</option>
+        @foreach ($formadors3 as $formador)
+            <option value="{{ $formador->id }}" {{old('formador_apoyo_3') == $formador->id ? "selected" : ""}}>{{ $formador->nombre }}</option>
+        @endforeach
+    </select>
+    <div class="invalid-feedback">
+        {{ $errors->first('formador_apoyo3') }}
+    </div>
+</div>
+</div>
 
 
 
-            {{--fifth row--}}
+{{--fourth row--}}
 
-            <div class="col-md-4">
-                <label for="provincia" class="col-sm-12 col-form-label">Provincia</label>
-                <div class="col-sm-9">
-                    <input type="text" name='provincia' class="form-control {{$errors->first('provincia') ? "is-invalid" : "" }} " value="{{old('provincia')}}" id="provincia" placeholder="Provincia del curso">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('provincia') }}
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-4">
-                <label for="codigo_postal" class="col-sm-12 col-form-label">Codigo Postal</label>
-                <div class="col-sm-9">
-                    <input type="number" name='codigo_postal' class="form-control {{$errors->first('codigo_postal') ? "is-invalid" : "" }} " value="{{old('codigo_postal')}}" id="codigo_postal" placeholder="Código postal del curso">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('codigo_postal') }}
-                    </div>
-                </div>
-            </div>
+<div class="col-md-4">
+<label for="fecha_inicio" class="col-sm-12 col-form-label">Fecha Inicio</label>
+<div class="col-sm-9">
+    <input type="date" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio')}}" id="fecha_inicio" >
+    <div class="invalid-feedback">
+        {{ $errors->first('fecha_inicio') }}
+    </div>
+</div>
+</div>
 
 
-            <div class="col-md-4">
-                <label for="asistentes_pdf" class="col-sm-12 col-form-label">Asistentes Pdf</label>
-                <div class="col-sm-9">
-                    <input type="file" name='asistentes_pdf' class="form-control {{$errors->first('asistentes_pdf') ? "is-invalid" : "" }} " value="{{old('asistentes_pdf')}}" id="asistentes_pdf" placeholder="asistentes_pdf">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('asistentes_pdf') }}
-                    </div>
-                </div>
-            </div>
+<div class="col-md-4">
+<label for="direccion" class="col-sm-12 col-form-label">Direccion</label>
+<div class="col-sm-9">
+    <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion')}}" id="direccion" placeholder="Dirección del curso">
+    <div class="invalid-feedback">
+        {{ $errors->first('direccion') }}
+    </div>
+</div>
+</div>
 
 
-            {{--sixth row--}}
-
-            <div class="col-md-4">
-                <label for="examen-t" class="col-sm-12 col-form-label">Examen T</label>
-                <div class="col-sm-9">
-                    <select name='examen_t' class="form-control {{$errors->first('examen_t') ? "is-invalid" : "" }} " id="examen-t">
-                        <option disabled selected>{{__('message.Choose_One')}}</option>
-                        @foreach ($examen_t as $examen_t)
-                            <option value="{{ $examen_t->id }}" {{old('examen_t') == $examen_t->id ? "selected" : ""}}>{{ $examen_t->nombre }}</option>
-                        @endforeach
-                    </select>
-                    <div class="invalid-feedback">
-                        {{ $errors->first('examen_t') }}
-                    </div>
-                </div>
-            </div>
+<div class="col-md-4">
+<label for="ciudad" class="col-sm-12 col-form-label">Ciudad</label>
+<div class="col-sm-9">
+    <input type="text" name='ciudad' class="form-control {{$errors->first('ciudad') ? "is-invalid" : "" }} " value="{{old('ciudad')}}" id="ciudad" placeholder="Ciudad del curso">
+    <div class="invalid-feedback">
+        {{ $errors->first('ciudad') }}
+    </div>
+</div>
+</div>
 
 
-            <div class="col-md-4">
-                <label for="examen-p" class="col-sm-12 col-form-label">Examen P</label>
-                <div class="col-sm-9">
-                    <select name='examen_p' class="form-control {{$errors->first('examen_p') ? "is-invalid" : "" }} " id="examen_p">
-                        <option disabled selected>{{__('message.Choose_One')}}</option>
-                        @foreach ($examen_p as $examen_p)
-                            <option value="{{ $examen_p->id }}" {{old('examen_p') == $examen_p->id ? "selected" : ""}}>{{ $examen_p->nombre }}</option>
-                        @endforeach
-                    </select>
-                    <div class="invalid-feedback">
-                        {{ $errors->first('examen_p') }}
-                    </div>
-                </div>
-            </div>
+
+{{--fifth row--}}
+
+<div class="col-md-4">
+<label for="provincia" class="col-sm-12 col-form-label">Provincia</label>
+<div class="col-sm-9">
+    <input type="text" name='provincia' class="form-control {{$errors->first('provincia') ? "is-invalid" : "" }} " value="{{old('provincia')}}" id="provincia" placeholder="Provincia del curso">
+    <div class="invalid-feedback">
+        {{ $errors->first('provincia') }}
+    </div>
+</div>
+</div>
 
 
-            <div class="col-md-4">
-                <label for="fecha_alta" class="col-sm-12 col-form-label">Fecha Alta</label>
-                <div class="col-sm-9">
-                    <input type="date" name='fecha_alta' class="form-control {{$errors->first('fecha_alta') ? "is-invalid" : "" }} " value="{{old('fecha_alta')}}" id="fecha_alta" >
-                    <div class="invalid-feedback">
-                        {{ $errors->first('fecha_alta') }}
-                    </div>
-                </div>
-            </div>
+<div class="col-md-4">
+<label for="codigo_postal" class="col-sm-12 col-form-label">Codigo Postal</label>
+<div class="col-sm-9">
+    <input type="number" name='codigo_postal' class="form-control {{$errors->first('codigo_postal') ? "is-invalid" : "" }} " value="{{old('codigo_postal')}}" id="codigo_postal" placeholder="Código postal del curso">
+    <div class="invalid-feedback">
+        {{ $errors->first('codigo_postal') }}
+    </div>
+</div>
+</div>
 
 
-            <div class="col-md-4">
-                <label for="observaciones" class="col-sm-12 col-form-label">Observaciones</label>
-                <div class="col-sm-9">
-                    <input type="text" name='observaciones' class="form-control {{$errors->first('observaciones') ? "is-invalid" : "" }} " value="{{old('observaciones')}}" id="observaciones" placeholder="Observaciones al curso">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('observaciones') }}
-                    </div>
-                </div>
-            </div>
+<div class="col-md-4">
+<label for="asistentes_pdf" class="col-sm-12 col-form-label">Asistentes Pdf</label>
+<div class="col-sm-9">
+    <input type="file" name='asistentes_pdf' class="form-control {{$errors->first('asistentes_pdf') ? "is-invalid" : "" }} " value="{{old('asistentes_pdf')}}" id="asistentes_pdf" placeholder="asistentes_pdf">
+    <div class="invalid-feedback">
+        {{ $errors->first('asistentes_pdf') }}
+    </div>
+</div>
+</div>
 
 
-            {{--seventh row--}}
-            @if(auth()->user()->perfil=='Administrador' )
-            <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">Publico - Privado</label>
-                <label class="switch">
-                    <input type="checkbox" name="publico_privado" {{old('publico_privado') == "on" ? "checked" : ""}} >
-                    <span class="slider round"></span>
-                </label>
-            </div>
+{{--sixth row--}}
 
-            <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">Cerrado</label>
-                <label class="switch" >
-                    <input type="checkbox" name="cerrado" {{old('cerrado') == "on" ? "checked" : ""}}>
-                    <span class="slider round"></span>
-                </label>
-            </div>
-
-            <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">Estado</label>
-                <label class="switch">
-                    <input type="checkbox" name="estado" {{old('estado') == "on" ? "checked" : ""}}>
-                    <span class="slider round" ></span>
-                </label>
-            </div>
-            @endif
+<div class="col-md-4">
+<label for="examen-t" class="col-sm-12 col-form-label">Examen T</label>
+<div class="col-sm-9">
+    <select name='examen_t' class="form-control {{$errors->first('examen_t') ? "is-invalid" : "" }} " id="examen-t">
+        <option disabled selected>{{__('message.Choose_One')}}</option>
+        @foreach ($examen_t as $examen_t)
+            <option value="{{ $examen_t->id }}" {{old('examen_t') == $examen_t->id ? "selected" : ""}}>{{ $examen_t->nombre }}</option>
+        @endforeach
+    </select>
+    <div class="invalid-feedback">
+        {{ $errors->first('examen_t') }}
+    </div>
+</div>
+</div>
 
 
-        </div>
+<div class="col-md-4">
+<label for="examen-p" class="col-sm-12 col-form-label">Examen P</label>
+<div class="col-sm-9">
+    <select name='examen_p' class="form-control {{$errors->first('examen_p') ? "is-invalid" : "" }} " id="examen_p">
+        <option disabled selected>{{__('message.Choose_One')}}</option>
+        @foreach ($examen_p as $examen_p)
+            <option value="{{ $examen_p->id }}" {{old('examen_p') == $examen_p->id ? "selected" : ""}}>{{ $examen_p->nombre }}</option>
+        @endforeach
+    </select>
+    <div class="invalid-feedback">
+        {{ $errors->first('examen_p') }}
+    </div>
+</div>
+</div>
 
-        {{--        <div class="form-group">--}}
-        {{--            <div class="picture-container">--}}
-        {{--                <div class="picture">--}}
-        {{--                    <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>--}}
-        {{--                    <input type="file" id="wizard-picture" name="cover" class="form-control {{$errors->first('cover') ? "is-invalid" : "" }} ">--}}
-        {{--                    <div class="invalid-feedback">--}}
-        {{--                        {{ $errors->first('cover') }}--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--                <h6>Pilih Cover</h6>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
 
-        <div class="form-group mt-5">
+<div class="col-md-4">
+<label for="fecha_alta" class="col-sm-12 col-form-label">Fecha Alta</label>
+<div class="col-sm-9">
+    <input type="date" name='fecha_alta' class="form-control {{$errors->first('fecha_alta') ? "is-invalid" : "" }} " value="{{old('fecha_alta')}}" id="fecha_alta" >
+    <div class="invalid-feedback">
+        {{ $errors->first('fecha_alta') }}
+    </div>
+</div>
+</div>
 
-            <div class="col-sm-12">
 
-                <button type="submit" class="btn btn-info">{{__('message.Create')}}</button>
+<div class="col-md-4">
+<label for="observaciones" class="col-sm-12 col-form-label">Observaciones</label>
+<div class="col-sm-9">
+    <input type="text" name='observaciones' class="form-control {{$errors->first('observaciones') ? "is-invalid" : "" }} " value="{{old('observaciones')}}" id="observaciones" placeholder="Observaciones al curso">
+    <div class="invalid-feedback">
+        {{ $errors->first('observaciones') }}
+    </div>
+</div>
+</div>
 
-            </div>
 
-        </div>
+{{--seventh row--}}
+@if(auth()->user()->perfil=='Administrador' )
+<div class="col-md-2 d-flex flex-column justify-content-center">
+<label for="estado" class="col-sm-12 col-form-label text-center">Publico - Privado</label>
+<label class="switch">
+    <input type="checkbox" name="publico_privado" {{old('publico_privado') == "on" ? "checked" : ""}} >
+    <span class="slider round"></span>
+</label>
+</div>
 
-    </form>
+<div class="col-md-2 d-flex flex-column justify-content-center">
+<label for="estado" class="col-sm-12 col-form-label text-center">Cerrado</label>
+<label class="switch" >
+    <input type="checkbox" name="cerrado" {{old('cerrado') == "on" ? "checked" : ""}}>
+    <span class="slider round"></span>
+</label>
+</div>
+
+<div class="col-md-2 d-flex flex-column justify-content-center">
+<label for="estado" class="col-sm-12 col-form-label text-center">Estado</label>
+<label class="switch">
+    <input type="checkbox" name="estado" {{old('estado') == "on" ? "checked" : ""}}>
+    <span class="slider round" ></span>
+</label>
+</div>
+@endif
+
+
+</div>
+
+{{--        <div class="form-group">--}}
+{{--            <div class="picture-container">--}}
+{{--                <div class="picture">--}}
+{{--                    <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>--}}
+{{--                    <input type="file" id="wizard-picture" name="cover" class="form-control {{$errors->first('cover') ? "is-invalid" : "" }} ">--}}
+{{--                    <div class="invalid-feedback">--}}
+{{--                        {{ $errors->first('cover') }}--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <h6>Pilih Cover</h6>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+<div class="form-group mt-5">
+
+<div class="col-sm-12">
+
+<button type="submit" class="btn btn-info">{{__('message.Create')}}</button>
+
+</div>
+
+</div>
+
+</form>
 @endsection
 
 @push('scripts')
 
-    <script>
-        var a1CheckBox = document.getElementById('1');
-        var b1CheckBox = document.getElementById('2');
-        var a2CheckBox = document.getElementById('3');
-        var b2CheckBox = document.getElementById('4');
-        var a3CheckBox = document.getElementById('5');
-        var b3CheckBox = document.getElementById('6');
+<script>
+var a1CheckBox = document.getElementById('1');
+var b1CheckBox = document.getElementById('2');
+var a2CheckBox = document.getElementById('3');
+var b2CheckBox = document.getElementById('4');
+var a3CheckBox = document.getElementById('5');
+var b3CheckBox = document.getElementById('6');
 
-        var searchBox = document.getElementById('codigo');
-        var code = document.getElementById('curso').value;
+var searchBox = document.getElementById('codigo');
+var code = document.getElementById('curso').value;
 
 
-        function updateSearchBox() {
-            if (a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked) {
-                searchBox.value = 'B01-' + code;
-            }else if (!a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked) {
-                searchBox.value = 'B02-' + code;
-            }else if (!a1CheckBox.checked && !b1CheckBox.checked && a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked) {
-                searchBox.value = 'B03-' + code;
-            }else if (!a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked) {
-                searchBox.value ='B04-' + code;
-            }else if (!a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && !b3CheckBox.checked) {
-                searchBox.value = 'B05-' + code;
-            }else if (!a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && b3CheckBox.checked) {
-                searchBox.value = 'B06-' + code;
-            }else if (a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked) {
-                searchBox.value = 'B07-' + code;
-            }else if (a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && !b3CheckBox.checked) {
-                searchBox.value = 'B08-' + code;
-            }else if (a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && b3CheckBox.checked) {
-                searchBox.value = 'B09-' + code;
-            }else if (!a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && !b3CheckBox.checked) {
-                searchBox.value = 'B10-' + code;
-            }else if (!a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && b3CheckBox.checked) {
-                searchBox.value = 'B11-' + code;
-            }else if (!a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && b3CheckBox.checked) {
-                searchBox.value = 'B12-' + code;
-            }else if (a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && !b3CheckBox.checked) {
-                searchBox.value = 'B13-' + code;
-            }else if (a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && b3CheckBox.checked) {
-                searchBox.value = 'B14-' + code;
-            }else if (a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && b3CheckBox.checked) {
-                searchBox.value = 'B15-' + code;
-            }else if (a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && b3CheckBox.checked) {
-                searchBox.value = 'B16-' + code;
-            } else {
-                searchBox.value = '{{__("message.you can not choose this type of machine togother")}}';
-            }
-        }
+function updateSearchBox() {
+if(a2CheckBox.checked){
+a1CheckBox.disabled  = true;
+b1CheckBox.disabled  = true;
+b2CheckBox.disabled  = true;
+b3CheckBox.disabled  = true;
+a3CheckBox.disabled  = true;
+}
+if(b2CheckBox.checked){
+a1CheckBox.disabled  = true;
+b1CheckBox.disabled  = true;
+a2CheckBox.disabled  = true;
+b3CheckBox.disabled  = true;
+a3CheckBox.disabled  = true;
+}
+if(a1CheckBox.checked || b1CheckBox.checked || a3CheckBox.checked || b3CheckBox.checked){
+a2CheckBox.disabled  = true;
+b2CheckBox.disabled  = true;
+}
+if(!a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked){
+a1CheckBox.disabled  = false;
+b1CheckBox.disabled  = false;
+a2CheckBox.disabled  = false;
+b2CheckBox.disabled  = false;
+b3CheckBox.disabled  = false;
+a3CheckBox.disabled  = false;
+}
 
-    </script>
 
-    <script>
-        // Prepare the preview for profile picture
-        $("#wizard-picture").change(function(){
-            readURL(this);
-        });
-        //Function to show image before upload
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script>
+if (a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked) {
+searchBox.value = 'B01-' + code;
+}else if (!a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked) {
+searchBox.value = 'B02-' + code;
+}else if (!a1CheckBox.checked && !b1CheckBox.checked && a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked) {
+searchBox.value = 'B03-' + code;
+}else if (!a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked) {
+searchBox.value ='B04-' + code;
+}else if (!a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && !b3CheckBox.checked) {
+searchBox.value = 'B05-' + code;
+}else if (!a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && b3CheckBox.checked) {
+searchBox.value = 'B06-' + code;
+}else if (a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && !b3CheckBox.checked) {
+searchBox.value = 'B07-' + code;
+}else if (a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && !b3CheckBox.checked) {
+searchBox.value = 'B08-' + code;
+}else if (a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && b3CheckBox.checked) {
+searchBox.value = 'B09-' + code;
+}else if (!a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && !b3CheckBox.checked) {
+searchBox.value = 'B10-' + code;
+}else if (!a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && b3CheckBox.checked) {
+searchBox.value = 'B11-' + code;
+}else if (!a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && b3CheckBox.checked) {
+searchBox.value = 'B12-' + code;
+}else if (a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && !b3CheckBox.checked) {
+searchBox.value = 'B13-' + code;
+}else if (a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && !a3CheckBox.checked && b3CheckBox.checked) {
+searchBox.value = 'B14-' + code;
+}else if (a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && b3CheckBox.checked) {
+searchBox.value = 'B15-' + code;
+}else if (a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && b3CheckBox.checked) {
+searchBox.value = 'B16-' + code;
+} else {
+searchBox.value = '{{__("message.you can not choose this type of machine togother")}}';
+}
+}
+
+</script>
+
+<script>
+// Prepare the preview for profile picture
+$("#wizard-picture").change(function(){
+readURL(this);
+});
+//Function to show image before upload
+function readURL(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+reader.onload = function (e) {
+    $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+}
+reader.readAsDataURL(input.files[0]);
+}
+}
+</script>
 @endpush

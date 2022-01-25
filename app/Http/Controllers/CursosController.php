@@ -51,6 +51,7 @@ class CursosController extends Controller
     {
 
         $user = auth()->user();
+//        dd($user);
         if($user->perfil=='Administrador'){
             $entidad=EntidadesFormadoreas::select('id','nombre')->get();
             $formador=Formadores::select('id','nombre')->get();
@@ -58,7 +59,7 @@ class CursosController extends Controller
             $formadors2=Formadores::select('id','nombre')->get();
             $formadors3=Formadores::select('id','nombre')->get();
         }else{
-            $entidad=EntidadesFormadoreas::select('id','nombre')->where('id','=',$user->entidad)->get();
+            $entidad=EntidadesFormadoreas::select('id','nombre')->where('id','=',$user->entidad)->first();
             $formador=Formadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
             $formadors=Formadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
             $formadors2=Formadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
