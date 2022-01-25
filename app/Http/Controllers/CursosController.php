@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CursoExport;
 use Illuminate\Http\Request;
 
 use App\Models\{Asistent,
@@ -14,6 +15,7 @@ use App\Models\{Asistent,
     Pcategory,
     Tipo_De_Curso,
     Tipo_Maquina};
+use Maatwebsite\Excel\Facades\Excel;
 
 class CursosController extends Controller
 {
@@ -80,6 +82,11 @@ class CursosController extends Controller
 
 //        dd($formador[0]->nombre);
         return view('admin.cursos.create',compact('entidad','course_code','formador','tipo_maquina','tipo_curso','examen_t','examen_p','formadors','formadors2','formadors3'));
+    }
+
+    public function export()
+    {
+        return Excel::download(new CursoExport(), 'cursos.xlsx');
     }
 
     /**
