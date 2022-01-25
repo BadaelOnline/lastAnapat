@@ -30,6 +30,9 @@
 @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion' ))
         <a href="{{ route('admin.cursos.create') }}" class="btn btn-pass">{{__('message.add_new')}}</a>
         @endif
+{{--    <a href="{{ route('admin.cursos.export') }}" class="btn btn-primary">--}}
+        Export Data
+    </a>
     </div>
 
     <div class="card-body col-md-12">

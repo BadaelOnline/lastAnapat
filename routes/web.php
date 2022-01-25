@@ -113,6 +113,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::post('cursos/edit/{id}', [CursosController::class, 'update'])->name('cursos.update');
     Route::delete('cursos/destroy/{id}',[CursosController::class, 'destroy'])->name('cursos.destroy');
     Route::post('cursos/activo/{id}',[CursosController::class, 'activo'])->name('cursos.activo');
+    Route::get('cursos/export',[CursosController::class, 'export'])->name('cursos.export');
 
 
     // Manage Categories
