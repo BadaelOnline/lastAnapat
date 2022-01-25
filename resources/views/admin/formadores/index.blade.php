@@ -27,9 +27,9 @@
 <div class="card shadow mb-4">
 
     <div class="card-header py-3">
-
-
-        <a href="{{ route('admin.formadores.create') }}" class="btn btn-pass">{{__('message.add_new')}} Formadores</a>
+        @if(auth()->user()->perfil=='Administrador')
+          <a href="{{ route('admin.formadores.create') }}" class="btn btn-pass">{{__('message.add_new')}} Formadores</a>
+        @endif
 
 
     </div>

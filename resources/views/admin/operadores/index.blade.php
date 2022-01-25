@@ -27,9 +27,9 @@
 <div class="card shadow mb-4">
 
     <div class="card-header py-3">
-
+        @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion'))
         <a href="{{ route('admin.operadores.create') }}" class="btn btn-pass">{{__('message.add_new')}} Operadores</a>
-
+        @endif
     </div>
 
     <div class="card-body">
@@ -51,9 +51,9 @@
                         <th>{{__('message.Apellidos')}} </th>
 
                         <th>{{__('message.Direccion')}} </th>
-
+                        @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion'))
                         <th>{{__('message.Option')}}</th>
-
+                        @endif
                     </tr>
 
                 </thead>
@@ -85,7 +85,7 @@
                         <td>{{ $operadores->direccion  }}</td>
 
                         <td>
-
+                            @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion'))
                             <a href="{{route('admin.operadores.edit', [$operadores->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
 
                             <form method="POST" action="{{route('admin.operadores.destroy', [$operadores->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
@@ -99,7 +99,7 @@
                                 </button>
 
                             </form>
-
+                            @endif
                         </td>
 
                     </tr>

@@ -210,6 +210,7 @@
         <i class="fas fa-fw fa-allergies"></i>
         <span>{{__('message.Operadores')}}</span></a>
     </li>
+      @can('isAdmin')
       <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.examen',
         ])? 'active' : ''}}">
@@ -217,6 +218,8 @@
               <i class="fas fa-fw fa-allergies"></i>
               <span>{{__('message.Examen')}}</span></a>
       </li>
+
+      @endcan
       <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.carnet',
         ])? 'active' : ''}}">

@@ -27,9 +27,9 @@
 <div class="card shadow mb-4">
 
     <div class="card-header py-3">
-
+@if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion' ))
         <a href="{{ route('admin.cursos.create') }}" class="btn btn-pass">{{__('message.add_new')}}</a>
-
+        @endif
     </div>
 
     <div class="card-body col-md-12">
@@ -77,7 +77,8 @@
                         <td>{{ $cursos->provincia }}</td>
                         <td>{{ $cursos->direccion }}</td>
                         <td>
-
+                            @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$cursos->entidad) && $cursos->estado ==1
+                                                                      || (auth()->user()->perfil=='Formador' && auth()->user()->entidad==$cursos->entidad && $cursos->estado ==1))
                             <a href="{{route('admin.cursos.edit', [$cursos->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
                             <form method="POST" action="{{route('admin.cursos.destroy', [$cursos->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete this cursos permanently?")}}')">
 
@@ -89,7 +90,9 @@
                                 </button>
                             </form>
 {{--                            <a href="{{route('admin.cursos.activo', [$cursos->id])}}" class="btn btn-edit btn-sm"> Activo </a>--}}
-
+                            @else
+                                <span class="-align-center">Curso Inactivo</span>
+                            @endif
                         </td>
                     </tr>
                     @endif
