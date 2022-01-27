@@ -277,7 +277,7 @@
 
 
 {{--sixth row--}}
-
+            @if(auth()->user()->perfil=='Administrador' )
 <div class="col-md-4">
 <label for="examen-t" class="col-sm-12 col-form-label">Examen T</label>
 <div class="col-sm-9">
@@ -308,7 +308,10 @@
     </div>
 </div>
 </div>
-
+            @else
+                <input type="hidden" name="examen_p" value="0">
+                <input type="hidden" name="examen_t" value="0">
+            @endif
 
 <div class="col-md-4">
 <label for="fecha_alta" class="col-sm-12 col-form-label">Fecha Alta</label>
@@ -330,17 +333,17 @@
     </div>
 </div>
 </div>
-
+            <div class="col-md-2 d-flex flex-column justify-content-center">
+                <label for="estado" class="col-sm-12 col-form-label text-center">Publico - Privado</label>
+                <label class="switch">
+                    <input type="checkbox" name="publico_privado" {{old('publico_privado') == "on" ? "checked" : ""}} >
+                    <span class="slider round"></span>
+                </label>
+            </div>
 
 {{--seventh row--}}
 @if(auth()->user()->perfil=='Administrador' )
-<div class="col-md-2 d-flex flex-column justify-content-center">
-<label for="estado" class="col-sm-12 col-form-label text-center">Publico - Privado</label>
-<label class="switch">
-    <input type="checkbox" name="publico_privado" {{old('publico_privado') == "on" ? "checked" : ""}} >
-    <span class="slider round"></span>
-</label>
-</div>
+
 
 <div class="col-md-2 d-flex flex-column justify-content-center">
 <label for="estado" class="col-sm-12 col-form-label text-center">Cerrado</label>

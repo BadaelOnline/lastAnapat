@@ -9,12 +9,22 @@ use App\Models\{About, Cursos, Formadores, General, Operadores, Page, Post, Team
 class GeneralController extends Controller
 {
     public function dashboard(){
-        $admin = User::count();
-        $formadores = Formadores::count();
-        $operador = Operadores::count();
-        $activo_Curso = Cursos::orderBy('id','desc')->where('estado',1)->count();
-        $last_curso=Cursos::orderBy('id','desc')->get();
-        $entidad=EntidadesFormadoreas::select('id','nombre','cif','direccion','logo')->get();
+        $user = auth()->user();
+        if($user->perfil=='Administrador') {
+            $admin = User::count();
+            $formadores = Formadores::count();
+            $operador = Operadores::count();
+            $activo_Curso = Cursos::orderBy('id', 'desc')->where('estado', 1)->count();
+            $last_curso = Cursos::orderBy('id', 'desc')->get();
+            $entidad = EntidadesFormadoreas::select('id', 'nombre', 'cif', 'direccion', 'logo')->get();
+        }else{
+            $admin = User::where('entidad','=',$user->entidad)->count();
+            $formadores = Formadores::where('entidad','=',$user->entidad)->count();
+            $operador = Operadores::where('entidad','=',$user->entidad)->count();
+            $activo_Curso = Cursos::where('entidad','=',$user->entidad)->orderBy('id', 'desc')->where('estado', 1)->count();
+            $last_curso = Cursos::where('entidad','=',$user->entidad)->orderBy('id', 'desc')->get();
+            $entidad = EntidadesFormadoreas::select('id', 'nombre', 'cif', 'direccion', 'logo')->where('id','=',$user->entidad)->get();
+        }
 //        $x = count($activo_Curso);
         return view ('admin.dashboard', compact('admin','operador','activo_Curso','formadores','last_curso','entidad'));
     }

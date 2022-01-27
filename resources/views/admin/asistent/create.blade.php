@@ -54,7 +54,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <label for="curso" class="col-sm-2 col-form-label">curso</label>
+                    <label for="curso" class="col-sm-2 col-form-label">{{__('message.Curso')}}</label>
                     <div class="col-sm-9">
                         <select disabled name='test' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
                             <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -75,7 +75,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <label for="orden" class="col-sm-2 col-form-label">Orden</label>
+                    <label for="orden" class="col-sm-2 col-form-label">{{__('message.Orden')}}</label>
                     <div class="col-sm-9">
                         <input type="number" name='orden' class="form-control {{$errors->first('orden') ? "is-invalid" : "" }} " value="{{old('orden')}}" id="orden" placeholder="Número de asistente">
                         <div class="invalid-feedback">
@@ -88,12 +88,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <label for="operador" class="col-sm-2 col-form-label">Operador</label>
+                    <label for="operador" class="col-sm-2 col-form-label">{{__('message.OPERADOR')}}</label>
                     <div class="col-sm-9">
                         <select name='operador' class="form-control {{$errors->first('operador') ? "is-invalid" : "" }} " id="operador">
                             <option disabled selected>{{__('message.Choose_One')}}</option>
                             @foreach ($operador as $operador)
-                                <option value="{{ $operador->id }}" {{old('operador') == $operador->id ? "selected" : ""}}>{{ $operador->nombre }}</option>
+                                <option value="{{ $operador->id }}" {{old('operador') == $operador->id ? "selected" : ""}}>{{ $operador->nombre }}  {{ $operador->apellidos }}</option>
                             @endforeach
                         </select>
                         <div class="invalid-feedback">
@@ -103,10 +103,11 @@
                 </div>
             </div>
         </div>
+        @if(auth()->user()->perfil=='Administrador' )
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <label for="tipo_carnet" class="col-sm-2 col-form-label">Tipo Carnet</label>
+                    <label for="tipo_carnet" class="col-sm-2 col-form-label">{{__('message.tipo_carnet')}}</label>
                     <div class="col-sm-9">
                         <select name='tipo_carnet' class="form-control {{$errors->first('tipo_carnet') ? "is-invalid" : "" }} " id="tipo_carnet">
                             <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -121,7 +122,9 @@
                 </div>
             </div>
         </div>
-
+        @else
+            <input type="hidden" name="tipo_carnet" value="0">
+        @endif
 
         {{--third row--}}
         <div class="container">
@@ -129,7 +132,7 @@
                 <div class="col-sm">
                     <label for="nota_t" class="col-sm-2 col-form-label">Nota_t</label>
                     <div class="col-sm-9">
-                        <input type="number" name='nota_t' class="form-control {{$errors->first('nota_t') ? "is-invalid" : "" }} " value="{{old('nota_t')}}" id="Nota examen teórico" >
+                        <input type="text" name='nota_t' class="form-control {{$errors->first('nota_t') ? "is-invalid" : "" }} " value="{{old('nota_t')}}" id="Nota examen teórico" >
                         <div class="invalid-feedback">
                             {{ $errors->first('nota_t') }}
                         </div>
@@ -142,7 +145,7 @@
                 <div class="col-sm">
                     <label for="nota_p" class="col-sm-2 col-form-label">Nota_p</label>
                     <div class="col-sm-9">
-                        <input type="number" name='nota_p' class="form-control {{$errors->first('nota_p') ? "is-invalid" : "" }} " value="{{old('nota_p')}}" id="Nota examen práctico" >
+                        <input type="text" name='nota_p' class="form-control {{$errors->first('nota_p') ? "is-invalid" : "" }} " value="{{old('nota_p')}}" id="Nota examen práctico" >
                         <div class="invalid-feedback">
                             {{ $errors->first('nota_p') }}
                         </div>
@@ -236,6 +239,7 @@
         {{--    </div>--}}
 
         {{--sixth row--}}
+        @if(auth()->user()->perfil=='Administrador' )
         <div class="container">
             <div class="row">
                 <div class="col-sm">
@@ -296,7 +300,12 @@
                 </div>
             </div>
         </div>
-
+        @else
+            <input type="hidden" name="tipo_1" value="0">
+            <input type="hidden" name="tipo_2" value="0">
+            <input type="hidden" name="tipo_3" value="0">
+            <input type="hidden" name="tipo_4" value="0">
+        @endif
         <div class="container">
             <div class="row">
                 <div class="form-group ml-5">

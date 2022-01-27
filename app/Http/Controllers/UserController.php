@@ -108,8 +108,9 @@ class UserController extends Controller
     {
 //        dd($id);
         $user = User::findOrFail($id);
+        $entidad = EntidadesFormadoreas::orderBy('id','desc')->get();
 //        dd($user);
-        return view('admin.users.edit',compact('user'));
+        return view('admin.user.edit',compact('user','entidad'));
     }
 
     /**
@@ -122,12 +123,30 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        $user->name = $request->name;
+        $user->name = $request->nombre;
         $user->email = $request->email;
+        $user->perfil=$request->perfil;
+        $user->alias = $request->alias;
+        $user->apellidos = $request->apellidos;
+        $user->nombre = $request->nombre;
+        $user->ciudad = $request->ciudad;
+        $user->direccion = $request->direccion;
+        $user->codigo_postal = $request->codigo_postal;
+        if($request->perfil != "Administrador"){
+            $user->entidad = $request->entidad;
+        }else{
+            $user->entidad = 0;
+        }
+        if($request->estado == null){
+            $user->estado = 0;
+        }else{
+            $user->estado = 1;
+        }
+        $user->provincia = "";
 
         if ( $user->save()) {
 
-            return redirect()->route('admin.user')->with('success', 'Data updated successfully');
+            return redirect()->route('admin.users.index')->with('success', 'Data updated successfully');
 
            } else {
 

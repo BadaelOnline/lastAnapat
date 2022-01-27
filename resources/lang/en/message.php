@@ -115,6 +115,10 @@ return [
     'fecha_de_emision' => 'Fecha De Emision',
     'foto' => 'Foto',
     'partner' => 'Partner',
+    'Orden' => 'Orden',
+    'tipo_carnet' => 'Tipo Carnet',
+    'ACTIVE' => 'Activo',
+    'Codigo_postal' => 'Código Postal',
 
 
 ];

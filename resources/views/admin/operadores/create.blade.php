@@ -100,12 +100,18 @@ input[type="radio"]:focus {
         <div class="form-group col-md-4">
             <label for="entidad" class="col-sm-12 col-form-label">Entidad</label>
             <div class="col-sm-9">
-                <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
-                    <option disabled selected>{{__('message.Choose_One')}}</option>
-                    @foreach ($entidad as $entidad)
-                        <option value="{{ $entidad->id }}" {{old('entidad') == $entidad->id ? "selected" : ""}}>{{ $entidad->nombre }}</option>
-                    @endforeach
-                </select>
+                @if(auth()->user()->perfil=='Administrador')
+                    <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
+                        <option disabled selected>{{__('message.Choose_One')}}</option>
+                        @foreach ($entidad as $entidad)
+                            <option value="{{ $entidad->id }}" {{old('entidad') == $entidad->id ? "selected" : ""}}>{{ $entidad->nombre }}</option>
+                        @endforeach
+                    </select>
+                @else
+                    <input type="text" readonly class="form-control" value="{{$entidad->nombre}}" placeholder="">
+                    <input type="hidden" name="entidad" class="form-control" value="{{$entidad->id}}">
+                @endif
+
                 <div class="invalid-feedback">
                     {{ $errors->first('entidad') }}
                 </div>
@@ -190,7 +196,7 @@ input[type="radio"]:focus {
                 </div>
             </div>
         </div>
-
+        @if(auth()->user()->perfil=='Administrador')
         <div class="form-group col-md-4">
             <label for="carnet" class="col-sm-12 col-form-label">Carnet</label>
             <div class="col-sm-7">
@@ -200,6 +206,9 @@ input[type="radio"]:focus {
                 </div>
             </div>
         </div>
+        @else
+            <input type="hidden" name="carnet" value="">
+        @endif
        <div class="form-group col-md-4">
             <label for="fecha" class="col-sm-12 col-form-label">Fecha</label>
             <div class="col-sm-7">
@@ -209,6 +218,7 @@ input[type="radio"]:focus {
                 </div>
             </div>
         </div>
+        @if(auth()->user()->perfil=='Administrador')
         <div class="col-md-2 d-flex flex-column justify-content-center">
             <label for="estado" class="col-sm-12 col-form-label text-center">Estado</label>
             <label class="switch">
@@ -216,6 +226,7 @@ input[type="radio"]:focus {
                 <span class="slider round" ></span>
             </label>
         </div>
+        @endif
         </div>
         </div>
       <div class="form-group col-md-4">

@@ -277,7 +277,7 @@
                 </div>
 
                 {{--sixth row--}}
-
+            @if(auth()->user()->perfil=='Administrador' )
                 <div class="col-md-4">
                     <label for="examen-t" class="col-sm-2 col-form-label">Examen T</label>
                     <div class="col-sm-9">
@@ -302,7 +302,35 @@
                         </select>
                     </div>
                 </div>
+            @else
+                <div class="col-md-4">
+                    <label for="examen-t" class="col-sm-2 col-form-label">Examen T</label>
+                    <div class="col-sm-9">
+                        <input type="hidden" name="examen_t" value="{{ $cursos->examen_t}}">
+                        <select readonly disabled name='examen_t' class="form-control {{$errors->first('examen_t') ? "is-invalid" : "" }} " id="examen-t">
+                            <option disabled selected>{{__('message.Choose_One')}}</option>
+                            @foreach ($examen_t as $examen_t)
+                                <option value="{{ $examen_t->id }}" {{$cursos->examen_t == $examen_t->id ? "selected" : ""}}>{{ $examen_t->nombre }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
+
+                <div class="col-md-4">
+                    <label for="examen-p" class="col-sm-2 col-form-label">Examen P</label>
+                    <div class="col-sm-9">
+                        <input type="hidden" name="examen_p" value="{{$cursos->examen_p }}">
+
+                        <select readonly disabled name='examen_p' class="form-control {{$errors->first('examen_p') ? "is-invalid" : "" }} " id="examen_p">
+                            <option disabled selected>{{__('message.Choose_One')}}</option>
+                            @foreach ($examen_p as $examen_p)
+                                <option value="{{ $examen_p->id }}" {{$cursos->examen_p == $examen_p->id ? "selected" : ""}}>{{ $examen_p->nombre }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            @endif
 
                 <div class="col-md-4">
                     <label for="fecha_alta" class="col-sm-2 col-form-label">Fecha Alta</label>
@@ -324,19 +352,19 @@
                         </div>
                     </div>
                 </div>
-
+            <div class="col-md-2 d-flex flex-column justify-content-center">
+                <label for="estado" class="col-sm-12 col-form-label text-center">Publico - Privado</label>
+                <label class="switch">
+                    <input type="checkbox" name="publico_privado" {{$cursos->publico_privado == 1 ? "checked" : ""}}>
+                    <span class="slider round"></span>
+                </label>
+            </div>
                 {{--seventh row--}}
                 @if(auth()->user()->perfil=='Administrador' )
-                <div class="col-md-2 d-flex flex-column justify-content-center">
-                    <label for="estado" class="col-sm-12 col-form-label text-center">Publico - Privado</label>
-                    <label class="switch">
-                        <input type="checkbox" name="publico_privado" {{$cursos->publico_privado == 1 ? "checked" : ""}}>
-                        <span class="slider round"></span>
-                    </label>
-                </div>
+
 
                 <div class="col-md-2 d-flex flex-column justify-content-center">
-                    <label for="estado" class="col-sm-12 col-form-label text-center">Cerrado ?</label>
+                    <label for="cerrado" class="col-sm-12 col-form-label text-center">Cerrado ?</label>
                     <label class="switch">
                         <input type="checkbox" name="cerrado" {{$cursos->cerrado == 1 ? "checked" : ""}}>
                         <span class="slider round"></span>
@@ -350,6 +378,9 @@
                         <span class="slider round"></span>
                     </label>
                 </div>
+            @else
+                    <input type="hidden" name="estado" value="{{$cursos->estado}}">
+                <input type="hidden" name="cerrado" value="{{$cursos->cerrado}}">
                 @endif
             </div>
 
