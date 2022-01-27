@@ -33,7 +33,7 @@
         @csrf
           <div class="login__field">
             <i class="login__icon fas fa-user"></i>
-            <input id="email" type="email" class="login__input" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Enter Email Address..." value="{{ old('email') }}">
+            <input id="email" type="email" class="login__input" name="email" value="{{ old('email') }}" required  autofocus placeholder="Enter Email Address..." value="{{ old('email') }}">
             @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

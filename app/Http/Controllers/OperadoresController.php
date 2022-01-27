@@ -39,7 +39,7 @@ class OperadoresController extends Controller
         if($user->perfil=='Administrador'){
             $entidad=EntidadesFormadoreas::select('id','nombre')->get();
         }else{
-            $entidad=EntidadesFormadoreas::select('id','nombre')->where('id','=',$user->entidad)->get();
+            $entidad=EntidadesFormadoreas::select('id','nombre')->where('id','=',$user->entidad)->first();
         }
 
         return view('admin.operadores.create',compact('entidad'));
@@ -55,7 +55,7 @@ class OperadoresController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'dni' => 'required',
+            'dni' => 'required||unique:operadores',
             'apellidos' => 'required',
             'nombre' => 'required',
             'entidad' => 'required',
@@ -119,8 +119,13 @@ class OperadoresController extends Controller
      */
     public function edit($id)
     {
+        $user = auth()->user();
+        if($user->perfil=='Administrador'){
+            $entidad=EntidadesFormadoreas::select('id','nombre')->get();
+        }else{
+            $entidad=EntidadesFormadoreas::select('id','nombre')->where('id','=',$user->entidad)->first();
+        }
         $operadores = Operadores::findOrFail($id);
-        $entidad=EntidadesFormadoreas::select('id','nombre')->get();
 
         return view('admin.operadores.edit',compact('operadores','entidad'));
     }
@@ -140,7 +145,7 @@ class OperadoresController extends Controller
             'nombre' => 'required',
             'entidad' => 'required',
         ]);
-
+//dd($request);
         $operadores = Operadores::findOrFail($id);
         $operadores->dni = $request->dni;
         $operadores->apellidos = $request->apellidos;
@@ -156,8 +161,10 @@ class OperadoresController extends Controller
         $operadores->fecha = $request->fecha;
         if($request->estado == null){
             $operadores->estado = 0;
-        }else{
+        }elseif ($request->estado == "1"){
             $operadores->estado = 1;
+        }else{
+            $operadores->estado = 0;
         }
 
         $foto = $request->file('foto');

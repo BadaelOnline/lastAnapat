@@ -274,16 +274,20 @@ class CursosController extends Controller
 //        $cursos->cerrado = $request->cerrado;
 //        $cursos->estado = $request->estado;
         $x =$request->input('tipo_maquina');
-
+//dd($request);
         if($request->cerrado == null){
             $cursos->cerrado = 0;
-        }else{
+        }elseif ($request->cerrado == "1"){
             $cursos->cerrado = 1;
+        }else{
+            $cursos->cerrado = 0;
         }
         if($request->estado == null){
-            $cursos->estado = 0;
-        }else{
             $cursos->estado = 1;
+        }elseif ($request->estado == "1"){
+            $cursos->estado = 1;
+        }else{
+            $cursos->estado = 0;
         }
         if($request->publico_privado == null){
             $cursos->publico_privado = 0;

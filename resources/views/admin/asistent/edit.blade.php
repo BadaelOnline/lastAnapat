@@ -89,7 +89,7 @@
                         <select name='operador' class="form-control {{$errors->first('operador') ? "is-invalid" : "" }} " id="operador">
 
                             @foreach ($operador as $operador)
-                                <option value="{{ $operador->id }}" {{$asistent->operador == $operador->id ? "selected" : ""}}>{{ $operador->nombre }}</option>
+                                <option value="{{ $operador->id }}" {{$asistent->operador == $operador->id ? "selected" : ""}}>{{ $operador->nombre }} {{ $operador->apellidos }}</option>
                             @endforeach
                         </select>
                         <div class="invalid-feedback">
@@ -98,7 +98,7 @@
                     </div>
                 </div>
 
-
+            @if(auth()->user()->perfil=='Administrador' )
                 <div class="form-group col-md-4">
                     <label for="tipo_carnet" class="col-sm-2 col-form-label">Tipo Carnet</label>
                     <div class="col-sm-9">
@@ -113,6 +113,9 @@
                         </div>
                     </div>
                 </div>
+            @else
+                <input type="hidden" name="tipo_carnet" value="{{$asistent->tipo_carnet}}">
+            @endif
 
 
 
@@ -123,7 +126,7 @@
                 <div class="form-group col-md-4">
                     <label for="nota_t" class="col-sm-2 col-form-label">Nota_t</label>
                     <div class="col-sm-9">
-                        <input type="number" name='nota_t' class="form-control {{$errors->first('nota_t') ? "is-invalid" : "" }} " value="{{old('nota_t') ? old('nota_t') : $asistent->nota_t}}" placeholder="Nota examen teórico" id="nota_t" >
+                        <input type="text" name='nota_t' class="form-control {{$errors->first('nota_t') ? "is-invalid" : "" }} " value="{{old('nota_t') ? old('nota_t') : $asistent->nota_t}}" placeholder="Nota examen teórico" id="nota_t" >
                         <div class="invalid-feedback">
                             {{ $errors->first('nota_t') }}
                         </div>
@@ -133,7 +136,7 @@
                 <div class="form-group col-md-4">
                     <label for="nota_p" class="col-sm-2 col-form-label">Nota_p</label>
                     <div class="col-sm-9">
-                        <input type="number" name='nota_p' class="form-control {{$errors->first('nota_p') ? "is-invalid" : "" }} " value="{{old('nota_p') ? old('nota_p') : $asistent->nota_p}}" placeholder="Nota examen práctico" id="nota_p" >
+                        <input type="text" name='nota_p' class="form-control {{$errors->first('nota_p') ? "is-invalid" : "" }} " value="{{old('nota_p') ? old('nota_p') : $asistent->nota_p}}" placeholder="Nota examen práctico" id="nota_p" >
                         <div class="invalid-feedback">
                             {{ $errors->first('nota_p') }}
                         </div>
@@ -201,7 +204,7 @@
                 </div>
 
 
-
+            @if(auth()->user()->perfil=='Administrador' )
                 <div class="form-group col-md-4">
                     <label for="tipo_1" class="col-sm-2 col-form-label">Tipo_1</label>
                     <div class="col-sm-9">
@@ -249,7 +252,12 @@
                         </select>
                     </div>
                 </div>
-
+            @else
+                <input type="hidden" name="tipo_1" value="{{$asistent->tipo_1}}">
+                <input type="hidden" name="tipo_2" value="{{$asistent->tipo_2}}">
+                <input type="hidden" name="tipo_3" value="{{$asistent->tipo_3}}">
+                <input type="hidden" name="tipo_4" value="{{$asistent->tipo_4}}">
+            @endif
 
 
 

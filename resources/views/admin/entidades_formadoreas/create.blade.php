@@ -119,7 +119,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="razon_social" class="col-sm-4 col-form-label">Razon Social</label>
+                <label for="razon_social" class="col-sm-4 col-form-label">Razón Social</label>
 
                 <div class="col-sm-12">
 
@@ -135,7 +135,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="province" class="col-sm-2 col-form-label">Province</label>
+                <label for="province" class="col-sm-2 col-form-label">{{__('message.Provincia')}}</label>
 
                 <div class="col-sm-12">
 
@@ -170,7 +170,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="direccion" class="col-sm-2 col-form-label">Direccion</label>
+                <label for="direccion" class="col-sm-2 col-form-label">{{__('message.Direccion')}}</label>
 
                 <div class="col-sm-12">
 
@@ -185,7 +185,7 @@ input[type="radio"]:focus {
             </div>
             <div class="form-group col-md-4">
 
-                <label for="codigo_postal" class="col-sm-5 col-form-label">Codigo Postal</label>
+                <label for="codigo_postal" class="col-sm-5 col-form-label">{{__('message.Codigo_postal')}}</label>
 
                 <div class="col-sm-12">
 

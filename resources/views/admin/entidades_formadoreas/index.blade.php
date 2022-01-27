@@ -26,7 +26,7 @@
     <div class="card shadow mb-4">
         @can('isHaveEntitade')
             <div class="card-header py-3">
-                <a href="{{ route('admin.entidades_formadoreas.create') }}" class="btn btn-pass">{{__('message.add_new')}} Entidades Formadores</a>
+                <a href="{{ route('admin.entidades_formadoreas.create') }}" class="btn btn-pass">{{__('message.add_new')}} Entidade Formadora</a>
             </div>
         @endcan
 

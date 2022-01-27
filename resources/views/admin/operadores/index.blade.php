@@ -51,6 +51,7 @@
                         <th>{{__('message.Apellidos')}} </th>
 
                         <th>{{__('message.Direccion')}} </th>
+                        <th>{{__('message.ACTIVE')}} </th>
                         @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion'))
                         <th>{{__('message.Option')}}</th>
                         @endif
@@ -83,6 +84,7 @@
                         <td>{{ $operadores->apellidos }}</td>
 
                         <td>{{ $operadores->direccion  }}</td>
+                        <td>{{ $operadores->estado == 1 ? "Yes" : "No"  }}</td>
 
                         <td>
                             @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion'))

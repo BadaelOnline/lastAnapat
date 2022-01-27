@@ -74,7 +74,7 @@
                         <td> {{ $examen->nombre }} </td>
                         <td>{{ $examen->tipo }}</td>
                         <td>
-                            <a href="{{asset('storage/' . $examen->url)}}" class="button" download><i class="fa fa-download"></i>Download</a>
+                            <a href="{{asset('storage/' . $examen->url)}}" class="button" download><i class="fa fa-download"></i>Descargar</a>
 
                         </td>
                         <td>

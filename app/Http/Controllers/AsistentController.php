@@ -32,9 +32,9 @@ class AsistentController extends Controller
     {
         $user = auth()->user();
         if($user->perfil=='Administrador'){
-            $operador=Operadores::select('id','nombre')->get();
+            $operador=Operadores::select('id','nombre','apellidos')->get();
         }else{
-            $operador=Operadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
+            $operador=Operadores::select('id','nombre','apellidos')->where('entidad','=',$user->entidad)->get();
         }
         $curso=Cursos::select('id','codigo')->get();
 
@@ -145,9 +145,9 @@ class AsistentController extends Controller
     {
         $user = auth()->user();
         if($user->perfil=='Administrador'){
-            $operador=Operadores::select('id','nombre')->get();
+            $operador=Operadores::select('id','nombre','apellidos')->get();
         }else{
-            $operador=Operadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
+            $operador=Operadores::select('id','nombre','apellidos')->where('entidad','=',$user->entidad)->get();
         }
         $asistent = Asistent::findOrFail($id);
         $curso=Cursos::select('id','codigo')->get();

@@ -71,8 +71,9 @@
                             @if(auth()->user()->id==$user->id || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$user->entidad && $user->perfil='Formador' && auth()->user()->id==$user->id))
 
                             <a href="#" data-toggle="modal" data-target="#changepasswordModal" class="btn btn-pass btn-sm">{{__('message.Change Password')}}</a>
-
-{{--                            <a href="{{route('admin.users.edit', [$user->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>--}}
+                            @endif
+                                @if(auth()->user()->perfil=='Administrador')
+                            <a href="{{route('admin.users.edit', [$user->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
 
                             <form method="POST" action="{{route('admin.users.destroy', [$user->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete this user permanently?")}}')">
 
