@@ -46,6 +46,7 @@ Route::get('testimonials', [FrontController::class, 'testi'])->name('testi');
 Route::get('cursos', [FrontController::class, 'cursos'])->name('cursos');
 Route::get('curso/{slug}', [FrontController::class, 'curso'])->name('curso');
 Route::get('carnets', [FrontController::class, 'carnets'])->name('carnets');
+Route::POST('searchcarnet', [FrontController::class, 'searchcarnet'])->name('searchcarnet');
 Route::get('carnet/{slug}', [FrontController::class, 'carnet'])->name('carnet');
 Route::get('partners', [FrontController::class, 'partners'])->name('partners');
 Route::get('partner/{slug}', [FrontController::class, 'partner'])->name('partner');

@@ -63,7 +63,7 @@
               <li><a href="{{ route('partners') }}">Compañera</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="">Capacitación</a>
+          <li class="drop-down"><a href="">Formación</a>
             <ul>
               <li ><a href="{{ route('entidades_formadoras') }}">Entidad Formadora</a></li>
               <li ><a href="{{ route('cursos') }}">Cursos</a></li>

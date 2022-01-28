@@ -119,6 +119,7 @@ return [
     'tipo_carnet' => 'Tipo Carnet',
     'ACTIVE' => 'Activo',
     'Codigo_postal' => 'Código Postal',
+    'Buscar' => 'Buscar',
 
 
 ];

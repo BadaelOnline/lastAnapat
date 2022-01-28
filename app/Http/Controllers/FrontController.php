@@ -117,7 +117,32 @@ class FrontController extends Controller
         $cursos = Cursos::orderBy('id','desc')->where('publico_privado',1)->where('estado',1)->get();
         $carnets = Carnet::orderBy('id','desc')->get();
         $operadores = Operadores::orderBy('id','desc')->get();
-        return view ('front.carnets',compact('general','operadores','carnets'));
+        $test = "";
+        return view ('front.carnets',compact('general','operadores','carnets','test'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function searchcarnet(Request $request)
+    {
+//        dd($request);
+        $general = General::find(1);
+//        dd($general);
+        $carnet = Carnet::where('numero',$request->numero)->first();
+//dd($carnet);
+
+        if($carnet != null){
+            $operador = Operadores::where('id',$carnet->operador)->firstOrFail();
+            $curso = Cursos::where('id',$carnet->curso)->firstOrFail();
+            return view ('front.carnet',compact('general','operador','carnet','curso'));
+            } else {
+            $test = "Ningún Carné coincide con el código buscado.";
+            return view('front.carnets', compact('general','test'));
+        }
     }
 
     public function carnet($id)
