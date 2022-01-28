@@ -210,7 +210,7 @@
         <i class="fas fa-fw fa-allergies"></i>
         <span>{{__('message.Operadores')}}</span></a>
     </li>
-      @can('isAdmin')
+      @can('isAdminOrResponsable')
       <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.examen',
         ])? 'active' : ''}}">
@@ -220,21 +220,23 @@
       </li>
 
       @endcan
-      <li class="nav-item {{ in_array(Route::currentRouteName(),[
-            'admin.carnet',
-        ])? 'active' : ''}}">
-          <a class="nav-link" href="{{ route('admin.carnet') }}">
-              <i class="fas fa-fw fa-allergies"></i>
-              <span>{{__('message.carnet')}}</span></a>
-      </li>
-    <li class="nav-item ">
-    <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
-        <i class="fas fa-sign-out-alt"></i>
-        <span>{{__('message.Salir')}}</span></a>
-    </li>
+@can('isAdmin')
+<li class="nav-item {{ in_array(Route::currentRouteName(),[
+      'admin.carnet',
+  ])? 'active' : ''}}">
+    <a class="nav-link" href="{{ route('admin.carnet') }}">
+        <i class="fas fa-fw fa-allergies"></i>
+        <span>{{__('message.carnet')}}</span></a>
+</li>
+      @endcan
+<li class="nav-item ">
+<a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+  <i class="fas fa-sign-out-alt"></i>
+  <span>{{__('message.Salir')}}</span></a>
+</li>
 
 
-    {{--    <li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
+{{--    <li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
 {{--            'admin.horario',--}}
 {{--        ])? 'active' : ''}}">--}}
 {{--      <a class="nav-link" href="{{ route('admin.horario') }}">--}}
@@ -253,118 +255,118 @@
 {{--    </li>--}}
 
 
-  {{--<li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
-  {{--'admin.page',--}}
-  {{--])? 'active' : ''}}">--}}
-  {{--<a class="nav-link" href="{{ route('admin.page') }}">--}}
-  {{--<i class="fas fa-fw fa-table"></i>--}}
-  {{--<span>Pages</span></a>--}}
-  {{--</li>--}}
+{{--<li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
+{{--'admin.page',--}}
+{{--])? 'active' : ''}}">--}}
+{{--<a class="nav-link" href="{{ route('admin.page') }}">--}}
+{{--<i class="fas fa-fw fa-table"></i>--}}
+{{--<span>Pages</span></a>--}}
+{{--</li>--}}
 
-  {{--<li class="nav-item">--}}
-  {{--<a class="nav-link" href="{{ route('admin.partner') }}">--}}
-  {{--<i class="fas fa-fw fa-table"></i>--}}
-  {{--<span>Partners</span></a>--}}
-  {{--</li>--}}
+{{--<li class="nav-item">--}}
+{{--<a class="nav-link" href="{{ route('admin.partner') }}">--}}
+{{--<i class="fas fa-fw fa-table"></i>--}}
+{{--<span>Partners</span></a>--}}
+{{--</li>--}}
 
-  {{--<li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
-  {{--'admin.service',--}}
-  {{--])? 'active' : ''}}">--}}
-  {{--<a class="nav-link" href="{{ route('admin.service') }}">--}}
-  {{--<i class="fas fa-fw fa-table"></i>--}}
-  {{--<span>Services</span></a>--}}
-  {{--</li>--}}
+{{--<li class="nav-item {{ in_array(Route::currentRouteName(),[--}}
+{{--'admin.service',--}}
+{{--])? 'active' : ''}}">--}}
+{{--<a class="nav-link" href="{{ route('admin.service') }}">--}}
+{{--<i class="fas fa-fw fa-table"></i>--}}
+{{--<span>Services</span></a>--}}
+{{--</li>--}}
 
-  {{--<li class="nav-item">--}}
-  {{--<a class="nav-link" href="{{ route('admin.team') }}">--}}
-  {{--<i class="fas fa-fw fa-table"></i>--}}
-  {{--<span>Team</span></a>--}}
-  {{--</li>--}}
+{{--<li class="nav-item">--}}
+{{--<a class="nav-link" href="{{ route('admin.team') }}">--}}
+{{--<i class="fas fa-fw fa-table"></i>--}}
+{{--<span>Team</span></a>--}}
+{{--</li>--}}
 
-  {{--<li class="nav-item">--}}
-  {{--<a class="nav-link" href="{{ route('admin.testi') }}">--}}
-  {{--<i class="fas fa-fw fa-table"></i>--}}
-  {{--<span>Testimonials</span></a>--}}
-  {{--</li>--}}
+{{--<li class="nav-item">--}}
+{{--<a class="nav-link" href="{{ route('admin.testi') }}">--}}
+{{--<i class="fas fa-fw fa-table"></i>--}}
+{{--<span>Testimonials</span></a>--}}
+{{--</li>--}}
 
+</div>
+
+<!-- Divider -->
+
+</ul>
+<div class="showw" id="showw"><i class="fas fa-fw fa-arrow-right"></i></div>
+
+<!-- End of Sidebar -->
+
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+<!-- Main Content -->
+<div id="content">
+
+<!-- Topbar -->
+
+<!-- End of Topbar -->
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  @yield('content')
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+<div class="container my-auto">
+  <div class="copyright text-center my-auto">
+    <span>Copyright &copy; ANAPAT </span>
   </div>
+</div>
+</footer>
+<!-- End of Footer -->
 
-  <!-- Divider -->
-
-  </ul>
-  <div class="showw" id="showw"><i class="fas fa-fw fa-arrow-right"></i></div>
-
-  <!-- End of Sidebar -->
-
-  <!-- Content Wrapper -->
-  <div id="content-wrapper" class="d-flex flex-column">
-
-    <!-- Main Content -->
-    <div id="content">
-
-      <!-- Topbar -->
-
-      <!-- End of Topbar -->
-
-      <!-- Begin Page Content -->
-      <div class="container-fluid">
-
-        @yield('content')
-
-      </div>
-      <!-- /.container-fluid -->
-
-    </div>
-    <!-- End of Main Content -->
-
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-      <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-          <span>Copyright &copy; ANAPAT </span>
-        </div>
-      </div>
-    </footer>
-    <!-- End of Footer -->
-
-  </div>
-  <!-- End of Content Wrapper -->
+</div>
+<!-- End of Content Wrapper -->
 
 </div>
 <!-- End of Page Wrapper -->
 
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
-  <i class="fas fa-angle-up"></i>
+<i class="fas fa-angle-up"></i>
 </a>
 
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{__('message.Ready to Leave?')}}</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">{{__('message.Select "Logout" below if you are ready to end your current session.')}}</div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">{{__('message.Cancel')}}</button>
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">{{__('message.Ready to Leave?')}}</h5>
+  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+<div class="modal-body">{{__('message.Select "Logout" below if you are ready to end your current session.')}}</div>
+<div class="modal-footer">
+  <button class="btn btn-secondary" type="button" data-dismiss="modal">{{__('message.Cancel')}}</button>
 
-        <a class="btn btn-primary" href="{{ route('logout') }}"
-           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-          {{ __('message.Logout') }}
-        </a>
+  <a class="btn btn-primary" href="{{ route('logout') }}"
+     onclick="event.preventDefault();
+                                               document.getElementById('logout-form').submit();">
+    {{ __('message.Logout') }}
+  </a>
 
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-          @csrf
-        </form>
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+  </form>
 
-      </div>
-    </div>
-  </div>
+</div>
+</div>
+</div>
 </div>
 
 <!-- Bootstrap core JavaScript-->
@@ -388,16 +390,16 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $('.select2').select2({
-            placeholder: "Choose Some Tags"
-        });
-    });
+$(document).ready(function() {
+  $('.select2').select2({
+      placeholder: "Choose Some Tags"
+  });
+});
 
-    $("#showw").click(function(){
-        $("#showw").toggleClass("show-button");
-        $("#show-list").toggleClass("show-list");
-    });
+$("#showw").click(function(){
+  $("#showw").toggleClass("show-button");
+  $("#show-list").toggleClass("show-list");
+});
 
 
 </script>
@@ -406,24 +408,24 @@
 <script src="{{ asset('admin/js/summernote-image-title.js') }}"></script>
 
 <script>
-    $(document).ready(function() {
-        $('#summernote').summernote({
-            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana', 'Poppins'],
-            fontNamesIgnoreCheck: ['Poppins'],
-            imageTitle: {
-                specificAltField: true,
-            },
-            lang: 'en-US',
-            popover: {
-                image: [
-                    ['imagesize', ['imageSize100', 'imageSize50', 'imageSize25']],
-                    ['float', ['floatLeft', 'floatRight', 'floatNone']],
-                    ['remove', ['removeMedia']],
-                    ['custom', ['imageTitle']],
-                ],
-            },
-        });
-    });
+$(document).ready(function() {
+  $('#summernote').summernote({
+      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana', 'Poppins'],
+      fontNamesIgnoreCheck: ['Poppins'],
+      imageTitle: {
+          specificAltField: true,
+      },
+      lang: 'en-US',
+      popover: {
+          image: [
+              ['imagesize', ['imageSize100', 'imageSize50', 'imageSize25']],
+              ['float', ['floatLeft', 'floatRight', 'floatNone']],
+              ['remove', ['removeMedia']],
+              ['custom', ['imageTitle']],
+          ],
+      },
+  });
+});
 </script>
 
 @stack('scripts')

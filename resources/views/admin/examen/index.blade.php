@@ -28,9 +28,9 @@
 
     <div class="card-header py-3">
 
-
-        <a href="{{ route('admin.examen.create') }}" class="btn btn-pass">{{__('message.add_new')}} Examen</a>
-
+        @if(auth()->user()->perfil=='Administrador')
+            <a href="{{ route('admin.examen.create') }}" class="btn btn-pass">{{__('message.add_new')}} Examen</a>
+        @endif
 
     </div>
 
@@ -78,26 +78,28 @@
 
                         </td>
                         <td>
-                        <a href="{{route('admin.examen.edit', [$examen->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
+                            @if(auth()->user()->perfil=='Administrador')
+                                <a href="{{route('admin.examen.edit', [$examen->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
 
 
-                            <form method="POST" action="{{route('admin.examen.destroy', [$examen->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
+                                <form method="POST" action="{{route('admin.examen.destroy', [$examen->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
 
-                                @csrf
-                                <input type="hidden" name="_method" value="DELETE">
+                                    @csrf
+                                    <input type="hidden" name="_method" value="DELETE">
 
-                                <button type="submit" value="Delete" class="btn btn-delete btn-sm">
-                                <i class='fas fa-trash-alt'></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
+                                    <button type="submit" value="Delete" class="btn btn-delete btn-sm">
+                                    <i class='fas fa-trash-alt'></i>
+                                    </button>
+                                </form>
+                            @endif
+</td>
+</tr>
 {{--                        @endif--}}
-                @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
+@endforeach
+</tbody>
+</table>
+</div>
+</div>
 </div>
 
 @endsection
