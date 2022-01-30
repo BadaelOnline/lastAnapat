@@ -99,19 +99,16 @@
                 </div>
 
             @if(auth()->user()->perfil=='Administrador' )
-                div class="container">
-                <div class="row">
-                    <div class="col-sm">
+
+                    <div class="form-group col-md-4">
                         <label for="tipos_carnet" class="col-sm-2 col-form-label">{{__('message.tipo_carnet')}}</label>
                         <div class="col-sm-9">
-                            <input type="text" name='tipos_carnet' class="form-control {{$errors->first('tipos_carnet') ? "is-invalid" : "" }} " value="value="{{old('tipos_carnet') ? old('tipos_carnet') : $asistent->tipos_carnet}}" id="Nota examen teórico" placeholder="{{__('message.tipo_carnet')}}">
+                            <input type="text" name='tipos_carnet' class="form-control {{$errors->first('tipos_carnet') ? "is-invalid" : "" }} " value="{{old('tipos_carnet') ? old('tipos_carnet') : $asistent->tipos_carnet}}" id="Nota examen teórico" placeholder="{{__('message.tipo_carnet')}}">
                             <div class="invalid-feedback">
                                 {{ $errors->first('nota_t') }}
                             </div>
                         </div>
                     </div>
-                </div>
-        </div>
         <input type="hidden" name="tipo_carnet" value="0">
 
             @else
