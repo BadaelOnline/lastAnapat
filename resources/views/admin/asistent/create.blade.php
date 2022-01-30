@@ -104,24 +104,38 @@
             </div>
         </div>
         @if(auth()->user()->perfil=='Administrador' )
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <label for="tipo_carnet" class="col-sm-2 col-form-label">{{__('message.tipo_carnet')}}</label>
-                    <div class="col-sm-9">
-                        <select name='tipo_carnet' class="form-control {{$errors->first('tipo_carnet') ? "is-invalid" : "" }} " id="tipo_carnet">
-                            <option disabled selected>{{__('message.Choose_One')}}</option>
-                            @foreach ($tipo_carnet as $tipo_carnet)
-                                <option value="{{ $tipo_carnet->id }}" {{old('tipo_carnet') == $tipo_carnet->id ? "selected" : ""}}>{{ $tipo_carnet->formacion }}</option>
-                            @endforeach
-                        </select>
-                        <div class="invalid-feedback">
-                            {{ $errors->first('tipo_carnet') }}
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <label for="tipos_carnet" class="col-sm-2 col-form-label">{{__('message.tipo_carnet')}}</label>
+                        <div class="col-sm-9">
+                            <input type="text" name='tipos_carnet' class="form-control {{$errors->first('tipos_carnet') ? "is-invalid" : "" }} " value="{{old('tipos_carnet')}}" id="Nota examen teórico" placeholder="{{__('message.tipo_carnet')}}">
+                            <div class="invalid-feedback">
+                                {{ $errors->first('nota_t') }}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <input type="hidden" name="tipo_carnet" value="0">
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-sm">--}}
+{{--                    <label for="tipo_carnet" class="col-sm-2 col-form-label">{{__('message.tipo_carnet')}}</label>--}}
+{{--                    <div class="col-sm-9">--}}
+{{--                        <select name='tipo_carnet' class="form-control {{$errors->first('tipo_carnet') ? "is-invalid" : "" }} " id="tipo_carnet">--}}
+{{--                            <option disabled selected>{{__('message.Choose_One')}}</option>--}}
+{{--                            @foreach ($tipo_carnet as $tipo_carnet)--}}
+{{--                                <option value="{{ $tipo_carnet->id }}" {{old('tipo_carnet') == $tipo_carnet->id ? "selected" : ""}}>{{ $tipo_carnet->formacion }}</option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+{{--                        <div class="invalid-feedback">--}}
+{{--                            {{ $errors->first('tipo_carnet') }}--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
         @else
             <input type="hidden" name="tipo_carnet" value="0">
         @endif
@@ -197,7 +211,7 @@
         </div>
 
 
-        {{--fifth row--}}
+        @if(auth()->user()->perfil=='Administrador' ) {{--fifth row--}}
         <div class="container">
             <div class="row">
                 <div class="col-sm">
@@ -224,6 +238,8 @@
                 </div>
             </div>
         </div>
+        @else
+        @endif
         {{--    <div class="container">--}}
         {{--        <div class="row">--}}
         {{--            <div class="col-sm">--}}

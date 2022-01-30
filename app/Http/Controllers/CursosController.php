@@ -110,21 +110,25 @@ class CursosController extends Controller
             'examen_t' => 'required',
             'examen_p' => 'required',
         ]);
-        $cursos = new Cursos($request->except('_token','tipo_maquina','examen-t','examen-p','publico-privado','estado','cerrado'));
+        $cursos = new Cursos($request->except('_token','tipo_maquina','examen-t','examen-p','publico-privado','estado','cerrado','fecha_alta'));
 //        dd($cursos);
 
 //        $cursos = new Cursos();
         if($request->cerrado == null){
+            $cursos->cerrado = 0;
+        }elseif ($request->cerrado == "1"  ||$request->cerrado == "on"){
             $cursos->cerrado = 1;
         }else{
             $cursos->cerrado = 0;
         }
         if($request->estado == null){
             $cursos->estado = 0;
-        }else{
+        }elseif ($request->estado == "1" ||$request->estado == "on"){
             $cursos->estado = 1;
+        }else{
+            $cursos->estado = 0;
         }
-        if($request->publico_privado == null){
+        if($request->publico_privado == "on"){
             $cursos->publico_privado = 1;
         }else{
             $cursos->publico_privado = 0;
@@ -135,7 +139,9 @@ class CursosController extends Controller
         }
         $x =$request->input('tipo_maquina');
 
-
+$now = now().date('');
+        $cursos->fecha_alta = $now;
+//dd($now);
 
         for( $i=0 ; $i <= count($x)-1 ;$i++ ){
             if($i == 0){
@@ -265,7 +271,7 @@ class CursosController extends Controller
         $cursos->codigo_postal = $request->codigo_postal;
         $cursos->examen_t = $request->examen_t;
         $cursos->examen_p = $request->examen_p;
-        $cursos->fecha_alta = $request->fecha_alta;
+//        $cursos->fecha_alta = $cursos->fecha_alta;
 //        $cursos->publico_privado = $request->publico_privado;
         $cursos->observaciones = $request->observaciones;
         if(!$request->formador_apoyo_2){
@@ -277,14 +283,14 @@ class CursosController extends Controller
 //dd($request);
         if($request->cerrado == null){
             $cursos->cerrado = 0;
-        }elseif ($request->cerrado == "1"){
+        }elseif ($request->cerrado == "1" ||$request->cerrado == "on" ){
             $cursos->cerrado = 1;
         }else{
             $cursos->cerrado = 0;
         }
         if($request->estado == null){
-            $cursos->estado = 1;
-        }elseif ($request->estado == "1"){
+            $cursos->estado = 0;
+        }elseif ($request->estado == "1" ||$request->estado == "on"){
             $cursos->estado = 1;
         }else{
             $cursos->estado = 0;

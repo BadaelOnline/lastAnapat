@@ -212,7 +212,7 @@ input[type="radio"]:focus {
        <div class="form-group col-md-4">
             <label for="fecha" class="col-sm-12 col-form-label">Fecha</label>
             <div class="col-sm-7">
-                <input type="date" name='fecha' class="form-control {{$errors->first('fecha') ? "is-invalid" : "" }} " value="{{old('fecha')}}" id="fecha" placeholder="Fecha de alta">
+                <input type="date" readonly name='fecha' class="form-control {{$errors->first('fecha') ? "is-invalid" : "" }} " value="{{$now}}" id="fecha" placeholder="Fecha de alta">
                 <div class="invalid-feedback">
                     {{ $errors->first('fecha') }}
                 </div>
