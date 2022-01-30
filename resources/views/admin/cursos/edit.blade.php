@@ -209,9 +209,10 @@
                 {{--fourth row--}}
 
                 <div class="col-md-4">
-                    <label for="fecha_inicio" class="col-sm-2 col-form-label">Fecha Inicio</label>
+                    <label for="fecha_inicio" class="col-sm-4 col-form-label">Fecha Inicio:</label>
+                    <label for="fecha_inicio" class="col-sm-7 col-form-label">{{$cursos->fecha_inicio}}</label>
                     <div class="col-sm-9">
-                        <input type="datetime-local" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio') ? old('fecha_inicio') : $cursos->fecha_inicio}}" id="fecha_inicio" >
+                        <input type="datetime-local" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio') ? old('fecha_inicio') : $cursos->fecha_inicio}}" id="fecha_inicio" placeholder="{{$cursos->fecha_inicio}}" >
                         <div class="invalid-feedback">
                             {{ $errors->first('fecha_inicio') }}
                         </div>
@@ -332,15 +333,7 @@
                 </div>
             @endif
 
-                <div class="col-md-4">
-                    <label for="fecha_alta" class="col-sm-2 col-form-label">Fecha Alta</label>
-                    <div class="col-sm-9">
-                        <input type="date" name='fecha_alta' class="form-control {{$errors->first('fecha_alta') ? "is-invalid" : "" }} " value="{{old('fecha_alta') ? old('fecha_alta') : $cursos->fecha_alta}}" id="fecha_alta" >
-                        <div class="invalid-feedback">
-                            {{ $errors->first('fecha_alta') }}
-                        </div>
-                    </div>
-                </div>
+
 
 
                 <div class="col-md-4">

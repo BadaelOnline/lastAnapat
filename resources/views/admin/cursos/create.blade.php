@@ -313,15 +313,15 @@
                 <input type="hidden" name="examen_t" value="0">
             @endif
 
-<div class="col-md-4">
-<label for="fecha_alta" class="col-sm-12 col-form-label">Fecha Alta</label>
-<div class="col-sm-9">
-    <input type="date" name='fecha_alta' class="form-control {{$errors->first('fecha_alta') ? "is-invalid" : "" }} " value="{{old('fecha_alta')}}" id="fecha_alta" >
-    <div class="invalid-feedback">
-        {{ $errors->first('fecha_alta') }}
-    </div>
-</div>
-</div>
+{{--<div class="col-md-4">--}}
+
+{{--<div class="col-sm-9">--}}
+{{--    <input type="hidden" name='fecha_alta' class="form-control {{$errors->first('fecha_alta') ? "is-invalid" : "" }} " value="{{old('fecha_alta')}}" id="fecha_alta" >--}}
+{{--    <div class="invalid-feedback">--}}
+{{--        {{ $errors->first('fecha_alta') }}--}}
+{{--    </div>--}}
+{{--</div>--}}
+{{--</div>--}}
 
 
 <div class="col-md-4">

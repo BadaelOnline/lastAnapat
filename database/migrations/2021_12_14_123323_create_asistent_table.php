@@ -15,6 +15,7 @@ class CreateAsistentTable extends Migration {
 			$table->integer('orden')->nullable();
 			$table->integer('operador')->unsigned();
 			$table->integer('tipo_carnet')->unsigned();
+            $table->string('tipos_carnet')->nullable();
 			$table->integer('nota_t')->nullable();
 			$table->integer('nota_p');
 			$table->string('examen_t_pdf', 255)->nullable();

@@ -41,8 +41,9 @@ class OperadoresController extends Controller
         }else{
             $entidad=EntidadesFormadoreas::select('id','nombre')->where('id','=',$user->entidad)->first();
         }
+        $now= date('Y-m-d', strtotime(now()));
 
-        return view('admin.operadores.create',compact('entidad'));
+        return view('admin.operadores.create',compact('entidad','now'));
 
     }
 
