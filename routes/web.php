@@ -115,6 +115,12 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::delete('cursos/destroy/{id}',[CursosController::class, 'destroy'])->name('cursos.destroy');
     Route::post('cursos/activo/{id}',[CursosController::class, 'activo'])->name('cursos.activo');
     Route::get('cursos/export',[CursosController::class, 'export'])->name('cursos.export');
+    Route::get('cursos/print/{id}',[CursosController::class, 'print'])->name('cursos.print');
+    Route::get('cursos/prnpriview',[CursosController::class, 'prnpriview'])->name('cursos.prnpriview');
+
+    //print
+//    Route::get('/cursos','PrintController@index');
+//    Route::get('/prnpriview','PrintController@prnpriview');
 
 
     // Manage Categories

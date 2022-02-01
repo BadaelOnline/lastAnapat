@@ -46,7 +46,7 @@ class UserController extends Controller
             "nombre" => "required",
             "email" => "required|email|unique:users",
             "password" => "required|min:6",
-            "alias" => "required",
+            "alias" => "required|unique:users",
             "apellidos" => "required",
             "ciudad" => "required",
             "direccion" => "required",

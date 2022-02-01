@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Asistent extends Model 
+class Asistent extends Model
 {
 
     protected $table = 'asistent';
@@ -22,7 +22,7 @@ class Asistent extends Model
 
     public function operadores()
     {
-        return $this->belongsTo('App\Model\Operadores', 'operador');
+        return $this->belongsTo(Operadores::class, 'operador');
     }
 
     public function teoria()
