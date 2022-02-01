@@ -132,7 +132,7 @@
                 <tr>
                     <th>
                         <span> Formadores de apoyo: </span><span style="float: right;">{1}</span>
-                        <h5 style="text-align: center;">{{$formador1->nombre}} {{$formador1->apellidos}}</h5>
+                        <h5 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h5>
                     </th>
                     <th>
                         <span style="float: right;"> {2} </span><br>
