@@ -96,6 +96,8 @@
                             @else
                                 <span class="-align-center">Curso Inactivo</span>
                             @endif
+                                <a href="{{route('admin.cursos.print', [$cursos->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-print"></i> </a>
+
                         </td>
                     </tr>
                     @endif

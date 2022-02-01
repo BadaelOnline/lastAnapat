@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Cursos extends Model 
+class Cursos extends Model
 {
     protected $guarded=[];
     protected $table = 'cursos';
@@ -17,12 +17,12 @@ class Cursos extends Model
 
     public function entidades_formadoreas()
     {
-        return $this->belongsTo('App\Model\Entidades_Formadoreas', 'entidad');
+        return $this->belongsTo(EntidadesFormadoreas::class, 'entidad');
     }
 
     public function formadores()
     {
-        return $this->belongsTo('App\Model\Formadores', 'formador', 'formador_apoyo_1', 'formador_apoyo_2', 'formador_apoyo_3');
+        return $this->belongsTo(Formadores::class, 'formador' );
     }
 
     public function tipo_maquina()
@@ -32,12 +32,12 @@ class Cursos extends Model
 
     public function tipo_de_curso()
     {
-        return $this->belongsTo('App\Model\Tipo_De_Curso', 'tipo_curso');
+        return $this->belongsTo(Tipo_De_Curso::class, 'tipo_curso');
     }
 
     public function teoria()
     {
-        return $this->belongsTo('App\Model\Teoria', 'examen-t');
+        return $this->belongsTo(Teoria::class, 'examen-t');
     }
 
     public function practica()
@@ -47,12 +47,12 @@ class Cursos extends Model
 
     public function horario()
     {
-        return $this->hasMany('App\Model\Horario', 'curso');
+        return $this->hasMany(Horario::class, 'curso');
     }
 
     public function asistent()
     {
-        return $this->hasMany('App\Model\Asistent', 'curso');
+        return $this->hasMany(Asistent::class, 'curso');
     }
 
     public function carnet()

@@ -443,7 +443,9 @@
                                         <td>{{ $asistent->nota_p }}</td>
 
                                         <td>
-
+                                            @if(auth()->user()->perfil=='Administrador')
+                                            <a href="{{asset('storage/' . $asistent->examen_t_pdf)}}" class="btn btn-edit btn-sm" download><i class="fas fa-print"></i></a>
+                                            @endif
                                             <a href="{{route('admin.asistent.edit', [$asistent->id])}}" class="btn btn-info btn-sm"> {{__('message.Update')}} </a>
 
                                             {{--                                            <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('Delete this asistent permanently?')">--}}
@@ -556,6 +558,11 @@
     @endsection
 
     @push('scripts')
+        <script>
+            function print(url){
+                setTimeout("url.print();", 1000);
+            }
+        </script>
 
         <script>
             var a1CheckBox = document.getElementById('1');

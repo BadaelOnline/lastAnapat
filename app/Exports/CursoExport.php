@@ -14,7 +14,7 @@ class CursoExport implements FromCollection,WithHeadings
     public function collection()
     {
 //        dd(Cursos::all());
-        return Cursos::all();
+        return Cursos::all()->where();
     }
 
     public function headings(): array

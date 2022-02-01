@@ -15,7 +15,9 @@ use App\Models\{Asistent,
     Pcategory,
     Tipo_De_Curso,
     Tipo_Maquina};
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
+use http\Env\Response;
 
 class CursosController extends Controller
 {
@@ -29,6 +31,27 @@ class CursosController extends Controller
         $cursos = Cursos::orderBy('id','desc')->where('estado',1)->get();
 
         return view('admin.cursos.index',compact('cursos'));
+    }
+
+    public function prnpriview()
+    {
+        $cursos = Cursos::orderBy('id','desc')->where('estado',1)->get();
+
+        return view('admin.cursos.index',compact('cursos'));
+    }
+
+
+
+    public function print($id)
+    {
+        $cursos = Cursos::where('id',$id)->first();
+        $formador1 = Formadores::where('id',$cursos->formador_apoyo_1)->first();
+        $formador2 = Formadores::where('id',$cursos->formador_apoyo_2)->first();
+        $formador3 = Formadores::where('id',$cursos->formador_apoyo_3)->first();
+        $examen_t = Examen::where('id',$cursos->examen_t)->first();
+
+
+        return view('admin.cursos.print',compact('cursos','examen_t','formador1','formador2','formador3'));
     }
 
     /**
