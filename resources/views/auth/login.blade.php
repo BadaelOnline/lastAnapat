@@ -33,7 +33,7 @@
         @csrf
           <div class="login__field">
             <i class="login__icon fas fa-user"></i>
-            <input id="email" type="username" class="login__input" name="email" value="{{ old('email') }}" required  autofocus placeholder="Enter Email Address..." value="{{ old('email') }}">
+            <input id="email" type="username" class="login__input" name="email" value="{{ old('email') }}" required  autofocus placeholder="Introducir la dirección de correo electrónico..." value="{{ old('email') }}">
             @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -42,7 +42,7 @@
           </div>
           <div class="login__field">
             <i class="login__icon fas fa-lock"></i>
-            <input id="password" type="password" class="login__input" name="password" required autocomplete="current-password" placeholder="Password">
+            <input id="password" type="password" class="login__input" name="password" required autocomplete="current-password" placeholder="Contraseña">
 
             @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -52,14 +52,14 @@
           </div>
           <div class="custom-control custom-checkbox small">
                         <input class="custom-control-input" type="checkbox" name="remember" id="customCheck" {{ old('remember') ? 'checked' : '' }}>
-                        <label class="custom-control-label" for="customCheck">Remember Me</label>
+                        <label class="custom-control-label" for="customCheck">Recuérdame </label>
                       </div>
                       {{-- <a href="index.html" class="btn btn-primary btn-user btn-block">
                       Login
                     </a> --}}
           <button class="button login__submit">
 
-            <span class="button__text">  {{ __('Login') }}</span>
+            <span class="button__text">Acceso</span>
           </button>
         </form>
         <!-- <div class="social-login">
