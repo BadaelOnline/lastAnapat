@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
-            <img width="207" height="97" src="{{ asset('admin/img/logo-anpat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">
+            <img width="200" height="70" src="{{ asset('admin/img/logo-anpat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">
 
         </div>
         <div class="col-lg-6">
@@ -92,11 +92,11 @@
         </div>
     </div>
 </div>
-
+<br><br>
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
-            <img width="207" height="97" src="{{ asset('admin/img/logo-anpat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">
+            <img width="200" height="67" src="{{ asset('admin/img/logo-anpat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">
 
         </div>
         <div class="col-lg-1">
@@ -148,17 +148,17 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th rowspan="2">N-As.</th>
-                    <th rowspan="2">DNI</th>
-                    <th rowspan="2">Apellidos y nombre</th>
+                    <th rowspan="2" style="text-align: center;">N-As.</th>
+                    <th rowspan="2" style="text-align: center;">DNI</th>
+                    <th rowspan="2" style="text-align: center;">Apellidos y nombre</th>
                     <th style="text-align: center" colspan="2" >
                         <span>NOTAs</span>
                     </th>
-                    <th rowspan="2">Firma del alumno</th>
+                    <th rowspan="2" style="text-align: center;">Firma del alumno</th>
                 </tr>
                 <tr>
-                    <th>teoria</th>
-                    <th>pract</th>
+                    <th style="text-align: center;">teoria</th>
+                    <th style="text-align: center;">pract</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -169,18 +169,18 @@
                 @endphp
                 @foreach($cursos->asistent as $asistent)
                 <tr>
-                    <td>{{++$no}}</td>
-                    <td>{{$asistent->operadores->dni}}</td>
-                    <td>{{$asistent->operadores->nombre}} {{$asistent->operadores->apellidos}}</td>
-                    <td>{{$asistent->nota_t}}</td>
-                    <td>{{$asistent->nota_p}}</td>
-                    <td>{{$asistent->orden}}</td>
+                    <td style="text-align: center;">{{++$no}}</td>
+                    <td style="text-align: center;">{{$asistent->operadores->dni}}</td>
+                    <td style="text-align: center;">{{$asistent->operadores->nombre}} {{$asistent->operadores->apellidos}}</td>
+                    <td style="text-align: center;">{{$asistent->nota_t}}</td>
+                    <td style="text-align: center;">{{$asistent->nota_p}}</td>
+                    <td style="text-align: center;">{{$asistent->orden}}</td>
                 </tr>
                     @endforeach
                 @if(count($cursos->asistent)<10)
                     @for($i=10-count($cursos->asistent);$i>0;$i--)
                         <tr>
-                            <td>{{++$no}}</td>
+                            <td style="text-align: center;">{{++$no}}</td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
@@ -197,15 +197,15 @@
                 <tr>
                     <th>
                         <span> Formador:</span>
-                        <h5 style="text-align: center;">{{$formador1->nombre}} {{$formador1->apellidos}}</h5>
+                        <h5 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h5>
                     </th>
                     <th>
                         <span> Formadores de apoyo: </span><span style="float: right;">{1}</span>
-                        <h5 style="text-align: center;">{{$formador1->nombre}} {{$formador1->apellidos}}</h5></th>
+                        <h5 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h5></th>
                     <th><span style="float: right;">{2}</span><br>
                         <h5 style="text-align: center;">{{$formador2 != null ? $formador2->nombre : "-"}} {{$formador2 != null ? $formador2->apellidos : ""}}</h5></th></th>
                     <th><span style="float: right;">{3}</span><br>
-                        <h5 style="text-align: center;">{{$formador3 != null ? $formador3->nombre : "-"}} {{$formador2 != null ? $formador3->apellidos : ""}}</h5></th></th>
+                        <h5 style="text-align: center;">{{$formador3 != null ? $formador3->nombre : "-"}} {{$formador3 != null ? $formador3->apellidos : ""}}</h5></th></th>
                 </tr>
                 <tr>
                     <th colspan="4" style="text-align: center;height: 100px;">
@@ -280,15 +280,23 @@
 {{--    </div>--}}
 {{--</div>--}}
 {{--@endforeach--}}
+<div class="container" id="print-div" style="margin-bottom: 50px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <button class="btn btn-primary" id="print-link" onclick="printx();" style="width: 100%;">
+                Print
+            </button>
+        </div>
+    </div>
+</div>
 
-    <button class="print-link" id="print-link" onclick="printx();">
-        Print
-    </button>
+
 
 
 
 <script type="text/javascript">
     function printx(){
+        document.getElementById('print-div').style.display = "none";
         document.getElementById('print-link').style.display = "none";
         window.print()
     }
