@@ -225,6 +225,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     // Manage Carnet
     Route::get('carnet', [CarnetController::class, 'index'])->name('carnet');
     Route::get('carnet/create', [CarnetController::class, 'create'])->middleware('can:isAdminOrResponsable')->name('carnet.create');
+    Route::get('carnet/add/[{operador},{curso}]', [CarnetController::class, 'add'])->middleware('can:isAdminOrResponsable')->name('carnet.add');
     Route::post('carnet/create', [CarnetController::class, 'store'])->middleware('can:isAdminOrResponsable')->name('carnet.store');
     Route::get('carnet/edit/{id}', [CarnetController::class, 'edit'])->middleware('can:isAdminOrResponsable')->name('carnet.edit');
     Route::post('carnet/edit/{id}', [CarnetController::class, 'update'])->middleware('can:isAdminOrResponsable')->name('carnet.update');

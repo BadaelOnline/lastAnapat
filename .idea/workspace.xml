@@ -21,13 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4b9c3d3c-a351-4ab6-90ca-e38cb16d2c4d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exports/CursoExport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exports/CursoExport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CursosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CursosController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Asistent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Asistent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Cursos.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Cursos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CarnetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CarnetController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/cursos/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cursos/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/cursos/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cursos/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/cursos/print.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cursos/print.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -228,6 +224,7 @@
       <workItem from="1643095768356" duration="31528000" />
       <workItem from="1643542100892" duration="8220000" />
       <workItem from="1643626704700" duration="22626000" />
+      <workItem from="1643718006165" duration="6066000" />
     </task>
     <servers />
   </component>
@@ -292,11 +289,12 @@
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1600.860@0.0.1366.728" timestamp="1639486664082" />
     <state width="1557" height="222" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1600.860@1366.0.1600.860" timestamp="1639488882994" />
     <state width="1557" height="222" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1639561890250" />
-    <state x="541" y="299" key="NewPhpFileDialog" timestamp="1643627366583">
+    <state x="541" y="299" key="NewPhpFileDialog" timestamp="1643806827880">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="2000" y="353" key="NewPhpFileDialog/0.0.1366.728/1366.0.1600.860@1366.0.1600.860" timestamp="1639645102669" />
     <state x="541" y="299" key="NewPhpFileDialog/0.0.1366.728/1366.0.1680.1010@0.0.1366.728" timestamp="1643627366583" />
+    <state x="541" y="299" key="NewPhpFileDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1643806827880" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1643117404071">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

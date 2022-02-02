@@ -443,11 +443,12 @@
                                         <td>{{ $asistent->nota_p }}</td>
 
                                         <td>
-                                            @if(auth()->user()->perfil=='Administrador')
-                                            <a href="{{asset('storage/' . $asistent->examen_t_pdf)}}" class="btn btn-edit btn-sm" download><i class="fas fa-print"></i></a>
-                                            @endif
                                             <a href="{{route('admin.asistent.edit', [$asistent->id])}}" class="btn btn-info btn-sm"> {{__('message.Update')}} </a>
-
+                                            <a href="{{asset('storage/' . $asistent->examen_t_pdf)}}" class="btn btn-edit btn-sm" download title="descargar Examen T">T</a>
+                                            <a href="{{asset('storage/' . $asistent->examen_p_pdf)}}" class="btn btn-edit btn-sm" download title="descargar Examen P">P</a>
+                                            @if(auth()->user()->perfil=='Administrador')
+                                                <a href="{{ route('admin.carnet.add',[$asistent->operador,$cursos->id]) }}" class="btn btn-edit btn-sm" title="crear carnet"><i class="fas fa-id-card"></i> </a>
+                                            @endif
                                             {{--                                            <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('Delete this asistent permanently?')">--}}
 
                                             {{--                                                @csrf--}}
@@ -549,6 +550,7 @@
                 <div class="col-sm-3">
 
                     <button type="submit" class="btn btn-info">{{__('message.Update')}}</button>
+                    <a href="{{route('admin.cursos.print', [$cursos->id])}}" class="btn btn-info"> <i class="fas fa-print"></i> </a>
 
                 </div>
 

@@ -46,6 +46,22 @@ class CarnetController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function add($operador,$curso)
+    {
+
+
+            $operadores = Operadores::where('id',$operador)->first();
+
+
+        $cursos = Cursos::where('id',$curso)->first();
+        return view('admin.carnet.add',compact('operadores','cursos'));
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
