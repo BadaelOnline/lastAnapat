@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 
+use App\Exports\CursoExport;
+use App\Exports\FormadorExport;
 use App\Models\EntidadesFormadoreas;
 use App\Models\Formadores;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FormadoresController extends Controller
 {
@@ -24,6 +27,11 @@ class FormadoresController extends Controller
         else
             $formadores = Formadores::orderBy('id','desc')->get();
         return view('admin.formadores.index',compact('formadores'));
+    }
+
+    public function export()
+    {
+        return Excel::download(new FormadorExport(), 'formadores.xlsx');
     }
 
     /**

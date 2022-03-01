@@ -56,12 +56,17 @@
                 <div class="col-sm">
                     <label for="curso" class="col-sm-2 col-form-label">{{__('message.Curso')}}</label>
                     <div class="col-sm-9">
-                        <select disabled name='test' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
-                            <option disabled selected>{{__('message.Choose_One')}}</option>
+
+{{--                        <select disabled name='test' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">--}}
+{{--                            <option disabled selected>{{__('message.Choose_One')}}</option>--}}
                             @foreach ($curso as $curso)
-                                <option value="{{ $curso->id }}" {{$id == $curso->id ? "selected" : ""}}>{{ $curso->codigo }}</option>
+{{--                            <label>{{$curso}}</label>--}}
+                                @if($id == $curso->id)
+                                <input type="text" value="{{ $curso->codigo }}" readonly class="form-control">
+                                @endif
+{{--                                <option value="{{ $curso->id }}" {{$id == $curso->id ? "selected" : ""}}>{{ $curso->codigo }}</option>--}}
                             @endforeach
-                        </select>
+{{--                        </select>--}}
                         <input type="hidden" name="curso" value="{{$id}}">
                         <div class="invalid-feedback">
                             {{ $errors->first('curso') }}
@@ -109,7 +114,12 @@
                     <div class="col-sm">
                         <label for="tipos_carnet" class="col-sm-2 col-form-label">{{__('message.tipo_carnet')}}</label>
                         <div class="col-sm-9">
-                            <input type="text" name='tipos_carnet' class="form-control {{$errors->first('tipos_carnet') ? "is-invalid" : "" }} " value="{{old('tipos_carnet')}}" id="Nota examen teórico" placeholder="{{__('message.tipo_carnet')}}">
+                            @foreach ($cursos as $cur)
+                                @if($id == $cur->id)
+                                    <input readonly type="text"  class="form-control {{$errors->first('tipos_carnet') ? "is-invalid" : "" }} " value="{{old('tipos_carnet') ? old('tipos_carnet') : $cur->tipo_de_curso->tipo_curso == 'Básico' ? 'B' : 'R' }}" id="Nota examen teórico" placeholder="{{__('message.tipo_carnet')}}">
+                                    <input type="hidden" name="tipos_carnet" value="{{$cur->tipo_de_curso->tipo_curso == 'Básico' ? 'B' : 'R'}}">
+                                @endif
+                            @endforeach
                             <div class="invalid-feedback">
                                 {{ $errors->first('nota_t') }}
                             </div>
@@ -173,7 +183,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <label for="examen_t_pdf" class="col-sm-2 col-form-label">Examen_t_pdf</label>
+                    <label for="examen_t_pdf" class="col-sm-4 col-form-label">Exámen Teórico</label>
                     <div class="col-sm-9">
                         <input type="file" name='examen_t_pdf' class="form-control {{$errors->first('examen_t_pdf') ? "is-invalid" : "" }} " value="{{old('examen_t_pdf')}}" id="examen_t_pdf" >
                         <div class="invalid-feedback">
@@ -186,7 +196,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <label for="examen_p_pdf" class="col-sm-2 col-form-label">Examen_p_pdf</label>
+                    <label for="examen_p_pdf" class="col-sm-4 col-form-label">Exámen Práctico</label>
                     <div class="col-sm-9">
                         <input type="file" name='examen_p_pdf' class="form-control {{$errors->first('examen_p_pdf') ? "is-invalid" : "" }} " value="{{old('examen_p_pdf')}}" id="examen_p_pdf" placeholder="examen_p_pdf ">
                         <div class="invalid-feedback">
@@ -264,7 +274,9 @@
                         <select name='tipo_1' class="form-control {{$errors->first('tipo_1') ? "is-invalid" : "" }} " id="tipo_1">
                             <option disabled selected>Choose One!</option>
                             @foreach ($tipo as $tipo_1)
-                                <option value="{{ $tipo_1->id }}" {{old('tipo_1') == $tipo_1->id ? "selected" : ""}}>{{ $tipo_1->practica }}</option>
+                                @if($tipo_1->id == $tipos[0] || $tipo_1->id == $tipos[1] || $tipo_1->id == $tipos[2] || $tipo_1->id == $tipos[3])
+                                <option value="{{ $tipo_1->id }}" {{old('tipo_1') == $tipo_1->id ? "selected" : ""}}>{{ $tipo_1->tipo_maquina }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -279,7 +291,9 @@
                         <select name='tipo_2' class="form-control {{$errors->first('tipo_2') ? "is-invalid" : "" }} " id="tipo_2">
                             <option disabled selected>Choose One!</option>
                             @foreach ($tipo as $tipo_2)
-                                <option value="{{ $tipo_2->id }}" {{old('tipo_2') == $tipo_2->id ? "selected" : ""}}>{{ $tipo_2->practica }}</option>
+                                @if($tipo_2->id == $tipos[0] || $tipo_2->id == $tipos[1] || $tipo_2->id == $tipos[2] || $tipo_2->id == $tipos[3])
+                                <option value="{{ $tipo_2->id }}" {{old('tipo_2') == $tipo_2->id ? "selected" : ""}}>{{ $tipo_2->tipo_maquina }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -294,7 +308,9 @@
                         <select name='tipo_3' class="form-control {{$errors->first('tipo_3') ? "is-invalid" : "" }} " id="tipo_3">
                             <option disabled selected>Choose One!</option>
                             @foreach ($tipo as $tipo_3)
-                                <option value="{{ $tipo_3->id }}" {{old('tipo_3') == $tipo_3->id ? "selected" : ""}}>{{ $tipo_3->practica }}</option>
+                                @if($tipo_3->id == $tipos[0] || $tipo_3->id == $tipos[1] || $tipo_3->id == $tipos[2] || $tipo_3->id == $tipos[3])
+                                <option value="{{ $tipo_3->id }}" {{old('tipo_3') == $tipo_3->id ? "selected" : ""}}>{{ $tipo_3->tipo_maquina }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -309,7 +325,9 @@
                         <select name='tipo_4' class="form-control {{$errors->first('tipo_4') ? "is-invalid" : "" }} " id="tipo_4">
                             <option disabled selected>Choose One!</option>
                             @foreach ($tipo as $tipo_4)
-                                <option value="{{ $tipo_4->id }}" {{old('tipo_4') == $tipo_4->id ? "selected" : ""}}>{{ $tipo_4->practica }}</option>
+                                @if($tipo_4->id == $tipos[0] || $tipo_4->id == $tipos[1] || $tipo_4->id == $tipos[2] || $tipo_4->id == $tipos[3])
+                                <option value="{{ $tipo_4->id }}" {{old('tipo_4') == $tipo_4->id ? "selected" : ""}}>{{ $tipo_4->tipo_maquina }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>

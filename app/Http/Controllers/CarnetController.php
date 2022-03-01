@@ -17,13 +17,28 @@ class CarnetController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $now = now().date('');
         if($user->perfil=='Responsable_de_Formacion' || $user->perfil=='Formador')
 
             $operadors = Operadores::orderBy('id','desc')->where('entidad','=',$user->entidad)->get();
 
         else
             $operadors = Operadores::orderBy('id','desc')->get();
-        $carnets = Carnet::orderBy('id','desc')->get();
+        $carnets = Carnet::orderBy('id','desc')->whereDate('fecha_de_emision' , '>' ,$now )->get();
+        return view('admin.carnet.index',compact('operadors','carnets'));
+    }
+
+    public function index2()
+    {
+        $user = auth()->user();
+        $now = now().date('');
+        if($user->perfil=='Responsable_de_Formacion' || $user->perfil=='Formador')
+
+            $operadors = Operadores::orderBy('id','desc')->where('entidad','=',$user->entidad)->get();
+
+        else
+            $operadors = Operadores::orderBy('id','desc')->get();
+        $carnets = Carnet::orderBy('id','desc')->whereDate('fecha_de_emision' , '<=' ,$now )->get();
         return view('admin.carnet.index',compact('operadors','carnets'));
     }
 

@@ -162,7 +162,7 @@
                     <label for="formador_apoyo_1" class="col-sm-3 col-form-label">Formador Apoyo 1</label>
                     <div class="col-sm-9">
                         <select name='formador_apoyo_1' class="form-control {{$errors->first('formador_apoyo1') ? "is-invalid" : "" }} " id="formador_apoyo1">
-                            <option disabled selected>{{__('message.Choose_One')}}</option>
+                            <option value="0" selected>{{__('message.Choose_One')}}</option>
                             @foreach ($formadors2 as $formador)
                                 <option value="{{ $formador->id }}" {{$cursos->formador_apoyo_1 == $formador->id ? "selected" : ""}}>{{ $formador->nombre }}</option>
                             @endforeach
@@ -178,7 +178,7 @@
                     <label for="formador_apoyo_2" class="col-sm-3 col-form-label">Formador Apoyo 2</label>
                     <div class="col-sm-9">
                         <select name='formador_apoyo_2' class="form-control {{$errors->first('formador_apoyo_2') ? "is-invalid" : "" }} " id="formador_apoyo2">
-                            <option disabled selected>{{__('message.Choose_One')}}</option>
+                            <option value="0" selected>{{__('message.Choose_One')}}</option>
                             @foreach ($formadors2 as $formador)
                                 <option value="{{ $formador->id }}" {{$cursos->formador_apoyo_2 == $formador->id ? "selected" : ""}}>{{ $formador->nombre }}</option>
                             @endforeach
@@ -194,7 +194,7 @@
                     <label for="formador_apoyo_3" class="col-sm-3 col-form-label">Formador Apoyo 3</label>
                     <div class="col-sm-9">
                         <select name='formador_apoyo_3' class="form-control {{$errors->first('formador_apoyo_3') ? "is-invalid" : "" }} " id="formador_apoyo3">
-                            <option disabled selected>{{__('message.Choose_One')}}</option>
+                            <option value="0" selected>{{__('message.Choose_One')}}</option>
                             @foreach ($formadors3 as $formador)
                                 <option value="{{ $formador->id }}" {{$cursos->formador_apoyo_3 == $formador->id ? "selected" : ""}}>{{ $formador->nombre }}</option>
                             @endforeach
@@ -268,7 +268,14 @@
 
 
                 <div class="col-md-4">
-                    <label for="asistentes_pdf" class="col-sm-2 col-form-label">Asistentes Pdf</label>
+                    <label for="asistentes_pdf" class="col-sm-4 col-form-label">Asistentes Pdf</label>
+                    <label class="col-sm-2"></label>
+                    @if(isset($cursos->asistentes_pdf))
+                        <a href="{{asset('storage/' . $cursos->asistentes_pdf)}}" class="button" download style="margin-right: 10px;"><i class="fa fa-download" ></i></a>
+
+                        <a target="_blank" href="{{asset('storage/' . $cursos->asistentes_pdf)}}"><i
+                                class="fa fa-eye"></i> </a>
+                    @endif
                     <div class="col-sm-9">
                         <input type="file" name='asistentes_pdf' class="form-control {{$errors->first('asistentes_pdf') ? "is-invalid" : "" }} " value="{{old('asistentes_pdf') ? old('asistentes_pdf') : $cursos->asistentes_pdf}}" id="asistentes_pdf" placeholder="asistentes_pdf">
                         <div class="invalid-feedback">
@@ -280,7 +287,13 @@
                 {{--sixth row--}}
             @if(auth()->user()->perfil=='Administrador' )
                 <div class="col-md-4">
-                    <label for="examen-t" class="col-sm-2 col-form-label">Examen T</label>
+                    <label for="examen-t" class="col-sm-6 col-form-label">Exámen Teórico</label>
+{{--                    <label class="col-sm-3"></label>--}}
+                    @foreach ($examen_t as $exament)
+                        @if($cursos->examen_t == $exament->id && auth()->user()->perfil=='Administrador' || $cursos->examen_t == $exament->id && auth()->user()->perfil=='Responsable_de_Formacion')
+                            <a href="{{asset('storage/' . $exament->url)}}" class="button" download><i class="fa fa-download"></i></a>
+                        @endif
+                    @endforeach
                     <div class="col-sm-9">
                         <select name='examen_t' class="form-control {{$errors->first('examen_t') ? "is-invalid" : "" }} " id="examen-t">
                             <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -293,7 +306,13 @@
 
 
                 <div class="col-md-4">
-                    <label for="examen-p" class="col-sm-2 col-form-label">Examen P</label>
+                    <label for="examen-p" class="col-sm-6 col-form-label">Exámen Práctico </label>
+{{--                    <label class="col-sm-3"></label>--}}
+                    @foreach ($examen_p as $examen)
+                        @if($cursos->examen_p == $examen->id && auth()->user()->perfil=='Administrador' || $cursos->examen_p == $examen->id && auth()->user()->perfil=='Responsable_de_Formacion')
+                            <a href="{{asset('storage/' . $examen->url)}}" class="button" download><i class="fa fa-download"></i></a>
+                        @endif
+                    @endforeach
                     <div class="col-sm-9">
                         <select name='examen_p' class="form-control {{$errors->first('examen_p') ? "is-invalid" : "" }} " id="examen_p">
                             <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -305,7 +324,13 @@
                 </div>
             @else
                 <div class="col-md-4">
-                    <label for="examen-t" class="col-sm-2 col-form-label">Examen T</label>
+                    <label for="examen-t" class="col-sm-4 col-form-label">Exámen Teórico </label>
+                    <label class="col-sm-3"></label>
+                    @foreach ($examen_t as $exament)
+                        @if($cursos->examen_t == $exament->id && auth()->user()->perfil=='Administrador' || $cursos->examen_t == $exament->id && auth()->user()->perfil=='Responsable_de_Formacion')
+                            <a href="{{asset('storage/' . $exament->url)}}" class="button" download><i class="fa fa-download"></i></a>
+                        @endif
+                    @endforeach
                     <div class="col-sm-9">
                         <input type="hidden" name="examen_t" value="{{ $cursos->examen_t}}">
                         <select readonly disabled name='examen_t' class="form-control {{$errors->first('examen_t') ? "is-invalid" : "" }} " id="examen-t">
@@ -319,7 +344,13 @@
 
 
                 <div class="col-md-4">
-                    <label for="examen-p" class="col-sm-2 col-form-label">Examen P</label>
+                    <label for="examen-p" class="col-sm-4 col-form-label">Exámen Práctico </label>
+                    <label class="col-sm-3"></label>
+                    @foreach ($examen_p as $examen)
+                        @if($cursos->examen_p == $examen->id && auth()->user()->perfil=='Administrador' || $cursos->examen_p == $examen->id && auth()->user()->perfil=='Responsable_de_Formacion')
+                            <a href="{{asset('storage/' . $examen->url)}}" class="button" download><i class="fa fa-download"></i></a>
+                        @endif
+                    @endforeach
                     <div class="col-sm-9">
                         <input type="hidden" name="examen_p" value="{{$cursos->examen_p }}">
 
@@ -329,6 +360,7 @@
                                 <option value="{{ $examen_p->id }}" {{$cursos->examen_p == $examen_p->id ? "selected" : ""}}>{{ $examen_p->nombre }}</option>
                             @endforeach
                         </select>
+
                     </div>
                 </div>
             @endif
@@ -446,9 +478,9 @@
                                             <a href="{{route('admin.asistent.edit', [$asistent->id])}}" class="btn btn-info btn-sm"> {{__('message.Update')}} </a>
                                             <a href="{{asset('storage/' . $asistent->examen_t_pdf)}}" class="btn btn-edit btn-sm" download title="descargar Examen T">T</a>
                                             <a href="{{asset('storage/' . $asistent->examen_p_pdf)}}" class="btn btn-edit btn-sm" download title="descargar Examen P">P</a>
-                                            @if(auth()->user()->perfil=='Administrador')
-                                                <a href="{{ route('admin.carnet.add',[$asistent->operador,$cursos->id]) }}" class="btn btn-edit btn-sm" title="crear carnet"><i class="fas fa-id-card"></i> </a>
-                                            @endif
+{{--                                            @if(auth()->user()->perfil=='Administrador')--}}
+{{--                                                <a href="{{ route('admin.carnet.add',[$asistent->operador,$cursos->id]) }}" class="btn btn-edit btn-sm" title="crear carnet"><i class="fas fa-id-card"></i> </a>--}}
+{{--                                            @endif--}}
                                             {{--                                            <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('Delete this asistent permanently?')">--}}
 
                                             {{--                                                @csrf--}}
@@ -490,6 +522,8 @@
                                 <tr>
                                     <th>Contenido</th>
 
+                                    <th>Tipo Maquina</th>
+
                                     <th>Fecha Inicio</th>
 
                                     <th>Final</th>
@@ -510,6 +544,8 @@
 
                                     <tr>
                                         <td>{{ $horario->contenido }}</td>
+
+                                        <td>{{ $horario->tipo_maquinaa->tipo_maquina }}</td>
 
                                         <td>{{ $horario->fecha_inicio }}</td>
 
@@ -638,6 +674,8 @@
                 }else if (a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && b3CheckBox.checked) {
                     searchBox.value = 'B15-' + code;
                 }else if (a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && b3CheckBox.checked) {
+                    searchBox.value = 'B17-' + code;
+                }else if (!a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && b3CheckBox.checked) {
                     searchBox.value = 'B16-' + code;
                 } else {
                     searchBox.value = '{{__("message.you can not choose this type of machine togother")}}';

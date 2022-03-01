@@ -27,7 +27,7 @@
               <p>Web: <a href="{{$entidadesFormadores->web}}" > {{$entidadesFormadores->web}}</a></p>
               <hr>
               <p>Correo electrónico: <a href="mailto:{{$entidadesFormadores->mail}}" > {{$entidadesFormadores->mail}}</a></p>
-           <a href="{{ route('entidade_formadora',$entidadesFormadores->id) }}"> <button>Details</button></a>
+           <a href="{{ route('entidade_formadora',$entidadesFormadores->id) }}"> <button>{{__('message.Details')}}</button></a>
           </div>
         </div>
         @endforeach

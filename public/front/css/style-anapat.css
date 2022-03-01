@@ -570,9 +570,9 @@ section {
     height: 100%;
 }
 .about-us .contain h2{
-   color: #484848;
-   margin-bottom: 40px;
-   border-bottom: 2px solid #484848;
+    color: #484848;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #484848;
 }
 .about-us .contain p{
     font-size: 18px;
@@ -613,7 +613,7 @@ section {
     font-size: 18px;
 }
 .blog .sidebar .post-item{
- margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .blog .sidebar .post-item h4{
     margin-bottom: 0;
@@ -752,7 +752,7 @@ section {
     color: #6ab6e2;
     font-weight: bold;
     cursor: pointer;
-    }
+}
 
 .services .icon-box {
     text-align: center;
@@ -764,26 +764,26 @@ section {
     width: 100%;
     display: grid;
     align-content: space-between;
-  }
-  .services .icon-box:hover {
+}
+.services .icon-box:hover {
     box-shadow: 0px 0 35px 0 rgba(0, 0, 0, 0.08);
     border: 2px solid #ddd;
-  }
-  .services .icon-box h4 {
+}
+.services .icon-box h4 {
     font-weight: 600;
     margin: 10px 0 15px 0;
     font-size: 22px;
-  }
-  .services .icon-box h4 a {
+}
+.services .icon-box h4 a {
     color: #111;
     transition: ease-in-out 0.3s;
-  }
-  .services .icon-box p {
+}
+.services .icon-box p {
     line-height: 24px;
     font-size: 14px;
     margin-bottom: 10px;
-  }
-  .services .icon-box button{
+}
+.services .icon-box button{
     border: none;
     padding: 10px 20px;
     border-radius: 3px;
@@ -796,24 +796,24 @@ section {
 }
 .services .icon-box:hover button{
     background-color: #2f7095;
-  }
-  .services .icon-box2{
-      padding: 20px;
-  }
+}
+.services .icon-box2{
+    padding: 20px;
+}
 .services .icon-box2 .imag {
     width: 40%;
     height: 140px;
     margin: 0 auto;
-  }
-  .services .icon-box2 .imag img{
+}
+.services .icon-box2 .imag img{
     width: 100%;
     height: 100%;
-      }
+}
 /* courses show */
-  .courses .contain-card {
-   display: flex;
-   justify-content: center;
-   width: 100%;
+.courses .contain-card {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 .courses .card {
     background-color: white;
@@ -832,15 +832,15 @@ section {
     box-shadow: -20px -20px 0px 0px #4ea7d999;
     border-radius: 10px;
     -webkit-animation-name: shadow-show;
-   /* Safari 4.0 - 8.0 */
+    /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 1.5s;
-   /* Safari 4.0 - 8.0 */
+    /* Safari 4.0 - 8.0 */
     animation-name: shadow-show;
     animation-duration: 1.5s;
     -webkit-transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
     -o-transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
     transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
-   /* custom */
+    /* custom */
 }
 .courses .card h1, .card h2, .card h3, .card h4, .card h5 {
     margin: 0px;
@@ -856,15 +856,15 @@ section {
     background-color: #4ea7d9;
     margin: 0px;
     -webkit-animation-name: line-show;
-   /* Safari 4.0 - 8.0 */
+    /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 0.3s;
-   /* Safari 4.0 - 8.0 */
+    /* Safari 4.0 - 8.0 */
     animation-name: line-show;
     animation-duration: 0.3s;
     -webkit-transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
     -o-transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
     transition-timing-function: cubic-bezier(0.795, 0, 0.165, 1);
-   /* custom */
+    /* custom */
 }
 .courses .card p {
     margin: 15px 0px 0px 0px;
@@ -877,9 +877,9 @@ section {
     word-wrap: pre-wrap;
     color: #282828;
     -webkit-animation-name: p-show;
-   /* Safari 4.0 - 8.0 */
+    /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 1.5s;
-   /* Safari 4.0 - 8.0 */
+    /* Safari 4.0 - 8.0 */
     animation-name: p-show;
     animation-duration: 1.5s;
 }
@@ -889,8 +889,8 @@ section {
     cursor: pointer;
 }
 .courses .card a:hover{
-   text-decoration: underline;
-   color: #1771a4;
+    text-decoration: underline;
+    color: #1771a4;
 }
 .courses .card button {
     border: none;
@@ -914,59 +914,59 @@ section {
 @-webkit-keyframes line-show {
     from {
         margin: 0px 100px;
-   }
+    }
     to {
         margin: 0px;
-   }
+    }
 }
 /* Standard syntax */
 @keyframes line-show {
     from {
         margin: 0px 100px;
-   }
+    }
     to {
         margin: 0px;
-   }
+    }
 }
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes p-show {
     from {
         color: white;
-   }
+    }
     to {
         color: #282828;
-   }
+    }
 }
 /* Standard syntax */
 @keyframes p-show {
     from {
         color: white;
-   }
+    }
     to {
         color: #282828;
-   }
+    }
 }
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes shadow-show {
     from {
         -webkit-box-shadow: 0px 0px 0px 0px #e0e0e0;
         box-shadow: 0px 0px 0px 0px #e0e0e0;
-   }
+    }
     to {
         -webkit-box-shadow: -20px -20px 0px 0px #4ea7d9;
         box-shadow: -20px -20px 0px 0px #4ea7d9;
-   }
+    }
 }
 /* Standard syntax */
 @keyframes shadow-show {
     from {
         -webkit-box-shadow: 0px 0px 0px 0px #e0e0e0;
         box-shadow: 0px 0px 0px 0px #e0e0e0;
-   }
+    }
     to {
         -webkit-box-shadow: -20px -20px 0px 0px #4ea7d9;
         box-shadow: -20px -20px 0px 0px #4ea7d9;
-   }
+    }
 }
 
 
@@ -1189,10 +1189,10 @@ section {
     margin-inline-start: 25px;
 }
 @media (max-width:568px) {
-.contact .contain .info-text {
-    text-align: center;
-    margin: 0;
-}
+    .contact .contain .info-text {
+        text-align: center;
+        margin: 0;
+    }
 }
 .contact .contain .info-text h3 {
     color: #428bb0;
@@ -1216,10 +1216,10 @@ section {
 @keyframes gradient {
     0% {
         background-position: 0 0;
-   }
+    }
     100% {
         background-position: 100% 0;
-   }
+    }
 }
 .contact .contain .info-input .webflow-style-input {
     position: relative;
@@ -1232,11 +1232,11 @@ section {
     border: 2px solid #ddd;
 }
 @media (max-width:568px) {
-.contact .contain .info-input .webflow-style-input {
-    width: 90%;
-    margin: 0 auto;
-}
+    .contact .contain .info-input .webflow-style-input {
+        width: 90%;
+        margin: 0 auto;
     }
+}
 .contact .contain .info-input .webflow-style-input:after {
     content: "";
     position: absolute;

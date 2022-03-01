@@ -14,7 +14,26 @@ class CursoExport implements FromCollection,WithHeadings
     public function collection()
     {
 //        dd(Cursos::all());
-        return Cursos::all()->where();
+        $cursos = Cursos::all();
+        foreach ($cursos as $curso){
+            if ($curso->estado == 1){
+                $curso->estado = true;
+            }else{
+                $curso->estado = false;
+            }
+            if ($curso->cerrado == 1){
+                $curso->cerrado = true;
+            }else{
+                $curso->cerrado = false;
+            }
+
+            if ($curso->publico_privado == 1){
+                $curso->publico_privado = "publico";
+            }else{
+                $curso->publico_privado = 'privado';
+            }
+        }
+        return $cursos;
     }
 
     public function headings(): array

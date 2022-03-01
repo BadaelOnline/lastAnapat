@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Entidades_Formadoreas;
+use App\Exports\CursoExport;
+use App\Exports\EntidadExport;
 use App\Models\EntidadesFormadoreas;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class EntidadesFormadoreasController extends Controller
@@ -29,6 +32,11 @@ class EntidadesFormadoreasController extends Controller
     public function create()
     {
         return view('admin.entidades_formadoreas.create');
+    }
+
+    public function export()
+    {
+        return Excel::download(new EntidadExport(), 'entidad.xlsx');
     }
 
     /**

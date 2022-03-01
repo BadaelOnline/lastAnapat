@@ -89,7 +89,15 @@
 
             </div>
         </div>
-
+        <div class="form-group col-md-4">
+            <label for="provincia" class="col-sm-12 col-form-label">Provincia</label>
+            <div class="col-sm-7">
+                <input type="text" name='provincia' class="form-control {{$errors->first('provincia') ? "is-invalid" : "" }} " value="{{old('provincia') ? old('provincia') : $user->provincia}}" id="provincia" placeholder="Provincia">
+                <div class="invalid-feedback">
+                    {{ $errors->first('provincia') }}
+                </div>
+            </div>
+        </div>
 
         <div class="form-group col-md-4">
             <label for="ciudad" class="col-sm-2 col-form-label">Ciudad</label>
@@ -148,7 +156,7 @@
     </div>
     <div class="form-group col-md-12">
         <div class="col-sm-3">
-            <button type="submit" class="btn btn-info">{{__('message.Create')}}</button>
+            <button type="submit" class="btn btn-info">{{__('message.Update')}}</button>
         </div>
     </div>
     </div>

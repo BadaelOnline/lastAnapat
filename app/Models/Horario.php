@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Horario extends Model 
+class Horario extends Model
 {
     protected $guarded=[];
     protected $table = 'horario';
@@ -17,7 +17,12 @@ class Horario extends Model
 
     public function cursos()
     {
-        return $this->belongsTo('App\Model\Cursos', 'curso');
+        return $this->belongsTo(Cursos::class, 'curso');
+    }
+
+    public function tipo_maquinaa()
+    {
+        return $this->belongsTo(Tipo_Maquina::class, 'tipo_maquina');
     }
 
 }

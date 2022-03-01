@@ -50,6 +50,22 @@
             </div>
 
 
+                <div class="form-group col-md-4">
+                    <label for="tipo_maquina" class="col-sm-2 col-form-label">Tipo Maquina</label>
+                    <div class="col-sm-9">
+                        <select name='tipo_maquina'  class="form-control {{$errors->first('tipo_maquina') ? "is-invalid" : "" }} " id="tipo_maquina">
+                            @foreach ($tipo_maq as $tipo_maq)
+                                @if($tipo_maq->id == $tipos[0] || $tipo_maq->id == $tipos[1] || $tipo_maq->id == $tipos[2] || $tipo_maq->id == $tipos[3])
+                                <option value="{{ $tipo_maq->id }}" {{$horario->tipo_maquina == $tipo_maq->id ? "selected" : ""}}>{{ $tipo_maq->tipo_maquina }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                        <div class="invalid-feedback">
+                            {{ $errors->first('tipo_maquina') }}
+                        </div>
+                    </div>
+                </div>
+
 
 
 
@@ -64,20 +80,23 @@
                     </div>
                 </div>
             </div>
-
-            <label for="date" class="col-sm-2 col-form-label">Fecha Inicio</label>
+            <div class="form-group col-md-4">
+            <label for="date" class="col-sm-4 col-form-label">Fecha Inicio</label>
             <div class="col-sm-9">
                 <input type="datetime" dataformatas="" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio') ? old('fecha_inicio') : $horario->fecha_inicio}}" id="fecha_inicio" >
                 <div class="invalid-feedback">
                     {{ $errors->first('fecha_inicio') }}
                 </div>
             </div>
+            </div>
+            <div class="form-group col-md-4">
             <label for="date" class="col-sm-2 col-form-label">final</label>
             <div class="col-sm-9">
                 <input type="datetime" name='final' class="form-control {{$errors->first('final') ? "is-invalid" : "" }} " value="{{old('final') ? old('final') : $horario->final}}"  id="final" >
                 <div class="invalid-feedback">
                     {{ $errors->first('final') }}
                 </div>
+            </div>
             </div>
             </div>
             <div class="form-group col-md-4">

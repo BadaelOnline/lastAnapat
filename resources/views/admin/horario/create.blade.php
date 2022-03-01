@@ -49,7 +49,23 @@
                 </div>
             </div>
         </div>
-
+        <div class="container">
+            <div class="form-group ml-2">
+                <label for="tipo_maquina" class="col-sm-2 col-form-label">Tipo Maquina</label>
+                <div class="col-sm-9">
+                    <select name='tipo_maquina'  class="form-control {{$errors->first('tipo_maquina') ? "is-invalid" : "" }} " id="tipo_maquina">
+                        @foreach ($tipo_maq as $tipo_maq)
+                            @if($tipo_maq->id == $tipos[0] || $tipo_maq->id == $tipos[1] || $tipo_maq->id == $tipos[2] || $tipo_maq->id == $tipos[3])
+                            <option value="{{ $tipo_maq->id }}">{{ $tipo_maq->tipo_maquina }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('tipo_maquina') }}
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <div class="container">

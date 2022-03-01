@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Tipo_Maquina extends Model 
+class Tipo_Maquina extends Model
 {
 
     protected $table = 'tipo_maquina';
@@ -18,6 +18,11 @@ class Tipo_Maquina extends Model
     public function cursos()
     {
         return $this->hasMany('App\Model\Cursos', 'tipo_maquina_1', 'tipo_maquina_2', 'tipo_maquina_3', 'tipo_maquina_4');
+    }
+
+    public function horarios()
+    {
+        return $this->hasMany('App\Model\Horario', 'tipo_maquina');
     }
 
 }

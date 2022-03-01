@@ -36,8 +36,8 @@ class FrontController extends Controller
         $link = Link::orderBy('name','asc')->get();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $partner = Partner::orderBy('name','asc')->limit(8)->get();
-        $pcategories = Pcategory::all();
-        $portfolio = Portfolio::all();
+        $pcategories = Pcategory::all()->where('estado', 1);
+        $portfolio = Portfolio::all()->where('estado', 1);
         $service = Service::orderBy('title','asc')->get();
         return view ('front.home',compact('about','banner','general','link','lpost','partner','pcategories','portfolio','service'));
     }
@@ -66,17 +66,17 @@ class FrontController extends Controller
         return view ('front.cotact',compact('about','faq','general','link','lpost','partner','team'));
     }
 
-    public function entidades()
-    {
-        $about = About::find(1);
-        $faq = Faq::all();
-        $general = General::find(1);
-        $link = Link::orderBy('name','asc')->get();
-        $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
-        $partner = Partner::orderBy('name','asc')->get();
-        $team = Team::orderBy('id','asc')->get();
-        return view ('front.entidades_formadoreas',compact('about','faq','general','link','lpost','partner','team'));
-    }
+//    public function entidades()
+//    {
+//        $about = About::find(1);
+//        $faq = Faq::all();
+//        $general = General::find(1);
+//        $link = Link::orderBy('name','asc')->get();
+//        $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
+//        $partner = Partner::orderBy('name','asc')->get();
+//        $team = Team::orderBy('id','asc')->get();
+//        return view ('front.entidades_formadoreas',compact('about','faq','general','link','lpost','partner','team'));
+//    }
 
     public function testi()
     {
@@ -90,7 +90,7 @@ class FrontController extends Controller
     {
         $general = General::find(1);
         $cursos = Cursos::orderBy('id','desc')->where('publico_privado',1)->where('estado',1)->get();
-        $entidades = EntidadesFormadoreas::orderBy('id','desc')->get();
+        $entidades = EntidadesFormadoreas::orderBy('id','desc')->where('estado',1)->get();
         return view ('front.cursos',compact('general','cursos','entidades'));
     }
 
@@ -132,9 +132,14 @@ class FrontController extends Controller
 //        dd($request);
         $general = General::find(1);
 //        dd($general);
-        $carnet = Carnet::where('numero',$request->numero)->first();
+        $now = now().date('');
+        $carnet = Carnet::where('numero',$request->numero)->whereDate('fecha_de_emision' , '>' ,$now )->first();
+        $carnet2 = Carnet::where('numero',$request->numero)->whereDate('fecha_de_emision' , '<=' ,$now )->first();
 //dd($carnet);
-
+        if ($carnet2 != null && $carnet == null){
+            $test = "Esta Carné ya expiró.";
+            return view('front.carnets', compact('general','test'));
+        }
         if($carnet != null){
             $operador = Operadores::where('id',$carnet->operador)->firstOrFail();
             $curso = Cursos::where('id',$carnet->curso)->firstOrFail();
@@ -143,6 +148,17 @@ class FrontController extends Controller
             $test = "Ningún Carné coincide con el código buscado.";
             return view('front.carnets', compact('general','test'));
         }
+
+    }
+
+    public function migrate(){
+        try {
+            \Artisan::call("migrate");
+            return \Artisan::call("migrate");
+        }catch (\Exception $ex){
+            return $ex->getMessage();
+        }
+
     }
 
     public function carnet($id)
@@ -180,7 +196,7 @@ class FrontController extends Controller
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $pcategories = Pcategory::all();
         $portfolio = Portfolio::all();
-        $entidadesFormadores = EntidadesFormadoreas::orderBy('id','desc')->get();
+        $entidadesFormadores = EntidadesFormadoreas::orderBy('id','desc')->where('estado',1)->get();
         return view ('front.entidades_formadoras',compact('general','entidadesFormadores','service','link','lpost','pcategories','portfolio'));
     }
 
