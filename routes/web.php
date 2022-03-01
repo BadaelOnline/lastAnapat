@@ -70,7 +70,7 @@ Auth::routes([
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function () {
-
+    Route::get('migrate', [FrontController::class, 'migrate'])->middleware('can:isAdmin')->name('migrate');
     Route::get('dashboard', [GeneralController::class, 'dashboard'])->name('dashboard');
 
     // General settings
@@ -101,6 +101,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::get('asistent/create/{id}', [AsistentController::class, 'create'])->name('asistent.create');
     Route::post('asistent/create', [AsistentController::class, 'store'])->name('asistent.store');
     Route::get('asistent/edit/{id}', [AsistentController::class, 'edit'])->name('asistent.edit');
+    Route::get('asistent/export',[AsistentController::class, 'export'])->name('asistent.export');
     Route::post('asistent/edit/{id}', [AsistentController::class, 'update'])->name('asistent.update');
     Route::delete('asistent/destroy/{id}',[AsistentController::class, 'destroy'])->name('asistent.destroy');
 
@@ -197,6 +198,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::get('formadores/edit/{id}', [FormadoresController::class, 'edit'])->name('formadores.edit');
     Route::post('formadores/edit/{id}', [FormadoresController::class, 'update'])->name('formadores.update');
     Route::delete('formadores/destroy/{id}',[FormadoresController::class, 'destroy'])->name('formadores.destroy');
+    Route::get('formadores/export',[FormadoresController::class, 'export'])->middleware('can:isAdmin')->name('formadores.export');
 
     // Manage Services
     Route::get('operadores', [OperadoresController::class, 'index'])->name('operadores');
@@ -205,11 +207,13 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::get('operadores/edit/{id}', [OperadoresController::class, 'edit'])->name('operadores.edit');
     Route::post('operadores/edit/{id}', [OperadoresController::class, 'update'])->name('operadores.update');
     Route::delete('operadores/destroy/{id}',[OperadoresController::class, 'destroy'])->name('operadores.destroy');
+    Route::get('operadores/export',[OperadoresController::class, 'export'])->middleware('can:isAdmin')->name('operadores.export');
 
     // Manage Team
     Route::get('entidades_formadores', [EntidadesFormadoreasController::class, 'index'])->middleware('can:isAdminOrResponsable')->name('entidades_formadoreas');
     Route::get('entidades_formadores/create', [EntidadesFormadoreasController::class, 'create'])->middleware('can:isAdminOrResponsable')->name('entidades_formadoreas.create');
     Route::post('entidades_formadores/create', [EntidadesFormadoreasController::class, 'store'])->middleware('can:isAdminOrResponsable')->name('entidades_formadoreas.store');
+    Route::get('entidades_formadores/export',[EntidadesFormadoreasController::class, 'export'])->middleware('can:isAdmin')->name('entidades_formadoreas.export');
     Route::get('entidades_formadores/edit/{id}', [EntidadesFormadoreasController::class, 'edit'])->middleware('can:isAdminOrResponsable')->name('entidades_formadoreas.edit');
     Route::post('entidades_formadores/edit/{id}', [EntidadesFormadoreasController::class, 'update'])->middleware('can:isAdminOrResponsable')->name('entidades_formadoreas.update');
     Route::delete('entidades_formadores/destroy/{id}',[EntidadesFormadoreasController::class, 'destroy'])->middleware('can:isAdmin')->name('entidades_formadoreas.destroy');
@@ -224,6 +228,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
 
     // Manage Carnet
     Route::get('carnet', [CarnetController::class, 'index'])->name('carnet');
+    Route::get('inactiveCarnet', [CarnetController::class, 'index2'])->name('inactiveCarnet');
     Route::get('carnet/create', [CarnetController::class, 'create'])->middleware('can:isAdminOrResponsable')->name('carnet.create');
     Route::get('carnet/add/[{operador},{curso}]', [CarnetController::class, 'add'])->middleware('can:isAdminOrResponsable')->name('carnet.add');
     Route::post('carnet/create', [CarnetController::class, 'store'])->middleware('can:isAdminOrResponsable')->name('carnet.store');

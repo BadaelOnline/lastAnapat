@@ -17,7 +17,7 @@ class Asistent extends Model
 
     public function cursos()
     {
-        return $this->belongsTo('App\Model\Cursos', 'curso');
+        return $this->belongsTo(Cursos::class, 'curso');
     }
 
     public function operadores()
@@ -30,9 +30,9 @@ class Asistent extends Model
         return $this->belongsTo('App\Model\Teoria', 'tipo_carnet');
     }
 
-    public function practica()
+    public function tipo_maquina()
     {
-        return $this->belongsTo('App\Model\Practica', 'tipo_1', 'tipo_2', 'tipo_3', 'tipo_4');
+        return $this->belongsTo(Tipo_Maquina::class, 'tipo_1', 'tipo_2', 'tipo_3', 'tipo_4');
     }
 
 }

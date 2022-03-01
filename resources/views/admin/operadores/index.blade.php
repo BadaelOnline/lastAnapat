@@ -28,8 +28,13 @@
 
     <div class="card-header py-3">
         @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion'))
-        <a href="{{ route('admin.operadores.create') }}" class="btn btn-pass">{{__('message.add_new')}} Operadores</a>
+        <a href="{{ route('admin.operadores.create') }}" class="btn btn-pass">{{__('message.add_new')}} operador</a>
         @endif
+            @if(auth()->user()->perfil=='Administrador')
+                <a href="{{ route('admin.operadores.export',auth()->user()->entidad) }}" class="btn btn-primary">
+                    {{__('message.Exportar Operadores')}}
+                </a>
+            @endif
     </div>
 
     <div class="card-body">
@@ -44,7 +49,7 @@
 
 
 
-                        <th>{{__('message.Logo')}}</th>
+                        <th>{{__('message.Foto')}}</th>
 
                         <th>{{__('message.Nombre')}}</th>
 

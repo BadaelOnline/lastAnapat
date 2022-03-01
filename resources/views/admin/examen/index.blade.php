@@ -29,7 +29,7 @@
     <div class="card-header py-3">
 
         @if(auth()->user()->perfil=='Administrador')
-            <a href="{{ route('admin.examen.create') }}" class="btn btn-pass">{{__('message.add_new')}} Examen</a>
+            <a href="{{ route('admin.examen.create') }}" class="btn btn-pass">{{__('message.add_new')}} examen</a>
         @endif
 
     </div>

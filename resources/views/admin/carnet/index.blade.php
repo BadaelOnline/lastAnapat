@@ -29,7 +29,7 @@
     <div class="card-header py-3">
 
 
-        <a href="{{ route('admin.carnet.create') }}" class="btn btn-pass">{{__('message.add_new')}} Carnet</a>
+        <a href="{{ route('admin.carnet.create') }}" class="btn btn-pass">{{__('message.add_new')}} carnet</a>
 
 
     </div>

@@ -34,7 +34,14 @@ class HorarioController extends Controller
     public function create($id)
     {
         $curso=Cursos::select('id','curso')->get();
-        return view('admin.horario.create',compact('curso','id'));
+        $tipo_maq = Tipo_Maquina::select('id','tipo_maquina')->get();
+        $corse = Cursos::where('id', $id)->first();
+        $tipo_1 = $corse->tipo_maquina_1;
+        $tipo_2 = $corse->tipo_maquina_2;
+        $tipo_3 = $corse->tipo_maquina_3;
+        $tipo_4 = $corse->tipo_maquina_4;
+        $tipos = [$tipo_1,$tipo_2,$tipo_3,$tipo_4];
+        return view('admin.horario.create',compact('curso','id','tipo_maq','tipos'));
     }
 
     /**
@@ -98,9 +105,16 @@ class HorarioController extends Controller
     public function edit($id)
     {
         $horario = Horario::findOrFail($id);
+        $tipo_maq = Tipo_Maquina::select('id','tipo_maquina')->get();
         $curso=Cursos::select('id','curso')->get();
+        $corse = Cursos::where('id', $horario->curso)->first();
+        $tipo_1 = $corse->tipo_maquina_1;
+        $tipo_2 = $corse->tipo_maquina_2;
+        $tipo_3 = $corse->tipo_maquina_3;
+        $tipo_4 = $corse->tipo_maquina_4;
+        $tipos = [$tipo_1,$tipo_2,$tipo_3,$tipo_4];
 //        dd($horario);
-        return view ('admin.horario.edit', compact('horario','curso'));
+        return view ('admin.horario.edit', compact('horario','curso','tipo_maq','tipos'));
     }
 
     /**
@@ -126,6 +140,7 @@ class HorarioController extends Controller
         $horario->alumnos = $request->alumnos;
         $horario->fecha_inicio = $request->fecha_inicio;
         $horario->final = $request->final;
+        $horario->tipo_maquina = $request->tipo_maquina;
 
 
 

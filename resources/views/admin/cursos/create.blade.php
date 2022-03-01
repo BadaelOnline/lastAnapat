@@ -210,7 +210,7 @@
 <div class="col-md-4">
 <label for="fecha_inicio" class="col-sm-12 col-form-label">Fecha Inicio</label>
 <div class="col-sm-9">
-    <input type="date" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio')}}" id="fecha_inicio" >
+    <input type="datetime-local" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio')}}" id="fecha_inicio" >
     <div class="invalid-feedback">
         {{ $errors->first('fecha_inicio') }}
     </div>
@@ -279,7 +279,7 @@
 {{--sixth row--}}
             @if(auth()->user()->perfil=='Administrador' )
 <div class="col-md-4">
-<label for="examen-t" class="col-sm-12 col-form-label">Examen T</label>
+<label for="examen-t" class="col-sm-12 col-form-label">Exámen Teórico</label>
 <div class="col-sm-9">
     <select name='examen_t' class="form-control {{$errors->first('examen_t') ? "is-invalid" : "" }} " id="examen-t">
         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -295,7 +295,7 @@
 
 
 <div class="col-md-4">
-<label for="examen-p" class="col-sm-12 col-form-label">Examen P</label>
+<label for="examen-p" class="col-sm-12 col-form-label">Exámen Práctico</label>
 <div class="col-sm-9">
     <select name='examen_p' class="form-control {{$errors->first('examen_p') ? "is-invalid" : "" }} " id="examen_p">
         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -315,13 +315,13 @@
 
 {{--<div class="col-md-4">--}}
 
-{{--<div class="col-sm-9">--}}
-{{--    <input type="hidden" name='fecha_alta' class="form-control {{$errors->first('fecha_alta') ? "is-invalid" : "" }} " value="{{old('fecha_alta')}}" id="fecha_alta" >--}}
-{{--    <div class="invalid-feedback">--}}
-{{--        {{ $errors->first('fecha_alta') }}--}}
-{{--    </div>--}}
-{{--</div>--}}
-{{--</div>--}}
+            {{--<div class="col-sm-9">--}}
+            {{--    <input type="hidden" name='fecha_alta' class="form-control {{$errors->first('fecha_alta') ? "is-invalid" : "" }} " value="{{old('fecha_alta')}}" id="fecha_alta" >--}}
+            {{--    <div class="invalid-feedback">--}}
+            {{--        {{ $errors->first('fecha_alta') }}--}}
+            {{--    </div>--}}
+            {{--</div>--}}
+            {{--</div>--}}
 
 
 <div class="col-md-4">
@@ -465,8 +465,10 @@ searchBox.value = 'B14-' + code;
 }else if (a1CheckBox.checked && !b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && b3CheckBox.checked) {
 searchBox.value = 'B15-' + code;
 }else if (a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && b3CheckBox.checked) {
-searchBox.value = 'B16-' + code;
-} else {
+searchBox.value = 'B17-' + code;
+}else if (!a1CheckBox.checked && b1CheckBox.checked && !a2CheckBox.checked && !b2CheckBox.checked && a3CheckBox.checked && b3CheckBox.checked) {
+    searchBox.value = 'B16-' + code;
+}else {
 searchBox.value = '{{__("message.you can not choose this type of machine togother")}}';
 }
 }

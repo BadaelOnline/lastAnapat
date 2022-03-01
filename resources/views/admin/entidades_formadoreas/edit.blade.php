@@ -243,7 +243,11 @@ input[type="radio"]:focus {
             </div>
             <div class="form-group col-md-4">
 
-                <label for="doc_medios_pdf" class="col-sm-2 col-form-label">Doc Medios PDF</label>
+                <label for="doc_medios_pdf" class="col-sm-4 col-form-label">Doc Medios PDF</label>
+                @if(isset($entidades_formadoreas->doc_medios_pdf))
+                <label for="doc_medios_pdf" class="col-sm-1 col-form-label"><a href="{{asset('storage/' . $entidades_formadoreas->doc_medios_pdf)}}" download><i class="fa fa-download"></i> </a> </label>
+                    <a target="_blank" href="{{asset('storage/' . $entidades_formadoreas->doc_medios_pdf)}}"  ><i class="fa fa-eye"></i> </a>
+                @endif
 
                 <div class="col-sm-12">
 

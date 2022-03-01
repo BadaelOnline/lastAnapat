@@ -8,7 +8,7 @@
 
 @section('content')
 
-
+    @if($cursos->estado != 0)
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
@@ -29,7 +29,7 @@
                 <tr>
                     <th>
                         <span> Curso : </span>
-                        <h3 style="text-align: center;">{{$cursos->curso}}</h3>
+                        <h3 style="text-align: center;">{{$cursos->codigo}}</h3>
                     </th>
                     <th>
                         <span> Entidad formadora : </span>
@@ -93,6 +93,7 @@
     </div>
 </div>
 <br><br>
+    @endif
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
@@ -217,6 +218,7 @@
         </div>
     </div>
 </div>
+
 {{--@foreach($cursos->asistent as $asistent)--}}
 {{--<div class="container">--}}
 {{--    <div class="row">--}}

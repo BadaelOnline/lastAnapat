@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 
+use App\Exports\CursoExport;
+use App\Exports\OperatorExport;
 use App\Models\EntidadesFormadoreas;
 use App\Models\Operadores;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OperadoresController extends Controller
 {
@@ -131,6 +134,11 @@ class OperadoresController extends Controller
         return view('admin.operadores.edit',compact('operadores','entidad'));
     }
 
+    public function export()
+    {
+        return Excel::download(new OperatorExport(), 'operadores.xlsx');
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -162,7 +170,7 @@ class OperadoresController extends Controller
         $operadores->fecha = $request->fecha;
         if($request->estado == null){
             $operadores->estado = 0;
-        }elseif ($request->estado == "1"){
+        }elseif ($request->estado == "on" || $request->estado == "1"){
             $operadores->estado = 1;
         }else{
             $operadores->estado = 0;

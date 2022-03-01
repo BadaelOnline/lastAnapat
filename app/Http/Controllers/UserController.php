@@ -66,6 +66,7 @@ class UserController extends Controller
         $user->nombre = $request->nombre;
         $user->ciudad = $request->ciudad;
         $user->direccion = $request->direccion;
+        $user->provincia = $request->provincia;
         $user->codigo_postal = $request->codigo_postal;
         if($request->perfil != "Administrador"){
             $user->entidad = $request->entidad;
@@ -74,7 +75,6 @@ class UserController extends Controller
         }
 
         $user->estado = $request->estado;
-        $user->provincia = "";
 
 //dd($user);
 
@@ -131,6 +131,8 @@ class UserController extends Controller
         $user->nombre = $request->nombre;
         $user->ciudad = $request->ciudad;
         $user->direccion = $request->direccion;
+        $user->provincia = $request->provincia;
+//        dd($user);
         $user->codigo_postal = $request->codigo_postal;
         if($request->perfil != "Administrador"){
             $user->entidad = $request->entidad;
@@ -142,7 +144,6 @@ class UserController extends Controller
         }else{
             $user->estado = 1;
         }
-        $user->provincia = "";
 
         if ( $user->save()) {
 

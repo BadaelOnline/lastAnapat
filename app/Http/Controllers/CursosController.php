@@ -245,8 +245,8 @@ $now = now().date('');
         $cursos = Cursos::findOrFail($id);
         $tipo_maquina=Tipo_Maquina::select('id','tipo_maquina')->get();
         $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
-        $examen_t=Examen::select('id','nombre')->where('tipo',1)->get();
-        $examen_p=Examen::select('id','nombre')->where('tipo',2)->get();
+        $examen_t=Examen::select('id','nombre','url')->where('tipo',1)->get();
+        $examen_p=Examen::select('id','nombre','url')->where('tipo',2)->get();
         $asistent = Asistent::orderBy('id','desc')->where('curso',$id)->get();
         $operador = Operadores::orderBy('id','desc')->get();
         $horario = Horario::orderBy('id','desc')->where('curso',$id)->get();
@@ -287,7 +287,12 @@ $now = now().date('');
         $cursos->formador_apoyo_1 = $request->formador_apoyo_1;
         $cursos->formador_apoyo_2 = $request->formador_apoyo_2;
         $cursos->formador_apoyo_3 = $request->formador_apoyo_3;
-        $cursos->fecha_inicio = $request->fecha_inicio;
+        if ($request->fecha_inicio != null){
+            $cursos->fecha_inicio = $request->fecha_inicio;
+        }else{
+            $cursos->fecha_inicio = $cursos->fecha_inicio;
+        }
+
         $cursos->direccion = $request->direccion;
         $cursos->ciudad = $request->ciudad;
         $cursos->provincia = $request->provincia;

@@ -10,7 +10,7 @@
 
     <!-- Page Heading -->
 
-    <h1 class="h3 mb-2 text-gray-800">Entidades Formadoreas</h1>
+    <h1 class="h3 mb-2 text-gray-800">Entidades Formadoras</h1>
 
     @if (session('success'))
 
@@ -26,9 +26,16 @@
     <div class="card shadow mb-4">
         @can('isHaveEntitade')
             <div class="card-header py-3">
-                <a href="{{ route('admin.entidades_formadoreas.create') }}" class="btn btn-pass">{{__('message.add_new')}} Entidade Formadora</a>
+                <a href="{{ route('admin.entidades_formadoreas.create') }}"
+                   class="btn btn-pass">{{__('message.add_news')}} entidad formadora </a>
+                @if(auth()->user()->perfil=='Administrador')
+                    <a href="{{ route('admin.entidades_formadoreas.export',auth()->user()->entidad) }}" class="btn btn-primary">
+                        {{__('message.Exportar Entidades Formadoras')}}
+                    </a>
+                @endif
             </div>
         @endcan
+
 
         <div class="card-body">
 
@@ -41,6 +48,7 @@
                         <th>{{__('message.CIF')}}.</th>
                         <th>{{__('message.Nombre')}}</th>
                         <th>{{__('message.Direccion')}} </th>
+                        <th>{{__('message.estado')}} </th>
                         <th>{{__('message.Option')}}</th>
                     </tr>
                     </thead>
@@ -51,25 +59,34 @@
 
                     @foreach ($entidadesFormadores as $entidadesFormadores)
                         @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$entidadesFormadores->id))
-                        <tr>
-                            <td>
-                                <img src="{{asset('storage/' . $entidadesFormadores->logo)}}" width="96px"/>
-                            </td>
-                            <td>{{ $entidadesFormadores->cif }}</td>
-                            <td>{{ $entidadesFormadores->nombre }}</td>
-                            <td>{{ $entidadesFormadores->direccion  }}</td>
-                            <td>
-                                <a href="{{route('admin.entidades_formadoreas.edit', [$entidadesFormadores->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
-                                <form method="POST" action="{{route('admin.entidades_formadoreas.destroy', [$entidadesFormadores->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?'=")}}')">
+                            <tr>
+                                <td>
+                                    <img src="{{asset('storage/' . $entidadesFormadores->logo)}}" width="96px"/>
+                                </td>
+                                <td>{{ $entidadesFormadores->cif }}</td>
+                                <td>{{ $entidadesFormadores->nombre }}</td>
+                                <td>{{ $entidadesFormadores->direccion  }}</td>
+                                <td>{{ $entidadesFormadores->estado == 1 ? "activo" : 'No activo'  }}</td>
+                                <td>
+                                    @if(auth()->user()->perfil=='Administrador')
+                                        <a href="{{route('admin.entidades_formadoreas.edit', [$entidadesFormadores->id])}}"
+                                           class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
+                                        <form method="POST"
+                                              action="{{route('admin.entidades_formadoreas.destroy', [$entidadesFormadores->id])}}"
+                                              class="d-inline"
+                                              onsubmit="return confirm('{{__("message.Delete permanently?'=")}}')">
 
-                                    @csrf
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <button type="submit" value="Delete" class="btn btn-delete btn-sm">
-                                        <i class='fas fa-trash-alt'></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" value="Delete" class="btn btn-delete btn-sm">
+                                                <i class='fas fa-trash-alt'></i>
+                                            </button>
+                                        </form>
+                                    @endif
+                                        <a href="{{route('entidade_formadora', [$entidadesFormadores->id])}}"
+                                           class="btn btn-edit btn-sm"> <i class="fas fa-eye"></i> </a>
+                                </td>
+                            </tr>
                         @endif
                     @endforeach
                     </tbody>

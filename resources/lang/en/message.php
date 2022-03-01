@@ -15,6 +15,7 @@ return [
 
     'Choose_One' => '¡Elige uno!',
     'add_new' => 'Añadir nuevo',
+    'add_news' => 'Añadir nueva',
     'edit' => 'Editar',
     'password' => 'La contraseña introducida es incorrecta.',
     'throttle' => 'Demasiados intentos de inicio de sesión. Por favor, inténtelo de nuevo en unos segundos',
@@ -120,6 +121,17 @@ return [
     'ACTIVE' => 'Activo',
     'Codigo_postal' => 'Código Postal',
     'Buscar' => 'Buscar',
+    'Details' => 'Detalles',
+    'Foto' => 'Foto',
+    'Exportar asistent' => 'Exportar Asistent',
+    'Exportar Cursos' => 'Exportar Cursos',
+    'Exportar Entidades Formadoras' => 'Exportar Entidades Formadoras',
+    'Exportar Operadores' => 'Exportar Operadores',
+    'Exportar Formadores' => 'Exportar Formadores',
+    'estado' => 'Estado',
+    'validez' => 'validez',
+    'Inactivo Carnet' => 'Inactivo Carnet',
+
 
 
 ];
