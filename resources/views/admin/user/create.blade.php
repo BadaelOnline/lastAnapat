@@ -76,7 +76,7 @@ input[type="radio"]:focus {
             <div class="col-sm-9">
                 {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                <input type="text" name="nombre" placeholder="Nombre del formador" id="nombre" cols="40" rows="10"  class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} ">{{old('nombre')}}</input>
+                <input type="text" name="nombre" placeholder="Nombre del formador" id="nombre" cols="40" rows="10"  class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} " value="{{old('nombre')}}">
                 <div class="invalid-feedback">
                     {{ $errors->first('nombre') }}
                 </div>
@@ -137,9 +137,9 @@ input[type="radio"]:focus {
 
 
         <div class="form-group col-md-4">
-            <label for="apellidos" class="col-sm-2 col-form-label">Alias </label>
+            <label for="alias" class="col-sm-2 col-form-label">Alias </label>
             <div class="col-sm-9">
-                <input type="text" placeholder="Alias" name="alias" id="alias" cols="40" rows="10"  class="form-control {{$errors->first('alias') ? "is-invalid" : "" }} ">{{old('alias')}}</input>
+                <input type="text" placeholder="Alias" name="alias" id="alias" cols="40" rows="10"  class="form-control {{$errors->first('alias') ? "is-invalid" : "" }} " value="{{old('alias')}}">
                 <div class="invalid-feedback">
                     {{ $errors->first('alias') }}
                 </div>
@@ -150,7 +150,7 @@ input[type="radio"]:focus {
         <div class="form-group col-md-4">
             <label for="apellidos" class="col-sm-2 col-form-label">Apellidos </label>
             <div class="col-sm-9">
-                <input type="text" placeholder="Apellidos del Formador Name" name="apellidos" id="apellidos" cols="40" rows="10"  class="form-control {{$errors->first('apellidos') ? "is-invalid" : "" }} ">{{old('apellidos')}}</input>
+                <input type="text" placeholder="Apellidos del Formador Name" name="apellidos" id="apellidos" cols="40" rows="10"  class="form-control {{$errors->first('apellidos') ? "is-invalid" : "" }} " value="{{old('apellidos')}}">
                 <div class="invalid-feedback">
                     {{ $errors->first('apellidos') }}
                 </div>

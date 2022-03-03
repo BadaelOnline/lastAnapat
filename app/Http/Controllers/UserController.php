@@ -44,6 +44,7 @@ class UserController extends Controller
 //        dd($request);
         \Validator::make($request->all(), [
             "nombre" => "required",
+            "perfil" => "required",
             "email" => "required|email|unique:users",
             "password" => "required|min:6",
             "alias" => "required|unique:users",
@@ -51,7 +52,6 @@ class UserController extends Controller
             "ciudad" => "required",
             "direccion" => "required",
             "codigo_postal" => "required",
-            "entidad" => "required",
         ])->validate();
 
         $user = new User();
@@ -122,6 +122,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        \Validator::make($request->all(), [
+            "nombre" => "required",
+            "email" => "required|email",
+            "alias" => "required",
+            "apellidos" => "required",
+            "ciudad" => "required",
+            "direccion" => "required",
+            "codigo_postal" => "required",
+        ])->validate();
         $user = User::findOrFail($id);
         $user->name = $request->nombre;
         $user->email = $request->email;
