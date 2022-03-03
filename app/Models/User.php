@@ -20,6 +20,17 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'alias',
+        'nombre',
+        'entidad',
+        'perfil',
+        'apellidos',
+        'provincia',
+        'ciudad',
+        'direccion',
+        'codigo_postal',
+        'estado',
+
     ];
 
     protected $guarded=[];
