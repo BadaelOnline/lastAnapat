@@ -24,5 +24,16 @@ class Tipo_Maquina extends Model
     {
         return $this->hasMany('App\Model\Horario', 'tipo_maquina');
     }
+    public function carnets()
+    {
+        return $this->belongsToMany(Carnet::class);
+    }
+
+    public function certificados()
+    {
+        return $this->belongsToMany(Certificado::class);
+    }
+
+
 
 }

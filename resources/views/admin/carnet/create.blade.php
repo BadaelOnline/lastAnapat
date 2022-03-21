@@ -103,7 +103,7 @@
             </div>
 
             <div class="form-group col-md-4">
-                <label for="fecha_de_alta" class="col-sm-4 col-form-label">	Fecha De Alta</label>
+                <label for="fecha_de_alta" class="col-sm-4 col-form-label">	{{__('message.Fecha De Emisión')}}</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -115,7 +115,7 @@
             </div>
 
             <div class="form-group col-md-4">
-                <label for="fecha_de_emision" class="col-sm-5 col-form-label">	Fecha De Emision</label>
+                <label for="fecha_de_emision" class="col-sm-5 col-form-label">{{__('message.Fecha De Vencimiento')}}</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -130,12 +130,30 @@
                 <label for="tipos_de_pemp" class="col-sm-4 col-form-label">Tipos De Pemp</label>
 
                 <div class="col-sm-9">
-                    <input type="text" name='tipos_de_pemp' class="form-control {{$errors->first('tipos_de_pemp') ? "is-invalid" : "" }} " value="{{old('tipos_de_pemp')}}" id="tipos_de_pemp" placeholder="Tipos De Pemp">
+
+                    <select name='tipos_de_pemp[]' placeholder="Tipos De Pemp" class="form-control {{$errors->first('tipos_de_pemp') ? "is-invalid" : "" }} select2" id="tipos_de_pemp" multiple>
+                        @foreach ($tipos as $tipo)
+                            <option value="{{ $tipo->id }}">{{ $tipo->tipo_maquina }}</option>
+                        @endforeach
+                    </select>
                     <div class="invalid-feedback">
                         {{ $errors->first('tipos_de_pemp') }}
                     </div>
+
                 </div>
+
             </div>
+{{--            <div class="form-group col-md-4">--}}
+
+{{--                <label for="tipos_de_pemp" class="col-sm-4 col-form-label">Tipos De Pemp</label>--}}
+
+{{--                <div class="col-sm-9">--}}
+{{--                    <input type="text" name='tipos_de_pemp' class="form-control {{$errors->first('tipos_de_pemp') ? "is-invalid" : "" }} " value="{{old('tipos_de_pemp')}}" id="tipos_de_pemp" placeholder="Tipos De Pemp">--}}
+{{--                    <div class="invalid-feedback">--}}
+{{--                        {{ $errors->first('tipos_de_pemp') }}--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <div class="form-group col-md-4">
                 <label for="curso" class="col-sm-2 col-form-label">Curso </label>
                 <div class="col-sm-9">
@@ -203,6 +221,15 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2({
+                placeholder: "Tipos De Pemp"
+            });
+        });
+
+
     </script>
 
 @endpush

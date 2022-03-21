@@ -33,7 +33,7 @@ class HorarioController extends Controller
      */
     public function create($id)
     {
-        $curso=Cursos::select('id','curso')->get();
+        $curso=Cursos::select('id','curso','codigo')->get();
         $tipo_maq = Tipo_Maquina::select('id','tipo_maquina')->get();
         $corse = Cursos::where('id', $id)->first();
         $tipo_1 = $corse->tipo_maquina_1;
@@ -60,6 +60,11 @@ class HorarioController extends Controller
             'alumnos' => 'required',
         ]);
         $data = $request->all();
+        if ($data['contenido'] == "1"){
+            $data['tipo_maquina'] = 0;
+//            dd($data['tipo_maquina'] );
+        }
+
 
 
         $horario = Horario::create($data);
@@ -106,7 +111,7 @@ class HorarioController extends Controller
     {
         $horario = Horario::findOrFail($id);
         $tipo_maq = Tipo_Maquina::select('id','tipo_maquina')->get();
-        $curso=Cursos::select('id','curso')->get();
+        $curso=Cursos::select('id','curso','codigo')->get();
         $corse = Cursos::where('id', $horario->curso)->first();
         $tipo_1 = $corse->tipo_maquina_1;
         $tipo_2 = $corse->tipo_maquina_2;
@@ -140,7 +145,12 @@ class HorarioController extends Controller
         $horario->alumnos = $request->alumnos;
         $horario->fecha_inicio = $request->fecha_inicio;
         $horario->final = $request->final;
-        $horario->tipo_maquina = $request->tipo_maquina;
+        if ($request->contenido == "1"){
+            $horario->tipo_maquina= 0;
+        }else{
+            $horario->tipo_maquina = $request->tipo_maquina;
+        }
+
 
 
 

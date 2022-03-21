@@ -32,7 +32,7 @@ class Asistent extends Model
 
     public function tipo_maquina()
     {
-        return $this->belongsTo(Tipo_Maquina::class, 'tipo_1', 'tipo_2', 'tipo_3', 'tipo_4');
+        return $this->belongsTo(Tipo_Maquina::class, 'tipo_1');
     }
 
 }

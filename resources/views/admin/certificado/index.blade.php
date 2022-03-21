@@ -10,7 +10,7 @@
 
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">Carnets</h1>
+<h1 class="h3 mb-2 text-gray-800">Certificado</h1>
 
 @if (session('success'))
 
@@ -29,7 +29,7 @@
     <div class="card-header py-3">
 
 
-        <a href="{{ route('admin.carnet.create') }}" class="btn btn-pass">{{__('message.add_new')}} carnet</a>
+        <a href="{{ route('admin.certificado.create') }}" class="btn btn-pass">{{__('message.add_new')}} Certificado</a>
 
 
     </div>
@@ -50,8 +50,6 @@
 
                         <th>{{__('message.Fecha De Vencimiento')}} </th>
 
-                        <th>{{__('message.foto')}}</th>
-
                         <th>{{__('message.Option')}}</th>
 
                     </tr>
@@ -66,20 +64,17 @@
 
                 @endphp
 
-                @foreach ($carnets as $carnets)
+                @foreach ($certificados as $certificado)
 
                     <tr>
-                        <td>{{ $carnets->numero }}</td>
-                        <td> {{ $carnets->fecha_de_alta }} </td>
-                        <td>{{ $carnets->fecha_de_emision }}</td>
+                        <td>{{ $certificado->numero }}</td>
+                        <td> {{ $certificado->emision }} </td>
+                        <td>{{ $certificado->vencimiento }}</td>
                         <td>
-                            <img src="{{asset('storage/' . $carnets->foto)}}" width="96px"/>
-                        </td>
-                        <td>
-                        <a href="{{route('admin.carnet.edit', [$carnets->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
+                        <a href="{{route('admin.certificado.edit', [$certificado->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
 
 
-                            <form method="POST" action="{{route('admin.carnet.destroy', [$carnets->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
+                            <form method="POST" action="{{route('admin.certificado.destroy', [$certificado->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
 
                                 @csrf
                                 <input type="hidden" name="_method" value="DELETE">

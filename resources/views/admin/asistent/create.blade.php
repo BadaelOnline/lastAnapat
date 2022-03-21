@@ -82,7 +82,7 @@
                 <div class="col-sm">
                     <label for="orden" class="col-sm-2 col-form-label">{{__('message.Orden')}}</label>
                     <div class="col-sm-9">
-                        <input type="number" name='orden' class="form-control {{$errors->first('orden') ? "is-invalid" : "" }} " value="{{old('orden')}}" id="orden" placeholder="Número de asistente">
+                        <input type="number" name='orden' class="form-control {{$errors->first('orden') ? "is-invalid" : "" }} " value="{{old('orden') != null ? old('orden') : $orden}}" id="orden" placeholder="Número de asistente">
                         <div class="invalid-feedback">
                             {{ $errors->first('orden') }}
                         </div>

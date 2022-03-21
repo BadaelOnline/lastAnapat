@@ -60,7 +60,7 @@
     @endif
 
 
-    <form action="{{ route('admin.carnet.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.certificado.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-groups">
 
@@ -77,50 +77,68 @@
                 </div>
             </div>
             <div class="form-group col-md-4">
+                <label for="entidad" class="col-sm-2 col-form-label">Entidad </label>
+                <div class="col-sm-9">
+                    <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
+                        <option disabled selected>{{__('message.Choose_One')}}</option>
+                        @foreach ($entidad as $entidad)
+                            <option value="{{ $entidad->id }}" >{{ $entidad->nombre }}</option>
+                        @endforeach
+                    </select>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('entidad') }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
                 <label for="operador" class="col-sm-2 col-form-label">Operador </label>
                 <div class="col-sm-9">
-
-
-                        <input readonly type="text" class="form-control {{$errors->first('operador') ? "is-invalid" : "" }} " value="{{$operadores->nombre}} {{$operadores->apellidos}}" id="operador" placeholder="Numero">
-                    <input type="hidden" name='operador' class="form-control {{$errors->first('operador') ? "is-invalid" : "" }} " value="{{$operadores->id}}" id="operador" placeholder="Numero">
-
+                    <select name='operador' class="form-control {{$errors->first('operador') ? "is-invalid" : "" }} " id="operador">
+                        <option disabled selected>{{__('message.Choose_One')}}</option>
+                        @foreach ($operadores as $operadores)
+                            <option value="{{ $operadores->id }}" {{old('operador') == $operadores->id  ? "selected" : ""}}>{{ $operadores->nombre }} {{ $operadores->apellidos }}</option>
+                        @endforeach
+                    </select>
                     <div class="invalid-feedback">
                         {{ $errors->first('operador') }}
                     </div>
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="foto" class="col-sm-2 col-form-label">Foto </label>
+                <label for="curso" class="col-sm-2 col-form-label">Curso </label>
                 <div class="col-sm-9">
-                    {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
-
-                    <input type="file" name="foto" id="foto"   class="form-control {{$errors->first('foto') ? "is-invalid" : "" }} " value="{{old('foto')}}">
+                    <select name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
+                        <option disabled selected>{{__('message.Choose_One')}}</option>
+                        @foreach ($cursos as $cursos)
+                            <option value="{{ $cursos->id }}" {{old('curso') == $cursos->id  ? "selected" : ""}}>{{ $cursos->codigo }}</option>
+                        @endforeach
+                    </select>
                     <div class="invalid-feedback">
-                        {{ $errors->first('foto') }}
+                        {{ $errors->first('curso') }}
                     </div>
                 </div>
             </div>
 
             <div class="form-group col-md-4">
-                <label for="fecha_de_alta" class="col-sm-4 col-form-label">{{__('message.Fecha De Emisión')}}</label>
+                <label for="emision" class="col-sm-4 col-form-label">	{{__('message.Fecha De Emisión')}}</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="date" name="fecha_de_alta" id="fecha_de_alta"   class="form-control {{$errors->first('fecha_de_alta') ? "is-invalid" : "" }} " value="{{old('fecha_de_alta')}}">
+                    <input type="date" name="emision" id="emision"   class="form-control {{$errors->first('emision') ? "is-invalid" : "" }} " value="{{old('emision')}}">
                     <div class="invalid-feedback">
-                        {{ $errors->first('fecha_de_alta') }}
+                        {{ $errors->first('emision') }}
                     </div>
                 </div>
             </div>
 
             <div class="form-group col-md-4">
-                <label for="fecha_de_emision" class="col-sm-5 col-form-label">{{__('message.Fecha De Vencimiento')}}</label>
+                <label for="vencimiento" class="col-sm-5 col-form-label">{{__('message.Fecha De Vencimiento')}}</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="date" name="fecha_de_emision" id="fecha_de_emision"  class="form-control {{$errors->first('fecha_de_emision') ? "is-invalid" : "" }} " value="{{old('fecha_de_emision')}}">
+                    <input type="date" name="vencimiento" id="vencimiento"  class="form-control {{$errors->first('vencimiento') ? "is-invalid" : "" }} " value="{{old('vencimiento')}}">
                     <div class="invalid-feedback">
-                        {{ $errors->first('fecha_de_emision') }}
+                        {{ $errors->first('vencimiento') }}
                     </div>
                 </div>
             </div>
@@ -129,46 +147,43 @@
                 <label for="tipos_de_pemp" class="col-sm-4 col-form-label">Tipos De Pemp</label>
 
                 <div class="col-sm-9">
-                    <input type="text" name='tipos_de_pemp' class="form-control {{$errors->first('tipos_de_pemp') ? "is-invalid" : "" }} " value="{{old('tipos_de_pemp')}}" id="tipos_de_pemp" placeholder="Tipos De Pemp">
+
+                    <select name='tipos_de_pemp[]'  class="form-control {{$errors->first('tipos_de_pemp') ? "is-invalid" : "" }} select2" id="tipos_de_pemp" multiple>
+                        @foreach ($tipos as $tipo)
+                            <option value="{{ $tipo->id }}">{{ $tipo->tipo_maquina }}</option>
+                        @endforeach
+                    </select>
                     <div class="invalid-feedback">
                         {{ $errors->first('tipos_de_pemp') }}
                     </div>
+
                 </div>
+
             </div>
+
             <div class="form-group col-md-4">
-                <label for="curso" class="col-sm-2 col-form-label">Curso </label>
+
+                <label for="observaciones" class="col-sm-2 col-form-label">Observaciones</label>
                 <div class="col-sm-9">
-                    <select name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
-
-                            <option selected value="{{ $cursos->id }}" {{old('curso') == $cursos->id  ? "selected" : ""}}>{{ $cursos->codigo }}</option>
-
-                    </select>
+                    <input type="text" name='observaciones' class="form-control {{$errors->first('observaciones') ? "is-invalid" : "" }} " value="{{old('observaciones')}}" id="observaciones" placeholder="Comentarios ">
                     <div class="invalid-feedback">
-                        {{ $errors->first('curso') }}
+                        {{ $errors->first('observaciones') }}
                     </div>
                 </div>
+
             </div>
-            <div class="col-md-4">
-                <label for="examen_teorico_realizado" class="col-sm-12 col-form-label">Examen Teorico Realizado</label>
+
+
+            <div class="form-group col-md-4">
+                <label for="cer_fecha" class="col-sm-5 col-form-label">{{__('message.Fecha de Exportación')}}</label>
                 <div class="col-sm-9">
-                    <select name='examen_teorico_realizado' class="form-control {{$errors->first('examen_teorico_realizado') ? "is-invalid" : "" }} " id="examen_teorico_realizado">
-                        <option disabled selected>{{__('message.Choose_One')}}</option>
+                    {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                        <option value="básico" {{old('examen_teorico_realizado') == "básico"  ? "selected" : ""}}>Básico</option>
-                        <option value="Extendido" {{old('examen_teorico_realizado') == "Extendido"  ? "selected" : ""}}>Extendido</option>
-
-                    </select>
+                    <input type="date" name="cer_fecha" id="cer_fecha"  class="form-control {{$errors->first('cer_fecha') ? "is-invalid" : "" }} " value="{{old('cer_fecha')}}">
                     <div class="invalid-feedback">
-                        {{ $errors->first('examen_teorico_realizado') }}
+                        {{ $errors->first('cer_fecha') }}
                     </div>
                 </div>
-            </div>
-            <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">Estado</label>
-                <label class="switch">
-                    <input type="checkbox" name="estado">
-                    <span class="slider round" ></span>
-                </label>
             </div>
 
             <div class="form-group col-md-12">
@@ -201,6 +216,15 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2({
+                placeholder: "Tipos De Pemp"
+            });
+        });
+
+
     </script>
 
 @endpush

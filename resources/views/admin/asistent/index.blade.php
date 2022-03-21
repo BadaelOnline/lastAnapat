@@ -42,9 +42,9 @@
 
                     <tr>
 
-                        <th>{{__('message.Apellido')}}.</th>
-
                         <th>{{__('message.Nombre')}}</th>
+
+                        <th>{{__('message.Apellido')}}.</th>
 
                         <th>{{__('message.Número de asistente')}}</th>
 
@@ -72,13 +72,13 @@
 
                         <td>
                             @foreach($operador as $ope)
-                            {{$ope->id == $asistent->operador ? $ope->apellidos : "" }}
+                                {{$ope->id == $asistent->operador ? $ope->nombre : "" }}
                             @endforeach
                         </td>
 
                         <td>
                             @foreach($operador as $ope)
-                                {{$ope->id == $asistent->operador ? $ope->nombre : "" }}
+                            {{$ope->id == $asistent->operador ? $ope->apellidos : "" }}
                             @endforeach
                         </td>
 
@@ -103,7 +103,7 @@
                                 <input type="hidden" name="_method" value="DELETE">
 
                                 <button type="submit" value="Delete" class="btn btn-danger btn-sm">
-                                <i class='fas fa-trash-alt'></i> 
+                                <i class='fas fa-trash-alt'></i>
                                 </button>
 
                             </form>

@@ -132,15 +132,15 @@
                 </tr>
                 <tr>
                     <th>
-                        <span> Formadores de apoyo: </span><span style="float: right;">{1}</span>
+                        <span> Formadores de apoyo: </span>
                         <h5 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h5>
                     </th>
                     <th>
-                        <span style="float: right;"> {2} </span><br>
+
                         <h5 style="text-align: center;">{{$formador2 != null ? $formador2->nombre : "-"}} {{$formador2 != null ? $formador2->apellidos : ""}}</h5>
                     </th>
                     <th>
-                        <span style="float: right;"> {3}</span><br>
+
                         <h5 style="text-align: center;">{{$formador3 != null ? $formador3->nombre : "-"}} {{$formador3 != null ? $formador3->apellidos : ""}}</h5>
                     </th>
                 </tr>
@@ -175,7 +175,7 @@
                     <td style="text-align: center;">{{$asistent->operadores->nombre}} {{$asistent->operadores->apellidos}}</td>
                     <td style="text-align: center;">{{$asistent->nota_t}}</td>
                     <td style="text-align: center;">{{$asistent->nota_p}}</td>
-                    <td style="text-align: center;">{{$asistent->orden}}</td>
+                    <td style="text-align: center;"></td>
                 </tr>
                     @endforeach
                 @if(count($cursos->asistent)<10)
@@ -186,7 +186,7 @@
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
-                            <td>-</td>
+                            <td></td>
                         </tr>
                     @endfor
                 @endif
@@ -196,16 +196,16 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>
+                    <th width="25%">
                         <span> Formador:</span>
                         <h5 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h5>
                     </th>
-                    <th>
-                        <span> Formadores de apoyo: </span><span style="float: right;">{1}</span>
+                    <th width="25%">
+                        <span> Formadores de apoyo: </span>
                         <h5 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h5></th>
-                    <th><span style="float: right;">{2}</span><br>
+                    <th width="25%">
                         <h5 style="text-align: center;">{{$formador2 != null ? $formador2->nombre : "-"}} {{$formador2 != null ? $formador2->apellidos : ""}}</h5></th></th>
-                    <th><span style="float: right;">{3}</span><br>
+                    <th width="25%">
                         <h5 style="text-align: center;">{{$formador3 != null ? $formador3->nombre : "-"}} {{$formador3 != null ? $formador3->apellidos : ""}}</h5></th></th>
                 </tr>
                 <tr>

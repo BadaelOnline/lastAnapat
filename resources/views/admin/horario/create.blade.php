@@ -20,11 +20,14 @@
             <div class="form-group ml-2">
                 <label for="curso" class="col-sm-2 col-form-label">Curso</label>
                 <div class="col-sm-9">
-                    <select name='test' disabled class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
+{{--                    <select name='test' disabled class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">--}}
                         @foreach ($curso as $curso)
-                            <option value="{{ $curso->id }}" {{$id == $curso->id ? "selected" : ""}}>{{ $curso->curso }}</option>
+                            @if($id == $curso->id)
+                            <input type="text" readonly class="form-control" value="{{ $curso->codigo }}">
+                            @endif
+{{--                            <option value="{{ $curso->id }}" {{$id == $curso->id ? "selected" : ""}}>{{ $curso->curso }}</option>--}}
                         @endforeach
-                    </select>
+{{--                    </select>--}}
                     <input type="hidden" name="curso" value="{{$id}}">
                     <div class="invalid-feedback">
                         {{ $errors->first('curso') }}
@@ -36,24 +39,25 @@
             <div class="form-group ml-2">
                 <label for="contenido" class="col-sm-2 col-form-label">Contenido</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="contenido" value="1" id=1>
+                    <input class="form-check-input" type="radio" name="contenido" value="1" id=1 onclick="test(this)">
                     <label class="form-check-label" for="flexRadioDefault1">
                         Teoria
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="contenido" value="2" id=2 checked>
+                    <input class="form-check-input" type="radio" name="contenido" value="2" id=2 checked onclick="test1(this)">
                     <label class="form-check-label" for="flexRadioDefault2">
                         Practica
                     </label>
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" id="tipo_maquinas">
             <div class="form-group ml-2">
                 <label for="tipo_maquina" class="col-sm-2 col-form-label">Tipo Maquina</label>
                 <div class="col-sm-9">
                     <select name='tipo_maquina'  class="form-control {{$errors->first('tipo_maquina') ? "is-invalid" : "" }} " id="tipo_maquina">
+                        <option value="0" selected>{{__('message.Choose_One')}}</option>
                         @foreach ($tipo_maq as $tipo_maq)
                             @if($tipo_maq->id == $tipos[0] || $tipo_maq->id == $tipos[1] || $tipo_maq->id == $tipos[2] || $tipo_maq->id == $tipos[3])
                             <option value="{{ $tipo_maq->id }}">{{ $tipo_maq->tipo_maquina }}</option>
@@ -105,3 +109,23 @@
 
     </form>
 @endsection
+<script>
+    function test($this){
+    if ($this.checked){
+        console.log("checked");
+        document.getElementById('tipo_maquinas').style.display = 'none';
+    }
+
+    else
+        console.log(" un checked");
+    }
+    function test1($this){
+        if ($this.checked){
+            console.log("checked");
+            document.getElementById('tipo_maquinas').style.display = 'block';
+        }
+
+        else
+            console.log(" un checked");
+    }
+</script>

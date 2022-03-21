@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carnet;
 use App\Models\Cursos;
 use App\Models\Operadores;
+use App\Models\Tipo_Maquina;
 use Illuminate\Http\Request;
 
 class CarnetController extends Controller
@@ -52,12 +53,13 @@ class CarnetController extends Controller
         $user = auth()->user();
         if($user->perfil=='Responsable_de_Formacion' || $user->perfil=='Formador')
 
-            $operadores = Operadores::orderBy('id','desc')->where('entidad','=',$user->entidad)->get();
+            $operadores = Operadores::orderBy('id','desc')->where('entidad','=',$user->entidad)->where('estado','=',0)->get();
 
         else
-            $operadores = Operadores::orderBy('id','desc')->get();
+            $operadores = Operadores::orderBy('id','desc')->where('estado','=',0)->get();
         $cursos = Cursos::orderBy('id','desc')->get();
-        return view('admin.carnet.create',compact('operadores','cursos'));
+        $tipos =Tipo_Maquina::orderBy('id','desc')->get();
+        return view('admin.carnet.create',compact('operadores','cursos','tipos'));
     }
 
     /**
@@ -90,8 +92,9 @@ class CarnetController extends Controller
             'foto' => 'required',
             'curso' => 'required',
             'examen_teorico_realizado' => 'required',
+            'tipos_de_pemp' =>"array|required",
         ]);
-        $carnet = new Carnet($request->except('_token','estado'));
+        $carnet = new Carnet($request->except('_token','estado','tipos_de_pemp'));
         if($request->estado == null){
             $carnet->estado = 0;
         }else{
@@ -105,8 +108,10 @@ class CarnetController extends Controller
         }else{
             $carnet->foto ='';
         }
-        if ( $carnet->save()) {
 
+        if ( $carnet->save()) {
+//            dd($carnet);
+            $carnet->Tipo_Maquinas()->attach(request('tipos_de_pemp'));
             return redirect()->route('admin.carnet')->with('success', 'Data added successfully');
 
         } else {
@@ -137,15 +142,16 @@ class CarnetController extends Controller
     {
         $carnet = Carnet::findOrFail($id);
         $cursos=Cursos::select('id','codigo')->get();
+        $tipos =Tipo_Maquina::orderBy('id','desc')->get();
         $user = auth()->user();
         if($user->perfil=='Responsable_de_Formacion' || $user->perfil=='Formador')
 
-            $operadores = Operadores::orderBy('id','desc')->where('entidad','=',$user->entidad)->get();
+            $operadores = Operadores::orderBy('id','desc')->where('id','=',$carnet->operador)->where('estado','=',0)->get();
 
         else
-            $operadores = Operadores::orderBy('id','desc')->get();
+            $operadores = Operadores::orderBy('id','desc')->where('id','=',$carnet->operador)->where('estado','=',0)->get();
 
-        return view('admin.carnet.edit',compact('carnet','cursos','operadores'));
+        return view('admin.carnet.edit',compact('carnet','cursos','operadores','tipos'));
     }
 
     /**
@@ -189,6 +195,7 @@ class CarnetController extends Controller
 
             $carnet->foto = $foto_path;
         }
+        $carnet->Tipo_Maquinas()->sync(request('tipos_de_pemp'));
 
         if ( $carnet->save()) {
 

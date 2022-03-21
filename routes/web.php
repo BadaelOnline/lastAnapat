@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{BannerController,
     CarnetController,
+    CertificadoController,
     EntidadesFormadoreasController,
     ExamenController,
     OperadoresController,
@@ -202,6 +203,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
 
     // Manage Services
     Route::get('operadores', [OperadoresController::class, 'index'])->name('operadores');
+    Route::get('operadores/certificado/{id}', [OperadoresController::class, 'certificado'])->name('operadores.certificado');
     Route::get('operadores/create', [OperadoresController::class, 'create'])->name('operadores.create');
     Route::post('operadores/create', [OperadoresController::class, 'store'])->name('operadores.store');
     Route::get('operadores/edit/{id}', [OperadoresController::class, 'edit'])->name('operadores.edit');
@@ -235,6 +237,16 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::get('carnet/edit/{id}', [CarnetController::class, 'edit'])->middleware('can:isAdminOrResponsable')->name('carnet.edit');
     Route::post('carnet/edit/{id}', [CarnetController::class, 'update'])->middleware('can:isAdminOrResponsable')->name('carnet.update');
     Route::delete('carnet/destroy/{id}',[CarnetController::class, 'destroy'])->middleware('can:isAdmin')->name('carnet.destroy');
+
+
+    // Manage Certificado
+    Route::get('certificado', [CertificadoController::class, 'index'])->name('certificado');
+    Route::get('inactiveCertificado', [CertificadoController::class, 'index2'])->name('inactiveCertificado');
+    Route::get('certificado/create', [CertificadoController::class, 'create'])->middleware('can:isAdminOrResponsable')->name('certificado.create');
+    Route::post('certificado/create', [CertificadoController::class, 'store'])->middleware('can:isAdminOrResponsable')->name('certificado.store');
+    Route::get('certificado/edit/{id}', [CertificadoController::class, 'edit'])->middleware('can:isAdminOrResponsable')->name('certificado.edit');
+    Route::post('certificado/edit/{id}', [CertificadoController::class, 'update'])->middleware('can:isAdminOrResponsable')->name('certificado.update');
+    Route::delete('certificado/destroy/{id}',[CertificadoController::class, 'destroy'])->middleware('can:isAdmin')->name('certificado.destroy');
 
     // Manage Admin
     Route::resource('users',UserController::class);

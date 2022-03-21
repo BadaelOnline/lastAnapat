@@ -411,10 +411,10 @@
 
             <div class="row">
                 <div class="col-sm" style="border: 2px solid #ddd;">
-                    <label for="asistent" class="col-sm-2 col-form-label">Asistent</label>
+                    <label for="asistent" class="col-sm-2 col-form-label">Asistentes</label>
                     <div class="col-sm-12">
                         <div class="card-header py-3">
-                            <a href="{{ route('admin.asistent.create',[$cursos->id]) }}" class="btn btn-success">{{__('message.add_new')}} Asistent</a>
+                            <a href="{{ route('admin.asistent.create',[$cursos->id]) }}" class="btn btn-success">{{__('message.add_new')}} Asistente</a>
                         </div>
                         <div class="table-responsive">
 
@@ -424,9 +424,9 @@
 
                                 <tr>
 
-                                    <th>Apellido.</th>
-
                                     <th>Nombre</th>
+
+                                    <th>Apellido.</th>
 
                                     <th>Número de asistente</th>
 
@@ -454,13 +454,13 @@
 
                                         <td>
                                             @foreach($operador as $ope)
-                                                {{$ope->id == $asistent->operador ? $ope->apellidos : "" }}
+                                                {{$ope->id == $asistent->operador ? $ope->nombre : "" }}
                                             @endforeach
                                         </td>
 
                                         <td>
                                             @foreach($operador as $ope)
-                                                {{$ope->id == $asistent->operador ? $ope->nombre : "" }}
+                                                {{$ope->id == $asistent->operador ? $ope->apellidos : "" }}
                                             @endforeach
                                         </td>
 
@@ -522,8 +522,6 @@
                                 <tr>
                                     <th>Contenido</th>
 
-                                    <th>Tipo Maquina</th>
-
                                     <th>Fecha Inicio</th>
 
                                     <th>Final</th>
@@ -543,9 +541,14 @@
                                 @foreach ($horario as $horario)
 
                                     <tr>
-                                        <td>{{ $horario->contenido }}</td>
 
-                                        <td>{{ $horario->tipo_maquinaa->tipo_maquina }}</td>
+                                        <td>
+                                            @if($horario->contenido == "Práctica")
+                                            {{ $horario->tipo_maquinaa->tipo_maquina }}
+                                            @else
+                                                Teoria
+                                            @endif
+                                        </td>
 
                                         <td>{{ $horario->fecha_inicio }}</td>
 

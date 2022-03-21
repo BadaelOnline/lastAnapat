@@ -17,12 +17,17 @@ class Carnet extends Model
 
     public function operadores()
     {
-        return $this->belongsTo('App\Model\Operadores', 'operador');
+        return $this->belongsTo(Operadores::class, 'operador');
     }
 
     public function cursos()
     {
         return $this->belongsTo('App\Model\Cursos', 'curso');
+    }
+
+    public function Tipo_Maquinas()
+    {
+        return $this->belongsToMany(Tipo_Maquina::class);
     }
 
 }

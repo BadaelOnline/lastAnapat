@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Operadores extends Model 
+class Operadores extends Model
 {
 
     protected $table = 'operadores';
@@ -17,17 +17,22 @@ class Operadores extends Model
 
     public function entidades_formadoreas()
     {
-        return $this->belongsTo('App\Model\Entidades_Formadoreas', 'entidad');
+        return $this->belongsTo(EntidadesFormadoreas::class, 'entidad');
     }
 
     public function asistent()
     {
-        return $this->hasMany('App\Model\Asistent', 'operador');
+        return $this->hasMany(Asistent::class, 'operador');
     }
 
-    public function carnet()
+    public function carnett()
     {
-        return $this->hasMany('App\Model\Carnet', 'operador');
+        return $this->hasOne(Carnet::class, 'operador');
+    }
+
+    public function certificado()
+    {
+        return $this->hasMany(Certificado::class, 'operador');
     }
 
 }

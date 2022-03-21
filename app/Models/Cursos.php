@@ -50,6 +50,11 @@ class Cursos extends Model
         return $this->hasMany(Horario::class, 'curso');
     }
 
+    public function certificados()
+    {
+        return $this->hasMany(Certificado::class, 'curso');
+    }
+
     public function asistent()
     {
         return $this->hasMany(Asistent::class, 'curso');

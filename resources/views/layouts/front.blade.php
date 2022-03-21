@@ -147,7 +147,7 @@
     <div class="container d-md-flex py-4">
       <div class="mr-md-auto text-center text-md-left">
         <div class="copyright">
-        Copyright © 2021 anapat | Powered by anapat
+         © Powered by <a href="https://badaelonline.com/" target="_blank" style="color: #FFFFFF">al-badael online</a>
         </div>
       </div>
       <!-- <div class="social-links text-center text-md-right pt-3 pt-md-0">
