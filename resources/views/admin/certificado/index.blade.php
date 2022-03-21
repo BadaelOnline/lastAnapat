@@ -29,8 +29,12 @@
     <div class="card-header py-3">
 
 
-        <a href="{{ route('admin.certificado.create') }}" class="btn btn-pass">{{__('message.add_new')}} Certificado</a>
-
+{{--        <a href="{{ route('admin.certificado.create') }}" class="btn btn-pass">{{__('message.add_new')}} Certificado</a>--}}
+        @if(auth()->user()->perfil=='Administrador')
+            <a href="{{ route('admin.certificado.export',auth()->user()->entidad) }}" class="btn btn-primary">
+                {{__('message.Exportar Certificado')}}
+            </a>
+        @endif
 
     </div>
 
@@ -71,18 +75,18 @@
                         <td> {{ $certificado->emision }} </td>
                         <td>{{ $certificado->vencimiento }}</td>
                         <td>
-                        <a href="{{route('admin.certificado.edit', [$certificado->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
+{{--                        <a href="{{route('admin.certificado.edit', [$certificado->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-eye"></i> </a>--}}
 
 
-                            <form method="POST" action="{{route('admin.certificado.destroy', [$certificado->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
+{{--                            <form method="POST" action="{{route('admin.certificado.destroy', [$certificado->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">--}}
 
-                                @csrf
-                                <input type="hidden" name="_method" value="DELETE">
+{{--                                @csrf--}}
+{{--                                <input type="hidden" name="_method" value="DELETE">--}}
 
-                                <button type="submit" value="Delete" class="btn btn-delete btn-sm">
-                                <i class='fas fa-trash-alt'></i>
-                                </button>
-                            </form>
+{{--                                <button type="submit" value="Delete" class="btn btn-delete btn-sm">--}}
+{{--                                <i class='fas fa-trash-alt'></i>--}}
+{{--                                </button>--}}
+{{--                            </form>--}}
                         </td>
                     </tr>
 

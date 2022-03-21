@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CertificadoExport;
+use App\Exports\OperatorExport;
 use App\Models\Asistent;
 use App\Models\Carnet;
 use App\Models\Certificado;
@@ -10,6 +12,7 @@ use App\Models\EntidadesFormadoreas;
 use App\Models\Operadores;
 use App\Models\Tipo_Maquina;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CertificadoController extends Controller
 {
@@ -70,6 +73,99 @@ class CertificadoController extends Controller
         $cursos = Cursos::orderBy('id','desc')->get();
         $tipos =Tipo_Maquina::orderBy('id','desc')->get();
         return view('admin.certificado.create',compact('operadores','cursos','tipos','entidad'));
+    }
+
+    public function export()
+    {
+        $operadores = Operadores::orderBy('id','desc')->where('estado','=',0)->get();
+        foreach ($operadores as $operador){
+            $asistents = Asistent::orderBy('id','desc')->where('operador' , $operador->id)->get();
+
+            foreach ($asistents as $asistent){
+                $curso = Cursos::where('id',$asistent->curso)->where('estado',1)->where('cerrado',1)->first();
+                $certificado = new Certificado();
+                $asi_fecha = date('Y', strtotime($asistent->created_at));
+                $asi_orden = $asistent->orden;
+                $cert_numero = $asi_fecha . "" . $asi_orden . "" . $operador->dni;
+                $certificado->numero = $cert_numero;
+                $certificado->cer_apellidos = $operador->apellidos;
+                $certificado->cer_nombre = $operador->nombre;
+                $certificado->operador = $operador->id;
+                if ($operador->entidad != 0){
+                    $certificado->entidad = $operador->entidad;
+                    $certificado->entidad_nombre = $operador->entidades_formadoreas->nombre;
+                }
+                $certificado->curso = $asistent->curso;
+                $certificado->emision = $asistent->emision;
+                $certificado->vencimiento = $asistent->vencimiento;
+                $certificado->observaciones = $asistent->observaciones;
+                $certificado->dni = $operador->dni;
+                if ($curso->tipo_curso == 1){
+                    $certificado->cer_type_course = 'Básico';
+                    $certificado->tipos_carnet = 'B';
+                }else{
+                    $certificado->cer_type_course = 'Renovación';
+                    $certificado->tipos_carnet = 'R';
+                }
+                if ($asistent->tipo_1 != 0){
+                    $tipo_1 =Tipo_Maquina::findOrFail($asistent->tipo_1);
+
+                    if($tipo_1 != null){
+                        $certificado->tipo_1 = $tipo_1->tipo_maquina;
+
+                    }else{
+                        $certificado->tipo_1 = '-----';
+                    }
+                }else{
+                    $certificado->tipo_1 = '-----';
+                }
+                if ($asistent->tipo_2 != 0) {
+                    $tipo_2 = Tipo_Maquina::findOrFail($asistent->tipo_2);
+                    if ($tipo_2 != null) {
+                        $certificado->tipo_2 = $tipo_2->tipo_maquina;
+
+                    } else {
+                        $certificado->tipo_2 = '-----';
+                    }
+                }else{
+                    $certificado->tipo_2 = '-----';
+                }
+                if ($asistent->tipo_3 != 0){
+                    $tipo_3 =Tipo_Maquina::findOrFail($asistent->tipo_3);
+                    if($tipo_3 != null){
+                        $certificado->tipo_3 = $tipo_3->tipo_maquina;
+                    }else{
+                        $certificado->tipo_3 = '-----';
+                    }
+                }else{
+                    $certificado->tipo_3 = '-----';
+                }
+                if ($asistent->tipo_4 != 0) {
+                    $tipo_4 = Tipo_Maquina::findOrFail($asistent->tipo_4);
+                    if ($tipo_4 != null) {
+                        $certificado->tipo_4 = $tipo_4->tipo_maquina;
+                    } else {
+                        $certificado->tipo_4 = '-----';
+                    }
+                } else {
+                    $certificado->tipo_4 = '-----';
+                }
+                $certificado->fecha_alta = $curso->fecha_alta;
+                if ($operador->carnett != null){
+                    $certificado->carnet = $operador->carnett->id;
+                }
+
+                $cer = Certificado::where('operador',$operador->id)->where('curso',$asistent->curso)->get();
+
+                if(count($cer) == 0){
+//                    dd($cer);
+                    $certificado->save();
+                }
+
+            }
+             }
+        return Excel::download(new CertificadoExport(), 'certificado.xlsx');
+
     }
 
     /**
