@@ -247,6 +247,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::get('certificado/edit/{id}', [CertificadoController::class, 'edit'])->middleware('can:isAdminOrResponsable')->name('certificado.edit');
     Route::post('certificado/edit/{id}', [CertificadoController::class, 'update'])->middleware('can:isAdminOrResponsable')->name('certificado.update');
     Route::delete('certificado/destroy/{id}',[CertificadoController::class, 'destroy'])->middleware('can:isAdmin')->name('certificado.destroy');
+    Route::get('certificado/export',[CertificadoController::class, 'export'])->middleware('can:isAdmin')->name('certificado.export');
 
     // Manage Admin
     Route::resource('users',UserController::class);

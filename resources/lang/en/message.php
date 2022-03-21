@@ -156,7 +156,8 @@ return [
     'Maquina 4' => 'Maquina 4',
     'Tipo de carné' => 'Tipo de carné',
     'Número de carné' => 'Número de carné',
-    'Observaciones' => 'Observaciones'
+    'Observaciones' => 'Observaciones',
+    'Exportar Certificado' => 'Exportar Certificados',
 
 
 
