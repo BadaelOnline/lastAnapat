@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 
 use App\Exports\CursoExport;
 use App\Exports\OperatorExport;
+use App\Models\Asistent;
+use App\Models\Certificado;
+use App\Models\Cursos;
 use App\Models\EntidadesFormadoreas;
 use App\Models\Operadores;
+use App\Models\Tipo_Maquina;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -20,15 +24,15 @@ class OperadoresController extends Controller
     public function index()
     {
         $user = auth()->user();
-        if($user->perfil=='Responsable_de_Formacion' || $user->perfil=='Formador')
+        if ($user->perfil == 'Responsable_de_Formacion' || $user->perfil == 'Formador')
 
-            $operadores = Operadores::orderBy('id','desc')->where('entidad','=',$user->entidad)->get();
+            $operadores = Operadores::orderBy('id', 'desc')->where('entidad', '=', $user->entidad)->get();
 
         else
-            $operadores = Operadores::orderBy('id','desc')->get();
+            $operadores = Operadores::orderBy('id', 'desc')->get();
 
 
-        return view('admin.operadores.index',compact('operadores'));
+        return view('admin.operadores.index', compact('operadores'));
     }
 
     /**
@@ -39,21 +43,21 @@ class OperadoresController extends Controller
     public function create()
     {
         $user = auth()->user();
-        if($user->perfil=='Administrador'){
-            $entidad=EntidadesFormadoreas::select('id','nombre')->get();
-        }else{
-            $entidad=EntidadesFormadoreas::select('id','nombre')->where('id','=',$user->entidad)->first();
+        if ($user->perfil == 'Administrador') {
+            $entidad = EntidadesFormadoreas::select('id', 'nombre')->get();
+        } else {
+            $entidad = EntidadesFormadoreas::select('id', 'nombre')->where('id', '=', $user->entidad)->first();
         }
-        $now= date('Y-m-d', strtotime(now()));
+        $now = date('Y-m-d', strtotime(now()));
 
-        return view('admin.operadores.create',compact('entidad','now'));
+        return view('admin.operadores.create', compact('entidad', 'now'));
 
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -66,33 +70,33 @@ class OperadoresController extends Controller
         ]);
 
 
-        $operadores = new operadores($request->except('_token','estado'));
+        $operadores = new operadores($request->except('_token', 'estado'));
 
-        if($request->estado == null){
+        if ($request->estado == null) {
             $operadores->estado = 0;
-        }else{
+        } else {
             $operadores->estado = 1;
         }
 
         $foto = $request->file('foto');
         $dni_img = $request->file('dni_img');
-        if($foto){
-            $fotopath = $foto->store('operadoe/'.$request->nombre, 'public');
+        if ($foto) {
+            $fotopath = $foto->store('operadoe/' . $request->nombre, 'public');
 
             $operadores->foto = $fotopath;
-        }else{
-            $operadores->dni_img ='';
+        } else {
+            $operadores->dni_img = '';
         }
-        if($dni_img){
-            $dni_imgpath = $dni_img->store('operadoe/'.$request->nombre, 'public');
+        if ($dni_img) {
+            $dni_imgpath = $dni_img->store('operadoe/' . $request->nombre, 'public');
 
             $operadores->dni_img = $dni_imgpath;
-        }else{
-            $operadores->dni_img ='';
+        } else {
+            $operadores->dni_img = '';
         }
 
 
-        if ( $operadores->save()) {
+        if ($operadores->save()) {
 
             return redirect()->route('admin.operadores')->with('success', 'Data added successfully');
 
@@ -107,7 +111,7 @@ class OperadoresController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -116,22 +120,99 @@ class OperadoresController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function certificado($id)
+    {
+        $operador = Operadores::findOrFail($id);
+        $asistents = Asistent::where('operador', $id)->get();
+        $activeAsistent = null;
+        $curso = null;
+        $cert_numero = null;
+//        if ($activeAsistent != null) {
+            foreach ($asistents as $asistent) {
+                $curso = Cursos::findOrFail($asistent->curso);
+                if ($curso->estado == 1) {
+                    $activeAsistent = $asistent;
+//                    dd($asistent);
+                }
+            }
+//        dd($activeAsistent);
+
+
+
+//        }
+//        dd($activeAsistent);
+
+        $tipos = Tipo_Maquina::orderBy('id', 'asc')->get();
+        if ($activeAsistent != null)
+        $cer = Certificado::where('operador',$id)->where('curso',$activeAsistent->curso)->get();
+//        dd($cer);
+//        dd($activeAsistent);
+        if ($activeAsistent != null && $curso != null && $cert_numero != null && count($cer) == 0){
+            $certificado = new Certificado();
+            $asi_fecha = date('Y', strtotime($activeAsistent->created_at));
+            $asi_orden = $activeAsistent->orden;
+            $cert_numero = $asi_fecha . "" . $asi_orden . "" . $operador->dni;
+            $certificado->numero = $cert_numero;
+            $certificado->cer_apellidos = $operador->apellidos;
+            $certificado->cer_nombre = $operador->nombre;
+            $certificado->operador = $id;
+            $certificado->entidad = $operador->entidad;
+            if ($activeAsistent != null){
+                $certificado->curso = $activeAsistent->curso;
+                $certificado->emision = $activeAsistent->emision;
+                $certificado->vencimiento = $activeAsistent->vencimiento;
+                $certificado->observaciones = $activeAsistent->observaciones;
+            }
+
+            $certificado->dni = $operador->dni;
+            if ($curso != null){
+                if ($curso->tipo_curso == 1){
+                    $certificado->cer_type_course = 'Básico';
+                    $certificado->tipos_carnet = 'B';
+                }else{
+                    $certificado->cer_type_course = 'Renovación';
+                    $certificado->tipos_carnet = 'R';
+                }
+                $certificado->fecha_alta = $curso->fecha_alta;
+            }
+
+
+
+
+            $certificado->entidad_nombre = $operador->entidades_formadoreas->nombre;
+            if ($operador->carnett != null)
+                $certificado->carnet = $operador->carnett->id;
+            $certificado->save();
+        }
+
+//        $certificado->cer_fecha = $activeAsistent->observaciones;
+//        dd($operador->carnett);
+//        dd($cert_numero);
+        return view('admin.operadores.certificado', compact('operador', 'curso', 'tipos', 'cert_numero', 'activeAsistent'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $user = auth()->user();
-        if($user->perfil=='Administrador'){
-            $entidad=EntidadesFormadoreas::select('id','nombre')->get();
-        }else{
-            $entidad=EntidadesFormadoreas::select('id','nombre')->where('id','=',$user->entidad)->first();
+        if ($user->perfil == 'Administrador') {
+            $entidad = EntidadesFormadoreas::select('id', 'nombre')->get();
+        } else {
+            $entidad = EntidadesFormadoreas::select('id', 'nombre')->where('id', '=', $user->entidad)->first();
         }
         $operadores = Operadores::findOrFail($id);
 
-        return view('admin.operadores.edit',compact('operadores','entidad'));
+        return view('admin.operadores.edit', compact('operadores', 'entidad'));
     }
 
     public function export()
@@ -142,8 +223,8 @@ class OperadoresController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -168,37 +249,37 @@ class OperadoresController extends Controller
         $operadores->mail = $request->mail;
         $operadores->carnet = $request->carnet;
         $operadores->fecha = $request->fecha;
-        if($request->estado == null){
+        if ($request->estado == null) {
             $operadores->estado = 0;
-        }elseif ($request->estado == "on" || $request->estado == "1"){
+        } elseif ($request->estado == "on" || $request->estado == "1") {
             $operadores->estado = 1;
-        }else{
+        } else {
             $operadores->estado = 0;
         }
 
         $foto = $request->file('foto');
         $dni_img = $request->file('dni_img');
-        if($foto){
-            if($operadores->foto && file_exists(storage_path('app/public/' . $operadores->foto))){
-                \Storage::delete('public/'. $operadores->foto);
+        if ($foto) {
+            if ($operadores->foto && file_exists(storage_path('app/public/' . $operadores->foto))) {
+                \Storage::delete('public/' . $operadores->foto);
             }
 
-            $foto_path = $foto->store('operadore/'.$request->nombre, 'public');
+            $foto_path = $foto->store('operadore/' . $request->nombre, 'public');
 
             $operadores->foto = $foto_path;
         }
-        if($dni_img){
-            if($operadores->dni_img && file_exists(storage_path('app/public/' . $operadores->dni_img))){
-                \Storage::delete('public/'. $operadores->dni_img);
+        if ($dni_img) {
+            if ($operadores->dni_img && file_exists(storage_path('app/public/' . $operadores->dni_img))) {
+                \Storage::delete('public/' . $operadores->dni_img);
             }
 
-            $dni_img_path = $dni_img->store('operadore/'.$request->nombre, 'public');
+            $dni_img_path = $dni_img->store('operadore/' . $request->nombre, 'public');
 
             $operadores->dni_img = $dni_img_path;
         }
 
 
-        if ( $operadores->save()) {
+        if ($operadores->save()) {
 
             return redirect()->route('admin.operadores')->with('success', 'Data added successfully');
 
@@ -212,7 +293,7 @@ class OperadoresController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -154,6 +154,18 @@
 
                         <th>{{__('message.DNI')}}</th>
 
+                        <th>{{__('message.Operador pdf')}}</th>
+
+                        <th>{{__('message.Cert Empresa')}}</th>
+
+                        <th>{{__('message.Vida Laboral')}}</th>
+
+                        <th>{{__('message.PRL')}}</th>
+
+                        <th>{{__('message.PEMP')}}</th>
+
+                        <th>{{__('message.CAP')}}</th>
+
                         <th>{{__('message.Option')}}</th>
 
                     </tr>
@@ -183,6 +195,60 @@
                                         <img class="modal-content" id="img01">
                                         <div id="caption"></div>
                                     </div>
+                                </td>
+
+                                <td style="text-align: center">
+                                    @if($formadores->operador_pdf && file_exists(storage_path('app/public/' . $formadores->operador_pdf)))
+                                    <a target="_blank" href="{{asset('storage/' . $formadores->operador_pdf)}}"><i
+                                            class="fa fa-eye"></i> </a>
+                                    @else
+                                        <i class="fa fa-close"></i>
+                                    @endif
+                                </td>
+
+                                <td style="text-align: center">
+                                    @if($formadores->cert_empresa_pdf && file_exists(storage_path('app/public/' . $formadores->cert_empresa_pdf)))
+                                        <a target="_blank" href="{{asset('storage/' . $formadores->cert_empresa_pdf)}}"><i
+                                                class="fa fa-eye"></i> </a>
+                                    @else
+                                        <i class="fa fa-close"></i>
+                                    @endif
+                                </td>
+
+                                <td style="text-align: center">
+                                    @if($formadores->vida_laboral_pdf && file_exists(storage_path('app/public/' . $formadores->vida_laboral_pdf)))
+                                        <a target="_blank" href="{{asset('storage/' . $formadores->vida_laboral_pdf)}}"><i
+                                                class="fa fa-eye"></i> </a>
+                                    @else
+                                        <i class="fa fa-close"></i>
+                                    @endif
+                                </td>
+
+                                <td style="text-align: center">
+                                    @if($formadores->prl_pdf && file_exists(storage_path('app/public/' . $formadores->prl_pdf)))
+                                        <a target="_blank" href="{{asset('storage/' . $formadores->prl_pdf)}}"><i
+                                                class="fa fa-eye"></i> </a>
+                                    @else
+                                        <i class="fa fa-close"></i>
+                                    @endif
+                                </td>
+
+                                <td style="text-align: center">
+                                    @if($formadores->pemp_pdf && file_exists(storage_path('app/public/' . $formadores->pemp_pdf)))
+                                        <a target="_blank" href="{{asset('storage/' . $formadores->pemp_pdf)}}"><i
+                                                class="fa fa-eye"></i> </a>
+                                    @else
+                                        <i class="fa fa-close"></i>
+                                    @endif
+                                </td>
+
+                                <td style="text-align: center">
+                                    @if($formadores->cap_pdf && file_exists(storage_path('app/public/' . $formadores->cap_pdf)))
+                                        <a target="_blank" href="{{asset('storage/' . $formadores->cap_pdf)}}"><i
+                                                class="fa fa-eye"></i> </a>
+                                    @else
+                                        <i class="fa fa-close"></i>
+                                    @endif
                                 </td>
                                 <td>
                                     <a href="{{route('admin.formadores.edit', [$formadores->id])}}"

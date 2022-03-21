@@ -267,6 +267,29 @@
                     </div>
                 </li>
             @endcan
+
+            @can('isAdmin')
+                <li class="nav-item {{ in_array(Route::currentRouteName(),[
+      'admin.certificado',
+  ])? 'active' : ''}}">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
+                       aria-expanded="true" aria-controls="collapsePages2">
+                        <i class="fas fa-fw fa-id-card"></i>
+                        <span>{{__('message.certificado')}}</span>
+                    </a>
+
+                    <div id="collapsePages2" class="collapse" aria-labelledby="headingPages"
+                         data-parent="#accordionSidebar">
+                        <div class=" py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="{{ route('admin.certificado') }}">
+                                <span>{{__('message.certificado')}}</span></a>
+
+                            <a class="collapse-item"
+                               href="{{ route('admin.inactiveCertificado') }}">{{__('message.Inactivo Certificado')}}</a>
+                        </div>
+                    </div>
+                </li>
+            @endcan
             <li class="nav-item ">
                 <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt"></i>

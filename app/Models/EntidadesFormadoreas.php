@@ -23,4 +23,9 @@ class EntidadesFormadoreas extends Model
         return $this->hasMany('App\Model\Formadores', 'entidad');
     }
 
+    public function certificados()
+    {
+        return $this->hasMany(Certificado::class, 'entidad');
+    }
+
 }

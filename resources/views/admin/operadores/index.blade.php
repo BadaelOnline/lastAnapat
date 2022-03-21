@@ -92,6 +92,10 @@
                         <td>{{ $operadores->estado == 1 ? "Yes" : "No"  }}</td>
 
                         <td>
+                            @if(count($operadores->asistent) > 0)
+{{--                                {{$operadores->asistent}}--}}
+                            <a href="{{route('admin.operadores.certificado', [$operadores->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-certificate"></i> </a>
+                            @endif
                             @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion'))
                             <a href="{{route('admin.operadores.edit', [$operadores->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
 
