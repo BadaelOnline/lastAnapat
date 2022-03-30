@@ -10,7 +10,7 @@
 
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">Horario</h1>
+<h1 class="h3 mb-2 text-gray-800">{{__('message.Horario')}}</h1>
 
 @if (session('success'))
 
@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.horario.create') }}" class="btn btn-success">{{__('message.add_new')}} Horario</a>
+        <a href="{{ route('admin.horario.create') }}" class="btn btn-success">{{__('message.add_new')}} {{__('message.Horario')}}</a>
 
     </div>
 
@@ -91,7 +91,7 @@
                                 <input type="hidden" name="_method" value="DELETE">
 
                                 <button type="submit" value="Delete" class="btn btn-danger btn-sm">
-                                <i class='fas fa-trash-alt'></i> 
+                                <i class='fas fa-trash-alt'></i>
                                 </button>
 
                             </form>

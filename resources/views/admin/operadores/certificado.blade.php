@@ -204,7 +204,7 @@ input[type="radio"]:focus {
                 </span></h6>
         </div>
         <div class="col-md-4">
-            <h6>{{__('message.Fecha de Exportación')}} :<br> <span>AAAAMMDD+HHMM+XXXXXXXXX</span></h6>
+            <h6>{{__('message.Fecha de Exportación')}} :<br> <span></span></h6>
         </div>
     </div>
 </div>

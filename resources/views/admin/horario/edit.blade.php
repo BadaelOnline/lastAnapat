@@ -18,7 +18,7 @@
         @csrf
         <div class="form-groups">
             <div class="form-group col-md-4">
-                <label for="curso" class="col-sm-2 col-form-label">Curso</label>
+                <label for="curso" class="col-sm-2 col-form-label">{{__('message.Curso')}}</label>
                 <div class="col-sm-9">
                     <select name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
 {{--                        <option value="{{ $horario->curso }}">{{ $curso->curso }}</option>--}}
@@ -34,7 +34,7 @@
 
 
             <div class="form-group col-md-4">
-                <label for="contenido" class="col-sm-2 col-form-label">Contenido</label>
+                <label for="contenido" class="col-sm-2 col-form-label">{{__('message.Contenido')}}</label>
                 <div class="form-check">
                     <input class="form-check-input" onclick="test(this)" type="radio" {{$horario->contenido == "Teoría" ? "checked" : ""}} name="contenido" value="1" id=1>
                     <label class="form-check-label" for="flexRadioDefault1">
@@ -51,7 +51,7 @@
 
 
                 <div class="form-group col-md-4" id="tipo_maquinas" style="display: {{$horario->contenido == "Teoría" ? "none" : "block"}}">
-                    <label for="tipo_maquina" class="col-sm-2 col-form-label">Tipo Maquina</label>
+                    <label for="tipo_maquina" class="col-sm-2 col-form-label">{{__('message.Tipo Maquina')}}</label>
                     <div class="col-sm-9">
                         <select name='tipo_maquina'  class="form-control {{$errors->first('tipo_maquina') ? "is-invalid" : "" }} " id="tipo_maquina">
                             <option value="0" selected>{{__('message.Choose_One')}}</option>
@@ -71,7 +71,7 @@
 
 
             <div class="form-group col-md-4">
-                <label for="alumnos" class="col-sm-2 col-form-label">Alumnos</label>
+                <label for="alumnos" class="col-sm-2 col-form-label">{{__('message.Alumnos')}}</label>
                 <div class="col-sm-10">
                     <input type="text" name='alumnos' class="form-control {{$errors->first('alumnos') ? "is-invalid" : "" }} " value="{{old('alumnos') ? old('alumnos') : $horario->alumnos}} " id="alumnos" placeholder="Número de asistentes
 
@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="form-group col-md-4">
-            <label for="date" class="col-sm-4 col-form-label">Fecha Inicio</label>
+            <label for="date" class="col-sm-4 col-form-label">{{__('message.Fecha Inicio')}}</label>
             <div class="col-sm-9">
                 <input type="datetime" dataformatas="" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio') ? old('fecha_inicio') : $horario->fecha_inicio}}" id="fecha_inicio" >
                 <div class="invalid-feedback">
@@ -91,7 +91,7 @@
             </div>
             </div>
             <div class="form-group col-md-4">
-            <label for="date" class="col-sm-2 col-form-label">final</label>
+            <label for="date" class="col-sm-2 col-form-label">{{__('message.final')}}</label>
             <div class="col-sm-9">
                 <input type="datetime" name='final' class="form-control {{$errors->first('final') ? "is-invalid" : "" }} " value="{{old('final') ? old('final') : $horario->final}}"  id="final" >
                 <div class="invalid-feedback">

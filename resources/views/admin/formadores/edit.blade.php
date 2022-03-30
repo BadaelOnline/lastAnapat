@@ -108,6 +108,114 @@
                 width: 100%;
             }
         }
+        .picture-container {
+            position: relative;
+            cursor: pointer;
+            text-align: center;
+        }
+        .picture {
+            width: 200px;
+            height: 200px;
+            background-color: #999999;
+            border: 4px solid #CCCCCC;
+            color: #FFFFFF;
+            /* border-radius: 50%; */
+            margin: 5px auto;
+            overflow: hidden;
+            transition: all 0.2s;
+            -webkit-transition: all 0.2s;
+        }
+        .picture:hover {
+            border-color: #2ca8ff;
+        }
+        .picture input[type="file"] {
+            cursor: pointer;
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 0 !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        #operador_pdf{
+            cursor: pointer;
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 0 !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        #cert_empresa_pdf{
+            cursor: pointer;
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 0 !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        #vida_laboral_pdf{
+            cursor: pointer;
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 0 !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        #cap_pdf{
+            cursor: pointer;
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 0 !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        #pemp_pdf{
+            cursor: pointer;
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 0 !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        #prl_pdf{
+            cursor: pointer;
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 0 !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        .picture-src {
+            width: 100%;
+            height: 100%;
+        }
+        input[type="radio"] {
+            cursor: pointer;
+        }
+        input[type="radio"]:focus {
+            color: #495057;
+            background-color: #0477b1;
+            border-color: transparent;
+            outline: 0;
+            box-shadow: none;
+        }
     </style>
 
 
@@ -128,7 +236,7 @@
 
             <div class="form-group col-md-4">
 
-                <label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
+                <label for="codigo" class="col-sm-2 col-form-label">{{__('message.Codigo')}}</label>
 
                 <div class="col-sm-9">
                     <input type="text" name='codigo'
@@ -151,7 +259,7 @@ Name">
             {{--</div>--}}
             {{--</div>--}}
             <div class="form-group col-md-4">
-                <label for="entidad" class="col-sm-2 col-form-label">Entidad </label>
+                <label for="entidad" class="col-sm-2 col-form-label">{{__('message.Entidad')}} </label>
                 <div class="col-sm-9">
                     <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} "
                             id="entidad">
@@ -167,7 +275,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="apellidos" class="col-sm-2 col-form-label">Apellidos </label>
+                <label for="apellidos" class="col-sm-2 col-form-label">{{__('message.Apellidos')}} </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -181,7 +289,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="nombre" class="col-sm-2 col-form-label">Nombre </label>
+                <label for="nombre" class="col-sm-2 col-form-label">{{__('message.Nombre')}} </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -194,7 +302,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="dni" class="col-sm-2 col-form-label">DNI </label>
+                <label for="dni" class="col-sm-2 col-form-label">{{__('message.DNI')}} </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -206,152 +314,165 @@ Name">
                     </div>
                 </div>
             </div>
-            <div class="form-group col-md-2">
-                <label for="dni_img" class="col-sm-2 col-form-label">DNI </label>
-                <div class="col-sm-9">
-                    {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
-
-                    <input type="file" name="dni_img" id="dni_img" cols="40" rows="10"
-                           class="form-control {{$errors->first('dni_img') ? "is-invalid" : "" }} "
-                           value="{{old('dni_img') ? old('dni_img') : $formadores->dni_img}}">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('dni_img') }}
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-md-2">
-                @if(isset($formadores->dni_img))
-                    <img src="{{asset('storage/' . $formadores->dni_img)}}"
-                         id="myImg" onclick="show( this);"/>
-                    <div id="myModal" class="modal">
-                        <span class="close">&times;</span>
-                        <img class="modal-content" id="img01">
-                        <div id="caption"></div>
-                    </div>
-                @endif
-            </div>
             <div class="form-group col-md-4">
-                <label for="operador_pdf" class="col-sm-4 col-form-label">Operador PDF</label>
-                @if(isset($formadores->operador_pdf))
-                    <label for="operador_pdf1" class="col-sm-1 col-form-label"><a
-                            href="{{asset('storage/' . $formadores->operador_pdf)}}" download><i
-                                class="fa fa-download"></i> </a> </label>
-                    <a target="_blank" href="{{asset('storage/' . $formadores->operador_pdf)}}"><i
-                            class="fa fa-eye"></i> </a>
-                @endif
-                <div class="col-sm-9">
-                    {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
-
-                    <input type="file" name="operador_pdf" id="operador_pdf" cols="40" rows="10"
-                           class="form-control {{$errors->first('operador_pdf') ? "is-invalid" : "" }} "
-                           value="{{old('operador_pdf')}}">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('operador_pdf') }}
+                <div class="image">
+                    <div class="form-group col-md-12">
+                        <div class="picture-container">
+                            <div class="picture">
+                                <img src="{{asset('storage/' . $formadores->dni_img)}}" class="picture-src"
+                                     id="wizardPicturePreview" height="200px" width="400px" title=""/>
+                                <input type="file" id="wizard-picture" name="dni_img"
+                                       class="form-control {{$errors->first('dni_img') ? "is-invalid" : "" }} " value="{{old('dni_img') ? old('dni_img') : $formadores->dni_img}}">
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('dni_img') }}
+                                </div>
+                            </div>
+                            <h6>{{__('message.DNI')}}</h6>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="cert_empresa_pdf" class="col-sm-4 col-form-label">Cert Empresa PDF</label>
-                @if(isset($formadores->cert_empresa_pdf))
-                    <label for="operador_pdf1" class="col-sm-1 col-form-label"><a
-                            href="{{asset('storage/' . $formadores->cert_empresa_pdf)}}" download><i
-                                class="fa fa-download"></i> </a> </label>
-                    <a target="_blank" href="{{asset('storage/' . $formadores->cert_empresa_pdf)}}"><i
-                            class="fa fa-eye"></i> </a>
-                @endif
-                <div class="col-sm-9">
-                    {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
-
-                    <input type="file" name="cert_empresa_pdf" id="cert_empresa_pdf"
-                           class="form-control {{$errors->first('cert_empresa_pdf	') ? "is-invalid" : "" }} "
-                           value="{{old('cert_empresa_pdf	')}}">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('cert_empresa_pdf	') }}
+                <label for="operador_pdf" class="col-sm-4 col-form-label">{{__('message.Operador PDF')}}</label>
+                @if($formadores->operador_pdf && file_exists(storage_path('app/public/' . $formadores->operador_pdf)))
+                    <label for="operador_pdf" class="col-sm-1 col-form-label">
+                        <a id="operador_pdf_download" href="{{asset('storage/' . $formadores->operador_pdf)}}" download><i class="fa fa-download"></i> </a> </label>
+                    <a id="operador_pdf_privew" target="_blank" href="{{asset('storage/' . $formadores->operador_pdf)}}"  ><i class="fa fa-eye"></i> </a>
+                    <div class="col-sm-12">
+                        <i class="fas fa-edit" style="font-size: 20px"></i>
+                        <input type="file" name='operador_pdf' class="form-control {{$errors->first('operador_pdf') ? "is-invalid" : "" }} " value="{{old('operador_pdf') ? old('operador_pdf') : $formadores->operador_pdf}}" style="opacity: 0 !important" id="operador_pdf" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('operador_pdf') }}
+                        </div>
                     </div>
-                </div>
+                @else
+                    <div class="col-sm-12">
+                        <input type="file" name='operador_pdf' class="form-control {{$errors->first('operador_pdf') ? "is-invalid" : "" }} " value="{{old('operador_pdf') ? old('operador_pdf') : $formadores->operador_pdf}}" id="operador_pdff" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('operador_pdf') }}
+                        </div>
+                    </div>
+                @endif
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="cert_empresa_pdf" class="col-sm-4 col-form-label">{{__('message.Cert Empresa PDF')}}</label>
+                @if($formadores->cert_empresa_pdf && file_exists(storage_path('app/public/' . $formadores->cert_empresa_pdf)))
+                    <label for="cert_empresa_pdf" class="col-sm-1 col-form-label">
+                        <a id="cert_empresa_pdf_download" href="{{asset('storage/' . $formadores->cert_empresa_pdf)}}" download><i class="fa fa-download"></i> </a> </label>
+                    <a id="cert_empresa_pdf_privew" target="_blank" href="{{asset('storage/' . $formadores->cert_empresa_pdf)}}"  ><i class="fa fa-eye"></i> </a>
+                    <div class="col-sm-12">
+                        <i class="fas fa-edit" style="font-size: 20px"></i>
+                        <input type="file" name='cert_empresa_pdf' class="form-control {{$errors->first('cert_empresa_pdf') ? "is-invalid" : "" }} " value="{{old('cert_empresa_pdf') ? old('cert_empresa_pdf') : $formadores->cert_empresa_pdf}}" style="opacity: 0 !important" id="cert_empresa_pdf" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('cert_empresa_pdf') }}
+                        </div>
+                    </div>
+                @else
+                    <div class="col-sm-12">
+                        <input type="file" name='cert_empresa_pdf' class="form-control {{$errors->first('cert_empresa_pdf') ? "is-invalid" : "" }} " value="{{old('cert_empresa_pdf') ? old('cert_empresa_pdf') : $formadores->cert_empresa_pdf}}" id="cert_empresa_pdff" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('cert_empresa_pdf') }}
+                        </div>
+                    </div>
+                @endif
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="vida_laboral_pdf" class="col-sm-4 col-form-label">{{__('message.Vida laboral pdf')}}</label>
+                @if($formadores->vida_laboral_pdf && file_exists(storage_path('app/public/' . $formadores->vida_laboral_pdf)))
+                    <label for="vida_laboral_pdf" class="col-sm-1 col-form-label">
+                        <a id="vida_laboral_pdf_download" href="{{asset('storage/' . $formadores->vida_laboral_pdf)}}" download><i class="fa fa-download"></i> </a> </label>
+                    <a id="vida_laboral_pdf_privew" target="_blank" href="{{asset('storage/' . $formadores->vida_laboral_pdf)}}"  ><i class="fa fa-eye"></i> </a>
+                    <div class="col-sm-12">
+                        <i class="fas fa-edit" style="font-size: 20px"></i>
+                        <input type="file" name='vida_laboral_pdf' class="form-control {{$errors->first('vida_laboral_pdf') ? "is-invalid" : "" }} " value="{{old('vida_laboral_pdf') ? old('vida_laboral_pdf') : $formadores->vida_laboral_pdf}}" style="opacity: 0 !important" id="vida_laboral_pdf" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('vida_laboral_pdf') }}
+                        </div>
+                    </div>
+                @else
+                    <div class="col-sm-12">
+                        <input type="file" name='vida_laboral_pdf' class="form-control {{$errors->first('vida_laboral_pdf') ? "is-invalid" : "" }} " value="{{old('vida_laboral_pdf') ? old('vida_laboral_pdf') : $formadores->vida_laboral_pdf}}" id="vida_laboral_pdff" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('vida_laboral_pdf') }}
+                        </div>
+                    </div>
+                @endif
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="prl_pdf" class="col-sm-4 col-form-label">{{__('message.PRL PDF')}}</label>
+                @if($formadores->prl_pdf && file_exists(storage_path('app/public/' . $formadores->prl_pdf)))
+                    <label for="prl_pdf" class="col-sm-1 col-form-label">
+                        <a id="prl_pdf_download" href="{{asset('storage/' . $formadores->prl_pdf)}}" download><i class="fa fa-download"></i> </a> </label>
+                    <a id="prl_pdf_privew" target="_blank" href="{{asset('storage/' . $formadores->prl_pdf)}}"  ><i class="fa fa-eye"></i> </a>
+                    <div class="col-sm-12">
+                        <i class="fas fa-edit" style="font-size: 20px"></i>
+                        <input type="file" name='prl_pdf' class="form-control {{$errors->first('prl_pdf') ? "is-invalid" : "" }} " value="{{old('prl_pdf') ? old('prl_pdf') : $formadores->prl_pdf}}" style="opacity: 0 !important" id="prl_pdf" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('prl_pdf') }}
+                        </div>
+                    </div>
+                @else
+                    <div class="col-sm-12">
+                        <input type="file" name='prl_pdf' class="form-control {{$errors->first('prl_pdf') ? "is-invalid" : "" }} " value="{{old('prl_pdf') ? old('prl_pdf') : $formadores->prl_pdf}}" id="prl_pdff" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('prl_pdf') }}
+                        </div>
+                    </div>
+                @endif
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="pemp_pdf" class="col-sm-4 col-form-label">{{__('message.PEMP PDF')}}</label>
+                @if($formadores->pemp_pdf && file_exists(storage_path('app/public/' . $formadores->pemp_pdf)))
+                    <label for="pemp_pdf" class="col-sm-1 col-form-label">
+                        <a id="pemp_pdf_download" href="{{asset('storage/' . $formadores->pemp_pdf)}}" download><i class="fa fa-download"></i> </a> </label>
+                    <a id="pemp_pdf_privew" target="_blank" href="{{asset('storage/' . $formadores->pemp_pdf)}}"  ><i class="fa fa-eye"></i> </a>
+                    <div class="col-sm-12">
+                        <i class="fas fa-edit" style="font-size: 20px"></i>
+                        <input type="file" name='pemp_pdf' class="form-control {{$errors->first('pemp_pdf') ? "is-invalid" : "" }} " value="{{old('pemp_pdf') ? old('pemp_pdf') : $formadores->pemp_pdf}}" style="opacity: 0 !important" id="pemp_pdf" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('pemp_pdf') }}
+                        </div>
+                    </div>
+                @else
+                    <div class="col-sm-12">
+                        <input type="file" name='pemp_pdf' class="form-control {{$errors->first('pemp_pdf') ? "is-invalid" : "" }} " value="{{old('pemp_pdf') ? old('pemp_pdf') : $formadores->pemp_pdf}}" id="pemp_pdff" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('pemp_pdf') }}
+                        </div>
+                    </div>
+                @endif
+            </div>
+
+
+
+            <div class="form-group col-md-4">
+                <label for="cap_pdf" class="col-sm-4 col-form-label">{{__('message.CAP PDF')}}</label>
+                @if($formadores->cap_pdf && file_exists(storage_path('app/public/' . $formadores->cap_pdf)))
+                    <label for="cap_pdf" class="col-sm-1 col-form-label">
+                        <a id="cap_pdf_download" href="{{asset('storage/' . $formadores->cap_pdf)}}" download><i class="fa fa-download"></i> </a> </label>
+                    <a id="cap_pdf_privew" target="_blank" href="{{asset('storage/' . $formadores->cap_pdf)}}"  ><i class="fa fa-eye"></i> </a>
+                    <div class="col-sm-12">
+                        <i class="fas fa-edit" style="font-size: 20px"></i>
+                        <input type="file" name='cap_pdf' class="form-control {{$errors->first('cap_pdf') ? "is-invalid" : "" }} " value="{{old('cap_pdf') ? old('cap_pdf') : $formadores->cap_pdf}}" style="opacity: 0 !important" id="cap_pdf" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('cap_pdf') }}
+                        </div>
+                    </div>
+                @else
+                    <div class="col-sm-12">
+                        <input type="file" name='cap_pdf' class="form-control {{$errors->first('cap_pdf') ? "is-invalid" : "" }} " value="{{old('cap_pdf') ? old('cap_pdf') : $formadores->cap_pdf}}" id="cap_pdff" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('cap_pdf') }}
+                        </div>
+                    </div>
+                @endif
             </div>
             <div class="form-group col-md-4">
-                <label for="vida_laboral_pdf" class="col-sm-4 col-form-label">Vida laboral pdf</label>
-                @if(isset($formadores->vida_laboral_pdf))
-                    <label for="vida_laboral_pdf" class="col-sm-1 col-form-label"><a
-                            href="{{asset('storage/' . $formadores->vida_laboral_pdf)}}" download><i
-                                class="fa fa-download"></i> </a> </label>
-                    <a target="_blank" href="{{asset('storage/' . $formadores->vida_laboral_pdf)}}"><i
-                            class="fa fa-eye"></i> </a>
-                @endif
-                <div class="col-sm-9">
-                    {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
-
-                    <input type="file" name="vida_laboral_pdf" id="vida_laboral_pdf" cols="40" rows="10"
-                           class="form-control {{$errors->first('vida_laboral_pdf') ? "is-invalid" : "" }} "
-                           value="{{old('vida_laboral_pdf')}}">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('vida_laboral_pdf') }}
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="prl_pdf" class="col-sm-4 col-form-label">PRL PDF</label>
-                @if(isset($formadores->prl_pdf))
-                    <label for="prl_pdf" class="col-sm-1 col-form-label"><a
-                            href="{{asset('storage/' . $formadores->prl_pdf)}}" download><i class="fa fa-download"></i>
-                        </a> </label>
-                    <a target="_blank" href="{{asset('storage/' . $formadores->prl_pdf)}}"><i class="fa fa-eye"></i>
-                    </a>
-                @endif
-                <div class="col-sm-9">
-                    {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
-
-                    <input type="file" name="prl_pdf" id="prl_pdf" cols="40" rows="10"
-                           class="form-control {{$errors->first('prl_pdf') ? "is-invalid" : "" }} "
-                           value="{{old('prl_pdf')}}">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('prl_pdf') }}
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="pemp_pdf" class="col-sm-4 col-form-label">PEMP PDF</label>
-                @if(isset($formadores->pemp_pdf))
-                    <label for="pemp_pdf" class="col-sm-1 col-form-label"><a
-                            href="{{asset('storage/' . $formadores->pemp_pdf)}}" download><i class="fa fa-download"></i>
-                        </a> </label>
-                    <a target="_blank" href="{{asset('storage/' . $formadores->pemp_pdf)}}"><i class="fa fa-eye"></i>
-                    </a>
-                @endif
-                <div class="col-sm-9">
-                    {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
-
-                    <input type="file" name="pemp_pdf" id="pemp_pdf" cols="40" rows="10"
-                           class="form-control {{$errors->first('pemp_pdf') ? "is-invalid" : "" }} "
-                           value="{{old('pemp_pdf')}}">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('pemp_pdf') }}
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="cap_pdf" class="col-sm-2 col-form-label">CAP PDF</label>
-                @if(isset($formadores->cap_pdf))
-                    <label for="cap_pdf" class="col-sm-1 col-form-label"><a
-                            href="{{asset('storage/' . $formadores->cap_pdf)}}" download><i class="fa fa-download"></i>
-                        </a> </label>
-                    <a target="_blank" href="{{asset('storage/' . $formadores->cap_pdf)}}"><i class="fa fa-eye"></i>
-                    </a>
-                @endif
-                <div class="col-sm-9">
-                    {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
-
-                    <input type="file" name="cap_pdf" id="cap_pdf" cols="40" rows="10"
-                           class="form-control {{$errors->first('cap_pdf') ? "is-invalid" : "" }} "
-                           value="{{old('cap_pdf')}}">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('cap_pdf') }}
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="fecha" class="col-sm-2 col-form-label"> Fecha</label>
+                <label for="fecha" class="col-sm-2 col-form-label">{{__('message.Fecha')}} </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -364,7 +485,7 @@ Name">
                 </div>
             </div>
             <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">Estado</label>
+                <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Estado')}}</label>
                 <label class="switch">
                     <input type="checkbox" name="estado" {{$formadores->estado == 1 ? "checked" : ""}}>
                     <span class="slider round"></span>
@@ -386,30 +507,160 @@ Name">
     </form>
 @endsection
 @push('scripts')
+{{--    <script>--}}
+{{--        function show(elem) {--}}
+{{--// Get the modal--}}
+{{--//             console.log(id);--}}
+{{--            var modal = document.getElementById("myModal");--}}
+
+{{--            // Get the image and insert it inside the modal - use its "alt" text as a caption--}}
+{{--            var modalImg = document.getElementById("img01");--}}
+{{--            var captionText = document.getElementById("caption");--}}
+
+{{--            modal.style.display = "block";--}}
+{{--            modalImg.src = $(elem).attr('src');--}}
+{{--            // captionText.innerHTML = this.alt;--}}
+
+
+{{--            // Get the <span> element that closes the modal--}}
+{{--            var span = document.getElementsByClassName("close")[0];--}}
+
+{{--            // When the user clicks on <span> (x), close the modal--}}
+{{--            span.onclick = function() {--}}
+{{--                modal.style.display = "none";--}}
+{{--            }--}}
+{{--        }--}}
+
+{{--    </script>--}}
     <script>
-        function show(elem) {
-// Get the modal
-//             console.log(id);
-            var modal = document.getElementById("myModal");
+        // Prepare the preview for profile picture
+        $("#wizard-picture").change(function(){
+            readURL(this);
+        });
+        //Function to show image before upload
 
-            // Get the image and insert it inside the modal - use its "alt" text as a caption
-            var modalImg = document.getElementById("img01");
-            var captionText = document.getElementById("caption");
-
-            modal.style.display = "block";
-            modalImg.src = $(elem).attr('src');
-            // captionText.innerHTML = this.alt;
-
-
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modal.style.display = "none";
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+                }
+                reader.readAsDataURL(input.files[0]);
             }
         }
+    </script>
+    <script>
+        // Prepare the preview for profile picture
+        $("#operador_pdf").change(function(){
+            readURL1(this);
+        });
+        //Function to show image before upload
 
+        function readURL1(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
+                reader.onload = function (e) {
+                    $('#operador_pdf_download').attr('href', e.target.result).fadeIn('slow');
+                    document.getElementById('operador_pdf_privew').style.display = "none";
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <script>
+        // Prepare the preview for profile picture
+        $("#cert_empresa_pdf").change(function(){
+            readURL2(this);
+        });
+        //Function to show image before upload
+
+        function readURL2(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#cert_empresa_pdf_download').attr('href', e.target.result).fadeIn('slow');
+                    document.getElementById('cert_empresa_pdf_privew').style.display = "none";
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <script>
+        // Prepare the preview for profile picture
+        $("#vida_laboral_pdf").change(function(){
+            readURL3(this);
+        });
+        //Function to show image before upload
+
+        function readURL3(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#vida_laboral_pdf_download').attr('href', e.target.result).fadeIn('slow');
+                    document.getElementById('vida_laboral_pdf_privew').style.display = "none";
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <script>
+        // Prepare the preview for profile picture
+        $("#cap_pdf").change(function(){
+            readURL4(this);
+        });
+        //Function to show image before upload
+
+        function readURL4(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#cap_pdf_download').attr('href', e.target.result).fadeIn('slow');
+                    document.getElementById('cap_pdf_privew').style.display = "none";
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <script>
+        // Prepare the preview for profile picture
+        $("#pemp_pdf").change(function(){
+            readURL5(this);
+        });
+        //Function to show image before upload
+
+        function readURL5(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#pemp_pdf_download').attr('href', e.target.result).fadeIn('slow');
+                    document.getElementById('pemp_pdf_privew').style.display = "none";
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <script>
+        // Prepare the preview for profile picture
+        $("#prl_pdf").change(function(){
+            readURL6(this);
+        });
+        //Function to show image before upload
+
+        function readURL6(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#prl_pdf_download').attr('href', e.target.result).fadeIn('slow');
+                    document.getElementById('prl_pdf_privew').style.display = "none";
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 @endpush

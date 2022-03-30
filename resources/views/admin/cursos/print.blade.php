@@ -19,8 +19,8 @@
 
         </div>
         <div class="col-lg-3">
-            <H2 style="float: right;">Horario del curso</H2>
-            <span style="float: right;">version 02</span>
+            <H2 style="float: right;">{{__('message.Horario del curso')}}</H2>
+            <span style="float: right;">{{__('message.version')}} 02</span>
         </div>
         <div class="clearfix"></div>
         <div class="col-lg-12">
@@ -28,11 +28,11 @@
                 <thead>
                 <tr>
                     <th>
-                        <span> Curso : </span>
+                        <span> {{__('message.Curso')}} : </span>
                         <h3 style="text-align: center;">{{$cursos->codigo}}</h3>
                     </th>
                     <th>
-                        <span> Entidad formadora : </span>
+                        <span> {{__('message.Entidad formadora')}} : </span>
                         <h3 style="text-align: center;">{{$cursos->entidades_formadoreas->nombre}}</h3>
                     </th>
                 </tr>
@@ -44,16 +44,16 @@
                 <thead>
                 <tr>
                     <th>
-                       CONTENIDO
+                        {{__('message.CONTENIDO')}}
                     </th>
                     <th>
-                        FECHA Y HORA DE INICIO
+                        {{__('message.FECHA Y HORA DE INICIO')}}
                     </th>
                     <th>
-                        FECHA Y HORA DE FIN
+                        {{__('message.FECHA Y HORA DE FIN')}}
                     </th>
                     <th>
-                        NUMERO ALUMNOS
+                        {{__('message.NUMERO ALUMNOS')}}
                     </th>
                 </tr>
                 </thead>
@@ -84,7 +84,7 @@
                 <thead>
                 <tr>
                     <th style="text-align: center;height: 200px;">
-                        <span>Firma del Responsable de formacion y selio de la Entidad Formadora</span>
+                        <span>{{__('message.Firma del Responsable de formacion y selio de la Entidad Formadora')}}</span>
                     </th>
                 </tr>
                 </thead>
@@ -104,7 +104,7 @@
 
         </div>
         <div class="col-lg-8">
-            <H4 style="float: right;">Control de asistencia y calificaciones</H4>
+            <H4 style="float: right;">{{__('message.Control de asistencia y calificaciones')}}</H4>
         </div>
 {{--        <div class="clearfix"></div>--}}
         <div class="col-lg-12">
@@ -112,27 +112,27 @@
                 <thead>
                 <tr>
                     <th>
-                        <span> Curso : </span>
-                        <h5 style="text-align: left;">{{$cursos->tipo_de_curso->tipo_curso}},  {{$cursos->curso}},  {{$cursos->codigo}}</h5>
+                        <span> {{__('message.Curso')}} : </span>
+                        <h5 style="text-align: left;">{{$cursos->codigo}}</h5>
                     </th>
                     <th>
-                        <span> Entidad formadora : </span>
+                        <span> {{__('message.Entidad formadora')}} : </span>
                         <h5 style="text-align: center;">{{$cursos->entidades_formadoreas->nombre}}</h5>
                     </th>
                     <th>
-                        <span> Fecha: </span>
+                        <span> {{__('message.Fecha')}}: </span>
                         <h5 style="text-align: center;">{{$cursos->fecha_inicio}}</h5>
                     </th>
                 </tr>
                 <tr>
                     <th colspan="3">
-                        <span> Formador: </span>
-                        <span style="float: right;">{{$cursos->formadores->nombre}} {{$cursos->formadores->apellidos}}</span>
+                        <span> {{__('message.Formador')}}: </span>
+                        <span style="text-align: center;">{{$cursos->formadores->nombre}} {{$cursos->formadores->apellidos}}</span>
                     </th>
                 </tr>
                 <tr>
                     <th>
-                        <span> Formadores de apoyo: </span>
+                        <span> {{__('message.Formadores de apoyo')}}: </span>
                         <h5 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h5>
                     </th>
                     <th>
@@ -149,17 +149,17 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th rowspan="2" style="text-align: center;">N-As.</th>
-                    <th rowspan="2" style="text-align: center;">DNI</th>
-                    <th rowspan="2" style="text-align: center;">Apellidos y nombre</th>
+                    <th rowspan="2" style="text-align: center;">{{__('message.N-As')}}.</th>
+                    <th rowspan="2" style="text-align: center;">{{__('message.DNI')}}</th>
+                    <th rowspan="2" style="text-align: center;">{{__('message.Apellidos y nombre')}}</th>
                     <th style="text-align: center" colspan="2" >
-                        <span>NOTAs</span>
+                        <span>{{__('message.NOTAs')}}</span>
                     </th>
-                    <th rowspan="2" style="text-align: center;">Firma del alumno</th>
+                    <th rowspan="2" style="text-align: center;">{{__('message.Firma del alumno')}}</th>
                 </tr>
                 <tr>
-                    <th style="text-align: center;">teoria</th>
-                    <th style="text-align: center;">pract</th>
+                    <th style="text-align: center;">{{__('message.teoria')}}</th>
+                    <th style="text-align: center;">{{__('message.pract')}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -192,16 +192,16 @@
                 @endif
                 </tbody>
             </table>
-            <span>Firmas:</span>
+            <span>{{__('message.Firmas')}}:</span>
             <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th width="25%">
-                        <span> Formador:</span>
+                        <span> {{__('message.Formador')}}:</span>
                         <h5 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h5>
                     </th>
                     <th width="25%">
-                        <span> Formadores de apoyo: </span>
+                        <span> {{__('message.Formadores de apoyo')}}: </span>
                         <h5 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h5></th>
                     <th width="25%">
                         <h5 style="text-align: center;">{{$formador2 != null ? $formador2->nombre : "-"}} {{$formador2 != null ? $formador2->apellidos : ""}}</h5></th></th>
@@ -210,7 +210,7 @@
                 </tr>
                 <tr>
                     <th colspan="4" style="text-align: center;height: 100px;">
-                        <span>Firma del Responsable de formacion y selio de la Entidad Formadora</span>
+                        <span>{{__('message.Firma del Responsable de formacion y selio de la Entidad Formadora')}}</span>
                     </th>
                 </tr>
                 </thead>
@@ -286,7 +286,7 @@
     <div class="row">
         <div class="col-lg-12">
             <button class="btn btn-primary" id="print-link" onclick="printx();" style="width: 100%;">
-                Print
+                {{__('message.Print')}}
             </button>
         </div>
     </div>

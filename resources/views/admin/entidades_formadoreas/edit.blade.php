@@ -9,8 +9,8 @@
             text-align: center;
         }
         .picture {
-            width: 300px;
-            height: 400px;
+            width: 200px;
+            height: 200px;
             background-color: #999999;
             border: 4px solid #CCCCCC;
             color: #FFFFFF;
@@ -24,6 +24,16 @@
             border-color: #2ca8ff;
         }
         .picture input[type="file"] {
+            cursor: pointer;
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 0 !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        #doc_medios_pdf{
             cursor: pointer;
             display: block;
             height: 100%;
@@ -67,7 +77,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="socio" class="col-sm-2 col-form-label">Socio</label>
+                <label for="socio" class="col-sm-2 col-form-label">{{__('message.Socio')}}</label>
 
                 <div class="col-sm-12">
 
@@ -83,7 +93,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="cif" class="col-sm-2 col-form-label">CIF</label>
+                <label for="cif" class="col-sm-2 col-form-label">{{__('message.CIF')}}</label>
 
                 <div class="col-sm-12">
 
@@ -100,7 +110,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+                <label for="nombre" class="col-sm-2 col-form-label">{{__('message.Nombre')}}</label>
 
                 <div class="col-sm-12">
 
@@ -116,7 +126,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="razon_social" class="col-sm-2 col-form-label">Razon Social</label>
+                <label for="razon_social" class="col-sm-6 col-form-label">{{__('message.Razon Social')}}</label>
 
                 <div class="col-sm-12">
 
@@ -132,7 +142,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="province" class="col-sm-2 col-form-label">Province</label>
+                <label for="province" class="col-sm-2 col-form-label">{{__('message.Province')}}</label>
 
                 <div class="col-sm-12">
 
@@ -148,7 +158,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="ciudad" class="col-sm-2 col-form-label">Ciudad</label>
+                <label for="ciudad" class="col-sm-2 col-form-label">{{__('message.Ciudad')}}</label>
 
                 <div class="col-sm-12">
 
@@ -167,7 +177,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="direccion" class="col-sm-2 col-form-label">Direccion</label>
+                <label for="direccion" class="col-sm-2 col-form-label">{{__('message.Direccion')}}</label>
 
                 <div class="col-sm-12">
 
@@ -182,7 +192,7 @@ input[type="radio"]:focus {
             </div>
             <div class="form-group col-md-4">
 
-                <label for="codigo_postal" class="col-sm-2 col-form-label">Codigo Postal</label>
+                <label for="codigo_postal" class="col-sm-6 col-form-label">{{__('message.Codigo Postal')}}</label>
 
                 <div class="col-sm-12">
 
@@ -196,24 +206,27 @@ input[type="radio"]:focus {
 
             </div>
             <div class="form-group col-md-4">
-
-                <label for="logo" class="col-sm-2 col-form-label">Logo</label>
-
-                <div class="col-sm-12">
-
-                    <input type="file" name='logo' class="form-control {{$errors->first('logo') ? "is-invalid" : "" }} " value="{{old('logo') ? old('logo') : $entidades_formadoreas->logo}}" id="logo" placeholder="Link Linkedin">
-
-                    <div class="invalid-feedback">
-                        {{ $errors->first('logo') }}
+                <div class="image">
+                    <div class="form-group col-md-12">
+                        <div class="picture-container">
+                            <div class="picture">
+                                <img src="{{asset('storage/' . $entidades_formadoreas->logo)}}" class="picture-src"
+                                     id="wizardPicturePreview" height="200px" width="400px" title=""/>
+                                <input type="file" id="wizard-picture" name="logo"
+                                       class="form-control {{$errors->first('logo') ? "is-invalid" : "" }} " value="{{old('logo') ? old('logo') : $entidades_formadoreas->logo}}">
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('logo') }}
+                                </div>
+                            </div>
+                            <h6>{{__('message.Logo')}}</h6>
+                        </div>
                     </div>
-
                 </div>
-
             </div>
 
             <div class="form-group col-md-4">
 
-                <label for="web" class="col-sm-2 col-form-label">WEB</label>
+                <label for="web" class="col-sm-2 col-form-label">{{__('message.WEB')}}</label>
 
                 <div class="col-sm-12">
 
@@ -228,7 +241,7 @@ input[type="radio"]:focus {
             </div>
             <div class="form-group col-md-4">
 
-                <label for="mail" class="col-sm-2 col-form-label">Mail</label>
+                <label for="mail" class="col-sm-2 col-form-label">{{__('message.Mail')}}</label>
 
                 <div class="col-sm-12">
 
@@ -242,26 +255,30 @@ input[type="radio"]:focus {
 
             </div>
             <div class="form-group col-md-4">
-
-                <label for="doc_medios_pdf" class="col-sm-4 col-form-label">Doc Medios PDF</label>
-                @if(isset($entidades_formadoreas->doc_medios_pdf))
-                <label for="doc_medios_pdf" class="col-sm-1 col-form-label"><a href="{{asset('storage/' . $entidades_formadoreas->doc_medios_pdf)}}" download><i class="fa fa-download"></i> </a> </label>
-                    <a target="_blank" href="{{asset('storage/' . $entidades_formadoreas->doc_medios_pdf)}}"  ><i class="fa fa-eye"></i> </a>
-                @endif
-
+                <label for="doc_medios_pdf" class="col-sm-4 col-form-label">{{__('message.Doc Medios PDF')}}</label>
+                @if($entidades_formadoreas->doc_medios_pdf && file_exists(storage_path('app/public/' . $entidades_formadoreas->doc_medios_pdf)))
+                <label for="doc_medios_pdf" class="col-sm-1 col-form-label">
+                    <a id="doc_medios_pdf_download" href="{{asset('storage/' . $entidades_formadoreas->doc_medios_pdf)}}" download><i class="fa fa-download"></i> </a> </label>
+                    <a id="doc_medios_pdf_privew" target="_blank" href="{{asset('storage/' . $entidades_formadoreas->doc_medios_pdf)}}"  ><i class="fa fa-eye"></i> </a>
+                    <div class="col-sm-12">
+                        <i class="fas fa-edit" style="font-size: 20px"></i>
+                        <input type="file" name='doc_medios_pdf' class="form-control {{$errors->first('doc_medios_pdf') ? "is-invalid" : "" }} " value="{{old('doc_medios_pdf') ? old('doc_medios_pdf') : $entidades_formadoreas->doc_medios_pdf}}" style="opacity: 0 !important" id="doc_medios_pdf" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('doc_medios_pdf') }}
+                        </div>
+                    </div>
+                @else
                 <div class="col-sm-12">
-
-                    <input type="file" name='doc_medios_pdf' class="form-control {{$errors->first('doc_medios_pdf') ? "is-invalid" : "" }} " value="{{old('doc_medios_pdf') ? old('doc_medios_pdf') : $entidades_formadoreas->doc_medios_pdf}}" id="doc_medios_pdf" placeholder="Link Linkedin">
-
+                    <input type="file" name='doc_medios_pdf' class="form-control {{$errors->first('doc_medios_pdf') ? "is-invalid" : "" }} " value="{{old('doc_medios_pdf') ? old('doc_medios_pdf') : $entidades_formadoreas->doc_medios_pdf}}" id="doc_medios_pdff" placeholder="Link Linkedin">
                     <div class="invalid-feedback">
                         {{ $errors->first('doc_medios_pdf') }}
                     </div>
-
                 </div>
+                @endif
+            </div>
+            <div class="form-group col-md-4">
 
-            </div><div class="form-group col-md-4">
-
-                <label for="fecha" class="col-sm-2 col-form-label">Fecha</label>
+                <label for="fecha" class="col-sm-2 col-form-label">{{__('message.Fecha')}}</label>
 
                 <div class="col-sm-12">
 
@@ -275,7 +292,7 @@ input[type="radio"]:focus {
 
             </div>
             <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">Estado</label>
+                <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Estado')}}</label>
                 <label class="switch">
                     <input type="checkbox" name="estado" {{$entidades_formadoreas->estado == 1 ? "checked" : ""}}>
                     <span class="slider round" ></span>
@@ -283,7 +300,7 @@ input[type="radio"]:focus {
             </div>
 
             <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="certificado" class="col-sm-12 col-form-label text-center">Certificado</label>
+                <label for="certificado" class="col-sm-12 col-form-label text-center">{{__('message.Certificado')}}</label>
                 <label class="switch">
                     <input type="checkbox" name="certificado" {{$entidades_formadoreas->certificado == 1 ? "checked" : ""}}>
                     <span class="slider round" ></span>
@@ -301,17 +318,40 @@ input[type="radio"]:focus {
 @endsection
 
 @push('scripts')
+
     <script>
         // Prepare the preview for profile picture
         $("#wizard-picture").change(function(){
             readURL(this);
         });
         //Function to show image before upload
+
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
+
                 reader.onload = function (e) {
                     $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+    <script>
+        // Prepare the preview for profile picture
+        $("#doc_medios_pdf").change(function(){
+            readURL1(this);
+        });
+        //Function to show image before upload
+
+        function readURL1(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#doc_medios_pdf_download').attr('href', e.target.result).fadeIn('slow');
+                    document.getElementById('doc_medios_pdf_privew').style.display = "none";
                 }
                 reader.readAsDataURL(input.files[0]);
             }

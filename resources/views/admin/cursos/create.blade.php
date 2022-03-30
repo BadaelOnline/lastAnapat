@@ -64,7 +64,7 @@
         {{--first row--}}
         <div class="form-groups">
             <div class="col-md-4">
-                <label for="curso" class="col-sm-12 col-form-label">Curso</label>
+                <label for="curso" class="col-sm-12 col-form-label">{{__('message.Curso')}}</label>
                 <div class="col-sm-9">
                     <input type="text" readonly name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " value="{{$course_code}}" id="curso" placeholder="Código del curso">
                     <div class="invalid-feedback">
@@ -76,7 +76,7 @@
 
 
             <div class="col-md-4">
-                <label for="tipo_curso" class="col-sm-12 col-form-label">Tipo Curso</label>
+                <label for="tipo_curso" class="col-sm-12 col-form-label">{{__('message.Tipo Curso')}}</label>
                 <div class="col-sm-9">
                     <select name='tipo_curso' class="form-control {{$errors->first('tipo_curso') ? "is-invalid" : "" }} " id="tipo_curso">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -92,7 +92,7 @@
 
 
             <div class="col-md-4">
-                <label for="tipo_maquina" class="col-sm-9 col-form-label">Tipo Maquina</label>
+                <label for="tipo_maquina" class="col-sm-9 col-form-label">{{__('message.Tipo Maquina')}}</label>
                 <div class="col-sm-9">
                     @foreach($tipo_maquina as $tipo_maquina)
                         <div class="form-check">
@@ -113,7 +113,7 @@
             {{--second row--}}
 
             <div class="col-md-4">
-                <label for="codigo" class="col-sm-12 col-form-label">Codigo</label>
+                <label for="codigo" class="col-sm-12 col-form-label">{{__('message.Codigo')}}</label>
                 <div class="col-sm-9">
                     <input  type="text" readonly name='codigo' class="form-control {{$errors->first('codigo') ? "is-invalid" : "" }} " value="{{old('codigo')}}" id="codigo" placeholder="Código de prácticas">
                     <div class="invalid-feedback">
@@ -124,7 +124,7 @@
 
 
             <div class="col-md-4">
-                <label for="entidad" class="col-sm-12 col-form-label">Entidad</label>
+                <label for="entidad" class="col-sm-12 col-form-label">{{__('message.Entidad')}}</label>
                 <div class="col-sm-9">
                     @if(auth()->user()->perfil=='Administrador')
                         <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
@@ -145,7 +145,7 @@
 
 
 <div class="col-md-4">
-<label for="formador" class="col-sm-12 col-form-label">Formador</label>
+<label for="formador" class="col-sm-12 col-form-label">{{__('message.Formador')}}</label>
 <div class="col-sm-9">
     <select name='formador' class="form-control {{$errors->first('formador') ? "is-invalid" : "" }} " id="formador">
         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -163,7 +163,7 @@
 {{--third row--}}
 
 <div class="col-md-4">
-<label for="formador_apoyo_1" class="col-sm-12 col-form-label">Formador Apoyo 1</label>
+<label for="formador_apoyo_1" class="col-sm-12 col-form-label">{{__('message.Formador Apoyo')}} 1</label>
 <div class="col-sm-9">
     <select name='formador_apoyo_1' class="form-control {{$errors->first('formador_apoyo_1') ? "is-invalid" : "" }} " id="formador_apoyo1">
         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -176,7 +176,7 @@
 
 
 <div class="col-md-4">
-<label for="formador_apoyo_2" class="col-sm-12 col-form-label">Formador Apoyo 2</label>
+<label for="formador_apoyo_2" class="col-sm-12 col-form-label">{{__('message.Formador Apoyo')}} 2</label>
 <div class="col-sm-9">
     <select name='formador_apoyo_2' class="form-control {{$errors->first('formador_apoyo2') ? "is-invalid" : "" }} " id="formador_apoyo2">
         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -189,7 +189,7 @@
 </div>
 
 <div class="col-md-4">
-<label for="formador_apoyo_3" class="col-sm-12 col-form-label">Formador Apoyo 3</label>
+<label for="formador_apoyo_3" class="col-sm-12 col-form-label">{{__('message.Formador Apoyo')}} 3</label>
 <div class="col-sm-9">
     <select name='formador_apoyo_3' class="form-control {{$errors->first('formador_apoyo3') ? "is-invalid" : "" }} " id="formador_apoyo3">
         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -208,7 +208,7 @@
 {{--fourth row--}}
 
 <div class="col-md-4">
-<label for="fecha_inicio" class="col-sm-12 col-form-label">Fecha Inicio</label>
+<label for="fecha_inicio" class="col-sm-12 col-form-label">{{__('message.Fecha Inicio')}}</label>
 <div class="col-sm-9">
     <input type="datetime-local" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio')}}" id="fecha_inicio" >
     <div class="invalid-feedback">
@@ -219,7 +219,7 @@
 
 
 <div class="col-md-4">
-<label for="direccion" class="col-sm-12 col-form-label">Direccion</label>
+<label for="direccion" class="col-sm-12 col-form-label">{{__('message.Direccion')}}</label>
 <div class="col-sm-9">
     <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion')}}" id="direccion" placeholder="Dirección del curso">
     <div class="invalid-feedback">
@@ -230,7 +230,7 @@
 
 
 <div class="col-md-4">
-<label for="ciudad" class="col-sm-12 col-form-label">Ciudad</label>
+<label for="ciudad" class="col-sm-12 col-form-label">{{__('message.Ciudad')}}</label>
 <div class="col-sm-9">
     <input type="text" name='ciudad' class="form-control {{$errors->first('ciudad') ? "is-invalid" : "" }} " value="{{old('ciudad')}}" id="ciudad" placeholder="Ciudad del curso">
     <div class="invalid-feedback">
@@ -244,7 +244,7 @@
 {{--fifth row--}}
 
 <div class="col-md-4">
-<label for="provincia" class="col-sm-12 col-form-label">Provincia</label>
+<label for="provincia" class="col-sm-12 col-form-label">{{__('message.Provincia')}}</label>
 <div class="col-sm-9">
     <input type="text" name='provincia' class="form-control {{$errors->first('provincia') ? "is-invalid" : "" }} " value="{{old('provincia')}}" id="provincia" placeholder="Provincia del curso">
     <div class="invalid-feedback">
@@ -255,7 +255,7 @@
 
 
 <div class="col-md-4">
-<label for="codigo_postal" class="col-sm-12 col-form-label">Codigo Postal</label>
+<label for="codigo_postal" class="col-sm-12 col-form-label">{{__('message.Codigo Postal')}}</label>
 <div class="col-sm-9">
     <input type="number" name='codigo_postal' class="form-control {{$errors->first('codigo_postal') ? "is-invalid" : "" }} " value="{{old('codigo_postal')}}" id="codigo_postal" placeholder="Código postal del curso">
     <div class="invalid-feedback">
@@ -266,7 +266,7 @@
 
 
 <div class="col-md-4">
-<label for="asistentes_pdf" class="col-sm-12 col-form-label">Asistentes Pdf</label>
+<label for="asistentes_pdf" class="col-sm-12 col-form-label">{{__('message.Asistentes Pdf')}}</label>
 <div class="col-sm-9">
     <input type="file" name='asistentes_pdf' class="form-control {{$errors->first('asistentes_pdf') ? "is-invalid" : "" }} " value="{{old('asistentes_pdf')}}" id="asistentes_pdf" placeholder="asistentes_pdf">
     <div class="invalid-feedback">
@@ -279,7 +279,7 @@
 {{--sixth row--}}
             @if(auth()->user()->perfil=='Administrador' )
 <div class="col-md-4">
-<label for="examen-t" class="col-sm-12 col-form-label">Exámen Teórico</label>
+<label for="examen-t" class="col-sm-12 col-form-label">{{__('message.Exámen Teórico')}}</label>
 <div class="col-sm-9">
     <select name='examen_t' class="form-control {{$errors->first('examen_t') ? "is-invalid" : "" }} " id="examen-t">
         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -295,7 +295,7 @@
 
 
 <div class="col-md-4">
-<label for="examen-p" class="col-sm-12 col-form-label">Exámen Práctico</label>
+<label for="examen-p" class="col-sm-12 col-form-label">{{__('message.Exámen Práctico')}}</label>
 <div class="col-sm-9">
     <select name='examen_p' class="form-control {{$errors->first('examen_p') ? "is-invalid" : "" }} " id="examen_p">
         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -325,7 +325,7 @@
 
 
 <div class="col-md-4">
-<label for="observaciones" class="col-sm-12 col-form-label">Observaciones</label>
+<label for="observaciones" class="col-sm-12 col-form-label">{{__('message.Observaciones')}}</label>
 <div class="col-sm-9">
     <input type="text" name='observaciones' class="form-control {{$errors->first('observaciones') ? "is-invalid" : "" }} " value="{{old('observaciones')}}" id="observaciones" placeholder="Observaciones al curso">
     <div class="invalid-feedback">
@@ -334,7 +334,7 @@
 </div>
 </div>
             <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">Publico - Privado</label>
+                <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Publico')}} - {{__('message.Privado')}}</label>
                 <label class="switch">
                     <input type="checkbox" name="publico_privado" {{old('publico_privado') == "on" ? "checked" : ""}} >
                     <span class="slider round"></span>
@@ -346,7 +346,7 @@
 
 
 <div class="col-md-2 d-flex flex-column justify-content-center">
-<label for="estado" class="col-sm-12 col-form-label text-center">Cerrado</label>
+<label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Cerrado')}}</label>
 <label class="switch" >
     <input type="checkbox" name="cerrado" {{old('cerrado') == "on" ? "checked" : ""}}>
     <span class="slider round"></span>
@@ -354,7 +354,7 @@
 </div>
 
 <div class="col-md-2 d-flex flex-column justify-content-center">
-<label for="estado" class="col-sm-12 col-form-label text-center">Estado</label>
+<label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Estado')}}</label>
 <label class="switch">
     <input type="checkbox" name="estado" {{old('estado') == "on" ? "checked" : ""}}>
     <span class="slider round" ></span>

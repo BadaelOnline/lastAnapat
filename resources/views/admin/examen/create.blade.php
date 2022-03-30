@@ -67,7 +67,7 @@
 
             <div class="form-group col-md-4">
 
-                <label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
+                <label for="codigo" class="col-sm-2 col-form-label">{{__('message.Codigo')}}</label>
 
                 <div class="col-sm-9">
                     <input type="text" name='codigo' class="form-control {{$errors->first('codigo') ? "is-invalid" : "" }} " value="{{old('codigo')}}" id="codigo" placeholder="Código del Examen">
@@ -80,7 +80,7 @@
 
 
             <div class="form-group col-md-4">
-                <label for="nombre" class="col-sm-2 col-form-label">Nombre </label>
+                <label for="nombre" class="col-sm-2 col-form-label">{{__('message.Nombre')}} </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -91,7 +91,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="tipo" class="col-sm-12 col-form-label">Tipo</label>
+                <label for="tipo" class="col-sm-12 col-form-label">{{__('message.Tipo')}}</label>
                 <div class="col-sm-9">
                     <select name='tipo' class="form-control {{$errors->first('tipo') ? "is-invalid" : "" }} " id="tipo">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -106,7 +106,7 @@
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="url" class="col-sm-2 col-form-label">URL </label>
+                <label for="url" class="col-sm-2 col-form-label">{{__('message.URL')}} </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 

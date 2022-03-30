@@ -72,7 +72,7 @@ input[type="radio"]:focus {
         {{--</div>--}}
 
         <div class="form-group col-md-4">
-            <label for="nombre" class="col-sm-2 col-form-label">Nombre </label>
+            <label for="nombre" class="col-sm-2 col-form-label">{{__('message.Nombre')}} </label>
             <div class="col-sm-9">
                 {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -84,7 +84,7 @@ input[type="radio"]:focus {
         </div>
 
           <div class="form-group col-md-4 ">
-            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <label for="email" class="col-sm-2 col-form-label">{{__('message.Email')}}</label>
             <div class="col-sm-9">
                 <input type="email" name='email' class="form-control {{$errors->first('email') ? "is-invalid" : "" }} " value="{{old('email')}}" id="email" placeholder="Email">
                 <div class="invalid-feedback">
@@ -98,7 +98,7 @@ input[type="radio"]:focus {
 
         @can('isAdmin')
         <div class="form-group col-md-4 ">
-            <label for="entidad" class="col-sm-2 col-form-label">Perfil</label>
+            <label for="entidad" class="col-sm-2 col-form-label">{{__('message.Perfil')}}</label>
             <div class="col-sm-9">
                 <select name='perfil' class="form-control {{$errors->first('perfil') ? "is-invalid" : "" }} " id="perfil" style="appearance: auto;">
                     <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -126,7 +126,7 @@ input[type="radio"]:focus {
         @endcan
 
          <div class="form-group col-md-4 ">
-            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <label for="password" class="col-sm-2 col-form-label">{{__('message.Password')}}</label>
             <div class="col-sm-9">
                 <input type="password" name='password' class="form-control {{$errors->first('password') ? "is-invalid" : "" }} " value="{{old('password')}}" id="password" placeholder="Password">
                 <div class="invalid-feedback">
@@ -137,7 +137,7 @@ input[type="radio"]:focus {
 
 
         <div class="form-group col-md-4">
-            <label for="alias" class="col-sm-2 col-form-label">Alias </label>
+            <label for="alias" class="col-sm-2 col-form-label">{{__('message.Alias')}} </label>
             <div class="col-sm-9">
                 <input type="text" placeholder="Alias" name="alias" id="alias" cols="40" rows="10"  class="form-control {{$errors->first('alias') ? "is-invalid" : "" }} " value="{{old('alias')}}">
                 <div class="invalid-feedback">
@@ -148,7 +148,7 @@ input[type="radio"]:focus {
 
 
         <div class="form-group col-md-4">
-            <label for="apellidos" class="col-sm-2 col-form-label">Apellidos </label>
+            <label for="apellidos" class="col-sm-2 col-form-label">{{__('message.Apellidos')}} </label>
             <div class="col-sm-9">
                 <input type="text" placeholder="Apellidos del Formador Name" name="apellidos" id="apellidos" cols="40" rows="10"  class="form-control {{$errors->first('apellidos') ? "is-invalid" : "" }} " value="{{old('apellidos')}}">
                 <div class="invalid-feedback">
@@ -159,7 +159,7 @@ input[type="radio"]:focus {
         </div>
 
         <div class="form-group col-md-4">
-            <label for="provincia" class="col-sm-12 col-form-label">Provincia</label>
+            <label for="provincia" class="col-sm-12 col-form-label">{{__('message.Provincia')}}</label>
             <div class="col-sm-7">
                 <input type="text" name='provincia' class="form-control {{$errors->first('provincia') ? "is-invalid" : "" }} " value="{{old('provincia')}}" id="provincia" placeholder="Provincia">
                 <div class="invalid-feedback">
@@ -168,7 +168,7 @@ input[type="radio"]:focus {
             </div>
         </div>
      <div class="form-group col-md-4">
-            <label for="ciudad" class="col-sm-2 col-form-label">Ciudad</label>
+            <label for="ciudad" class="col-sm-2 col-form-label">{{__('message.Ciudad')}}</label>
             <div class="col-sm-7">
                 <input type="text" name='ciudad' class="form-control {{$errors->first('ciudad') ? "is-invalid" : "" }} " value="{{old('ciudad')}}" id="ciudad" placeholder="Ciudad de la sede">
                 <div class="invalid-feedback">
@@ -178,7 +178,7 @@ input[type="radio"]:focus {
         </div>
 
         <div class="form-group col-md-4">
-            <label for="direccion" class="col-sm-2 col-form-label">direccion</label>
+            <label for="direccion" class="col-sm-2 col-form-label">{{__('message.direccion')}}</label>
             <div class="col-sm-7">
                 <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion')}}" id="linkedin" placeholder="Domicilio de la sede">
                 <div class="invalid-feedback">
@@ -188,7 +188,7 @@ input[type="radio"]:focus {
         </div>
 
         <div class="form-group col-md-4">
-            <label for="codigo_postal" class="col-sm-2 col-form-label">codigo_postal</label>
+            <label for="codigo_postal" class="col-sm-2 col-form-label">{{__('message.codigo_postal')}}</label>
             <div class="col-sm-7">
                 <input type="number" name='codigo_postal' class="form-control {{$errors->first('codigo_postal') ? "is-invalid" : "" }} " value="{{old('codigo_postal')}}" id="codigo_postal" placeholder="Código postal de la sede">
                 <div class="invalid-feedback">
@@ -198,7 +198,7 @@ input[type="radio"]:focus {
         </div>
 
         <div class="form-group col-md-4">
-            <label for="entidad" class="col-sm-2 col-form-label">Entidad</label>
+            <label for="entidad" class="col-sm-2 col-form-label">{{__('message.Entidad')}}</label>
             <div class="col-sm-9">
                 <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad" style="appearance: auto;">
                     <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -213,7 +213,7 @@ input[type="radio"]:focus {
         </div>
 
         <div class="form-group col-md-4">
-            <label for="estado" class="col-sm-2 col-form-label">Estado</label>
+            <label for="estado" class="col-sm-2 col-form-label">{{__('message.Estado')}}</label>
             <div class="col-sm-9">
                 {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 

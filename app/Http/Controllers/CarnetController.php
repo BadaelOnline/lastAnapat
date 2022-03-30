@@ -18,29 +18,73 @@ class CarnetController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $now = now().date('');
-        if($user->perfil=='Responsable_de_Formacion' || $user->perfil=='Formador')
+        $now = now() . date('');
+        if ($user->perfil == 'Responsable_de_Formacion' || $user->perfil == 'Formador')
 
-            $operadors = Operadores::orderBy('id','desc')->where('entidad','=',$user->entidad)->get();
+            $operadors = Operadores::orderBy('id', 'desc')->where('entidad', '=', $user->entidad)->get();
 
         else
-            $operadors = Operadores::orderBy('id','desc')->get();
-        $carnets = Carnet::orderBy('id','desc')->whereDate('fecha_de_emision' , '>' ,$now )->get();
-        return view('admin.carnet.index',compact('operadors','carnets'));
+            $operadors = Operadores::orderBy('id', 'desc')->get();
+        $carnets = Carnet::orderBy('id', 'desc')->whereDate('fecha_de_emision', '>', $now)->get();
+        return view('admin.carnet.index', compact('operadors', 'carnets'));
     }
 
     public function index2()
     {
         $user = auth()->user();
-        $now = now().date('');
-        if($user->perfil=='Responsable_de_Formacion' || $user->perfil=='Formador')
+        $now = now() . date('');
+        if ($user->perfil == 'Responsable_de_Formacion' || $user->perfil == 'Formador')
 
-            $operadors = Operadores::orderBy('id','desc')->where('entidad','=',$user->entidad)->get();
+            $operadors = Operadores::orderBy('id', 'desc')->where('entidad', '=', $user->entidad)->get();
 
         else
-            $operadors = Operadores::orderBy('id','desc')->get();
-        $carnets = Carnet::orderBy('id','desc')->whereDate('fecha_de_emision' , '<=' ,$now )->get();
-        return view('admin.carnet.index',compact('operadors','carnets'));
+            $operadors = Operadores::orderBy('id', 'desc')->get();
+        $carnets = Carnet::orderBy('id', 'desc')->whereDate('fecha_de_emision', '<=', $now)->get();
+        return view('admin.carnet.index', compact('operadors', 'carnets'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function choseOperador()
+    {
+        $user = auth()->user();
+        if ($user->perfil == 'Responsable_de_Formacion' || $user->perfil == 'Formador')
+
+            $operadores = Operadores::orderBy('id', 'desc')->where('entidad', '=', $user->entidad)->where('estado', '=', 0)->get();
+
+        else
+            $operadores = Operadores::orderBy('id', 'desc')->where('estado', '=', 0)->get();
+        return view('admin.carnet.choseOperador', compact('operadores'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function choseOperadore(Request $request)
+    {
+
+        $request->validate([
+            'operador' => 'required',
+        ]);
+        $operadore = Operadores::findOrFail((int)$request->operador);
+//        dd($operadore);
+        if ($operadore != null) {
+
+            $cursos = Cursos::orderBy('id', 'desc')->get();
+            $tipos = Tipo_Maquina::orderBy('id', 'desc')->get();
+            return view('admin.carnet.create', compact('operadore', 'cursos', 'tipos'));
+
+        } else {
+
+            return redirect()->route('admin.carnet.choseOperador')->with('error', 'Data failed to add');
+
+        }
     }
 
     /**
@@ -51,15 +95,15 @@ class CarnetController extends Controller
     public function create()
     {
         $user = auth()->user();
-        if($user->perfil=='Responsable_de_Formacion' || $user->perfil=='Formador')
+        if ($user->perfil == 'Responsable_de_Formacion' || $user->perfil == 'Formador')
 
-            $operadores = Operadores::orderBy('id','desc')->where('entidad','=',$user->entidad)->where('estado','=',0)->get();
+            $operadores = Operadores::orderBy('id', 'desc')->where('entidad', '=', $user->entidad)->where('estado', '=', 0)->get();
 
         else
-            $operadores = Operadores::orderBy('id','desc')->where('estado','=',0)->get();
-        $cursos = Cursos::orderBy('id','desc')->get();
-        $tipos =Tipo_Maquina::orderBy('id','desc')->get();
-        return view('admin.carnet.create',compact('operadores','cursos','tipos'));
+            $operadores = Operadores::orderBy('id', 'desc')->where('estado', '=', 0)->get();
+        $cursos = Cursos::orderBy('id', 'desc')->get();
+        $tipos = Tipo_Maquina::orderBy('id', 'desc')->get();
+        return view('admin.carnet.create', compact('operadores', 'cursos', 'tipos'));
     }
 
     /**
@@ -67,64 +111,73 @@ class CarnetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function add($operador,$curso)
+    public function add($operador, $curso)
     {
 
 
-            $operadores = Operadores::where('id',$operador)->first();
+        $operadores = Operadores::where('id', $operador)->first();
 
 
-        $cursos = Cursos::where('id',$curso)->first();
-        return view('admin.carnet.add',compact('operadores','cursos'));
+        $cursos = Cursos::where('id', $curso)->first();
+        return view('admin.carnet.add', compact('operadores', 'cursos'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+//        dd($request);
         $request->validate([
             'numero' => 'required',
             'operador' => 'required',
             'foto' => 'required',
-            'curso' => 'required',
+//            'curso' => 'required',
             'examen_teorico_realizado' => 'required',
-            'tipos_de_pemp' =>"array|required",
+            'tipos_de_pemp' => "array|required",
         ]);
-        $carnet = new Carnet($request->except('_token','estado','tipos_de_pemp'));
-        if($request->estado == null){
+        $operador = Operadores::findOrFail((int)$request->operador);
+        if ($operador->carnett == null)
+            $carnet = new Carnet($request->except('_token', 'estado', 'tipos_de_pemp'));
+        else
+            $carnet = $operador->carnett;
+        if ($request->estado == null) {
             $carnet->estado = 0;
-        }else{
+        } else {
             $carnet->estado = 1;
         }
         $foto = $request->file('foto');
-        if($foto){
-            $foto_path = $foto->store('Carnet/'.$request->numero, 'public');
+        if ($foto) {
+            $foto_path = $foto->store('Carnet/' . $request->numero, 'public');
 
             $carnet->foto = $foto_path;
-        }else{
-            $carnet->foto ='';
-        }
-
-        if ( $carnet->save()) {
-//            dd($carnet);
-            $carnet->Tipo_Maquinas()->attach(request('tipos_de_pemp'));
-            return redirect()->route('admin.carnet')->with('success', 'Data added successfully');
-
         } else {
-
-            return redirect()->route('admin.carnet.create')->with('error', 'Data failed to add');
-
+            $carnet->foto = '';
         }
+        $carnet->curso = 0;
+        if ($operador->carnett == null)
+            $carnet->Tipo_Maquinas()->attach(request('tipos_de_pemp'));
+        else
+            $carnet->Tipo_Maquinas()->sync(request('tipos_de_pemp'));
+            if ($carnet->save()) {
+//            dd($carnet);
+
+                return redirect()->route('admin.carnet')->with('success', 'Data added successfully');
+
+            } else {
+
+                return redirect()->route('admin.carnet.create')->with('error', 'Data failed to add');
+
+            }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -135,30 +188,30 @@ class CarnetController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $carnet = Carnet::findOrFail($id);
-        $cursos=Cursos::select('id','codigo')->get();
-        $tipos =Tipo_Maquina::orderBy('id','desc')->get();
+        $cursos = Cursos::select('id', 'codigo')->get();
+        $tipos = Tipo_Maquina::orderBy('id', 'desc')->get();
         $user = auth()->user();
-        if($user->perfil=='Responsable_de_Formacion' || $user->perfil=='Formador')
+        if ($user->perfil == 'Responsable_de_Formacion' || $user->perfil == 'Formador')
 
-            $operadores = Operadores::orderBy('id','desc')->where('id','=',$carnet->operador)->where('estado','=',0)->get();
+            $operadores = Operadores::orderBy('id', 'desc')->where('id', '=', $carnet->operador)->where('estado', '=', 0)->get();
 
         else
-            $operadores = Operadores::orderBy('id','desc')->where('id','=',$carnet->operador)->where('estado','=',0)->get();
+            $operadores = Operadores::orderBy('id', 'desc')->where('id', '=', $carnet->operador)->where('estado', '=', 0)->get();
 
-        return view('admin.carnet.edit',compact('carnet','cursos','operadores','tipos'));
+        return view('admin.carnet.edit', compact('carnet', 'cursos', 'operadores', 'tipos'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -178,32 +231,32 @@ class CarnetController extends Controller
         $carnet->curso = $request->curso;
         $carnet->examen_teorico_realizado = $request->examen_teorico_realizado;
 
-        if($request->estado == null){
+        if ($request->estado == null) {
             $carnet->estado = 0;
-        }else{
+        } else {
             $carnet->estado = 1;
         }
 
         $foto = $request->file('foto');
 
-        if($foto){
-            if($carnet->foto && file_exists(storage_path('app/public/' . $carnet->foto))){
-                \Storage::delete('public/'. $carnet->foto);
+        if ($foto) {
+            if ($carnet->foto && file_exists(storage_path('app/public/' . $carnet->foto))) {
+                \Storage::delete('public/' . $carnet->foto);
             }
 
-            $foto_path = $foto->store('Carnet/'.$request->numero, 'public');
+            $foto_path = $foto->store('Carnet/' . $request->numero, 'public');
 
             $carnet->foto = $foto_path;
         }
         $carnet->Tipo_Maquinas()->sync(request('tipos_de_pemp'));
 
-        if ( $carnet->save()) {
+        if ($carnet->save()) {
 
             return redirect()->route('admin.carnet')->with('success', 'Data added successfully');
 
         } else {
 
-            return redirect()->route('admin.carnet.edit',$carnet->id)->with('error', 'Data failed to add');
+            return redirect()->route('admin.carnet.edit', $carnet->id)->with('error', 'Data failed to add');
 
         }
     }
@@ -211,7 +264,7 @@ class CarnetController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

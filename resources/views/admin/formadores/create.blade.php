@@ -9,8 +9,8 @@
             text-align: center;
         }
         .picture {
-            width: 300px;
-            height: 400px;
+            width: 200px;
+            height: 200px;
             background-color: #999999;
             border: 4px solid #CCCCCC;
             color: #FFFFFF;
@@ -67,7 +67,7 @@
 
             <div class="form-group col-md-4">
 
-                <label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
+                <label for="codigo" class="col-sm-2 col-form-label">{{__('message.Codigo')}}</label>
 
                 <div class="col-sm-9">
                     <input type="text" name='codigo' class="form-control {{$errors->first('codigo') ? "is-invalid" : "" }} " value="{{old('codigo')}}" id="codigo" placeholder="Código del Formador
@@ -77,18 +77,8 @@ Name">
                     </div>
                 </div>
             </div>
-
-            {{--<div class="form-group col-md-4">--}}
-            {{--<label for="quote" class="col-sm-2 col-form-label">Entidad</label>--}}
-            {{--<div class="col-sm-9">--}}
-            {{--<input type="text" name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " value="{{old('entidad')}}" id="entidad" placeholder="entidad">--}}
-            {{--<div class="invalid-feedback">--}}
-            {{--{{ $errors->first('entidad') }}--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--</div>--}}
             <div class="form-group col-md-4">
-                <label for="entidad" class="col-sm-2 col-form-label">Entidad </label>
+                <label for="entidad" class="col-sm-2 col-form-label">{{__('message.Entidad')}} </label>
                 <div class="col-sm-9">
                     <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -102,7 +92,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="apellidos" class="col-sm-2 col-form-label">Apellidos </label>
+                <label for="apellidos" class="col-sm-2 col-form-label">{{__('message.Apellidos')}} </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -113,7 +103,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="nombre" class="col-sm-2 col-form-label">Nombre </label>
+                <label for="nombre" class="col-sm-2 col-form-label">{{__('message.Nombre')}} </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -124,7 +114,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="dni" class="col-sm-2 col-form-label">DNI </label>
+                <label for="dni" class="col-sm-2 col-form-label">{{__('message.DNI')}} </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -134,19 +124,31 @@ Name">
                     </div>
                 </div>
             </div>
-            <div class="form-group col-md-4">
-                <label for="dni_img" class="col-sm-2 col-form-label">DNI </label>
-                <div class="col-sm-9">
-                    {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
+{{--            <div class="form-group col-md-4">--}}
+{{--                <label for="dni_img" class="col-sm-2 col-form-label">{{__('message.DNI')}} </label>--}}
+{{--                <div class="col-sm-9">--}}
+{{--                    --}}{{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="file" name="dni_img" id="dni_img" cols="40" rows="10"  class="form-control {{$errors->first('dni_img') ? "is-invalid" : "" }} " value="{{old('dni_img')}}">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('dni_img') }}
+{{--                    <input type="file" name="dni_img" id="dni_img"  class="form-control {{$errors->first('dni_img') ? "is-invalid" : "" }} " value="{{old('dni_img')}}">--}}
+{{--                    <div class="invalid-feedback">--}}
+{{--                        {{ $errors->first('dni_img') }}--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+            <div class="form-group col-md-4">
+                <div class="picture-container">
+                    <div class="picture">
+                        <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>
+                        <input type="file" id="wizard-picture" name="dni_img" class="form-control {{$errors->first('dni_img') ? "is-invalid" : "" }} ">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('dni_img') }}
+                        </div>
                     </div>
+                    <h6>{{__('message.DNI')}}</h6>
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="operador_pdf" class="col-sm-2 col-form-label">Operador pdf</label>
+                <label for="operador_pdf" class="col-sm-2 col-form-label">{{__('message.Operador pdf')}} </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -157,7 +159,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="cert_empresa_pdf" class="col-sm-2 col-form-label">Cert Empresa PDF</label>
+                <label for="cert_empresa_pdf" class="col-sm-2 col-form-label">{{__('message.Cert Empresa PDF')}}</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -168,7 +170,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="vida_laboral_pdf" class="col-sm-2 col-form-label">Vida Laboral PDF</label>
+                <label for="vida_laboral_pdf" class="col-sm-2 col-form-label">{{__('message.Vida Laboral PDF')}}</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -179,7 +181,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="prl_pdf" class="col-sm-2 col-form-label">PRL PDF</label>
+                <label for="prl_pdf" class="col-sm-2 col-form-label">{{__('message.PRL PDF')}}</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -190,7 +192,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="pemp_pdf" class="col-sm-2 col-form-label">PEMP PDF</label>
+                <label for="pemp_pdf" class="col-sm-2 col-form-label">{{__('message.PEMP PDF')}}</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -201,7 +203,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="cap_pdf" class="col-sm-2 col-form-label">CAP PDF</label>
+                <label for="cap_pdf" class="col-sm-2 col-form-label">{{__('message.CAP PDF')}}</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -212,7 +214,7 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="fecha" class="col-sm-2 col-form-label">	Fecha</label>
+                <label for="fecha" class="col-sm-2 col-form-label">{{__('message.Fecha')}}	</label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -223,7 +225,7 @@ Name">
                 </div>
             </div>
             <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">Estado</label>
+                <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Estado')}}</label>
                 <label class="switch">
                     <input type="checkbox" name="estado">
                     <span class="slider round" ></span>

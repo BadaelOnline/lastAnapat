@@ -10,7 +10,7 @@
 
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">Examen</h1>
+<h1 class="h3 mb-2 text-gray-800">{{__('message.Examen')}}</h1>
 
 @if (session('success'))
 
@@ -74,7 +74,11 @@
                         <td> {{ $examen->nombre }} </td>
                         <td>{{ $examen->tipo }}</td>
                         <td>
+                            @if($examen->url && file_exists(storage_path('app/public/' . $examen->url)))
                             <a href="{{asset('storage/' . $examen->url)}}" class="button" download><i class="fa fa-download"></i>Descargar</a>
+                            @else
+                                <i class="fa fa-close"></i>
+                            @endif
 
                         </td>
                         <td>

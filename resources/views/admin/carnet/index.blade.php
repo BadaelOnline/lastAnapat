@@ -10,7 +10,7 @@
 
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">Carnets</h1>
+<h1 class="h3 mb-2 text-gray-800">{{__('message.Carnets')}}</h1>
 
 @if (session('success'))
 
@@ -29,7 +29,7 @@
     <div class="card-header py-3">
 
 
-        <a href="{{ route('admin.carnet.create') }}" class="btn btn-pass">{{__('message.add_new')}} carnet</a>
+        <a href="{{ route('admin.carnet.choseOperador') }}" class="btn btn-pass">{{__('message.add_new')}} carnet</a>
 
 
     </div>
@@ -45,6 +45,8 @@
                     <tr>
 
                         <th>{{__('message.numero')}}</th>
+
+                        <th>{{__('message.Operador')}}</th>
 
                         <th>{{__('message.Fecha De Emisión')}} </th>
 
@@ -70,13 +72,14 @@
 
                     <tr>
                         <td>{{ $carnets->numero }}</td>
+                        <td>{{ $carnets->operadores->nombre }} {{$carnets->operadores->apellidos}}</td>
                         <td> {{ $carnets->fecha_de_alta }} </td>
                         <td>{{ $carnets->fecha_de_emision }}</td>
                         <td>
                             <img src="{{asset('storage/' . $carnets->foto)}}" width="96px"/>
                         </td>
                         <td>
-                        <a href="{{route('admin.carnet.edit', [$carnets->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
+{{--                        <a href="{{route('admin.carnet.edit', [$carnets->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>--}}
 
 
                             <form method="POST" action="{{route('admin.carnet.destroy', [$carnets->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
