@@ -169,7 +169,7 @@
             'admin.entidades_formadoreas',
         ])? 'active' : ''}}">
                     <a class="nav-link" href="{{ route('admin.entidades_formadoreas') }}">
-                        <i class="fas fa-fw fa-address-card"></i>
+                        <i class="fas fa-fw fa-building"></i>
                         <span>{{__('message.Entidades Formadoras')}}</span></a>
                 </li>
             @endcan
@@ -232,7 +232,7 @@
             'admin.operadores',
         ])? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('admin.operadores') }}">
-                    <i class="fas fa-fw fa-allergies"></i>
+                    <i class="fas fa-fw fa-truck-moving"></i>
                     <span>{{__('message.Operadores')}}</span></a>
             </li>
             @can('isAdminOrResponsable')
@@ -240,7 +240,7 @@
             'admin.examen',
         ])? 'active' : ''}}">
                     <a class="nav-link" href="{{ route('admin.examen') }}">
-                        <i class="fas fa-fw fa-allergies"></i>
+                        <i class="fas fa-fw fa-book-reader"></i>
                         <span>{{__('message.Examen')}}</span></a>
                 </li>
 
@@ -274,7 +274,7 @@
   ])? 'active' : ''}}">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
                        aria-expanded="true" aria-controls="collapsePages2">
-                        <i class="fas fa-fw fa-id-card"></i>
+                        <i class="fas fa-fw fa-graduation-cap"></i>
                         <span>{{__('message.certificado')}}</span>
                     </a>
 

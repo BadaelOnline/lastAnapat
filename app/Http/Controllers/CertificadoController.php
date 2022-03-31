@@ -94,19 +94,30 @@ class CertificadoController extends Controller
                 if ($operador->entidad != 0){
                     $certificado->entidad = $operador->entidad;
                     $certificado->entidad_nombre = $operador->entidades_formadoreas->nombre;
+                }else{
+                    $certificado->entidad = 0;
+                    $certificado->entidad_nombre = "";
                 }
                 $certificado->curso = $asistent->curso;
                 $certificado->emision = $asistent->emision;
                 $certificado->vencimiento = $asistent->vencimiento;
                 $certificado->observaciones = $asistent->observaciones;
                 $certificado->dni = $operador->dni;
-                if ($curso->tipo_curso == 1){
-                    $certificado->cer_type_course = 'Básico';
-                    $certificado->tipos_carnet = 'B';
+                if ($curso != null){
+                    if ($curso->tipo_curso == 1){
+                        $certificado->cer_type_course = 'Básico';
+                        $certificado->tipos_carnet = 'B';
+                    }else{
+                        $certificado->cer_type_course = 'Renovación';
+                        $certificado->tipos_carnet = 'R';
+                    }
+                    $certificado->fecha_alta = $curso->fecha_alta;
                 }else{
-                    $certificado->cer_type_course = 'Renovación';
-                    $certificado->tipos_carnet = 'R';
+                    $certificado->cer_type_course = '-';
+                    $certificado->tipos_carnet = '-';
+                    $certificado->fecha_alta = null;
                 }
+
                 if ($asistent->tipo_1 != 0){
                     $tipo_1 =Tipo_Maquina::findOrFail($asistent->tipo_1);
 
@@ -150,7 +161,7 @@ class CertificadoController extends Controller
                 } else {
                     $certificado->tipo_4 = '-----';
                 }
-                $certificado->fecha_alta = $curso->fecha_alta;
+
                 if ($operador->carnett != null){
                     $certificado->carnet = $operador->carnett->id;
                 }

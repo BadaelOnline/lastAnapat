@@ -421,7 +421,7 @@
 
 
                 <div class="col-md-2 d-flex flex-column justify-content-center">
-                    <label for="cerrado" class="col-sm-12 col-form-label text-center">{{__('message.Cerrado')}} ?</label>
+                    <label for="cerrado" class="col-sm-12 col-form-label text-center">{{__('message.Cerrado')}} </label>
                     <label class="switch">
                         <input type="checkbox" name="cerrado" {{$cursos->cerrado == 1 ? "checked" : ""}}>
                         <span class="slider round"></span>
@@ -429,7 +429,7 @@
                 </div>
 
                 <div class="col-md-2 d-flex flex-column justify-content-center">
-                    <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Estado')}} ?</label>
+                    <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Estado')}} </label>
                     <label class="switch">
                         <input type="checkbox" name="estado" {{$cursos->estado == 1 ? "checked" : ""}}>
                         <span class="slider round"></span>

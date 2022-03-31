@@ -27,7 +27,7 @@
             <div class="col-sm-9">
                 {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                <input type="text" name="nombre" placeholder="Nombre del formador" id="nombre" cols="40" rows="10"  class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} " value="{{old('nombre') ? old('nombre') : $user->nombre}}" >
+                <input type="text" name="nombre" placeholder="Nombre" id="nombre" cols="40" rows="10"  class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} " value="{{old('nombre') ? old('nombre') : $user->nombre}}" >
                 <div class="invalid-feedback">
                     {{ $errors->first('nombre') }}
                 </div>
@@ -82,7 +82,7 @@
         <div class="form-group col-md-4">
             <label for="apellidos" class="col-sm-2 col-form-label">{{__('message.Apellidos')}} </label>
             <div class="col-sm-9">
-                <input type="text" placeholder="Apellidos del Formador Name" name="apellidos" id="apellidos"  class="form-control {{$errors->first('apellidos') ? "is-invalid" : "" }} " value="{{old('apellidos') ? old('apellidos') : $user->apellidos}}">
+                <input type="text" placeholder="Apellidos" name="apellidos" id="apellidos"  class="form-control {{$errors->first('apellidos') ? "is-invalid" : "" }} " value="{{old('apellidos') ? old('apellidos') : $user->apellidos}}">
                 <div class="invalid-feedback">
                     {{ $errors->first('apellidos') }}
                 </div>
@@ -102,7 +102,7 @@
         <div class="form-group col-md-4">
             <label for="ciudad" class="col-sm-2 col-form-label">{{__('message.Ciudad')}}</label>
             <div class="col-sm-7">
-                <input type="text" name='ciudad' class="form-control {{$errors->first('ciudad') ? "is-invalid" : "" }} " value="{{old('ciudad') ? old('ciudad') : $user->ciudad}}" id="ciudad" placeholder="Ciudad de la sede">
+                <input type="text" name='ciudad' class="form-control {{$errors->first('ciudad') ? "is-invalid" : "" }} " value="{{old('ciudad') ? old('ciudad') : $user->ciudad}}" id="ciudad" placeholder="Ciudad">
                 <div class="invalid-feedback">
                     {{ $errors->first('ciudad') }}
                 </div>
@@ -112,7 +112,7 @@
         <div class="form-group col-md-4">
             <label for="direccion" class="col-sm-2 col-form-label">{{__('message.direccion')}}</label>
             <div class="col-sm-7">
-                <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion') ? old('direccion') : $user->direccion}}" id="linkedin" placeholder="Domicilio de la sede">
+                <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion') ? old('direccion') : $user->direccion}}" id="linkedin" placeholder="Domicilio">
                 <div class="invalid-feedback">
                     {{ $errors->first('direccion') }}
                 </div>
@@ -122,7 +122,7 @@
         <div class="form-group col-md-4">
             <label for="codigo_postal" class="col-sm-2 col-form-label">{{__('message.codigo_postal')}}</label>
             <div class="col-sm-7">
-                <input type="number" name='codigo_postal' class="form-control {{$errors->first('codigo_postal') ? "is-invalid" : "" }} " value="{{old('codigo_postal') ? old('codigo_postal') : $user->codigo_postal}}" id="codigo_postal" placeholder="Código postal de la sede">
+                <input type="number" name='codigo_postal' class="form-control {{$errors->first('codigo_postal') ? "is-invalid" : "" }} " value="{{old('codigo_postal') ? old('codigo_postal') : $user->codigo_postal}}" id="codigo_postal" placeholder="Código postal">
                 <div class="invalid-feedback">
                     {{ $errors->first('codigo_postal') }}
                 </div>
@@ -144,14 +144,12 @@
             </div>
         </div>
 
-        <div class="form-group col-md-4">
-            <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Estado')}}</label>
-                <label class="switch">
-                    <input type="checkbox" name="estado" {{$user->estado == 1 ? "checked" : ""}}>
-                    <span class="slider round" ></span>
-                </label>
-            </div>
+        <div class="col-md-2 d-flex flex-column justify-content-center">
+            <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Estado')}}</label>
+            <label class="switch">
+                <input type="checkbox" name="estado" {{$user->estado == 1 ? "checked" : ""}}>
+                <span class="slider round" ></span>
+            </label>
         </div>
     </div>
     <div class="form-group col-md-12">

@@ -20,10 +20,20 @@ class CertificadoExport implements FromCollection,WithHeadings
         $certificados = Certificado::all();
 //        dd($certificados);
         foreach ($certificados as $certificado){
-            $entidad =EntidadesFormadoreas::findOrFail($certificado->entidad);
-            $certificado->entidad = $entidad->razon_social;
-            $curso = Cursos::findOrFail($certificado->curso);
-            $certificado->curso = $curso->codigo;
+            if($certificado->entidad != 0){
+                $entidad =EntidadesFormadoreas::findOrFail($certificado->entidad);
+                $certificado->entidad = $entidad->razon_social;
+            }else{
+                $certificado->entidad = "";
+            }
+
+            if($certificado->curso != 0){
+                $curso = Cursos::findOrFail($certificado->curso);
+                $certificado->curso = $curso->codigo;
+            }else{
+                $certificado->curso = "";
+            }
+
         }
         return $certificados;
     }
