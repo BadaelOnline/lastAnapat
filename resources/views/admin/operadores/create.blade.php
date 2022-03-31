@@ -8,8 +8,8 @@
   text-align: center;
 }
  .picture {
-  width: 300px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   background-color: #999999;
   border: 4px solid #CCCCCC;
   color: #FFFFFF;
@@ -66,7 +66,7 @@ input[type="radio"]:focus {
 
     <div class="form-group col-md-4">
 
-        <label for="dni" class="col-sm-12 col-form-label">Dni</label>
+        <label for="dni" class="col-sm-12 col-form-label">{{__('message.Dni')}}</label>
 
         <div class="col-sm-7">
             <input type="text" name='dni' class="form-control {{$errors->first('dni') ? "is-invalid" : "" }} " value="{{old('dni')}}" id="dni" placeholder="Documento identificativo">
@@ -77,7 +77,7 @@ input[type="radio"]:focus {
     </div>
 
     <div class="form-group col-md-4">
-        <label for="apellidos" class="col-sm-12 col-form-label">Apellidos</label>
+        <label for="apellidos" class="col-sm-12 col-form-label">{{__('message.Apellidos')}}</label>
         <div class="col-sm-7">
             <input type="text" name='apellidos' class="form-control {{$errors->first('apellidos') ? "is-invalid" : "" }} " value="{{old('apellidos')}}" id="apellidos" placeholder="Apellidos">
             <div class="invalid-feedback">
@@ -88,7 +88,7 @@ input[type="radio"]:focus {
 
 
     <div class="form-group col-md-4">
-        <label for="nombre" class="col-sm-12 col-form-label">Nombre</label>
+        <label for="nombre" class="col-sm-12 col-form-label">{{__('message.Nombre')}}</label>
         <div class="col-sm-7">
             <input type="text" name='nombre' class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} " value="{{old('nombre')}}" id="twitter" placeholder="Nombre ">
             <div class="invalid-feedback">
@@ -98,7 +98,7 @@ input[type="radio"]:focus {
     </div>
 
         <div class="form-group col-md-4">
-            <label for="entidad" class="col-sm-12 col-form-label">Entidad</label>
+            <label for="entidad" class="col-sm-12 col-form-label">{{__('message.Entidad')}}</label>
             <div class="col-sm-9">
                 @if(auth()->user()->perfil=='Administrador')
                     <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
@@ -118,28 +118,44 @@ input[type="radio"]:focus {
             </div>
         </div>
 
-    <div class="form-group col-md-4">
-        <label for="foto" class="col-sm-12 col-form-label">Foto</label>
-        <div class="col-sm-7">
-            <input type="file" name='foto' class="form-control {{$errors->first('foto') ? "is-invalid" : "" }} " value="{{old('foto')}}" id="foto" placeholder="foto">
-            <div class="invalid-feedback">
-                {{ $errors->first('foto') }}
+        <div class="form-group col-md-4">
+            <div class="picture-container">
+                <div class="picture">
+                    <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>
+                    <input type="file" id="wizard-picture" name="foto" class="form-control {{$errors->first('foto') ? "is-invalid" : "" }} ">
+                    <div class="invalid-feedback">
+                        {{ $errors->first('foto') }}
+                    </div>
+                </div>
+                <h6>{{__('message.Foto')}}</h6>
             </div>
         </div>
-    </div>
+{{--    <div class="form-group col-md-4">--}}
+{{--        <label for="foto" class="col-sm-12 col-form-label">{{__('message.Foto')}}</label>--}}
+{{--        <div class="col-sm-7">--}}
+{{--            <input type="file" name='foto' class="form-control {{$errors->first('foto') ? "is-invalid" : "" }} " value="{{old('foto')}}" id="foto" placeholder="foto">--}}
+{{--            <div class="invalid-feedback">--}}
+{{--                {{ $errors->first('foto') }}--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
-    <div class="form-group col-md-4">
-        <label for="dni_img" class="col-sm-12 col-form-label">Dni Img</label>
-        <div class="col-sm-7">
-            <input type="file" name='dni_img' class="form-control {{$errors->first('dni_img') ? "is-invalid" : "" }} " value="{{old('dni_img')}}" id="dni_img" placeholder="dni_img">
-            <div class="invalid-feedback">
-                {{ $errors->first('dni_img') }}
+        <div class="form-group col-md-4">
+            <div class="picture-container">
+                <div class="picture">
+                    <img src="" class="picture-src" id="wizardPicturePreview1" height="200px" width="400px" title=""/>
+                    <input type="file" id="wizard-picture1" name="dni_img" class="form-control {{$errors->first('dni_img') ? "is-invalid" : "" }} ">
+                    <div class="invalid-feedback">
+                        {{ $errors->first('dni_img') }}
+                    </div>
+                </div>
+                <h6>{{__('message.Dni Img')}}</h6>
             </div>
         </div>
-    </div>
+
 
     <div class="form-group col-md-4">
-        <label for="fecha_nacimiento" class="col-sm-12 col-form-label">Fecha Nacimiento</label>
+        <label for="fecha_nacimiento" class="col-sm-12 col-form-label">{{__('message.Fecha Nacimiento')}}</label>
         <div class="col-sm-7">
             <input type="date" name='fecha_nacimiento' class="form-control {{$errors->first('fecha_nacimiento') ? "is-invalid" : "" }} " value="{{old('fecha_nacimiento')}}" id="fecha_nacimiento" placeholder="fecha nacimiento">
             <div class="invalid-feedback">
@@ -148,7 +164,7 @@ input[type="radio"]:focus {
         </div>
     </div>
         <div class="form-group col-md-4">
-            <label for="provincia" class="col-sm-12 col-form-label">Provincia</label>
+            <label for="provincia" class="col-sm-12 col-form-label">{{__('message.Provincia')}}</label>
             <div class="col-sm-7">
                 <input type="text" name='provincia' class="form-control {{$errors->first('provincia') ? "is-invalid" : "" }} " value="{{old('provincia')}}" id="provincia" placeholder="Provincia">
                 <div class="invalid-feedback">
@@ -157,7 +173,7 @@ input[type="radio"]:focus {
             </div>
         </div>
         <div class="form-group col-md-4">
-            <label for="ciudad" class="col-sm-12 col-form-label">Ciudad</label>
+            <label for="ciudad" class="col-sm-12 col-form-label">{{__('message.Ciudad')}}</label>
             <div class="col-sm-7">
                 <input type="text" name='ciudad' class="form-control {{$errors->first('ciudad') ? "is-invalid" : "" }} " value="{{old('ciudad')}}" id="ciudad" placeholder="Ciudad">
                 <div class="invalid-feedback">
@@ -167,7 +183,7 @@ input[type="radio"]:focus {
         </div>
 
         <div class="form-group col-md-4">
-            <label for="direccion" class="col-sm-12 col-form-label">Direccion</label>
+            <label for="direccion" class="col-sm-12 col-form-label">{{__('message.Direccion')}}</label>
             <div class="col-sm-7">
                 <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion')}}" id="direccion" placeholder="Dirección del formador">
                 <div class="invalid-feedback">
@@ -177,7 +193,7 @@ input[type="radio"]:focus {
         </div>
 
         <div class="form-group col-md-4">
-            <label for="codigo_postal" class="col-sm-12 col-form-label">Codigo Postal</label>
+            <label for="codigo_postal" class="col-sm-12 col-form-label">{{__('message.Codigo Postal')}}</label>
             <div class="col-sm-7">
                 <input type="number" name='codigo_postal' class="form-control {{$errors->first('codigo_postal') ? "is-invalid" : "" }} " value="{{old('codigo_postal')}}" id="codigo_postal" placeholder="Código postal">
                 <div class="invalid-feedback">
@@ -188,7 +204,7 @@ input[type="radio"]:focus {
 
 
         <div class="form-group col-md-4">
-            <label for="mail" class="col-sm-12 col-form-label">Mail</label>
+            <label for="mail" class="col-sm-12 col-form-label">{{__('message.Mail')}}</label>
             <div class="col-sm-7">
                 <input type="text" name='mail' class="form-control {{$errors->first('mail') ? "is-invalid" : "" }} " value="{{old('mail')}}" id="mail" placeholder="Cuenta de correo">
                 <div class="invalid-feedback">
@@ -198,7 +214,7 @@ input[type="radio"]:focus {
         </div>
         @if(auth()->user()->perfil=='Administrador')
         <div class="form-group col-md-4">
-            <label for="carnet" class="col-sm-12 col-form-label">Carnet</label>
+            <label for="carnet" class="col-sm-12 col-form-label">{{__('message.Carnet')}}</label>
             <div class="col-sm-7">
                 <input type="text" name='carnet' class="form-control {{$errors->first('carnet') ? "is-invalid" : "" }} " value="{{old('carnet')}}" id="carnet" placeholder="Número de carné">
                 <div class="invalid-feedback">
@@ -210,7 +226,7 @@ input[type="radio"]:focus {
             <input type="hidden" name="carnet" value="">
         @endif
        <div class="form-group col-md-4">
-            <label for="fecha" class="col-sm-12 col-form-label">Fecha</label>
+            <label for="fecha" class="col-sm-12 col-form-label">{{__('message.Fecha')}}</label>
             <div class="col-sm-7">
                 <input type="date" readonly name='fecha' class="form-control {{$errors->first('fecha') ? "is-invalid" : "" }} " value="{{$now}}" id="fecha" placeholder="Fecha de alta">
                 <div class="invalid-feedback">
@@ -220,7 +236,7 @@ input[type="radio"]:focus {
         </div>
         @if(auth()->user()->perfil=='Administrador')
         <div class="col-md-2 d-flex flex-column justify-content-center">
-            <label for="estado" class="col-sm-12 col-form-label text-center">Estado</label>
+            <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Estado')}}</label>
             <label class="switch">
                 <input type="checkbox" name="estado">
                 <span class="slider round" ></span>
@@ -254,6 +270,22 @@ function readURL(input) {
       reader.readAsDataURL(input.files[0]);
   }
 }
+</script>
+<script>
+    // Prepare the preview for profile picture
+    $("#wizard-picture1").change(function(){
+        readURL1(this);
+    });
+    //Function to show image before upload
+    function readURL1(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#wizardPicturePreview1').attr('src', e.target.result).fadeIn('slow');
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>
 
 @endpush

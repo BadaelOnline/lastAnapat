@@ -11,7 +11,7 @@ class Operadores extends Model
     protected $table = 'operadores';
     public $timestamps = true;
     protected $guarded=[];
-    use SoftDeletes;
+//    use SoftDeletes;
 
     protected $dates = ['deleted_at'];
 

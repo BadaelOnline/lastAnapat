@@ -33,6 +33,17 @@
             top: 0;
             width: 100%;
         }
+
+        #asistentes_pdf{
+            cursor: pointer;
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 0 !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
         .picture-src {
             width: 100%;
             height: 100%;
@@ -55,7 +66,7 @@
         {{--first row--}}
         <div class="form-groups">
             <div class="col-md-4">
-                <label for="curso" class="col-sm-2 col-form-label">Curso</label>
+                <label for="curso" class="col-sm-2 col-form-label">{{__('message.Curso')}}</label>
                 <div class="col-sm-9">
                     <input type="text" name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " value="{{old('curso') ? old('curso') : $cursos->curso}}" id="curso" placeholder="Código del curso">
                     <div class="invalid-feedback">
@@ -67,7 +78,7 @@
 
 
             <div class="col-md-4">
-                <label for="tipo_curso" class="col-sm-2 col-form-label">Tipo Curso</label>
+                <label for="tipo_curso" class="col-sm-2 col-form-label">{{__('message.Tipo Curso')}}</label>
                 <div class="col-sm-9">
                     <select name='tipo_curso' class="form-control {{$errors->first('tipo_curso') ? "is-invalid" : "" }} " id="tipo_curso">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -83,7 +94,7 @@
 
 
             <div class="col-md-4">
-                <label for="tipo_maquina" class="col-sm-2 col-form-label">Tipo Maquina</label>
+                <label for="tipo_maquina" class="col-sm-2 col-form-label">{{__('message.Tipo Maquina')}}</label>
                 <div class="col-sm-9">
                     @foreach($tipo_maquina as $tipo_maquina)
                         <div class="form-check">
@@ -100,7 +111,7 @@
             {{--second row--}}
             @if(auth()->user()->perfil=='Administrador')
                 <div class="col-md-4">
-                    <label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
+                    <label for="codigo" class="col-sm-2 col-form-label">{{__('message.Codigo')}}</label>
                     <div class="col-sm-9">
                         <input type="text"  name='codigo' class="form-control {{$errors->first('codigo') ? "is-invalid" : "" }} " value="{{old('codigo') ? old('codigo') : $cursos->codigo}}" id="codigo" placeholder="Código de prácticas">
                         <div class="invalid-feedback">
@@ -110,7 +121,7 @@
                 </div>
             @else
                 <div class="col-md-4">
-                    <label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
+                    <label for="codigo" class="col-sm-2 col-form-label">{{__('message.Codigo')}}</label>
                     <div class="col-sm-9">
                         <input type="text" readonly name='codigo' class="form-control {{$errors->first('codigo') ? "is-invalid" : "" }} " value="{{old('codigo') ? old('codigo') : $cursos->codigo}}" id="codigo" placeholder="Código de prácticas">
                         <div class="invalid-feedback">
@@ -121,7 +132,7 @@
             @endif
 
                 <div class="col-md-4">
-                    <label for="entidad" class="col-sm-2 col-form-label">Entidad</label>
+                    <label for="entidad" class="col-sm-2 col-form-label">{{__('message.Entidad')}}</label>
                     <div class="col-sm-9">
                         <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
                             <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -137,7 +148,7 @@
 
 
                 <div class="col-md-4">
-                    <label for="formador" class="col-sm-2 col-form-label">Formador</label>
+                    <label for="formador" class="col-sm-2 col-form-label">{{__('message.Formador')}}</label>
                     <div class="col-sm-9">
                         <select name='formador' class="form-control {{$errors->first('formador') ? "is-invalid" : "" }} " id="formador">
                             <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -159,7 +170,7 @@
 
 
                 <div class="col-md-4">
-                    <label for="formador_apoyo_1" class="col-sm-3 col-form-label">Formador Apoyo 1</label>
+                    <label for="formador_apoyo_1" class="col-sm-3 col-form-label">{{__('message.Formador Apoyo')}} 1</label>
                     <div class="col-sm-9">
                         <select name='formador_apoyo_1' class="form-control {{$errors->first('formador_apoyo1') ? "is-invalid" : "" }} " id="formador_apoyo1">
                             <option value="0" selected>{{__('message.Choose_One')}}</option>
@@ -175,7 +186,7 @@
 
 
                 <div class="col-md-4">
-                    <label for="formador_apoyo_2" class="col-sm-3 col-form-label">Formador Apoyo 2</label>
+                    <label for="formador_apoyo_2" class="col-sm-3 col-form-label">{{__('message.Formador Apoyo')}} 2</label>
                     <div class="col-sm-9">
                         <select name='formador_apoyo_2' class="form-control {{$errors->first('formador_apoyo_2') ? "is-invalid" : "" }} " id="formador_apoyo2">
                             <option value="0" selected>{{__('message.Choose_One')}}</option>
@@ -191,7 +202,7 @@
 
 
                 <div class="col-md-4">
-                    <label for="formador_apoyo_3" class="col-sm-3 col-form-label">Formador Apoyo 3</label>
+                    <label for="formador_apoyo_3" class="col-sm-3 col-form-label">{{__('message.Formador Apoyo')}} 3</label>
                     <div class="col-sm-9">
                         <select name='formador_apoyo_3' class="form-control {{$errors->first('formador_apoyo_3') ? "is-invalid" : "" }} " id="formador_apoyo3">
                             <option value="0" selected>{{__('message.Choose_One')}}</option>
@@ -209,7 +220,7 @@
                 {{--fourth row--}}
 
                 <div class="col-md-4">
-                    <label for="fecha_inicio" class="col-sm-4 col-form-label">Fecha Inicio:</label>
+                    <label for="fecha_inicio" class="col-sm-4 col-form-label">{{__('message.Fecha Inicio')}}:</label>
                     <label for="fecha_inicio" class="col-sm-7 col-form-label">{{$cursos->fecha_inicio}}</label>
                     <div class="col-sm-9">
                         <input type="datetime-local" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio') ? old('fecha_inicio') : $cursos->fecha_inicio}}" id="fecha_inicio" placeholder="{{$cursos->fecha_inicio}}" >
@@ -221,7 +232,7 @@
 
 
                 <div class="col-md-4">
-                    <label for="direccion" class="col-sm-2 col-form-label">Direccion</label>
+                    <label for="direccion" class="col-sm-2 col-form-label">{{__('message.Direccion')}}</label>
                     <div class="col-sm-9">
                         <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion') ? old('direccion') : $cursos->direccion}}" id="direccion" placeholder="Dirección del curso">
                         <div class="invalid-feedback">
@@ -232,7 +243,7 @@
 
 
                 <div class="col-md-4">
-                    <label for="ciudad" class="col-sm-2 col-form-label">Ciudad</label>
+                    <label for="ciudad" class="col-sm-2 col-form-label">{{__('message.Ciudad')}}</label>
                     <div class="col-sm-9">
                         <input type="text" name='ciudad' class="form-control {{$errors->first('ciudad') ? "is-invalid" : "" }} " value="{{old('ciudad') ? old('ciudad') : $cursos->ciudad}}" id="ciudad" placeholder="Ciudad del curso">
                         <div class="invalid-feedback">
@@ -246,7 +257,7 @@
                 {{--fifth row--}}
 
                 <div class="col-md-4">
-                    <label for="provincia" class="col-sm-2 col-form-label">Provincia</label>
+                    <label for="provincia" class="col-sm-2 col-form-label">{{__('message.Provincia')}}</label>
                     <div class="col-sm-9">
                         <input type="text" name='provincia' class="form-control {{$errors->first('provincia') ? "is-invalid" : "" }} " value="{{old('provincia') ? old('provincia') : $cursos->provincia}}" id="provincia" placeholder="Provincia del curso">
                         <div class="invalid-feedback">
@@ -257,7 +268,7 @@
 
 
                 <div class="col-md-4">
-                    <label for="codigo_postal" class="col-sm-2 col-form-label">Codigo Postal</label>
+                    <label for="codigo_postal" class="col-sm-2 col-form-label">{{__('message.Codigo Postal')}}</label>
                     <div class="col-sm-9">
                         <input type="number" name='codigo_postal' class="form-control {{$errors->first('codigo_postal') ? "is-invalid" : "" }} " value="{{old('codigo_postal') ? old('codigo_postal') : $cursos->codigo_postal}}" id="codigo_postal" placeholder="Código postal del curso">
                         <div class="invalid-feedback">
@@ -266,31 +277,52 @@
                     </div>
                 </div>
 
-
-                <div class="col-md-4">
-                    <label for="asistentes_pdf" class="col-sm-4 col-form-label">Asistentes Pdf</label>
-                    <label class="col-sm-2"></label>
-                    @if(isset($cursos->asistentes_pdf))
-                        <a href="{{asset('storage/' . $cursos->asistentes_pdf)}}" class="button" download style="margin-right: 10px;"><i class="fa fa-download" ></i></a>
-
-                        <a target="_blank" href="{{asset('storage/' . $cursos->asistentes_pdf)}}"><i
-                                class="fa fa-eye"></i> </a>
-                    @endif
-                    <div class="col-sm-9">
-                        <input type="file" name='asistentes_pdf' class="form-control {{$errors->first('asistentes_pdf') ? "is-invalid" : "" }} " value="{{old('asistentes_pdf') ? old('asistentes_pdf') : $cursos->asistentes_pdf}}" id="asistentes_pdf" placeholder="asistentes_pdf">
+            <div class="form-group col-md-4">
+                <label for="asistentes_pdf" class="col-sm-4 col-form-label">{{__('message.Asistentes Pdf')}}</label>
+                @if($cursos->asistentes_pdf && file_exists(storage_path('app/public/' . $cursos->asistentes_pdf)))
+                    <label for="asistentes_pdf" class="col-sm-1 col-form-label">
+                        <a id="asistentes_pdf_download" href="{{asset('storage/' . $cursos->asistentes_pdf)}}" download><i class="fa fa-download"></i> </a> </label>
+                    <a id="asistentes_pdf_privew" target="_blank" href="{{asset('storage/' . $cursos->asistentes_pdf)}}"  ><i class="fa fa-eye"></i> </a>
+                    <div class="col-sm-12">
+                        <i class="fas fa-edit" style="font-size: 20px"></i>
+                        <input type="file" name='asistentes_pdf' class="form-control {{$errors->first('asistentes_pdf') ? "is-invalid" : "" }} " value="{{old('asistentes_pdf') ? old('asistentes_pdf') : $cursos->asistentes_pdf}}" style="opacity: 0 !important" id="asistentes_pdf" placeholder="Link Linkedin">
                         <div class="invalid-feedback">
                             {{ $errors->first('asistentes_pdf') }}
                         </div>
                     </div>
-                </div>
+                @else
+                    <div class="col-sm-12">
+                        <input type="file" name='asistentes_pdf' class="form-control {{$errors->first('asistentes_pdf') ? "is-invalid" : "" }} " value="{{old('asistentes_pdf') ? old('asistentes_pdf') : $cursos->asistentes_pdf}}" id="asistentes_pdff" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('asistentes_pdf') }}
+                        </div>
+                    </div>
+                @endif
+            </div>
+{{--                <div class="col-md-4">--}}
+{{--                    <label for="asistentes_pdf" class="col-sm-4 col-form-label">{{__('message.Asistentes Pdf')}}</label>--}}
+{{--                    <label class="col-sm-2"></label>--}}
+{{--                    @if(isset($cursos->asistentes_pdf))--}}
+{{--                        <a href="{{asset('storage/' . $cursos->asistentes_pdf)}}" class="button" download style="margin-right: 10px;"><i class="fa fa-download" ></i></a>--}}
+
+{{--                        <a target="_blank" href="{{asset('storage/' . $cursos->asistentes_pdf)}}"><i--}}
+{{--                                class="fa fa-eye"></i> </a>--}}
+{{--                    @endif--}}
+{{--                    <div class="col-sm-9">--}}
+{{--                        <input type="file" name='asistentes_pdf' class="form-control {{$errors->first('asistentes_pdf') ? "is-invalid" : "" }} " value="{{old('asistentes_pdf') ? old('asistentes_pdf') : $cursos->asistentes_pdf}}" id="asistentes_pdf" placeholder="asistentes_pdf">--}}
+{{--                        <div class="invalid-feedback">--}}
+{{--                            {{ $errors->first('asistentes_pdf') }}--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 {{--sixth row--}}
             @if(auth()->user()->perfil=='Administrador' )
                 <div class="col-md-4">
-                    <label for="examen-t" class="col-sm-6 col-form-label">Exámen Teórico</label>
+                    <label for="examen-t" class="col-sm-6 col-form-label">{{__('message.Exámen Teórico')}}</label>
 {{--                    <label class="col-sm-3"></label>--}}
                     @foreach ($examen_t as $exament)
-                        @if($cursos->examen_t == $exament->id && auth()->user()->perfil=='Administrador' || $cursos->examen_t == $exament->id && auth()->user()->perfil=='Responsable_de_Formacion')
+                        @if($cursos->examen_t == $exament->id && auth()->user()->perfil=='Administrador' && file_exists(storage_path('app/public/' . $exament->url)) || $cursos->examen_t == $exament->id && auth()->user()->perfil=='Responsable_de_Formacion' && file_exists(storage_path('app/public/' . $exament->url)))
                             <a href="{{asset('storage/' . $exament->url)}}" class="button" download><i class="fa fa-download"></i></a>
                         @endif
                     @endforeach
@@ -306,10 +338,10 @@
 
 
                 <div class="col-md-4">
-                    <label for="examen-p" class="col-sm-6 col-form-label">Exámen Práctico </label>
+                    <label for="examen-p" class="col-sm-6 col-form-label">{{__('message.Exámen Práctico')}} </label>
 {{--                    <label class="col-sm-3"></label>--}}
                     @foreach ($examen_p as $examen)
-                        @if($cursos->examen_p == $examen->id && auth()->user()->perfil=='Administrador' || $cursos->examen_p == $examen->id && auth()->user()->perfil=='Responsable_de_Formacion')
+                        @if($cursos->examen_p == $examen->id && auth()->user()->perfil=='Administrador' && file_exists(storage_path('app/public/' . $examen->url)) || $cursos->examen_p == $examen->id && auth()->user()->perfil=='Responsable_de_Formacion' && file_exists(storage_path('app/public/' . $examen->url)))
                             <a href="{{asset('storage/' . $examen->url)}}" class="button" download><i class="fa fa-download"></i></a>
                         @endif
                     @endforeach
@@ -324,10 +356,10 @@
                 </div>
             @else
                 <div class="col-md-4">
-                    <label for="examen-t" class="col-sm-4 col-form-label">Exámen Teórico </label>
+                    <label for="examen-t" class="col-sm-4 col-form-label">{{__('message.Exámen Teórico')}} </label>
                     <label class="col-sm-3"></label>
                     @foreach ($examen_t as $exament)
-                        @if($cursos->examen_t == $exament->id && auth()->user()->perfil=='Administrador' || $cursos->examen_t == $exament->id && auth()->user()->perfil=='Responsable_de_Formacion')
+                        @if($cursos->examen_t == $exament->id && auth()->user()->perfil=='Administrador' && file_exists(storage_path('app/public/' . $exament->url)) || $cursos->examen_t == $exament->id && auth()->user()->perfil=='Responsable_de_Formacion' && file_exists(storage_path('app/public/' . $exament->url)))
                             <a href="{{asset('storage/' . $exament->url)}}" class="button" download><i class="fa fa-download"></i></a>
                         @endif
                     @endforeach
@@ -344,10 +376,10 @@
 
 
                 <div class="col-md-4">
-                    <label for="examen-p" class="col-sm-4 col-form-label">Exámen Práctico </label>
+                    <label for="examen-p" class="col-sm-4 col-form-label">{{__('message.Exámen Práctico')}} </label>
                     <label class="col-sm-3"></label>
                     @foreach ($examen_p as $examen)
-                        @if($cursos->examen_p == $examen->id && auth()->user()->perfil=='Administrador' || $cursos->examen_p == $examen->id && auth()->user()->perfil=='Responsable_de_Formacion')
+                        @if($cursos->examen_p == $examen->id && auth()->user()->perfil=='Administrador' && file_exists(storage_path('app/public/' . $examen->url)) || $cursos->examen_p == $examen->id && auth()->user()->perfil=='Responsable_de_Formacion' && file_exists(storage_path('app/public/' . $examen->url)))
                             <a href="{{asset('storage/' . $examen->url)}}" class="button" download><i class="fa fa-download"></i></a>
                         @endif
                     @endforeach
@@ -369,7 +401,7 @@
 
 
                 <div class="col-md-4">
-                    <label for="observaciones" class="col-sm-2 col-form-label">Observaciones</label>
+                    <label for="observaciones" class="col-sm-2 col-form-label">{{__('message.Observaciones')}}</label>
                     <div class="col-sm-9">
                         <input type="text" name='observaciones' class="form-control {{$errors->first('observaciones') ? "is-invalid" : "" }} " value="{{old('observaciones') ? old('observaciones') : $cursos->observaciones}}" id="observaciones" placeholder="Observaciones al curso">
                         <div class="invalid-feedback">
@@ -378,7 +410,7 @@
                     </div>
                 </div>
             <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">Publico - Privado</label>
+                <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Publico')}} - {{__('message.Privado')}}</label>
                 <label class="switch">
                     <input type="checkbox" name="publico_privado" {{$cursos->publico_privado == 1 ? "checked" : ""}}>
                     <span class="slider round"></span>
@@ -389,7 +421,7 @@
 
 
                 <div class="col-md-2 d-flex flex-column justify-content-center">
-                    <label for="cerrado" class="col-sm-12 col-form-label text-center">Cerrado ?</label>
+                    <label for="cerrado" class="col-sm-12 col-form-label text-center">{{__('message.Cerrado')}} ?</label>
                     <label class="switch">
                         <input type="checkbox" name="cerrado" {{$cursos->cerrado == 1 ? "checked" : ""}}>
                         <span class="slider round"></span>
@@ -397,7 +429,7 @@
                 </div>
 
                 <div class="col-md-2 d-flex flex-column justify-content-center">
-                    <label for="estado" class="col-sm-12 col-form-label text-center">Estado ?</label>
+                    <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Estado')}} ?</label>
                     <label class="switch">
                         <input type="checkbox" name="estado" {{$cursos->estado == 1 ? "checked" : ""}}>
                         <span class="slider round"></span>
@@ -411,10 +443,10 @@
 
             <div class="row">
                 <div class="col-sm" style="border: 2px solid #ddd;">
-                    <label for="asistent" class="col-sm-2 col-form-label">Asistentes</label>
+                    <label for="asistent" class="col-sm-2 col-form-label">{{__('message.Asistentes')}}</label>
                     <div class="col-sm-12">
                         <div class="card-header py-3">
-                            <a href="{{ route('admin.asistent.create',[$cursos->id]) }}" class="btn btn-success">{{__('message.add_new')}} Asistente</a>
+                            <a href="{{ route('admin.asistent.create',[$cursos->id]) }}" class="btn btn-success">{{__('message.add_new_Asistente')}}</a>
                         </div>
                         <div class="table-responsive">
 
@@ -424,15 +456,15 @@
 
                                 <tr>
 
-                                    <th>Nombre</th>
+                                    <th>{{__('message.Nombre')}}</th>
 
-                                    <th>Apellido.</th>
+                                    <th>{{__('message.Apellido')}}.</th>
 
-                                    <th>Número de asistente</th>
+                                    <th>{{__('message.Número de asistente')}}</th>
 
-                                    <th>Nota Examen teorico	</th>
+                                    <th>{{__('message.Nota Examen teorico')}}	</th>
 
-                                    <th>Nota Examen Practico	</th>
+                                    <th>{{__('message.Nota Examen Practico')}}	</th>
 
                                     <th>{{__('message.Option')}}</th>
 
@@ -510,23 +542,23 @@
 
             <div class="row">
                 <div class="col-sm" style="border: 2px solid #ddd;">
-                    <label for="horario" class="col-sm-2 col-form-label">Horario</label>
+                    <label for="horario" class="col-sm-2 col-form-label">{{__('message.Horario')}}</label>
                     <div class="col-sm-12">
                         <div class="card-header py-3">
-                            <a href="{{ route('admin.horario.create',[$cursos->id]) }}" class="btn btn-success">{{__('message.add_new')}} Horario</a>
+                            <a href="{{ route('admin.horario.create',[$cursos->id]) }}" class="btn btn-success">{{__('message.add_new_Horario')}} </a>
                         </div>
                         <div class="table-responsive">
 
                             <table class="table" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>Contenido</th>
+                                    <th>{{__('message.Contenido')}}</th>
 
-                                    <th>Fecha Inicio</th>
+                                    <th>{{__('message.Fecha Inicio')}}</th>
 
-                                    <th>Final</th>
+                                    <th>{{__('message.Final')}}</th>
 
-                                    <th>Alumnos</th>
+                                    <th>{{__('message.Alumnos')}}</th>
 
                                     <th>{{__('message.Option')}}</th>
 
@@ -697,6 +729,25 @@
                     var reader = new FileReader();
                     reader.onload = function (e) {
                         $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
+        <script>
+            // Prepare the preview for profile picture
+            $("#asistentes_pdf").change(function(){
+                readURL1(this);
+            });
+            //Function to show image before upload
+
+            function readURL1(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#asistentes_pdf_download').attr('href', e.target.result).fadeIn('slow');
+                        document.getElementById('asistentes_pdf_privew').style.display = "none";
                     }
                     reader.readAsDataURL(input.files[0]);
                 }

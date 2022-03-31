@@ -10,7 +10,7 @@
 
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">Certificado</h1>
+<h1 class="h3 mb-2 text-gray-800">{{__('message.Certificado')}}</h1>
 
 @if (session('success'))
 
@@ -50,6 +50,12 @@
 
                         <th>{{__('message.numero')}}</th>
 
+                        <th>{{__('message.Entidades Formadoras')}}</th>
+
+                        <th>{{__('message.Nombre')}}</th>
+
+                        <th>{{__('message.Apellidos')}}</th>
+
                         <th>{{__('message.Fecha De Emisión')}} </th>
 
                         <th>{{__('message.Fecha De Vencimiento')}} </th>
@@ -72,6 +78,9 @@
 
                     <tr>
                         <td>{{ $certificado->numero }}</td>
+                        <td> {{ $certificado->entidad_nombre }} </td>
+                        <td> {{ $certificado->cer_nombre }} </td>
+                        <td> {{ $certificado->cer_apellidos }} </td>
                         <td> {{ $certificado->emision }} </td>
                         <td>{{ $certificado->vencimiento }}</td>
                         <td>

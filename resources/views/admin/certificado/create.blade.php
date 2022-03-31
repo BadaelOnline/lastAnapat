@@ -67,7 +67,7 @@
 
 
             <div class="form-group col-md-4">
-                <label for="operador" class="col-sm-2 col-form-label">Operador </label>
+                <label for="operador" class="col-sm-2 col-form-label">{{__('message.Operador')}} </label>
                 <div class="col-sm-9">
                     <select name='operador' class="form-control {{$errors->first('operador') ? "is-invalid" : "" }} " id="operador">
                         <option disabled selected>{{__('message.Choose_One')}}</option>

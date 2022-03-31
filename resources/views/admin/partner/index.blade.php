@@ -10,8 +10,8 @@
 
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">Partners</h1>     
-   
+<h1 class="h3 mb-2 text-gray-800">{{__('message.Partners')}}</h1>
+
 @if (session('success'))
 
 <div class="alert alert-success">
@@ -42,13 +42,13 @@
 
                     <tr>
 
-                        <th>No.</th>
+                        <th>{{__('message.Numero')}}.</th>
 
-                        <th>Cover</th>
+                        <th>{{__('message.Logo')}}</th>
 
-                        <th>Name</th>
+                        <th>{{__('message.Name')}}</th>
 
-                        <th>Option</th>
+                        <th>{{__('message.Option')}}</th>
 
                     </tr>
 
@@ -57,47 +57,47 @@
                 <tbody>
 
                 @php
-                
+
                 $no=0;
-                
+
                 @endphp
-                
+
                 @foreach ($partner as $partner)
-                     
-                    <tr> 
-             
-                        <td>{{ ++$no }}</td>  
-                
+
+                    <tr>
+
+                        <td>{{ ++$no }}</td>
+
                         <td>
-                        
+
                             <img src="{{ asset('storage/'.$partner->cover) }}" alt="" style="height: 200px; width: 300px">
-                        
-                        </td> 
-                        
-                        <td>{{ $partner->name }}</td> 
-                
-                        <td>    
-                
-                            <a href="{{route('admin.partner.edit', [$partner->id])}}" class="btn btn-info btn-sm"> Edit </a>
-                
-                            <form method="POST" action="{{route('admin.partner.destroy', [$partner->id])}}" class="d-inline" onsubmit="return confirm('Delete this partner permanently?')">
-                
-                                @csrf
-                
-                                <input type="hidden" name="_method" value="DELETE">
-                
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                
-                            </form>
-                
+
                         </td>
-            
+
+                        <td>{{ $partner->name }}</td>
+
+                        <td>
+
+                            <a href="{{route('admin.partner.edit', [$partner->id])}}" class="btn btn-info btn-sm"> Edit </a>
+
+                            <form method="POST" action="{{route('admin.partner.destroy', [$partner->id])}}" class="d-inline" onsubmit="return confirm('Delete this partner permanently?')">
+
+                                @csrf
+
+                                <input type="hidden" name="_method" value="DELETE">
+
+                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+
+                            </form>
+
+                        </td>
+
                     </tr>
-            
+
                     @endforeach
-        
+
                 </tbody>
-    
+
             </table>
 
         </div>

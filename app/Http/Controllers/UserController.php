@@ -51,7 +51,7 @@ class UserController extends Controller
             "apellidos" => "required",
             "ciudad" => "required",
             "direccion" => "required",
-            "codigo_postal" => "required",
+            "codigo_postal" => "required|max:7",
         ])->validate();
 
         $user = new User();
@@ -129,7 +129,7 @@ class UserController extends Controller
             "apellidos" => "required",
             "ciudad" => "required",
             "direccion" => "required",
-            "codigo_postal" => "required",
+            "codigo_postal" => "required|max:7",
         ])->validate();
         $user = User::findOrFail($id);
         $user->name = $request->nombre;

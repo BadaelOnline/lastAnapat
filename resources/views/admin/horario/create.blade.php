@@ -18,7 +18,7 @@
         @csrf
         <div class="container">
             <div class="form-group ml-2">
-                <label for="curso" class="col-sm-2 col-form-label">Curso</label>
+                <label for="curso" class="col-sm-2 col-form-label">{{__('message.Curso')}}</label>
                 <div class="col-sm-9">
 {{--                    <select name='test' disabled class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">--}}
                         @foreach ($curso as $curso)
@@ -37,7 +37,7 @@
         </div>
         <div class="container">
             <div class="form-group ml-2">
-                <label for="contenido" class="col-sm-2 col-form-label">Contenido</label>
+                <label for="contenido" class="col-sm-2 col-form-label">{{__('message.Contenido')}}</label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="contenido" value="1" id=1 onclick="test(this)">
                     <label class="form-check-label" for="flexRadioDefault1">
@@ -54,7 +54,7 @@
         </div>
         <div class="container" id="tipo_maquinas">
             <div class="form-group ml-2">
-                <label for="tipo_maquina" class="col-sm-2 col-form-label">Tipo Maquina</label>
+                <label for="tipo_maquina" class="col-sm-2 col-form-label">{{__('message.Tipo Maquina')}}</label>
                 <div class="col-sm-9">
                     <select name='tipo_maquina'  class="form-control {{$errors->first('tipo_maquina') ? "is-invalid" : "" }} " id="tipo_maquina">
                         <option value="0" selected>{{__('message.Choose_One')}}</option>
@@ -74,7 +74,7 @@
 
         <div class="container">
             <div class="form-group ml-2">
-                <label for="alumnos" class="col-sm-2 col-form-label">Alumnos</label>
+                <label for="alumnos" class="col-sm-2 col-form-label">{{__('message.Alumnos')}}</label>
                 <div class="col-sm-10">
                     <input type="text" name='alumnos' class="form-control {{$errors->first('alumnos') ? "is-invalid" : "" }} " value="{{old('alumnos')}}" id="alumnos" placeholder="Número de asistentes
 
@@ -85,14 +85,14 @@
                 </div>
             </div>
 
-            <label for="fecha_inicio" class="col-sm-2 col-form-label">Fecha Inicio</label>
+            <label for="fecha_inicio" class="col-sm-2 col-form-label">{{__('message.Fecha Inicio')}}</label>
             <div class="col-sm-9">
                 <input type="datetime-local" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio')}}" id="fecha_inicio" >
                 <div class="invalid-feedback">
                     {{ $errors->first('fecha_inicio') }}
                 </div>
             </div>
-            <label for="final" class="col-sm-2 col-form-label">	final</label>
+            <label for="final" class="col-sm-2 col-form-label">{{__('message.final')}}	</label>
             <div class="col-sm-9">
                 <input type="datetime-local" name='final' class="form-control {{$errors->first('final') ? "is-invalid" : "" }} " value="{{old('final')}}" id="final" >
                 <div class="invalid-feedback">

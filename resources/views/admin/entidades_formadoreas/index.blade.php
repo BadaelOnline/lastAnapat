@@ -10,7 +10,7 @@
 
     <!-- Page Heading -->
 
-    <h1 class="h3 mb-2 text-gray-800">Entidades Formadoras</h1>
+    <h1 class="h3 mb-2 text-gray-800">{{__('message.Entidades Formadoras')}}</h1>
 
     @if (session('success'))
 

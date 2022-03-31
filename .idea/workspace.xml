@@ -21,12 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4b9c3d3c-a351-4ab6-90ca-e38cb16d2c4d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CertificadoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CertificadoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_03_18_151149_create_carnet_tipo__maquina_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_03_19_200237_create_certificado_tipo__maquina_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/2022_03_19_200237_create_certificado_tipo__maquina_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/message.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/certificado/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/certificado/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CarnetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CarnetController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/carnet/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/carnet/create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,20 +176,20 @@
     <property name="DefaultHtmlFileTemplate" value="XHTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Exports" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/carnet" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\lastAnapat\app\Exports" />
-      <recent name="D:\lastAnapat\database\migrations" />
-      <recent name="D:\lastAnapat\resources\views\admin\certificado" />
-      <recent name="D:\lastAnapat\resources\views\admin\operadores" />
-      <recent name="D:\lastAnapat\resources\views\admin" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\lastAnapat\database\migrations" />
       <recent name="D:\lastAnapat\resources" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\lastAnapat\resources\views\admin\carnet" />
+      <recent name="D:\lastAnapat\public\front\img" />
+      <recent name="D:\lastAnapat\public\admin\img" />
+      <recent name="D:\lastAnapat\app\Exports" />
       <recent name="D:\lastAnapat\database\migrations" />
     </key>
   </component>
@@ -246,7 +242,13 @@
       <workItem from="1646810676237" duration="1568000" />
       <workItem from="1647430330365" duration="4959000" />
       <workItem from="1647614403623" duration="24867000" />
-      <workItem from="1647854622462" duration="6939000" />
+      <workItem from="1647854622462" duration="7895000" />
+      <workItem from="1647947536700" duration="3000" />
+      <workItem from="1648208174598" duration="7287000" />
+      <workItem from="1648473141713" duration="12695000" />
+      <workItem from="1648633844355" duration="4572000" />
+      <workItem from="1648642840934" duration="4000" />
+      <workItem from="1648707726213" duration="732000" />
     </task>
     <servers />
   </component>

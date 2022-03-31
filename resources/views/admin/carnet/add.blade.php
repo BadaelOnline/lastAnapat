@@ -67,7 +67,7 @@
 
             <div class="form-group col-md-4">
 
-                <label for="numero" class="col-sm-2 col-form-label">Numero</label>
+                <label for="numero" class="col-sm-2 col-form-label">{{__('message.Numero')}}</label>
 
                 <div class="col-sm-9">
                     <input type="text" name='numero' class="form-control {{$errors->first('numero') ? "is-invalid" : "" }} " value="{{old('numero')}}" id="numero" placeholder="Numero">
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="operador" class="col-sm-2 col-form-label">Operador </label>
+                <label for="operador" class="col-sm-2 col-form-label">{{__('message.Operador')}} </label>
                 <div class="col-sm-9">
 
 
@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="foto" class="col-sm-2 col-form-label">Foto </label>
+                <label for="foto" class="col-sm-2 col-form-label">{{__('message.Foto')}} </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -126,7 +126,7 @@
             </div>
             <div class="form-group col-md-4">
 
-                <label for="tipos_de_pemp" class="col-sm-4 col-form-label">Tipos De Pemp</label>
+                <label for="tipos_de_pemp" class="col-sm-4 col-form-label">{{__('message.Tipos De Pemp')}}</label>
 
                 <div class="col-sm-9">
                     <input type="text" name='tipos_de_pemp' class="form-control {{$errors->first('tipos_de_pemp') ? "is-invalid" : "" }} " value="{{old('tipos_de_pemp')}}" id="tipos_de_pemp" placeholder="Tipos De Pemp">
@@ -136,7 +136,7 @@
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="curso" class="col-sm-2 col-form-label">Curso </label>
+                <label for="curso" class="col-sm-2 col-form-label">{{__('message.Curso')}} </label>
                 <div class="col-sm-9">
                     <select name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
 
@@ -149,13 +149,13 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="examen_teorico_realizado" class="col-sm-12 col-form-label">Examen Teorico Realizado</label>
+                <label for="examen_teorico_realizado" class="col-sm-12 col-form-label">{{__('message.Examen Teorico Realizado')}}</label>
                 <div class="col-sm-9">
                     <select name='examen_teorico_realizado' class="form-control {{$errors->first('examen_teorico_realizado') ? "is-invalid" : "" }} " id="examen_teorico_realizado">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
 
-                        <option value="básico" {{old('examen_teorico_realizado') == "básico"  ? "selected" : ""}}>Básico</option>
-                        <option value="Extendido" {{old('examen_teorico_realizado') == "Extendido"  ? "selected" : ""}}>Extendido</option>
+                        <option value="básico" {{old('examen_teorico_realizado') == "básico"  ? "selected" : ""}}>{{__('message.Básico')}}</option>
+                        <option value="Extendido" {{old('examen_teorico_realizado') == "Extendido"  ? "selected" : ""}}>{{__('message.Extendido')}}</option>
 
                     </select>
                     <div class="invalid-feedback">
@@ -164,7 +164,7 @@
                 </div>
             </div>
             <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">Estado</label>
+                <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Estado')}}</label>
                 <label class="switch">
                     <input type="checkbox" name="estado">
                     <span class="slider round" ></span>

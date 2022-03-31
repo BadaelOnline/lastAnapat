@@ -107,7 +107,7 @@
 
     <!-- Page Heading -->
 
-    <h1 class="h3 mb-2 text-gray-800">Formadores</h1>
+    <h1 class="h3 mb-2 text-gray-800">{{__('message.Formadores')}}</h1>
 
     @if (session('success'))
 
@@ -125,8 +125,8 @@
 
         <div class="card-header py-3">
             @if(auth()->user()->perfil=='Administrador')
-                <a href="{{ route('admin.formadores.create') }}" class="btn btn-pass">{{__('message.add_new')}}
-                    formador</a>
+                <a href="{{ route('admin.formadores.create') }}" class="btn btn-pass">{{__('message.add_new_formador')}}
+                    </a>
                     <a href="{{ route('admin.formadores.export',auth()->user()->entidad) }}" class="btn btn-primary">
                         {{__('message.Exportar Formadores')}}
                     </a>

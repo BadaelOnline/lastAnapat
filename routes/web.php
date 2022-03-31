@@ -229,6 +229,9 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::delete('examen/destroy/{id}',[ExamenController::class, 'destroy'])->middleware('can:isAdmin')->name('examen.destroy');
 
     // Manage Carnet
+
+    Route::get('carnet/choseOperador', [CarnetController::class, 'choseOperador'])->middleware('can:isAdminOrResponsable')->name('carnet.choseOperador');
+    Route::post('carnet/choseOperador', [CarnetController::class, 'choseOperadore'])->middleware('can:isAdminOrResponsable')->name('carnet.choseOperadore');
     Route::get('carnet', [CarnetController::class, 'index'])->name('carnet');
     Route::get('inactiveCarnet', [CarnetController::class, 'index2'])->name('inactiveCarnet');
     Route::get('carnet/create', [CarnetController::class, 'create'])->middleware('can:isAdminOrResponsable')->name('carnet.create');

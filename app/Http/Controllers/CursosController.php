@@ -132,6 +132,7 @@ class CursosController extends Controller
             'tipo_maquina' => 'required',
             'examen_t' => 'required',
             'examen_p' => 'required',
+            'codigo_postal' => 'max:7'
         ]);
         $cursos = new Cursos($request->except('_token','tipo_maquina','examen-t','examen-p','publico-privado','estado','cerrado','fecha_alta'));
 //        dd($cursos);
@@ -274,6 +275,7 @@ $now = now().date('');
             'tipo_maquina' => 'required',
             'examen_t' => 'required',
             'examen_p' => 'required',
+            'codigo_postal' => 'max:7'
         ]);
 
         $cursos = Cursos::findOrFail($id);

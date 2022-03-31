@@ -67,7 +67,7 @@
 
             <div class="form-group col-md-4">
 
-                <label for="numero" class="col-sm-2 col-form-label">Numero</label>
+                <label for="numero" class="col-sm-2 col-form-label">{{__('message.Numero')}}</label>
 
                 <div class="col-sm-9">
                     <input type="text" name='numero' class="form-control {{$errors->first('numero') ? "is-invalid" : "" }} " value="{{old('numero')}}" id="numero" placeholder="Numero">
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="entidad" class="col-sm-2 col-form-label">Entidad </label>
+                <label for="entidad" class="col-sm-2 col-form-label">{{__('message.Entidad')}} </label>
                 <div class="col-sm-9">
                     <select name='entidad' class="form-control {{$errors->first('entidad') ? "is-invalid" : "" }} " id="entidad">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -91,7 +91,7 @@
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="operador" class="col-sm-2 col-form-label">Operador </label>
+                <label for="operador" class="col-sm-2 col-form-label">{{__('message.Operador')}} </label>
                 <div class="col-sm-9">
                     <select name='operador' class="form-control {{$errors->first('operador') ? "is-invalid" : "" }} " id="operador">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div class="form-group col-md-4">
-                <label for="curso" class="col-sm-2 col-form-label">Curso </label>
+                <label for="curso" class="col-sm-2 col-form-label">{{__('message.Curso')}} </label>
                 <div class="col-sm-9">
                     <select name='curso' class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} " id="curso">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -144,7 +144,7 @@
             </div>
             <div class="form-group col-md-4">
 
-                <label for="tipos_de_pemp" class="col-sm-4 col-form-label">Tipos De Pemp</label>
+                <label for="tipos_de_pemp" class="col-sm-4 col-form-label">{{__('message.Tipos De Pemp')}}</label>
 
                 <div class="col-sm-9">
 
@@ -163,7 +163,7 @@
 
             <div class="form-group col-md-4">
 
-                <label for="observaciones" class="col-sm-2 col-form-label">Observaciones</label>
+                <label for="observaciones" class="col-sm-2 col-form-label">{{__('message.Observaciones')}}</label>
                 <div class="col-sm-9">
                     <input type="text" name='observaciones' class="form-control {{$errors->first('observaciones') ? "is-invalid" : "" }} " value="{{old('observaciones')}}" id="observaciones" placeholder="Comentarios ">
                     <div class="invalid-feedback">

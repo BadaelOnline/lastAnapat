@@ -8,8 +8,8 @@
   text-align: center;
 }
  .picture {
-  width: 300px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   background-color: #999999;
   border: 4px solid #CCCCCC;
   color: #FFFFFF;
@@ -70,7 +70,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="socio" class="col-sm-2 col-form-label">Socio</label>
+                <label for="socio" class="col-sm-2 col-form-label">{{__('message.Socio')}}</label>
 
                 <div class="col-sm-12">
 
@@ -86,7 +86,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="cif" class="col-sm-2 col-form-label">CIF</label>
+                <label for="cif" class="col-sm-2 col-form-label">{{__('message.CIF')}}</label>
 
                 <div class="col-sm-12">
 
@@ -103,7 +103,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+                <label for="nombre" class="col-sm-2 col-form-label">{{__('message.Nombre')}}</label>
 
                 <div class="col-sm-12">
 
@@ -119,7 +119,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="razon_social" class="col-sm-4 col-form-label">Razón Social</label>
+                <label for="razon_social" class="col-sm-4 col-form-label">{{__('message.Razón Social')}}</label>
 
                 <div class="col-sm-12">
 
@@ -151,7 +151,7 @@ input[type="radio"]:focus {
 
             <div class="form-group col-md-4">
 
-                <label for="ciudad" class="col-sm-2 col-form-label">Ciudad</label>
+                <label for="ciudad" class="col-sm-2 col-form-label">{{__('message.Ciudad')}}</label>
 
                 <div class="col-sm-12">
 
@@ -198,25 +198,37 @@ input[type="radio"]:focus {
                 </div>
 
             </div>
-            <div class="form-group col-md-4">
-
-                <label for="logo" class="col-sm-2 col-form-label">Logo</label>
-
-                <div class="col-sm-12">
-
-                    <input type="file" name='logo' class="form-control {{$errors->first('logo') ? "is-invalid" : "" }} " value="{{old('logo')}}" id="logo" placeholder="Link Linkedin">
-
-                    <div class="invalid-feedback">
-                        {{ $errors->first('logo') }}
+                    <div class="form-group col-md-4">
+                        <div class="picture-container">
+                            <div class="picture">
+                                <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>
+                                <input type="file" id="wizard-picture" name="logo" class="form-control {{$errors->first('logo') ? "is-invalid" : "" }} ">
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('logo') }}
+                                </div>
+                            </div>
+                            <h6>{{__('message.Logo')}}</h6>
+                        </div>
                     </div>
+{{--            <div class="form-group col-md-4">--}}
 
-                </div>
+{{--                <label for="logo" class="col-sm-2 col-form-label"></label>--}}
 
-            </div>
+{{--                <div class="col-sm-12">--}}
+
+{{--                    <input type="file" name='logo' class="form-control {{$errors->first('logo') ? "is-invalid" : "" }} " value="{{old('logo')}}" id="logo" placeholder="Link Linkedin">--}}
+
+{{--                    <div class="invalid-feedback">--}}
+{{--                        {{ $errors->first('logo') }}--}}
+{{--                    </div>--}}
+
+{{--                </div>--}}
+
+{{--            </div>--}}
 
             <div class="form-group col-md-4">
 
-                <label for="web" class="col-sm-2 col-form-label">WEB</label>
+                <label for="web" class="col-sm-2 col-form-label">{{__('message.WEB')}}</label>
 
                 <div class="col-sm-12">
 
@@ -231,7 +243,7 @@ input[type="radio"]:focus {
             </div>
             <div class="form-group col-md-4">
 
-                <label for="mail" class="col-sm-2 col-form-label">Mail</label>
+                <label for="mail" class="col-sm-2 col-form-label">{{__('message.Mail')}}</label>
 
                 <div class="col-sm-12">
 
@@ -246,7 +258,7 @@ input[type="radio"]:focus {
             </div>
             <div class="form-group col-md-4">
 
-                <label for="doc_medios_pdf" class="col-sm-5 col-form-label">Doc Medios PDF</label>
+                <label for="doc_medios_pdf" class="col-sm-5 col-form-label">{{__('message.Doc Medios PDF')}}</label>
 
                 <div class="col-sm-12">
 
@@ -260,7 +272,7 @@ input[type="radio"]:focus {
 
             </div><div class="form-group col-md-4">
 
-                <label for="fecha" class="col-sm-2 col-form-label">Fecha</label>
+                <label for="fecha" class="col-sm-2 col-form-label">{{__('message.Fecha')}}</label>
 
                 <div class="col-sm-12">
 
@@ -276,7 +288,7 @@ input[type="radio"]:focus {
 
 
             <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">Estado</label>
+                <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Estado')}}</label>
                 <label class="switch">
                     <input type="checkbox" name="estado">
                     <span class="slider round" ></span>
@@ -284,7 +296,7 @@ input[type="radio"]:focus {
             </div>
 
             <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="certificado" class="col-sm-12 col-form-label text-center">Certificado</label>
+                <label for="certificado" class="col-sm-12 col-form-label text-center">{{__('message.Certificado')}}</label>
                 <label class="switch">
                     <input type="checkbox" name="certificado">
                     <span class="slider round" ></span>

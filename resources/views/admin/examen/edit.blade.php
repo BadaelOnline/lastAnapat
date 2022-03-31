@@ -33,6 +33,16 @@
             top: 0;
             width: 100%;
         }
+        #url{
+            cursor: pointer;
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 0 !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
         .picture-src {
             width: 100%;
             height: 100%;
@@ -67,7 +77,7 @@
 
             <div class="form-group col-md-4">
 
-                <label for="codigo" class="col-sm-2 col-form-label">Codigo</label>
+                <label for="codigo" class="col-sm-2 col-form-label">{{__('message.Codigo')}}</label>
 
                 <div class="col-sm-9">
                     <input type="text" name='codigo' class="form-control {{$errors->first('codigo') ? "is-invalid" : "" }} " value="{{old('codigo') ? old('codigo') : $examen->codigo}}" id="codigo" placeholder="Código del Examen">
@@ -80,7 +90,7 @@
 
 
             <div class="form-group col-md-4">
-                <label for="nombre" class="col-sm-2 col-form-label">Nombre </label>
+                <label for="nombre" class="col-sm-2 col-form-label">{{__('message.Nombre')}} </label>
                 <div class="col-sm-9">
                     {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
@@ -91,7 +101,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="tipo" class="col-sm-12 col-form-label">Tipo</label>
+                <label for="tipo" class="col-sm-12 col-form-label">{{__('message.Tipo')}}</label>
                 <div class="col-sm-9">
                     <select name='tipo' class="form-control {{$errors->first('tipo') ? "is-invalid" : "" }} " id="tipo">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
@@ -105,16 +115,28 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group col-md-4">
-                <label for="url" class="col-sm-2 col-form-label">URL </label>
-                <div class="col-sm-9">
-                    {{-- <input type="text" class="form-control" id="title" placeholder="Title"> --}}
 
-                    <input type="file" name="url" id="url"   class="form-control {{$errors->first('url') ? "is-invalid" : "" }} " value="{{old('url') ? old('url') : $examen->url}}">
-                    <div class="invalid-feedback">
-                        {{ $errors->first('url') }}
+            <div class="form-group col-md-4">
+                <label for="url" class="col-sm-4 col-form-label">{{__('message.CAP PDF')}}</label>
+                @if($examen->url && file_exists(storage_path('app/public/' . $examen->url)))
+                    <label for="url" class="col-sm-1 col-form-label">
+                        <a id="url_download" href="{{asset('storage/' . $examen->url)}}" download><i class="fa fa-download"></i> </a> </label>
+                    <a id="url_privew" target="_blank" href="{{asset('storage/' . $examen->url)}}"  ><i class="fa fa-eye"></i> </a>
+                    <div class="col-sm-12">
+                        <i class="fas fa-edit" style="font-size: 20px"></i>
+                        <input type="file" name='url' class="form-control {{$errors->first('url') ? "is-invalid" : "" }} " value="{{old('url') ? old('url') : $examen->url}}" style="opacity: 0 !important" id="url" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('url') }}
+                        </div>
                     </div>
-                </div>
+                @else
+                    <div class="col-sm-12">
+                        <input type="file" name='url' class="form-control {{$errors->first('url') ? "is-invalid" : "" }} " value="{{old('url') ? old('url') : $examen->url}}" id="urlf" placeholder="Link Linkedin">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('url') }}
+                        </div>
+                    </div>
+                @endif
             </div>
 
             <div class="form-group col-md-12">
@@ -143,6 +165,25 @@
                 var reader = new FileReader();
                 reader.onload = function (e) {
                     $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <script>
+        // Prepare the preview for profile picture
+        $("#url").change(function(){
+            readURL6(this);
+        });
+        //Function to show image before upload
+
+        function readURL6(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#url_download').attr('href', e.target.result).fadeIn('slow');
+                    document.getElementById('url_privew').style.display = "none";
                 }
                 reader.readAsDataURL(input.files[0]);
             }

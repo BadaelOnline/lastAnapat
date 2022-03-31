@@ -56,37 +56,37 @@
         <div class="form-group">
 
             <div class="picture-container">
-    
+
                 <div class="picture">
-    
+
                     <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>
-    
+
                     <input type="file" id="wizard-picture" name="cover" class="form-control {{$errors->first('cover') ? "is-invalid" : "" }} ">
-    
+
                     <div class="invalid-feedback">
-                        {{ $errors->first('cover') }}    
-                    </div>  
-    
+                        {{ $errors->first('cover') }}
+                    </div>
+
                 </div>
-    
-                <h6>Pilih Cover</h6>
-    
+
+                <h6>{{__('message.Logo')}}</h6>
+
             </div>
-    
+
         </div>
 
 
         <div class="form-group ml-5">
 
-            <label for="name" class="col-sm-2 col-form-label">Name</label>
+            <label for="name" class="col-sm-2 col-form-label">{{__('message.Name')}}</label>
 
             <div class="col-sm-9">
 
                 <input type="text" name='name' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('name')}}" id="name" placeholder="ex: Wiklop">
 
                 <div class="invalid-feedback">
-                    {{ $errors->first('name') }}    
-                </div>   
+                    {{ $errors->first('name') }}
+                </div>
 
             </div>
 
@@ -94,31 +94,31 @@
 
         <div class="form-group ml-5">
 
-            <label for="link" class="col-sm-2 col-form-label">Link</label>
+            <label for="link" class="col-sm-2 col-form-label">{{__('message.Link')}}</label>
 
             <div class="col-sm-9">
 
                 <input type="text" name='link' class="form-control {{$errors->first('link') ? "is-invalid" : "" }} " value="{{old('link')}}" id="link" placeholder="ex: Wiklop.com">
 
                 <div class="invalid-feedback">
-                    {{ $errors->first('link') }}    
-                </div>   
+                    {{ $errors->first('link') }}
+                </div>
 
             </div>
 
         </div>
-   
+
         <div class="form-group ml-5">
-   
+
             <div class="col-sm-3">
-   
-                <button type="submit" class="btn btn-primary">Create</button>
-   
+
+                <button type="submit" class="btn btn-primary">{{__('message.Create')}}</button>
+
             </div>
-   
+
         </div>
 
-    </div>      
+    </div>
 
   </form>
 @endsection

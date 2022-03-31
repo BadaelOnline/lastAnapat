@@ -56,7 +56,7 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
-            <img width="207" height="97" src="{{ asset('admin/img/logo-anpat.png')}}"
+            <img width="207" height="97" src="{{ asset('admin/img/anapat.png')}}"
                  class="attachment-medium size-medium" alt="" loading="lazy" srcset=""
                  sizes="(max-width: 207px) 100vw, 207px">
         </a>
@@ -68,7 +68,7 @@
                 <!-- Sidebar Toggle (Topbar) -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center d-md-none"
                    href="{{ route('admin.dashboard') }}">
-                    <img width="207" height="97" src="{{ asset('admin/img/logo-anpat.png')}}"
+                    <img width="207" height="97" src="{{ asset('admin/img/anapat.png')}}"
                          class="attachment-medium size-medium" alt="" loading="lazy" srcset=""
                          sizes="(max-width: 207px) 100vw, 207px">
                 </a>
