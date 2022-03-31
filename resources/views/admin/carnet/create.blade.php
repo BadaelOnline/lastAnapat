@@ -124,23 +124,44 @@
             {{--                </div>--}}
             {{--            </div>--}}
             <div class="form-group col-md-4">
-                <div class="image">
-                    <div class="form-group col-md-12">
-                        <div class="picture-container">
-                            <div class="picture">
-                                <img src="{{asset('storage/' . $operadore->foto)}}" class="picture-src"
-                                     id="wizardPicturePreview" height="200px" width="400px" title=""/>
-                                <input type="file" id="wizard-picture" name="foto"
-                                       class="form-control {{$errors->first('foto') ? "is-invalid" : "" }} "
-                                       value="{{old('foto') ? old('foto') : $operadore->foto}}">
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('foto') }}
+                @if($operadore->carnett != null)
+                    <div class="image">
+                        <div class="form-group col-md-12">
+                            <div class="picture-container">
+                                <div class="picture">
+                                    <img src="{{asset('storage/' . $operadore->carnett->foto)}}" class="picture-src"
+                                         id="wizardPicturePreview" height="200px" width="400px" title=""/>
+                                    <input type="file" id="wizard-picture" name="foto"
+                                           class="form-control {{$errors->first('foto') ? "is-invalid" : "" }} "
+                                           value="{{old('foto') ? old('foto') : $operadore->carnett->foto}}">
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('foto') }}
+                                    </div>
                                 </div>
+                                <h6>{{__('message.Foto')}}</h6>
                             </div>
-                            <h6>{{__('message.Foto')}}</h6>
                         </div>
                     </div>
-                </div>
+                @else
+                    <div class="image">
+                        <div class="form-group col-md-12">
+                            <div class="picture-container">
+                                <div class="picture">
+                                    <img src="{{asset('storage/' . $operadore->foto)}}" class="picture-src"
+                                         id="wizardPicturePreview" height="200px" width="400px" title=""/>
+                                    <input type="file" id="wizard-picture" name="foto"
+                                           class="form-control {{$errors->first('foto') ? "is-invalid" : "" }} "
+                                           value="{{old('foto') ? old('foto') : $operadore->foto}}">
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('foto') }}
+                                    </div>
+                                </div>
+                                <h6>{{__('message.Foto')}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
             </div>
 
             <div class="form-group col-md-4">

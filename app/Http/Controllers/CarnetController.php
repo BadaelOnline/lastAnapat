@@ -134,28 +134,50 @@ class CarnetController extends Controller
         $request->validate([
             'numero' => 'required',
             'operador' => 'required',
-            'foto' => 'required',
+//            'foto' => 'required',
 //            'curso' => 'required',
             'examen_teorico_realizado' => 'required',
             'tipos_de_pemp' => "array|required",
         ]);
         $operador = Operadores::findOrFail((int)$request->operador);
-        if ($operador->carnett == null)
+        if ($operador->carnett == null){
             $carnet = new Carnet($request->except('_token', 'estado', 'tipos_de_pemp'));
-        else
-            $carnet = $operador->carnett;
+            $foto = $request->file('foto');
+
+            if ($foto) {
+                if ($operador->foto && file_exists(storage_path('app/public/' . $operador->foto))) {
+                    \Storage::delete('public/' . $carnet->foto);
+                }
+
+                $foto_path = $foto->store('Carnet/' . $request->numero, 'public');
+
+                $carnet->foto = $foto_path;
+            }
+        }else{
+        $carnet = $operador->carnett;
+//            dd($carnet);
+        $foto = $request->file('foto');
+//            dd($foto);
+        if ($foto) {
+            if ($carnet->foto && file_exists(storage_path('app/public/' . $carnet->foto))) {
+                \Storage::delete('public/' . $carnet->foto);
+            }
+
+            $foto_path = $foto->store('Carnet/' . $request->numero, 'public');
+
+            $carnet->foto = $foto_path;
+//            dd("foto");
+        }else{
+
+            $carnet->foto = $carnet->foto;
+//            dd($carnet->foto);
+        }
+    }
+
         if ($request->estado == null) {
             $carnet->estado = 0;
         } else {
             $carnet->estado = 1;
-        }
-        $foto = $request->file('foto');
-        if ($foto) {
-            $foto_path = $foto->store('Carnet/' . $request->numero, 'public');
-
-            $carnet->foto = $foto_path;
-        } else {
-            $carnet->foto = '';
         }
         $carnet->curso = 0;
         if ($operador->carnett == null)
