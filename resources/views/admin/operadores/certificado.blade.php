@@ -100,7 +100,7 @@ input[type="radio"]:focus {
         <div class="col-md-4">
             <h6>{{__('message.Fecha de alta')}} :<br> <span>
                     @if($curso != null)
-                    {{date('Y-m-d',strtotime($curso->fecha_alta))}}
+                    {{date('d/m/Y',strtotime($curso->fecha_alta))}}
                     @endif
                 </span></h6>
         </div>
@@ -113,14 +113,14 @@ input[type="radio"]:focus {
         <div class="col-md-4">
             <h6>{{__('message.Fecha de emisión')}} :<br> <span>
                     @if(isset($activeAsistent))
-                    {{$activeAsistent->emision}}
+                    {{date('d/m/Y',strtotime($activeAsistent->emision))}}
                     @endif
                 </span></h6>
         </div>
         <div class="col-md-4">
             <h6>{{__('message.Fecha de vencimiento')}} :<br> <span>
                     @if(isset($activeAsistent))
-                    {{$activeAsistent->vencimiento}}
+                    {{date('d/m/Y',strtotime($activeAsistent->vencimiento))}}
                     @endif
                 </span></h6>
         </div>

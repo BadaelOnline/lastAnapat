@@ -210,6 +210,8 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::post('operadores/edit/{id}', [OperadoresController::class, 'update'])->name('operadores.update');
     Route::delete('operadores/destroy/{id}',[OperadoresController::class, 'destroy'])->name('operadores.destroy');
     Route::get('operadores/export',[OperadoresController::class, 'export'])->middleware('can:isAdmin')->name('operadores.export');
+    Route::get('operadores/show/{id}', [OperadoresController::class, 'show'])->middleware('can:isAdminOrResponsable')->name('operadores.show');
+
 
     // Manage Team
     Route::get('entidades_formadores', [EntidadesFormadoreasController::class, 'index'])->middleware('can:isAdminOrResponsable')->name('entidades_formadoreas');
@@ -218,7 +220,9 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::get('entidades_formadores/export',[EntidadesFormadoreasController::class, 'export'])->middleware('can:isAdmin')->name('entidades_formadoreas.export');
     Route::get('entidades_formadores/edit/{id}', [EntidadesFormadoreasController::class, 'edit'])->middleware('can:isAdminOrResponsable')->name('entidades_formadoreas.edit');
     Route::post('entidades_formadores/edit/{id}', [EntidadesFormadoreasController::class, 'update'])->middleware('can:isAdminOrResponsable')->name('entidades_formadoreas.update');
-    Route::delete('entidades_formadores/destroy/{id}',[EntidadesFormadoreasController::class, 'destroy'])->middleware('can:isAdmin')->name('entidades_formadoreas.destroy');
+    Route::delete('entidades_formadores/destroy/{id}',[EntidadesFormadoreasController::class, 'destroy'])->middleware('can:isAdmin')->name('entidades_formadoreas.destroy'); Route::get('entidades_formadores/edit/{id}', [EntidadesFormadoreasController::class, 'edit'])->middleware('can:isAdminOrResponsable')->name('entidades_formadoreas.edit');
+    Route::get('entidades_formadores/show/{id}', [EntidadesFormadoreasController::class, 'show'])->middleware('can:isAdminOrResponsable')->name('entidades_formadoreas.show');
+
 
     // Manage Examen
     Route::get('examen', [ExamenController::class, 'index'])->middleware('can:isAdminOrResponsable')->name('examen');
@@ -250,7 +254,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::get('certificado/edit/{id}', [CertificadoController::class, 'edit'])->middleware('can:isAdminOrResponsable')->name('certificado.edit');
     Route::post('certificado/edit/{id}', [CertificadoController::class, 'update'])->middleware('can:isAdminOrResponsable')->name('certificado.update');
     Route::delete('certificado/destroy/{id}',[CertificadoController::class, 'destroy'])->middleware('can:isAdmin')->name('certificado.destroy');
-    Route::get('certificado/export',[CertificadoController::class, 'export'])->middleware('can:isAdmin')->name('certificado.export');
+    Route::get('certificado/export/{activo}',[CertificadoController::class, 'export'])->middleware('can:isAdmin')->name('certificado.export');
 
     // Manage Admin
     Route::resource('users',UserController::class);

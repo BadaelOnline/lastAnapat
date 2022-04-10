@@ -9,7 +9,7 @@
             text-align: center;
         }
         .picture {
-            width: 200px;
+            width: 400px;
             height: 200px;
             background-color: #999999;
             border: 4px solid #CCCCCC;

@@ -228,23 +228,27 @@
 
                 <div class="form-group col-md-4">
                     <label for="emision" class="col-sm-2 col-form-label">{{__('message.Emision')}}</label>
-                    <div class="col-sm-9">
-                        <input type="date" name='emision' class="form-control {{$errors->first('emision') ? "is-invalid" : "" }} " value="{{old('emision') ? old('emision') : $asistent->emision}}"  id="emision" placeholder="Fecha de emisión">
-                        <div class="invalid-feedback">
-                            {{ $errors->first('emision') }}
-                        </div>
-                    </div>
+                    <label for="emision" class="col-sm-7 col-form-label">{{$asistent->emision != null ? date('d/m/Y',strtotime($asistent->emision)) : ""}}</label>
+
+{{--                    <div class="col-sm-9">--}}
+{{--                        <input type="date" name='emision' class="form-control {{$errors->first('emision') ? "is-invalid" : "" }} " value="{{old('emision') ? old('emision') : $asistent->emision}}"  id="emision" placeholder="Fecha de emisión">--}}
+{{--                        <div class="invalid-feedback">--}}
+{{--                            {{ $errors->first('emision') }}--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
 
 
                 <div class="form-group col-md-4">
-                    <label for="vencimiento" class="col-sm-2 col-form-label">{{__('message.Vencimiento')}}</label>
-                    <div class="col-sm-9">
-                        <input type="date" name='vencimiento' class="form-control {{$errors->first('vencimiento') ? "is-invalid" : "" }} " value="{{old('vencimiento') ? old('vencimiento') : $asistent->vencimiento}}"  id="vencimiento" >
-                        <div class="invalid-feedback">
-                            {{ $errors->first('vencimiento') }}
-                        </div>
-                    </div>
+                    <label for="vencimiento" class="col-sm-4 col-form-label">{{__('message.Vencimiento')}}</label>
+                    <label for="vencimiento" class="col-sm-7 col-form-label">{{$asistent->vencimiento != null ? date('d/m/Y',strtotime($asistent->vencimiento)) : ""}}</label>
+
+{{--                    <div class="col-sm-9">--}}
+{{--                        <input type="date" name='vencimiento' class="form-control {{$errors->first('vencimiento') ? "is-invalid" : "" }} " value="{{old('vencimiento') ? old('vencimiento') : $asistent->vencimiento}}"  id="vencimiento" >--}}
+{{--                        <div class="invalid-feedback">--}}
+{{--                            {{ $errors->first('vencimiento') }}--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
 
 

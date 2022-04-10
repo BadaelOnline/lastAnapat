@@ -107,7 +107,9 @@ class EntidadesFormadoreasController extends Controller
      */
     public function show($id)
     {
-        //
+        $entidadesFormadore = EntidadesFormadoreas::findOrFail($id);
+
+        return view('admin.entidades_formadoreas.show',compact('entidadesFormadore'));
     }
 
     /**
@@ -141,8 +143,8 @@ class EntidadesFormadoreasController extends Controller
             'province' => 'required',
             'ciudad' => 'required',
             'direccion' => 'required',
-            'codigo_postal' => 'required',
-            'web' => 'required|max:7',
+            'codigo_postal' => 'required|max:7',
+            'web' => 'required',
             'mail' => 'required',
         ]);
         $entidades_formadoreas = EntidadesFormadoreas::findOrFail($id);

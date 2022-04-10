@@ -221,7 +221,7 @@
 
                 <div class="col-md-4">
                     <label for="fecha_inicio" class="col-sm-4 col-form-label">{{__('message.Fecha Inicio')}}:</label>
-                    <label for="fecha_inicio" class="col-sm-7 col-form-label">{{$cursos->fecha_inicio}}</label>
+                    <label for="fecha_inicio" class="col-sm-7 col-form-label">{{$cursos->fecha_inicio != null ? date('d/m/Y H:i:s',strtotime($cursos->fecha_inicio)) : ""}}</label>
                     <div class="col-sm-9">
                         <input type="datetime-local" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio') ? old('fecha_inicio') : $cursos->fecha_inicio}}" id="fecha_inicio" placeholder="{{$cursos->fecha_inicio}}" >
                         <div class="invalid-feedback">
@@ -510,19 +510,21 @@
                                             <a href="{{route('admin.asistent.edit', [$asistent->id])}}" class="btn btn-info btn-sm"> {{__('message.Update')}} </a>
                                             <a href="{{asset('storage/' . $asistent->examen_t_pdf)}}" class="btn btn-edit btn-sm" download title="descargar Examen T">T</a>
                                             <a href="{{asset('storage/' . $asistent->examen_p_pdf)}}" class="btn btn-edit btn-sm" download title="descargar Examen P">P</a>
-{{--                                            @if(auth()->user()->perfil=='Administrador')--}}
-{{--                                                <a href="{{ route('admin.carnet.add',[$asistent->operador,$cursos->id]) }}" class="btn btn-edit btn-sm" title="crear carnet"><i class="fas fa-id-card"></i> </a>--}}
-{{--                                            @endif--}}
-                                            {{--                                            <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('Delete this asistent permanently?')">--}}
+                                            @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion'))
+{{--                                                <a href="{{route('admin.operadores.edit', [$asistent->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>--}}
 
-                                            {{--                                                @csrf--}}
+                                                <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
 
-                                            {{--                                                <input type="hidden" name="_method" value="DELETE">--}}
+                                                    @csrf
 
-                                            {{--                                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">--}}
+                                                    <input type="hidden" name="_method" value="DELETE">
 
-                                            {{--                                            </form>--}}
+                                                    <button type="submit" value="Delete" class="btn btn-delete btn-sm">
+                                                        <i class='fas fa-trash-alt'></i>
+                                                    </button>
 
+                                                </form>
+                                            @endif
                                         </td>
 
                                     </tr>
@@ -582,9 +584,9 @@
                                             @endif
                                         </td>
 
-                                        <td>{{ $horario->fecha_inicio }}</td>
+                                        <td>{{ date('d/m/Y H:i:s',strtotime($horario->fecha_inicio)) }}</td>
 
-                                        <td>{{ $horario->final }}</td>
+                                        <td>{{ date('d/m/Y H:i:s',strtotime($horario->final)) }}</td>
 
                                         <td>{{ $horario->alumnos }}</td>
                                         <td>

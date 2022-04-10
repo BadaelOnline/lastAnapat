@@ -15,7 +15,6 @@
               <h2>{{$entidadesFormadore->nombre}}</h2>
               <div class="d-flex align-items-center">
                 <h3>Ciudad : {{$entidadesFormadore->ciudad}} <br>
-                    Socio : {{$entidadesFormadore->socio}}
                 </h3>
                 <img class="image" src="{{asset('storage/' . $entidadesFormadore->logo)}}" alt=""></div>
               <hr/>
@@ -26,8 +25,7 @@
              <p>Codigo postal : {{$entidadesFormadore->codigo_postal}}</p>
             <p>Web: <a href="{{$entidadesFormadore->web}}" > {{$entidadesFormadore->web}}</a></p>
              <p>mail : <a href="mailto:{{$entidadesFormadore->mail}}" > {{$entidadesFormadore->mail}}</a></p>
-             <p>Fecha : {{$entidadesFormadore->fecha}} </p>
-             <p>Certificada : {{$entidadesFormadore->certificado == 0 ? "No" : "Yes"}}</p>
+             <p>Certificada : {{$entidadesFormadore->certificado == 0 ? "En Proceso de Certificación" : "Yes"}}</p>
               <p></p>
 {{--              <div class="d-flex justify-content-center">--}}
 {{--              <a href="">Show Assistants</a>--}}

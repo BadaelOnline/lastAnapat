@@ -111,7 +111,9 @@ class AsistentController extends Controller
         } else {
             $asistent->examen_p_pdf = '';
         }
-
+        $operador = Operadores::findOrFail((int)$request->operador);
+        $asistent->emision = $operador->fecha;
+        $asistent->vencimiento = $operador->fecha_nacimiento;
 
 //        $cover = $request->file('cover');
 //
@@ -218,8 +220,9 @@ class AsistentController extends Controller
         $asistent->nota_t = $request->nota_t;
         $asistent->nota_p = $request->nota_p;
         $asistent->observaciones = $request->observaciones;
-        $asistent->emision = $request->emision;
-        $asistent->vencimiento = $request->vencimiento;
+        $operador = Operadores::findOrFail((int)$request->operador);
+        $asistent->emision = $operador->fecha;
+        $asistent->vencimiento = $operador->fecha_nacimiento;
         $asistent->tipo_1 = $request->tipo_1;
         if (!$request->tipo_2) {
             $asistent->tipo_2 = 0;
@@ -250,7 +253,7 @@ class AsistentController extends Controller
             $asistent->examen_t_pdf = $examen_t_pdf_path;
 
         }
-        $examen_p_pdf = $request->file('examen_t_pdf');
+        $examen_p_pdf = $request->file('examen_p_pdf');
 
         if ($examen_p_pdf) {
             if ($asistent->examen_p_pdf && file_exists(storage_path('app/public/' . $asistent->examen_p_pdf))) {
@@ -284,8 +287,9 @@ class AsistentController extends Controller
     public function destroy($id)
     {
         $asistent = Asistent::findOrFail($id);
+        $curso = $asistent->curso;
         $asistent->delete();
 
-        return redirect()->route('admin.asistent')->with('success', 'Data deleted successfully');
+        return redirect()->route('admin.cursos.edit', [$curso])->with('success', 'Data deleted successfully');
     }
 }

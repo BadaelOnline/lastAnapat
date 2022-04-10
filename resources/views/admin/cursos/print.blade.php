@@ -61,8 +61,8 @@
                 @foreach($cursos->horario as $hora)
                     <tr>
                         <td>{{$hora->contenido}}</td>
-                        <td>{{$hora->fecha_inicio}}</td>
-                        <td>{{$hora->final}}</td>
+                        <td>{{date('d/m/Y H:i:s',strtotime($hora->fecha_inicio))}}</td>
+                        <td>{{date('d/m/Y H:i:s',strtotime($hora->final))}}</td>
                         <td>{{$hora->alumnos}}</td>
                     </tr>
                 @endforeach

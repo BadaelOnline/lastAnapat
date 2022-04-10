@@ -83,7 +83,7 @@
                                             </button>
                                         </form>
                                     @endif
-                                        <a href="{{route('entidade_formadora', [$entidadesFormadores->id])}}"
+                                        <a href="{{route('admin.entidades_formadoreas.show', [$entidadesFormadores->id])}}"
                                            class="btn btn-edit btn-sm"> <i class="fas fa-eye"></i> </a>
                                 </td>
                             </tr>

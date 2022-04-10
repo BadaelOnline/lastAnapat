@@ -8,7 +8,7 @@
   text-align: center;
 }
  .picture {
-  width: 200px;
+  width: 400px;
   height: 200px;
   background-color: #999999;
   border: 4px solid #CCCCCC;
@@ -120,7 +120,7 @@ input[type="radio"]:focus {
 
         <div class="form-group col-md-4">
             <div class="picture-container">
-                <div class="picture">
+                <div class="picture" style="width: 200px">
                     <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>
                     <input type="file" id="wizard-picture" name="foto" class="form-control {{$errors->first('foto') ? "is-invalid" : "" }} ">
                     <div class="invalid-feedback">
@@ -214,7 +214,7 @@ input[type="radio"]:focus {
         </div>
         @if(auth()->user()->perfil=='Administrador')
         <div class="form-group col-md-4">
-            <label for="carnet" class="col-sm-12 col-form-label">{{__('message.Carnet')}}</label>
+            <label for="carnet" class="col-sm-12 col-form-label">{{__('message.Número de Carnet')}}</label>
             <div class="col-sm-7">
                 <input type="text" name='carnet' class="form-control {{$errors->first('carnet') ? "is-invalid" : "" }} " value="{{old('carnet')}}" id="carnet" placeholder="Número de carné">
                 <div class="invalid-feedback">

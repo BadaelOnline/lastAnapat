@@ -41,7 +41,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request);
+//        dd($request->estado);
         \Validator::make($request->all(), [
             "nombre" => "required",
             "perfil" => "required",
@@ -73,8 +73,11 @@ class UserController extends Controller
         }else{
             $user->entidad = 0;
         }
-
-        $user->estado = $request->estado;
+        if($request->estado == null){
+            $user->estado = 0;
+        }else{
+            $user->estado = 1;
+        }
 
 //dd($user);
 

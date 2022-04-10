@@ -117,7 +117,8 @@ class OperadoresController extends Controller
      */
     public function show($id)
     {
-        //
+        $operador = Operadores::findOrFail($id);
+        return view('admin.operadores.show',compact('operador'));
     }
 
     /**

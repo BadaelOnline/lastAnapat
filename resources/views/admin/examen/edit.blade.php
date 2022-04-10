@@ -106,8 +106,8 @@
                     <select name='tipo' class="form-control {{$errors->first('tipo') ? "is-invalid" : "" }} " id="tipo">
                         <option disabled selected>{{__('message.Choose_One')}}</option>
 
-                        <option value="T-Theoretical" {{$examen->tipo == "T-Theoretical" ? "selected" : ""}}>T-Theoretical</option>
-                        <option value="P-Practical" {{$examen->tipo == "P-Practical" ? "selected" : ""}}>P-Practical</option>
+                        <option value="T-Theoretical" {{$examen->tipo == "T-Theoretical" ? "selected" : ""}}>{{__('message.Theoretical Examen')}}</option>
+                        <option value="P-Practical" {{$examen->tipo == "P-Practical" ? "selected" : ""}}>{{__('message.Practical Examen')}}</option>
 
                     </select>
                     <div class="invalid-feedback">
