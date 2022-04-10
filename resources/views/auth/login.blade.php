@@ -39,7 +39,7 @@
                     <div class="login__field">
                         <i class="login__icon fas fa-user"></i>
                         <input id="login" type="text" class="login__input{{ $errors->has('alias') || $errors->has('email') ? ' is-invalid' : '' }}"
-                               name="login" value="{{ old('alias') ?: old('email') }}" required  autofocus placeholder="Usuario para introducir el código o el mail" >
+                               name="login" value="{{ old('alias') ?: old('email') }}" required  autofocus placeholder="Usuario" >
                         @if ($errors->has('alias') || $errors->has('email'))
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('alias') ?: $errors->first('email')  }}</strong>

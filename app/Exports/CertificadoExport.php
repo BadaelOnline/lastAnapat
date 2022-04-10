@@ -11,13 +11,23 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class CertificadoExport implements FromCollection,WithHeadings
 {
+    protected $id;
+
+    function __construct($id) {
+        $this->id = $id;
+    }
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
+        $now = now().date('');
+        if ($this->id == "1"){
+            $certificados = Certificado::orderBy('id','asc')->whereDate('vencimiento' , '>' ,$now )->get();
+        }else{
+            $certificados = Certificado::orderBy('id','asc')->whereDate('vencimiento' , '<=' ,$now )->get();
+        }
 
-        $certificados = Certificado::all();
 //        dd($certificados);
         foreach ($certificados as $certificado){
             if($certificado->entidad != 0){

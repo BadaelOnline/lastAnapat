@@ -113,7 +113,7 @@ return [
     'CAP' => 'CAP',
     'Fecha De Vencimiento' => 'Fecha De Vencimiento',
     'Fecha De Emisión' => 'Fecha De Emisión',
-    'certificado' => 'certificado', 
+    'certificado' => 'certificado',
     'Inactivo Certificado' => 'Certificado Inactivo ',
     'Fecha de Exportación' => 'Fecha de Exportación',
     'Código del certificado' => 'Código del certificado',
@@ -160,7 +160,7 @@ return [
     'Ciudad' => 'Ciudad',
     'Codigo Postal' => 'Código Postal',
     'Asistentes Pdf' => 'Asistentes PDF',
-    'Publico' => 'Publico',  
+    'Publico' => 'Publico',
     'Privado' => 'Privado',
     'Cerrado' => 'Cerrado',
     'Asistentes' => 'Asistentes',
@@ -214,7 +214,15 @@ return [
     'codigo_postal' => 'Código Postal',
     'Operador PDF' => 'Operador PDF',
     'Vida laboral pdf' => 'Vida laboral PDF',
-    'direccion' => 'dirección'
+    'direccion' => 'dirección',
+    'Theoretical Examen' => 'Theoretical Examen',
+    'Practical Examen' => 'Practical Examen',
+    'Exámen Teórico' => 'Exámen Teórico',
+    'Número de Carnet' => 'Número de Carnet',
+    'Certificados Inactivos' => 'Certificados Inactivos',
+    'Certificados' => 'Certificados',
+    'Razon Social' => 'Razon Social',
+    'Firma del Responsable de formacion y selio de la Entidad Formadora' => 'Firma del Responsable de formacion y selio de la Entidad Formadora'
 
 
 

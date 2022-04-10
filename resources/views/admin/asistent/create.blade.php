@@ -221,35 +221,61 @@
         </div>
 
 
-        @if(auth()->user()->perfil=='Administrador' ) {{--fifth row--}}
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <label for="emision" class="col-sm-2 col-form-label">{{__('message.Emision')}}</label>
-                    <div class="col-sm-9">
-                        <input type="date" name='emision' class="form-control {{$errors->first('emision') ? "is-invalid" : "" }} " value="{{old('emision')}}" id="emision" placeholder="Fecha de emisión">
-                        <div class="invalid-feedback">
-                            {{ $errors->first('emision') }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <label for="vencimiento" class="col-sm-2 col-form-label">{{__('message.Vencimiento')}}</label>
-                    <div class="col-sm-9">
-                        <input type="date" name='vencimiento' class="form-control {{$errors->first('vencimiento') ? "is-invalid" : "" }} " value="{{old('vencimiento')}}" id="vencimiento" >
-                        <div class="invalid-feedback">
-                            {{ $errors->first('vencimiento') }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @else
-        @endif
+{{--        @if(auth()->user()->perfil=='Administrador' ) --}}{{--fifth row--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-sm">--}}
+{{--                    <label for="emision" class="col-sm-2 col-form-label">{{__('message.Emision')}}</label>--}}
+{{--                    <div class="col-sm-9">--}}
+{{--                        <input type="date" name='emision' class="form-control {{$errors->first('emision') ? "is-invalid" : "" }} " value="{{old('emision')}}" id="emision" placeholder="Fecha de emisión">--}}
+{{--                        <div class="invalid-feedback">--}}
+{{--                            {{ $errors->first('emision') }}--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-sm">--}}
+{{--                    <label for="vencimiento" class="col-sm-2 col-form-label">{{__('message.Vencimiento')}}</label>--}}
+{{--                    <div class="col-sm-9">--}}
+{{--                        <input type="date" name='vencimiento' class="form-control {{$errors->first('vencimiento') ? "is-invalid" : "" }} " value="{{old('vencimiento')}}" id="vencimiento" >--}}
+{{--                        <div class="invalid-feedback">--}}
+{{--                            {{ $errors->first('vencimiento') }}--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        @else--}}
+{{--            <div class="container">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-sm">--}}
+{{--                        <label for="emision" class="col-sm-2 col-form-label">{{__('message.Emision')}}</label>--}}
+{{--                        <div class="col-sm-9">--}}
+{{--                            <input type="date" name='emision' class="form-control {{$errors->first('emision') ? "is-invalid" : "" }} " value="{{old('emision')}}" id="emision" placeholder="Fecha de emisión">--}}
+{{--                            <div class="invalid-feedback">--}}
+{{--                                {{ $errors->first('emision') }}--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="container">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-sm">--}}
+{{--                        <label for="vencimiento" class="col-sm-2 col-form-label">{{__('message.Vencimiento')}}</label>--}}
+{{--                        <div class="col-sm-9">--}}
+{{--                            <input type="date" name='vencimiento' class="form-control {{$errors->first('vencimiento') ? "is-invalid" : "" }} " value="{{old('vencimiento')}}" id="vencimiento" >--}}
+{{--                            <div class="invalid-feedback">--}}
+{{--                                {{ $errors->first('vencimiento') }}--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        @endif--}}
         {{--    <div class="container">--}}
         {{--        <div class="row">--}}
         {{--            <div class="col-sm">--}}

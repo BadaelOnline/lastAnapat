@@ -17,6 +17,7 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400&display=swap"
           rel="stylesheet">
 
@@ -38,6 +39,7 @@
     {{-- Summernote CDN --}}
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" integrity ="anonymous"  referrerpolicy="no-referrer">
 
     {{-- Select2 Style CDN --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
@@ -232,7 +234,7 @@
             'admin.operadores',
         ])? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('admin.operadores') }}">
-                    <i class="fas fa-fw fa-truck-moving"></i>
+                    <i class="fa-solid fa-helmet-safety"></i>
                     <span>{{__('message.Operadores')}}</span></a>
             </li>
             @can('isAdminOrResponsable')
@@ -282,10 +284,10 @@
                          data-parent="#accordionSidebar">
                         <div class=" py-2 collapse-inner rounded">
                             <a class="collapse-item" href="{{ route('admin.certificado') }}">
-                                <span>{{__('message.certificado')}}</span></a>
+                                <span>{{__('message.Certificados')}}</span></a>
 
                             <a class="collapse-item"
-                               href="{{ route('admin.inactiveCertificado') }}">{{__('message.Inactivo Certificado')}}</a>
+                               href="{{ route('admin.inactiveCertificado') }}">{{__('message.Certificados Inactivos')}}</a>
                         </div>
                     </div>
                 </li>

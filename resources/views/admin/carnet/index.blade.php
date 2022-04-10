@@ -73,8 +73,8 @@
                     <tr>
                         <td>{{ $carnets->numero }}</td>
                         <td>{{ $carnets->operadores->nombre }} {{$carnets->operadores->apellidos}}</td>
-                        <td> {{ $carnets->fecha_de_alta }} </td>
-                        <td>{{ $carnets->fecha_de_emision }}</td>
+                        <td> {{ date('d/m/Y',strtotime($carnets->fecha_de_alta)) }} </td>
+                        <td>{{ date('d/m/Y',strtotime($carnets->fecha_de_emision))  }}</td>
                         <td>
                             <img src="{{asset('storage/' . $carnets->foto)}}" width="96px"/>
                         </td>

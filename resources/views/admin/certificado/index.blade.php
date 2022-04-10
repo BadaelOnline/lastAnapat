@@ -31,7 +31,7 @@
 
 {{--        <a href="{{ route('admin.certificado.create') }}" class="btn btn-pass">{{__('message.add_new')}} Certificado</a>--}}
         @if(auth()->user()->perfil=='Administrador')
-            <a href="{{ route('admin.certificado.export',auth()->user()->entidad) }}" class="btn btn-primary">
+            <a href="{{ route('admin.certificado.export',$activo) }}" class="btn btn-primary">
                 {{__('message.Exportar Certificado')}}
             </a>
         @endif
@@ -81,8 +81,8 @@
                         <td> {{ $certificado->entidad_nombre }} </td>
                         <td> {{ $certificado->cer_nombre }} </td>
                         <td> {{ $certificado->cer_apellidos }} </td>
-                        <td> {{ $certificado->emision }} </td>
-                        <td>{{ $certificado->vencimiento }}</td>
+                        <td> {{date('d/m/Y',strtotime($certificado->emision))  }} </td>
+                        <td>{{ date('d/m/Y',strtotime($certificado->vencimiento)) }}</td>
                         <td>
 {{--                        <a href="{{route('admin.certificado.edit', [$certificado->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-eye"></i> </a>--}}
 

@@ -32,7 +32,8 @@ class CertificadoController extends Controller
         else
             $operadors = Operadores::orderBy('id','desc')->get();
         $certificados = Certificado::orderBy('id','desc')->whereDate('vencimiento' , '>' ,$now )->get();
-        return view('admin.certificado.index',compact('operadors','certificados'));
+        $activo = 1;
+        return view('admin.certificado.index',compact('operadors','certificados','activo'));
     }
 
     /**
@@ -51,7 +52,8 @@ class CertificadoController extends Controller
         else
             $operadors = Operadores::orderBy('id','desc')->get();
         $certificados = Certificado::orderBy('id','desc')->whereDate('vencimiento' , '<=' ,$now )->get();
-        return view('admin.certificado.index',compact('operadors','certificados'));
+        $activo = 0;
+        return view('admin.certificado.index',compact('operadors','certificados','activo'));
     }
 
     /**
@@ -75,7 +77,7 @@ class CertificadoController extends Controller
         return view('admin.certificado.create',compact('operadores','cursos','tipos','entidad'));
     }
 
-    public function export()
+    public function export($activo)
     {
         $operadores = Operadores::orderBy('id','desc')->where('estado','=',0)->get();
         foreach ($operadores as $operador){
@@ -85,8 +87,13 @@ class CertificadoController extends Controller
                 $curso = Cursos::where('id',$asistent->curso)->where('estado',1)->where('cerrado',1)->first();
                 $certificado = new Certificado();
                 $asi_fecha = date('Y', strtotime($asistent->created_at));
+                $asi_fecham = date('m', strtotime($asistent->created_at));
+                $asi_fechad = date('d', strtotime($asistent->created_at));
+                $asi_fechah = date('h', strtotime($asistent->created_at));
+                $asi_fechai = date('i', strtotime($asistent->created_at));
+                $asi_fechas = date('s', strtotime($asistent->created_at));
                 $asi_orden = $asistent->orden;
-                $cert_numero = $asi_fecha . "" . $asi_orden . "" . $operador->dni;
+                $cert_numero = $asi_fecha . "" . $asi_fecham . "" . $asi_fechad . "" . $asi_fechah . "" . $asi_fechai . "" . $asi_fechas . "" . $operador->dni;
                 $certificado->numero = $cert_numero;
                 $certificado->cer_apellidos = $operador->apellidos;
                 $certificado->cer_nombre = $operador->nombre;
@@ -175,7 +182,7 @@ class CertificadoController extends Controller
 
             }
              }
-        return Excel::download(new CertificadoExport(), 'certificado.xlsx');
+        return Excel::download(new CertificadoExport($activo), 'certificado.xlsx');
 
     }
 

@@ -110,6 +110,8 @@
                                 </button>
 
                             </form>
+                                    <a href="{{route('admin.operadores.show', [$operadores->id])}}"
+                                       class="btn btn-edit btn-sm"> <i class="fas fa-eye"></i> </a>
                             @endif
                         </td>
 
