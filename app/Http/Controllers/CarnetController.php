@@ -179,13 +179,14 @@ class CarnetController extends Controller
         } else {
             $carnet->estado = 1;
         }
+//        dd($operador->carnett);
         $carnet->curso = 0;
-        if ($operador->carnett == null)
-            $carnet->Tipo_Maquinas()->attach(request('tipos_de_pemp'));
-        else
-            $carnet->Tipo_Maquinas()->sync(request('tipos_de_pemp'));
+
             if ($carnet->save()) {
-//            dd($carnet);
+                if ($operador->carnett == null)
+                    $carnet->Tipo_Maquinas()->attach(request('tipos_de_pemp'));
+                else
+                    $carnet->Tipo_Maquinas()->sync(request('tipos_de_pemp'));
 
                 return redirect()->route('admin.carnet')->with('success', 'Data added successfully');
 

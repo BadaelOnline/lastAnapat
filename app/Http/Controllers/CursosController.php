@@ -99,7 +99,13 @@ class CursosController extends Controller
         $examen_p=Examen::select('id','nombre')->where('tipo',2)->get();
 
         $x =Cursos::select('curso')->orderBy('id','desc')->latest()->get();
-        $course_code = $x[0]->curso +1;
+//        dd(count($x));
+        if (count($x) > 0){
+            $course_code = $x[0]->curso +1;
+        }else{
+            $course_code = "2200001";
+        }
+
 
 //        dd($course_code);
 
