@@ -56,7 +56,12 @@ class AsistentController extends Controller
         $tipo = Tipo_Maquina::orderBy('id', 'desc')->get();
         $corse = Cursos::where('id', $id)->first();
         $x =Asistent::select('orden')->orderBy('id','desc')->latest()->get();
-        $orden = $x[0]->orden +1;
+        if(count($x) > 0){
+            $orden = $x[0]->orden +1;
+        }else{
+            $orden = 1;
+        }
+
         $tipo_1 = $corse->tipo_maquina_1;
         $tipo_2 = $corse->tipo_maquina_2;
         $tipo_3 = $corse->tipo_maquina_3;

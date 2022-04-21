@@ -440,6 +440,18 @@
                 <input type="hidden" name="cerrado" value="{{$cursos->cerrado}}">
                 @endif
             </div>
+        <div class="form-group mt-5">
+
+            <div class="col-sm-3">
+
+                <button type="submit" class="btn btn-info">{{__('message.Update')}}</button>
+                <a href="{{route('admin.cursos.print', [$cursos->id])}}" class="btn btn-info"> <i class="fas fa-print"></i> </a>
+
+            </div>
+
+        </div>
+
+    </form>
 
             <div class="row">
                 <div class="col-sm" style="border: 2px solid #ddd;">
@@ -513,7 +525,7 @@
                                             @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion'))
 {{--                                                <a href="{{route('admin.operadores.edit', [$asistent->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>--}}
 
-                                                <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
+                                                <form method="DELETE" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
 
                                                     @csrf
 
@@ -618,18 +630,7 @@
             {{--            </div>--}}
             {{--        </div>--}}
 
-            <div class="form-group mt-5">
 
-                <div class="col-sm-3">
-
-                    <button type="submit" class="btn btn-info">{{__('message.Update')}}</button>
-                    <a href="{{route('admin.cursos.print', [$cursos->id])}}" class="btn btn-info"> <i class="fas fa-print"></i> </a>
-
-                </div>
-
-            </div>
-
-        </form>
     @endsection
 
     @push('scripts')
