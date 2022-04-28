@@ -590,7 +590,7 @@
 
                                         <td>
                                             @if($horario->contenido == "Práctica")
-                                            {{ $horario->tipo_maquinaa->tipo_maquina }}
+                                            {{$horario->tipo_maquinaa != null ? $horario->tipo_maquinaa->tipo_maquina :"Práctica" }}
                                             @else
                                                 Teoria
                                             @endif
