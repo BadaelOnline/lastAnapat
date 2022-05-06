@@ -27,7 +27,7 @@ class CreateCursosTable extends Migration {
 			$table->string('direccion', 255)->nullable();
 			$table->string('ciudad', 255)->nullable();
 			$table->string('provincia', 255)->nullable();
-			$table->integer('codigo_postal')->nullable();
+			$table->string('codigo_postal')->nullable();
 			$table->integer('examen-t')->unsigned();
 			$table->integer('examen-p')->unsigned();
 			$table->string('asistentes_pdf', 255)->nullable();

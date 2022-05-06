@@ -221,9 +221,9 @@
 
                 <div class="col-md-4">
                     <label for="fecha_inicio" class="col-sm-4 col-form-label">{{__('message.Fecha Inicio')}}:</label>
-                    <label for="fecha_inicio" class="col-sm-7 col-form-label">{{$cursos->fecha_inicio != null ? date('d/m/Y H:i:s',strtotime($cursos->fecha_inicio)) : ""}}</label>
+{{--                    <label for="fecha_inicio" class="col-sm-7 col-form-label">{{$cursos->fecha_inicio != null ? date('d/m/Y H:i:s',strtotime($cursos->fecha_inicio)) : ""}}</label>--}}
                     <div class="col-sm-9">
-                        <input type="datetime-local" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio') ? old('fecha_inicio') : $cursos->fecha_inicio}}" id="fecha_inicio" placeholder="{{$cursos->fecha_inicio}}" >
+                        <input type="datetime-local" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio') ? old('fecha_inicio') : $cursos->fecha_inicio != null ? date('Y-m-d\TH:i:s',strtotime($cursos->fecha_inicio)) : ""}}" id="fecha_inicio" placeholder="{{$cursos->fecha_inicio}}" >
                         <div class="invalid-feedback">
                             {{ $errors->first('fecha_inicio') }}
                         </div>
@@ -525,7 +525,7 @@
                                             @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion'))
 {{--                                                <a href="{{route('admin.operadores.edit', [$asistent->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>--}}
 
-                                                <form method="DELETE" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
+                                                <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
 
                                                     @csrf
 
@@ -615,20 +615,6 @@
                     </div>
                 </div>
             </div>
-
-
-            {{--        <div class="form-group">--}}
-            {{--            <div class="picture-container">--}}
-            {{--                <div class="picture">--}}
-            {{--                    <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>--}}
-            {{--                    <input type="file" id="wizard-picture" name="cover" class="form-control {{$errors->first('cover') ? "is-invalid" : "" }} ">--}}
-            {{--                    <div class="invalid-feedback">--}}
-            {{--                        {{ $errors->first('cover') }}--}}
-            {{--                    </div>--}}
-            {{--                </div>--}}
-            {{--                <h6>Pilih Cover</h6>--}}
-            {{--            </div>--}}
-            {{--        </div>--}}
 
 
     @endsection

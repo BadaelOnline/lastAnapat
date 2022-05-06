@@ -21,7 +21,7 @@ class CreateOperadoresTable extends Migration {
 			$table->string('provincia', 255)->nullable();
 			$table->string('ciudad', 255)->nullable();
 			$table->string('direccion', 255)->nullable();
-			$table->integer('codigo_postal')->nullable();
+			$table->string('codigo_postal')->nullable();
 			$table->string('mail', 255)->nullable();
 			$table->string('carnet', 255)->nullable();
 			$table->date('fecha')->nullable();

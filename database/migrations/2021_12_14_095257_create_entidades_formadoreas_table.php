@@ -18,7 +18,7 @@ class CreateEntidadesFormadoreasTable extends Migration {
 			$table->string('province', 255)->nullable();
 			$table->string('ciudad', 255);
 			$table->string('direccion', 255);
-			$table->integer('codigo_postal');
+			$table->string('codigo_postal');
 			$table->string('logo', 255);
 			$table->string('web', 255);
 			$table->string('mail', 255);
