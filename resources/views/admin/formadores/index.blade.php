@@ -15,7 +15,7 @@
         }
 
         /* The Modal (background) */
-        .modal {
+        .modal1 {
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
             z-index: 1; /* Sit on top */
@@ -29,16 +29,16 @@
             background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
         }
 
-        /* Modal Content (image) */
-        .modal-content {
+        /* modal1 Content (image) */
+        .modal1-content {
             margin: auto;
             display: block;
             width: 80%;
             max-width: 700px;
         }
 
-        /* Caption of Modal Image */
-        #caption {
+        /* caption1 of modal1 Image */
+        #caption1 {
             margin: auto;
             display: block;
             width: 80%;
@@ -50,7 +50,7 @@
         }
 
         /* Add Animation */
-        .modal-content, #caption {
+        .modal1-content, #caption1 {
             -webkit-animation-name: zoom;
             -webkit-animation-duration: 0.6s;
             animation-name: zoom;
@@ -95,7 +95,7 @@
 
         /* 100% Image Width on Smaller Screens */
         @media only screen and (max-width: 700px) {
-            .modal-content {
+            .modal1-content {
                 width: 100%;
             }
         }
@@ -189,11 +189,11 @@
                                 <td>{{ $formadores->apellidos }}</td>
                                 <td>
                                     <img src="{{asset('storage/' . $formadores->dni_img)}}" width="96px" id="myImg{{$formadores->dni_img}}" onclick="show( this);"/>
-                                    <!-- The Modal -->
-                                    <div id="myModal" class="modal">
+                                    <!-- The modal1 -->
+                                    <div id="mymodal11" class="modal1">
                                         <span class="close">&times;</span>
-                                        <img class="modal-content" id="img01">
-                                        <div id="caption"></div>
+                                        <img class="modal1-content" id="img011">
+                                        <div id="caption1"></div>
                                     </div>
                                 </td>
 
@@ -283,25 +283,25 @@
 @push('scripts')
     <script>
         function show(elem) {
-// Get the modal
+// Get the modal1
 //             console.log(id);
-            var modal = document.getElementById("myModal");
+            var modal11 = document.getElementById("mymodal11");
 
-            // Get the image and insert it inside the modal - use its "alt" text as a caption
-            var modalImg = document.getElementById("img01");
-            var captionText = document.getElementById("caption");
+            // Get the image and insert it inside the modal1 - use its "alt" text as a caption1
+            var modal1Img1 = document.getElementById("img011");
+            var caption1Text = document.getElementById("caption1");
 
-                modal.style.display = "block";
-                modalImg.src = $(elem).attr('src');
-                // captionText.innerHTML = this.alt;
+                modal11.style.display = "block";
+                modal1Img1.src = $(elem).attr('src');
+                // caption1Text.innerHTML = this.alt;
 
 
-            // Get the <span> element that closes the modal
+            // Get the <span> element that closes the modal1
             var span = document.getElementsByClassName("close")[0];
 
-            // When the user clicks on <span> (x), close the modal
+            // When the user clicks on <span> (x), close the modal1
             span.onclick = function() {
-                modal.style.display = "none";
+                modal11.style.display = "none";
             }
         }
 

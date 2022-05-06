@@ -18,9 +18,9 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <style>
-        #login::-webkit-input-placeholder{
-            font-size: 11px;
-        }
+        /*#login::-webkit-input-placeholder{*/
+        /*    font-size: 11px;*/
+        /*}*/
     </style>
 
 </head>

@@ -21,6 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="4b9c3d3c-a351-4ab6-90ca-e38cb16d2c4d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_12_14_095257_create_entidades_formadoreas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_12_14_095257_create_entidades_formadoreas_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_12_14_123323_create_cursos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_12_14_123323_create_cursos_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_12_14_123323_create_operadores_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_12_14_123323_create_operadores_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/cursos/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/cursos/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/formadores/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/formadores/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/entidade_formadora.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/entidade_formadora.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,6 +259,8 @@
       <workItem from="1649322705538" duration="4110000" />
       <workItem from="1649578992183" duration="6052000" />
       <workItem from="1650580157372" duration="3520000" />
+      <workItem from="1651175635968" duration="530000" />
+      <workItem from="1651778719475" duration="5406000" />
     </task>
     <servers />
   </component>
