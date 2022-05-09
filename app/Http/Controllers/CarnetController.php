@@ -152,6 +152,8 @@ class CarnetController extends Controller
                 $foto_path = $foto->store('Carnet/' . $request->numero, 'public');
 
                 $carnet->foto = $foto_path;
+            }else{
+                $carnet->foto = $operador->foto;
             }
         }else{
         $carnet = $operador->carnett;

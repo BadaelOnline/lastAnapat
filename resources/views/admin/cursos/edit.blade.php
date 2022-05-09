@@ -333,9 +333,12 @@
                                 <option value="{{ $examen_t->id }}" {{$cursos->examen_t == $examen_t->id ? "selected" : ""}}>{{ $examen_t->nombre }}</option>
                             @endforeach
                         </select>
+                        <div class="invalid-feedback">
+                            {{ $errors->first('examen_t') }}
+                        </div>
                     </div>
-                </div>
 
+                </div>
 
                 <div class="col-md-4">
                     <label for="examen-p" class="col-sm-6 col-form-label">{{__('message.Exámen Práctico')}} </label>
@@ -352,7 +355,11 @@
                                 <option value="{{ $examen_p->id }}" {{$cursos->examen_p == $examen_p->id ? "selected" : ""}}>{{ $examen_p->nombre }}</option>
                             @endforeach
                         </select>
+                        <div class="invalid-feedback">
+                            {{ $errors->first('examen_p') }}
+                        </div>
                     </div>
+
                 </div>
             @else
                 <div class="col-md-4">
