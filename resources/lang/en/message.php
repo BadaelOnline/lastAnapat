@@ -14,7 +14,7 @@ return [
     */
 
 
-    
+
     'Firma del Responsable de formacion y selio de la Entidad Formadora' => 'Firma del Responsable de formacion y selio de la Entidad Formadora',
 
     'PDF' => 'PDF',

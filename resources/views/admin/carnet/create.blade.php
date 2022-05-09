@@ -129,7 +129,7 @@
                         <div class="form-group col-md-12">
                             <div class="picture-container">
                                 <div class="picture">
-                                    <img src="{{asset('storage/' . $operadore->carnett->foto)}}" class="picture-src"
+                                    <img src="{{asset('storage/' )}}" class="picture-src"
                                          id="wizardPicturePreview" height="200px" width="400px" title=""/>
                                     <input type="file" id="wizard-picture" name="foto"
                                            class="form-control {{$errors->first('foto') ? "is-invalid" : "" }} "
