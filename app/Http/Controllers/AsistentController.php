@@ -83,8 +83,8 @@ class AsistentController extends Controller
             'orden' => 'required|max:7',
             'operador' => 'required',
             'tipo_carnet' => 'required',
-            'nota_t' => 'required',
-            'nota_p' => 'required',
+            'nota_t' => 'required|numeric',
+            'nota_p' => 'required|numeric',
             'tipo_1' => 'required',
         ]);
 //dd($request);
