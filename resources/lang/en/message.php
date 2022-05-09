@@ -121,7 +121,7 @@ return [
     'CAP' => 'CAP',
     'Fecha De Vencimiento' => 'Fecha De Vencimiento',
     'Fecha De Emisión' => 'Fecha De Emisión',
-    'certificado' => 'certificado',
+    'certificado' => 'Certificado',
     'Inactivo Certificado' => 'Certificado Inactivo ',
     'Fecha de Exportación' => 'Fecha de Exportación',
     'Código del certificado' => 'Código del certificado',
