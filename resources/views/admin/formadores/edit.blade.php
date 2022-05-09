@@ -159,6 +159,17 @@
             width: 100%;
         }
 
+        #dni_img{
+            cursor: pointer;
+            display: block;
+            height: 100%;
+            left: 0;
+            opacity: 0 !important;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
         #vida_laboral_pdf{
             cursor: pointer;
             display: block;
@@ -315,6 +326,27 @@ Name">
                 </div>
             </div>
             <div class="form-group col-md-4">
+                @if(substr($formadores->dni_img, -3) == 'pdf')
+                    @if($formadores->dni_img && file_exists(storage_path('app/public/' . $formadores->operador_pdf)))
+                        <label for="dni_img" class="col-sm-1 col-form-label">
+                            <a id="dni_img_download" href="{{asset('storage/' . $formadores->dni_img)}}" download><i class="fa fa-download"></i> </a> </label>
+                        <a id="dni_img_privew" target="_blank" href="{{asset('storage/' . $formadores->dni_img)}}"  ><i class="fa fa-eye"></i> </a>
+                        <div class="col-sm-12">
+                            <i class="fas fa-edit" style="font-size: 20px"></i>
+                            <input type="file" name='dni_img' class="form-control {{$errors->first('dni_img') ? "is-invalid" : "" }} " value="{{old('dni_img') ? old('dni_img') : $formadores->dni_img}}" style="opacity: 0 !important" id="dni_img" placeholder="Link Linkedin">
+                            <div class="invalid-feedback">
+                                {{ $errors->first('dni_img') }}
+                            </div>
+                        </div>
+                    @else
+                        <div class="col-sm-12">
+                            <input type="file" name='operador_pdf' class="form-control {{$errors->first('operador_pdf') ? "is-invalid" : "" }} " value="{{old('operador_pdf') ? old('operador_pdf') : $formadores->operador_pdf}}" id="operador_pdff" placeholder="Link Linkedin">
+                            <div class="invalid-feedback">
+                                {{ $errors->first('operador_pdf') }}
+                            </div>
+                        </div>
+                    @endif
+                @elseif(substr($formadores->dni_img, -3) != 'pdf')
                 <div class="image">
                     <div class="form-group col-md-12">
                         <div class="picture-container">
@@ -331,6 +363,7 @@ Name">
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
             <div class="form-group col-md-4">
                 <label for="operador_pdf" class="col-sm-4 col-form-label">{{__('message.Operador PDF')}}</label>
@@ -549,6 +582,25 @@ Name">
             }
         }
     </script>
+<script>
+    // Prepare the preview for profile picture
+    $("#dni_img").change(function(){
+        readURL1(this);
+    });
+    //Function to show image before upload
+
+    function readURL1(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#dni_img_download').attr('href', e.target.result).fadeIn('slow');
+                document.getElementById('dni_img_privew').style.display = "none";
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
     <script>
         // Prepare the preview for profile picture
         $("#operador_pdf").change(function(){

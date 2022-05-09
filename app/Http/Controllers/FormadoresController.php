@@ -26,6 +26,9 @@ class FormadoresController extends Controller
 
         else
             $formadores = Formadores::orderBy('id','desc')->get();
+//        foreach ($formadores as $formadore){
+//           dd(in_array($formadore->dni_img['content-type'], ['image/jpg', 'application/pdf']));
+//        }
         return view('admin.formadores.index',compact('formadores'));
     }
 

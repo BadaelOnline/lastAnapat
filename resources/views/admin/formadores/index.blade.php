@@ -188,6 +188,10 @@
                                 <td> {{ $formadores->nombre }} </td>
                                 <td>{{ $formadores->apellidos }}</td>
                                 <td>
+                                    @if($formadores->dni_img && file_exists(storage_path('app/public/' . $formadores->dni_img)) && substr($formadores->dni_img, -3) == 'pdf')
+                                        <a target="_blank" href="{{asset('storage/' . $formadores->dni_img)}}"><i
+                                                class="fa fa-eye"></i> </a>
+                                    @elseif(substr($formadores->dni_img, -3) != 'pdf')
                                     <img src="{{asset('storage/' . $formadores->dni_img)}}" width="96px" id="myImg{{$formadores->dni_img}}" onclick="show( this);"/>
                                     <!-- The modal1 -->
                                     <div id="mymodal11" class="modal1">
@@ -195,6 +199,9 @@
                                         <img class="modal1-content" id="img011">
                                         <div id="caption1"></div>
                                     </div>
+                                    @else
+                                        <i class="fa fa-close"></i>
+                                    @endif
                                 </td>
 
                                 <td style="text-align: center">
