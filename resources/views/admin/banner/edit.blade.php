@@ -63,46 +63,46 @@
 
             </div>
 
-            <h6>Pilih Cover</h6>
+            <h6>{{__('message.Cover')}}</h6>
 
         </div>
 
-      </div>   
+      </div>
 
       <div class="form-group ml-5">
-        <label for="title" class="col-sm-2 col-form-label">Title</label>
+        <label for="title" class="col-sm-2 col-form-label">{{__('message.Title')}}</label>
         <div class="col-sm-7">
             <input type="text" name='title' class="form-control {{$errors->first('title') ? "is-invalid" : "" }} " value="{{old('title') ? old('title') : $banner->title}}" id="title" placeholder="Title">
             <div class="invalid-feedback">
-                {{ $errors->first('title') }}    
-            </div>   
+                {{ $errors->first('title') }}
+            </div>
         </div>
     </div>
 
-    <div class="form-group ml-5">
-        <label for="desc" class="col-sm-2 col-form-label">Desc</label>
-        <div class="col-sm-7">
-          <textarea name="desc" id="desc" cols="30" rows="10" class="form-control {{$errors->first('desc') ? "is-invalid" : "" }} ">{{old('desc') ? old('desc') : $banner->desc}}</textarea>
-          <div class="invalid-feedback">
-            {{ $errors->first('desc') }}    
-        </div> 
-        </div>
-      
-    </div>
+{{--    <div class="form-group ml-5">--}}
+{{--        <label for="desc" class="col-sm-2 col-form-label">Desc</label>--}}
+{{--        <div class="col-sm-7">--}}
+{{--          <textarea name="desc" id="desc" cols="30" rows="10" class="form-control {{$errors->first('desc') ? "is-invalid" : "" }} ">{{old('desc') ? old('desc') : $banner->desc}}</textarea>--}}
+{{--          <div class="invalid-feedback">--}}
+{{--            {{ $errors->first('desc') }}    --}}
+{{--        </div> --}}
+{{--        </div>--}}
+{{--      --}}
+{{--    </div>--}}
 
-    <div class="form-group ml-5">
-      <label for="link" class="col-sm-2 col-form-label">Link</label>
-      <div class="col-sm-7">
-        <input type="text" name='link' class="form-control {{$errors->first('link') ? "is-invalid" : "" }} " value="{{old('link') ? old('link') : $banner->link}}" id="link" placeholder="Link">
-        <div class="invalid-feedback">
-          {{ $errors->first('link') }}    
-      </div> 
-      </div>
-    </div>
+{{--    <div class="form-group ml-5">--}}
+{{--      <label for="link" class="col-sm-2 col-form-label">Link</label>--}}
+{{--      <div class="col-sm-7">--}}
+{{--        <input type="text" name='link' class="form-control {{$errors->first('link') ? "is-invalid" : "" }} " value="{{old('link') ? old('link') : $banner->link}}" id="link" placeholder="Link">--}}
+{{--        <div class="invalid-feedback">--}}
+{{--          {{ $errors->first('link') }}    --}}
+{{--      </div> --}}
+{{--      </div>--}}
+{{--    </div>--}}
 
     <div class="form-group ml-5">
         <div class="col-sm-3">
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary">{{__('message.Update')}}</button>
         </div>
     </div>
   </form>
@@ -125,5 +125,5 @@ function readURL(input) {
   }
 }
 </script>
-  
+
 @endpush

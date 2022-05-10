@@ -55,42 +55,42 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li {{ request()->is('/') ? 'class=active' : '' }}><a href="{{ route('homepage') }}">inicio</a></li>
+          <li {{ request()->is('/') ? 'class=active' : '' }}><a href="{{ route('homepage') }}">{{__('message.Home')}}</a></li>
 
-          <li class="drop-down"><a href="">Anapat</a>
+          <li class="drop-down"><a href="">{{__('message.Anapat')}}</a>
             <ul>
-              <li ><a href="{{ route('about') }}">Anapat</a></li>
-              <li><a href="{{ route('partners') }}">Compañera</a></li>
+              <li ><a href="{{ route('about') }}">{{__('message.Anapat')}}</a></li>
+              <li><a href="{{ route('partners') }}">{{__('message.Compañera')}}</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="">Formación</a>
+          <li class="drop-down"><a href="">{{__('message.Formación')}}</a>
             <ul>
-              <li ><a href="{{ route('entidades_formadoras') }}">Entidad Formadora</a></li>
-              <li ><a href="{{ route('cursos') }}">Cursos</a></li>
-              <li ><a href="{{ route('carnets') }}">Consulta de carnet</a></li>
+              <li ><a href="{{ route('entidades_formadoras') }}">{{__('message.Entidad Formadora')}}</a></li>
+              <li ><a href="{{ route('cursos') }}">{{__('message.Cursos')}}</a></li>
+              <li ><a href="{{ route('carnets') }}">{{__('message.Consulta de carnet')}}</a></li>
             </ul>
           </li>
-          <li class="drop-down"><a href="">Documentación</a>
+          <li class="drop-down"><a href="">{{__('message.Documentación')}}</a>
             <ul>
-              <li class="drop-down"><a href="">Cosas didácticas</a>
+              <li class="drop-down"><a href="">{{__('message.Cosas didácticas')}}</a>
             <ul>
-              <li ><a href="{{ route('category',"guides") }}">Guías</a></li>
-              <li ><a href="{{ route('category',"manuals") }}">Manuales</a></li>
-            </ul>
-
-              </li>
-              <li class="drop-down"><a href="">Forms</a>
-            <ul>
-              <li ><a href="{{ route('category',"inscription") }}">Inscripción</a></li>
-              <li ><a href="{{ route('category',"come-down") }}">Baja </a></li>
+              <li ><a href="{{ route('category',"guides") }}">{{__('message.Guías')}}</a></li>
+              <li ><a href="{{ route('category',"manuals") }}">{{__('message.Manuales')}}</a></li>
             </ul>
 
               </li>
-              <li ><a href="{{ route('category',"others") }}">Otras</a></li>
+              <li class="drop-down"><a href="">{{__('message.Forms')}}</a>
+            <ul>
+              <li ><a href="{{ route('category',"inscription") }}">{{__('message.Inscripción')}}</a></li>
+              <li ><a href="{{ route('category',"come-down") }}">{{__('message.Baja')}} </a></li>
+            </ul>
+
+              </li>
+              <li ><a href="{{ route('category',"others") }}">{{__('message.Otras')}}</a></li>
             </ul>
           </li>
-          <li ><a href="{{ route('category',"news") }}">Noticias</a></li>
-          <li><a href="{{ route('contact') }}">Contacto</a></li>
+          <li ><a href="{{ route('category',"news") }}">{{__('message.Noticias')}}</a></li>
+          <li><a href="{{ route('contact') }}">{{__('message.Contacto')}}</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
@@ -113,31 +113,31 @@
                 <img src="{{ asset('admin/img/logo-anpat.png')}}" alt="">
             </div>
           <div class="col-lg-3 col-md-6 footer-links">
-          <h3>Company</h3>
+          <h3>{{__('message.Company')}}</h3>
             <ul>
-              <li> ANAPAT</li>
-              <li>   C / Albasanz, 67– 2º – Office 47.</li>
-              <li> 28037 Madrid</li>
-              <li> <strong>Tel:</strong> 91 375 81 22 /  <strong> FAX:</strong> 91 327 23 55</li>
-              <li> <a href="">secretario@anapat.es</a></li>
+              <li> {{$general->title}}</li>
+              <li>   {{$general->address1}}.</li>
+              <li> {{$general->address2}}</li>
+              <li> <strong>Tel:</strong> {{$general->phone}} /  <strong> FAX:</strong> {{$general->twitter}}</li>
+              <li> <a href="">{{$general->email}}</a></li>
             </ul>
           </div>
           <div class="col-lg-3 col-md-6 footer-links">
-            <h3>Site Map</h3>
+            <h3>{{__('message.Site Map')}}</h3>
             <ul>
-              <li> <a href="{{ route('homepage') }}">Home</a></li>
-              <li> <a href="{{ route('about') }}">About</a></li>
-              <li><a href="{{ route('contact') }}">Contact</a></li>
-              <li> <a href="{{ route('blog') }}">blog</a></li>
+              <li> <a href="{{ route('homepage') }}">{{__('message.Home')}}</a></li>
+              <li> <a href="{{ route('about') }}">{{__('message.About')}}</a></li>
+              <li><a href="{{ route('contact') }}">{{__('message.Contact')}}</a></li>
+              <li> <a href="{{ route('blog') }}">{{__('message.blog')}}</a></li>
             </ul>
           </div>
           <div class="col-lg-3 col-md-6 footer-links">
             <h3>useful link</h3>
             <ul>
-              <li> <a href="{{ route('entidades_formadoras') }}">Training Entity</a></li>
-              <li> <a href="">Partner</a></li>
-              <li><a href="{{ route('cursos') }}">Course</a></li>
-              <li> <a href="{{ route('carnets') }}">Card</a></li>
+              <li> <a href="{{ route('entidades_formadoras') }}">{{__('message.Training Entity')}}</a></li>
+              <li> <a href="{{ route('partners') }}">{{__('message.Partner')}}</a></li>
+              <li><a href="{{ route('cursos') }}">{{__('message.Course')}}</a></li>
+              <li> <a href="{{ route('carnets') }}">{{__('message.Card')}}</a></li>
             </ul>
           </div>
 

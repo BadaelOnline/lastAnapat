@@ -123,6 +123,12 @@
                                     <a class="collapse-item"
                                        href="{{ route('admin.partner') }}">{{__('message.partner')}}</a>
                                     <a class="collapse-item"
+                                       href="{{ route('admin.banner') }}">{{__('message.banners')}}</a>
+                                    <a class="collapse-item"
+                                       href="{{ route('admin.faq') }}">{{__('message.TIPOS DE PEMPAs')}}</a>
+                                    <a class="collapse-item"
+                                       href="{{ route('admin.link') }}">{{__('message.about home')}}</a>
+                                    <a class="collapse-item"
                                        href="{{ route('admin.general') }}">{{__('message.General Settings')}}</a>
                                 </div>
                             </div>

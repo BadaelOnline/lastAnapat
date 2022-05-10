@@ -37,17 +37,18 @@ class LinkController extends Controller
     public function store(Request $request)
     {
         $link = new Link();
-        $link->name = $request->name;
-        $link->link = $request->link;
+        $link->title = $request->name;
+        $link->text = $request->answer;
+        $link->slug = $request->link;
 
         if ( $link->save()) {
 
             return redirect()->route('admin.link')->with('success', 'Data added successfully');
-    
+
            } else {
-               
+
             return redirect()->route('admin.link.create')->with('error', 'Data failed to add');
-    
+
            }
     }
 
@@ -84,17 +85,18 @@ class LinkController extends Controller
     public function update(Request $request, $id)
     {
         $link = Link::findOrFail($id);
-        $link->name = $request->name;
-        $link->link = $request->link;
+        $link->title = $request->name;
+        $link->text = $request->answer;
+        $link->slug = $request->link;
 
         if ( $link->save()) {
 
             return redirect()->route('admin.link')->with('success', 'Data updated successfully');
-    
+
            } else {
-               
+
             return redirect()->route('admin.link.create')->with('error', 'Data failed to update');
-    
+
            }
     }
 
