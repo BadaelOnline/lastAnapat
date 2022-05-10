@@ -10,8 +10,8 @@
 
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">FAQ</h1>     
-   
+<h1 class="h3 mb-2 text-gray-800">{{__('message.TIPOS DE PEMPAs')}}</h1>
+
 @if (session('success'))
 
 <div class="alert alert-success">
@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.faq.create') }}" class="btn btn-success">Create Faq</a>
+        <a href="{{ route('admin.faq.create') }}" class="btn btn-success">{{__('message.add new Type OF PEMPA')}}</a>
 
     </div>
 
@@ -42,13 +42,13 @@
 
                     <tr>
 
-                        <th>No.</th>
+                        <th>{{__('message.num')}}.</th>
 
-                        <th>Question</th>
+                        <th>{{__('message.Tipo de PEMPA')}}</th>
 
-                        <th>Answer</th>
+                        <th>{{__('message.desc')}}</th>
 
-                        <th>Option</th>
+                        <th>{{__('message.Option')}}</th>
 
                     </tr>
 
@@ -57,43 +57,45 @@
                 <tbody>
 
                 @php
-                
+
                 $no=0;
-                
+
                 @endphp
-                
+
                 @foreach ($faq as $faq)
-                     
-                    <tr> 
-             
-                        <td>{{ ++$no }}</td>  
-                
-                        <td>{{ $faq->question }}</td> 
-                        
-                        <td>{{ substr($faq->answer,0,100) }}...</td>   
-                
-                        <td>    
-                
-                            <a href="{{route('admin.faq.edit', [$faq->id])}}" class="btn btn-info btn-sm"> Edit </a>
-                
-                            <form method="POST" action="{{route('admin.faq.destroy', [$faq->id])}}" class="d-inline" onsubmit="return confirm('Delete this faq permanently?')">
-                
+
+                    <tr>
+
+                        <td>{{ ++$no }}</td>
+
+                        <td>{{ $faq->question }}</td>
+
+                        <td>{{ substr($faq->answer,0,100) }}...</td>
+
+                        <td>
+
+                            <a href="{{route('admin.faq.edit', [$faq->id])}}" class="btn btn-info btn-sm"> <i class="fas fa-edit"></i> </a>
+
+                            <form method="POST" action="{{route('admin.faq.destroy', [$faq->id])}}" class="d-inline" onsubmit="return confirm('¿estás seguro?')">
+
                                 @csrf
-                
+
                                 <input type="hidden" name="_method" value="DELETE">
-                
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                
+
+                                <button type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                    <i class='fas fa-trash-alt'></i>
+                                </button>
+
                             </form>
-                
+
                         </td>
-            
+
                     </tr>
-            
+
                     @endforeach
-        
+
                 </tbody>
-    
+
             </table>
 
         </div>

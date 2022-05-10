@@ -10,8 +10,8 @@
 
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">Link</h1>     
-   
+<h1 class="h3 mb-2 text-gray-800">{{__('message.about home')}}</h1>
+
 @if (session('success'))
 
 <div class="alert alert-success">
@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.link.create') }}" class="btn btn-success">Create Link</a>
+        <a href="{{ route('admin.link.create') }}" class="btn btn-success">{{__('message.añadir nuevo')}}</a>
 
     </div>
 
@@ -42,13 +42,15 @@
 
                     <tr>
 
-                        <th>No.</th>
+                        <th>{{__('message.num')}}.</th>
 
-                        <th>Name</th>
+                        <th>{{__('message.Title')}}</th>
 
-                        <th>Link</th>
+                        <th>{{__('message.desc')}}</th>
 
-                        <th>Option</th>
+                        <th>{{__('message.Link')}}</th>
+
+                        <th>{{__('message.Option')}}</th>
 
                     </tr>
 
@@ -57,43 +59,48 @@
                 <tbody>
 
                 @php
-                
+
                 $no=0;
-                
+
                 @endphp
-                
+
                 @foreach ($link as $link)
-                     
-                    <tr> 
-             
-                        <td>{{ ++$no }}</td>  
-                
-                        <td>{{ $link->name }}</td> 
-                        
-                        <td>{{ $link->link}}</td>   
-                
-                        <td>    
-                
-                            <a href="{{route('admin.link.edit', [$link->id])}}" class="btn btn-info btn-sm"> Edit </a>
-                
-                            <form method="POST" action="{{route('admin.link.destroy', [$link->id])}}" class="d-inline" onsubmit="return confirm('Delete this link permanently?')">
-                
+
+                    <tr>
+
+                        <td>{{ ++$no }}</td>
+
+                        <td>{{ $link->title }}</td>
+
+                        <td>{{ $link->text}}</td>
+
+
+                        <td>{{ $link->slug}}</td>
+
+                        <td>
+
+                            <a href="{{route('admin.link.edit', [$link->id])}}" class="btn btn-info btn-sm"> <i class="fas fa-edit"></i> </a>
+
+                            <form method="POST" action="{{route('admin.link.destroy', [$link->id])}}" class="d-inline" onsubmit="return confirm('¿estás seguro?')">
+
                                 @csrf
-                
+
                                 <input type="hidden" name="_method" value="DELETE">
-                
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                
+
+                                <button type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                    <i class='fas fa-trash-alt'></i>
+                                </button>
+
                             </form>
-                
+
                         </td>
-            
+
                     </tr>
-            
+
                     @endforeach
-        
+
                 </tbody>
-    
+
             </table>
 
         </div>

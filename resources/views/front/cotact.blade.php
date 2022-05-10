@@ -6,17 +6,17 @@
             <!-- ======= contact  Section ======= -->
             <section id="contact" class="contact">
             <div class="container">
-            <h2 class="title">Contact Us</h2>
+            <h2 class="title">{{__('message.Contact Us')}}</h2>
                   <div class="contain">
-                
+
                   <div class="info">
                    <div class="info-icon">
                    <i class="icofont-phone"></i>
                    </div>
                    <div class="info-text">
-                         <h3>Numbers</h3>
-                         <p>Tel: 91 375 81 22 </p>
-                         <p>FAX: 91 327 23 55 </p>
+                         <h3>{{__('message.Numbers')}}</h3>
+                         <p>Tel: {{$general->phone}} </p>
+                         <p>FAX: {{$general->twitter}} </p>
                    </div>
                   </div>
                   <div class="info">
@@ -24,8 +24,8 @@
                    <i class="icofont-email"></i>
                    </div>
                    <div class="info-text">
-                         <h3>Email</h3>
-                         <a>secretario@anapat.es</a>
+                         <h3>{{__('message.Email')}}</h3>
+                         <a>{{$general->email}}</a>
                    </div>
                   </div>
                   <div class="info">
@@ -33,24 +33,24 @@
                    <i class="icofont-google-map"></i>
                    </div>
                    <div class="info-text">
-                         <h3>Address</h3>
-                         <p>C / Albasanz, 67– 2º – Office 47. </p>
-                         <p>28037 Madrid </p>
+                         <h3>{{__('message.Address')}}</h3>
+                         <p>{{$general->address1}} </p>
+                         <p>{{$general->address2}} </p>
                    </div>
                   </div>
                   <div class="info-input">
                    <div class="info-text">
-                         <h3>Send Us a Message</h3>
+                         <h3>{{__('message.Send Us a Message')}}</h3>
                          <div class="webflow-style-input">
-                        <textarea class="" type="email" placeholder="What's your Message?"></textarea>
+                        <textarea class="" type="email" placeholder="{{__('message.What\'s your Message?')}}"></textarea>
                         <button type="submit"><i class="icofont-arrow-right"></i></button>
                         </div>
                    </div>
                   </div>
-               
+
               </div>
             </div>
       </section>
       <!-- End contact Section -->
-  
+
 @endsection

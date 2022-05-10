@@ -32,14 +32,16 @@ class FrontController extends Controller
     {
         $about = About::find(1);
         $banner = Banner::all();
+        $faqs = Faq::all();
+        $pages =Link::all();
         $general = General::find(1);
-        $link = Link::orderBy('name','asc')->get();
+//        $link = Link::orderBy('name','asc')->get();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $partner = Partner::orderBy('name','asc')->limit(8)->get();
         $pcategories = Pcategory::all()->where('estado', 1);
         $portfolio = Portfolio::all()->where('estado', 1);
         $service = Service::orderBy('title','asc')->get();
-        return view ('front.home',compact('about','banner','general','link','lpost','partner','pcategories','portfolio','service'));
+        return view ('front.home',compact('about','pages','faqs','banner','general','lpost','partner','pcategories','portfolio','service'));
     }
 
     public function about()
@@ -47,11 +49,11 @@ class FrontController extends Controller
         $about = About::find(1);
         $faq = Faq::all();
         $general = General::find(1);
-        $link = Link::orderBy('name','asc')->get();
+//        $link = Link::orderBy('name','asc')->get();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $partner = Partner::orderBy('name','asc')->get();
         $team = Team::orderBy('id','asc')->get();
-        return view ('front.about',compact('about','faq','general','link','lpost','partner','team'));
+        return view ('front.about',compact('about','faq','general','lpost','partner','team'));
     }
 
     public function contact()
@@ -59,7 +61,7 @@ class FrontController extends Controller
         $about = About::find(1);
         $faq = Faq::all();
         $general = General::find(1);
-        $link = Link::orderBy('name','asc')->get();
+        $link = Link::all();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $partner = Partner::orderBy('name','asc')->get();
         $team = Team::orderBy('id','asc')->get();
@@ -71,7 +73,7 @@ class FrontController extends Controller
 //        $about = About::find(1);
 //        $faq = Faq::all();
 //        $general = General::find(1);
-//        $link = Link::orderBy('name','asc')->get();
+//        $link = Link::all();
 //        $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
 //        $partner = Partner::orderBy('name','asc')->get();
 //        $team = Team::orderBy('id','asc')->get();
@@ -81,7 +83,7 @@ class FrontController extends Controller
     public function testi()
     {
         $general = General::find(1);
-        $link = Link::orderBy('name','asc')->get();
+        $link = Link::all();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $testi = Testimonial::orderBy('name','asc')->paginate(6);
         return view ('front.testi',compact('general','link','lpost','testi'));
@@ -97,7 +99,7 @@ class FrontController extends Controller
     public function curso($cursoo)
     {
         $general = General::find(1);
-        $link = Link::orderBy('name','asc')->get();
+        $link = Link::all();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
 //        $service = Service::where('slug', $slug)->firstOrFail();
         $curso = Cursos::where('curso',$cursoo)->firstOrFail();
@@ -192,7 +194,7 @@ class FrontController extends Controller
     {
         $service = Service::orderBy('title','asc')->get();
         $general = General::find(1);
-        $link = Link::orderBy('name','asc')->get();
+        $link = Link::all();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $pcategories = Pcategory::all();
         $portfolio = Portfolio::all();
@@ -203,7 +205,7 @@ class FrontController extends Controller
     public function entidade_formadora($slug)
     {
         $general = General::find(1);
-        $link = Link::orderBy('name','asc')->get();
+        $link = Link::all();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $entidadesFormadore = EntidadesFormadoreas::where('id', $slug)->firstOrFail();
         return view ('front.entidade_formadora',compact('general','link','lpost','entidadesFormadore'));
@@ -213,7 +215,7 @@ class FrontController extends Controller
     {
         $categories = Category::all();
         $general = General::find(1);
-        $link = Link::orderBy('name','asc')->get();
+        $link = Link::all();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $posts = Post::where('status','=','PUBLISH')->orderBy('id','desc')->paginate(3);
         $recent = Post::orderBy('id','desc')->limit(5)->get();
@@ -226,7 +228,7 @@ class FrontController extends Controller
     {
         $categories = Category::all();
         $general = General::find(1);
-        $link = Link::orderBy('name','asc')->get();
+        $link = Link::all();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $post = Post::where('slug', $slug)->firstOrFail();
         $old = $post->views;
@@ -243,7 +245,7 @@ class FrontController extends Controller
     {
         $categories = Category::where('id',$category->id)->firstOrFail();
         $general = General::find(1);
-        $link = Link::orderBy('name','asc')->get();
+        $link = Link::all();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $posts = $category->posts()->latest()->paginate(6);
         $recent = Post::orderBy('id','desc')->limit(5)->get();
@@ -255,7 +257,7 @@ class FrontController extends Controller
     {
         $categories = Category::all();
         $general = General::find(1);
-        $link = Link::orderBy('name','asc')->get();
+        $link = Link::all();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $posts = $tag->posts()->latest()->paginate(12);
         $recent = Post::orderBy('id','desc')->limit(5)->get();
@@ -270,7 +272,7 @@ class FrontController extends Controller
 
         $categories = Category::all();
         $general = General::find(1);
-        $link = Link::orderBy('name','asc')->get();
+        $link = Link::all();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $posts = Post::where("title","like","%$query%")->latest()->paginate(9);
         $recent = Post::orderBy('id','desc')->limit(5)->get();
@@ -282,7 +284,7 @@ class FrontController extends Controller
     public function page($slug)
     {
         $general = General::find(1);
-        $link = Link::orderBy('name','asc')->get();
+        $link = Link::all();
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $page = Page::where('slug', $slug)->firstOrFail();
         return view('front.page',compact('general','link','lpost','page'));

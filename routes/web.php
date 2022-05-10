@@ -168,21 +168,21 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::post('horario/edit/{id}', [HorarioController::class, 'update'])->name('horario.update');
     Route::delete('horario/destroy/{id}',[HorarioController::class, 'destroy'])->name('horario.destroy');
 
-    // Manage Links
-    Route::get('links', [LinkController::class, 'index'])->name('link');
-    Route::get('links/create', [LinkController::class, 'create'])->name('link.create');
-    Route::post('links/create', [LinkController::class, 'store'])->name('link.store');
-    Route::get('links/edit/{id}', [LinkController::class, 'edit'])->name('link.edit');
-    Route::post('links/edit/{id}', [LinkController::class, 'update'])->name('link.update');
-    Route::delete('links/destroy/{id}',[LinkController::class, 'destroy'])->name('link.destroy');
+    // Manage about
+    Route::get('abouts', [LinkController::class, 'index'])->name('link');
+    Route::get('abouts/create', [LinkController::class, 'create'])->name('link.create');
+    Route::post('abouts/create', [LinkController::class, 'store'])->name('link.store');
+    Route::get('abouts/edit/{id}', [LinkController::class, 'edit'])->name('link.edit');
+    Route::post('abouts/edit/{id}', [LinkController::class, 'update'])->name('link.update');
+    Route::delete('abouts/destroy/{id}',[LinkController::class, 'destroy'])->name('link.destroy');
 
     // Manage FAQ
-    Route::get('faq', [FaqController::class, 'index'])->name('faq');
-    Route::get('faq/create', [FaqController::class, 'create'])->name('faq.create');
-    Route::post('faq/create', [FaqController::class, 'store'])->name('faq.store');
-    Route::get('faq/edit/{id}', [FaqController::class, 'edit'])->name('faq.edit');
-    Route::post('faq/edit/{id}', [FaqController::class, 'update'])->name('faq.update');
-    Route::delete('faq/destroy/{id}',[FaqController::class, 'destroy'])->name('faq.destroy');
+    Route::get('tipo', [FaqController::class, 'index'])->name('faq');
+    Route::get('tipo/create', [FaqController::class, 'create'])->name('faq.create');
+    Route::post('tipo/create', [FaqController::class, 'store'])->name('faq.store');
+    Route::get('tipo/edit/{id}', [FaqController::class, 'edit'])->name('faq.edit');
+    Route::post('tipo/edit/{id}', [FaqController::class, 'update'])->name('faq.update');
+    Route::delete('tipo/destroy/{id}',[FaqController::class, 'destroy'])->name('faq.destroy');
 
     // Manage Partners
     Route::get('partners', [PartnerController::class, 'index'])->middleware('can:isAdmin')->name('partner');
