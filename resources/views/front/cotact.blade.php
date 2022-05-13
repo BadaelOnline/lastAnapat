@@ -24,7 +24,7 @@
                    <i class="icofont-email"></i>
                    </div>
                    <div class="info-text">
-                         <h3>{{__('message.Email')}}</h3>
+                         <h3>{{__('message.Mail')}}</h3>
                          <a>{{$general->email}}</a>
                    </div>
                   </div>

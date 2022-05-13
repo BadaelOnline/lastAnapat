@@ -17,7 +17,7 @@ Blog -
         <div class="col-lg-4">
 
 <div class="sidebar">
-  <h3 class="sidebar-title">Categories</h3>
+  <h3 class="sidebar-title">{{__('message.categorías')}}</h3>
   <div class="sidebar-item categories">
     <ul>
       @foreach ($categories as $category)
@@ -27,7 +27,7 @@ Blog -
 
   </div><!-- End sidebar categories-->
 
-  <h3 class="sidebar-title">Recent Posts</h3>
+  <h3 class="sidebar-title">{{__('message.recent post')}}</h3>
   <div class="sidebar-item recent-posts">
 
     @foreach ($recent as $recent)
@@ -40,7 +40,7 @@ Blog -
 
   </div><!-- End sidebar recent posts-->
 
-  <h3 class="sidebar-title">Tags</h3>
+  <h3 class="sidebar-title">{{__('message.tags')}}</h3>
   <div class="sidebar-item tags">
     <ul>
       @foreach ($tags as $tag)
@@ -56,7 +56,7 @@ Blog -
           <div class="col-lg-8 entries">
   <div class="sidebar-item search-form">
     <form action="{{ route("search") }}" method="GET">
-      <input type="text" name="query" placeholder="Search">
+      <input type="text" name="query" placeholder="{{__('message.Search')}}">
       <button type="submit"><i class="icofont-search"></i></button>
     </form>
 
@@ -76,7 +76,7 @@ Blog -
                 <ul>
                   <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="{{route('blogshow',$post->slug)}}">{{ $post->user->name }}</a></li>
                   <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="{{route('blogshow',$post->slug)}}"><time datetime="2020-01-01">{{ Carbon\Carbon::parse($post->created_at)->format("d F, Y") }}</time></a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-eye"></i> <a href="{{route('blogshow',$post->slug)}}">{{ $post->views }} Views</a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-eye"></i> <a href="{{route('blogshow',$post->slug)}}">{{ $post->views }} {{__('message.Views')}}</a></li>
                 </ul>
               </div>
 
@@ -85,7 +85,7 @@ Blog -
                   {{ Str::limit( strip_tags( $post->body ), 250 ) }}
                 </p>
                 <div class="read-more">
-                  <a href="{{ route('blogshow',$post->slug) }}">Read More</a>
+                  <a href="{{ route('blogshow',$post->slug) }}">{{__('message.Read More')}}</a>
                 </div>
               </div>
 

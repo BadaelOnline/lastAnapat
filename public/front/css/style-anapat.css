@@ -361,7 +361,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .carousel, #hero .carousel-inner, #hero .carousel-item, #hero .carousel-item::before {
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     position: absolute;

@@ -18,7 +18,7 @@
                     <div class="col-lg-12 entries">
                         <div class="sidebar-item search-form">
                             <form action="{{ route("search") }}" method="GET">
-                                <input type="text" name="query" placeholder="Search">
+                                <input type="text" name="query" placeholder="{{__('message.Search')}}">
                                 <button type="submit"><i class="icofont-search"></i></button>
                             </form>
 
@@ -38,7 +38,7 @@
                                     <ul>
                                         <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="{{route('blogshow',$post->slug)}}">{{ $post->user->name }}</a></li>
                                         <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="{{route('blogshow',$post->slug)}}"><time datetime="2020-01-01">{{ Carbon\Carbon::parse($post->created_at)->format("d F, Y") }}</time></a></li>
-                                        <li class="d-flex align-items-center"><i class="icofont-eye"></i> <a href="{{route('blogshow',$post->slug)}}">{{ $post->views }} Views</a></li>
+                                        <li class="d-flex align-items-center"><i class="icofont-eye"></i> <a href="{{route('blogshow',$post->slug)}}">{{ $post->views }} {{__('message.Views')}}</a></li>
                                     </ul>
                                 </div>
 
@@ -47,7 +47,7 @@
                                         {{ Str::limit( strip_tags( $post->body ), 250 ) }}
                                     </p>
                                     <div class="read-more">
-                                        <a href="{{ route('blogshow',$post->slug) }}">Read More</a>
+                                        <a href="{{ route('blogshow',$post->slug) }}">{{__('message.Read More')}}</a>
                                     </div>
                                 </div>
 

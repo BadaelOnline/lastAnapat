@@ -23,8 +23,8 @@
 {{--             <p>CIF : {{$entidadesFormadore->cif}}</p>--}}
              <p>Razón social : {{$entidadesFormadore->razon_social}}</p>
              <p>Codigo postal : {{$entidadesFormadore->codigo_postal}}</p>
-            <p>Web: <a href="{{$entidadesFormadore->web}}" > {{$entidadesFormadore->web}}</a></p>
-             <p>mail : <a href="mailto:{{$entidadesFormadore->mail}}" > {{$entidadesFormadore->mail}}</a></p>
+            <p>{{__('message.WEB')}}: <a href="{{$entidadesFormadore->web}}" > {{$entidadesFormadore->web}}</a></p>
+             <p>{{__('message.Mail')}} : <a href="mailto:{{$entidadesFormadore->mail}}" > {{$entidadesFormadore->mail}}</a></p>
              <p>Certificada : {{$entidadesFormadore->certificado == 0 ? "En Proceso de Certificación" : "Si"}}</p>
               <p></p>
 {{--              <div class="d-flex justify-content-center">--}}
@@ -33,7 +33,7 @@
 {{--              <a href="">Download</a>--}}
 {{--              </div>--}}
               <p></p>
-              <button><a href="{{$entidadesFormadore->web}}" style="color: #000000;"> Web</a></button>
+              <button><a href="{{$entidadesFormadore->web}}" style="color: #000000;"> {{__('message.WEB')}}</a></button>
         </div>
       </div>
 

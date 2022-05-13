@@ -7,7 +7,7 @@
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
      <div class="d-flex justify-content-between flex-wrap">
-        <h2 class="title" style="margin-top: 50px;">Entidades formadoras</h2>
+        <h2 class="title" style="margin-top: 50px;">{{__('message.Entidades Formadoras')}}</h2>
       <div class="search">
       <input type="text" placeholder="Search">
         <i class="icofont-search"></i>
@@ -24,9 +24,9 @@
             <p>{{$entidadesFormadores->nombre}}</p>
               <p>{{$entidadesFormadores->direccion}}</p>
               <hr>
-              <p>Web: <a href="{{$entidadesFormadores->web}}" > {{$entidadesFormadores->web}}</a></p>
+              <p>{{__('message.WEB')}}: <a href="{{$entidadesFormadores->web}}" > {{$entidadesFormadores->web}}</a></p>
               <hr>
-              <p>Correo electrónico: <a href="mailto:{{$entidadesFormadores->mail}}" > {{$entidadesFormadores->mail}}</a></p>
+              <p>{{__('message.Mail')}}: <a href="mailto:{{$entidadesFormadores->mail}}" > {{$entidadesFormadores->mail}}</a></p>
            <a href="{{ route('entidade_formadora',$entidadesFormadores->id) }}"> <button>{{__('message.Details')}}</button></a>
           </div>
         </div>

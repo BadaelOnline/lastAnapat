@@ -65,7 +65,7 @@
           </li>
           <li class="drop-down"><a href="">{{__('message.Formación')}}</a>
             <ul>
-              <li ><a href="{{ route('entidades_formadoras') }}">{{__('message.Entidad Formadora')}}</a></li>
+              <li ><a href="{{ route('entidades_formadoras') }}">{{__('message.Entidades Formadoras')}}</a></li>
               <li ><a href="{{ route('cursos') }}">{{__('message.Cursos')}}</a></li>
               <li ><a href="{{ route('carnets') }}">{{__('message.Consulta de carnet')}}</a></li>
             </ul>
@@ -132,7 +132,7 @@
             </ul>
           </div>
           <div class="col-lg-3 col-md-6 footer-links">
-            <h3>useful link</h3>
+            <h3>Enlaces de interés</h3>
             <ul>
               <li> <a href="{{ route('entidades_formadoras') }}">{{__('message.Training Entity')}}</a></li>
               <li> <a href="{{ route('partners') }}">{{__('message.Partner')}}</a></li>
@@ -147,7 +147,7 @@
     <div class="container d-md-flex py-4">
       <div class="mr-md-auto text-center text-md-left">
         <div class="copyright">
-         © Powered by <a href="https://badaelonline.com/" target="_blank" style="color: #FFFFFF">al-badael online</a>
+        Copyright © 2022 ANAPAT FORMACIÓN Todos los derechos reservados.
         </div>
       </div>
       <!-- <div class="social-links text-center text-md-right pt-3 pt-md-0">
