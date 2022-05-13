@@ -6,7 +6,7 @@
     <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
-      <h2 class="title" style="margin-top: 50px;">Courses</h2>
+      <h2 class="title" style="margin-top: 50px;">{{__('message.Cursos')}}</h2>
         <div class="row">
           @foreach ($cursos as $cursos)
           <div class="col-lg-3 col-md-6 d-flex justify-content-center mt-4" data-aos="zoom-in" data-aos-delay="100">
@@ -24,7 +24,7 @@
               <p>
                   {{$cursos->fecha_inicio}}
               </p>
-           <a href="{{ route('curso',$cursos->curso) }}"> <button>Details</button></a>
+           <a href="{{ route('curso',$cursos->curso) }}"> <button>{{__('message.Details')}}</button></a>
           </div>
         </div>
         @endforeach

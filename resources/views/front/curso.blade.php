@@ -167,7 +167,7 @@
             <p></p>
               <div class="d-flex justify-content-center">
                   @if(isset($curso->asistentes_pdf))
-              <a href="{{asset('storage/' . $curso->asistentes_pdf)}}">Show Assistants</a>
+              <a href="{{asset('storage/' . $curso->asistentes_pdf)}}">mostrar Asistentes</a>
               <span class="ml-3 mr-3">or</span>
               <a href="{{asset('storage/' . $curso->asistentes_pdf)}}" download>Descargar</a>
                   @else

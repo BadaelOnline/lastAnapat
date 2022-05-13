@@ -32,12 +32,12 @@
     <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
       <div class="container">
-      <h2 class="title">Blog show</h2>
+      <h2 class="title">{{__('message.Blog show')}}</h2>
         <div class="row" style="margin-top: 50px;">
         <div class="col-lg-4">
 
 <div class="sidebar">
-  <h3 class="sidebar-title">Categories</h3>
+  <h3 class="sidebar-title">{{__('message.categorías')}}</h3>
   <div class="sidebar-item categories">
     <ul>
       @foreach ($categories as $category)
@@ -47,7 +47,7 @@
 
   </div><!-- End sidebar categories-->
 
-  <h3 class="sidebar-title">Recent Posts</h3>
+  <h3 class="sidebar-title">{{__('message.recent post')}}</h3>
   <div class="sidebar-item recent-posts">
 
     @foreach ($recent as $recent)
@@ -60,7 +60,7 @@
 
   </div><!-- End sidebar recent posts-->
 
-  <h3 class="sidebar-title">Tags</h3>
+  <h3 class="sidebar-title">{{__('message.tags')}}</h3>
   <div class="sidebar-item tags">
     <ul>
       @foreach ($tags as $tag)
@@ -89,7 +89,7 @@
                 <ul>
                   <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="{{route('blogshow',$post->slug)}}">{{ $post->user->name }}</a></li>
                   <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="{{route('blogshow',$post->slug)}}"><time datetime="2020-01-01">{{ Carbon\Carbon::parse($post->created_at)->format("d F, Y") }}</time></a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="{{ URL::current()}}#disqus_thread">Comments</a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="{{ URL::current()}}#disqus_thread">{{__('message.Comentarios')}}</a></li>
                 </ul>
               </div>
 
@@ -121,20 +121,20 @@
 
             <div class="blog-comments" data-aos="fade-up">
 
-              <h4>Leave a Comment </h4>
-              <p>Your email address will not be published. Required fields are marked</p>
-              <textarea placeholder="Type here" cols="20" rows="4"></textarea>
+              <h4>{{__('message.Leave a Comment')}} </h4>
+              <p>{{__('message.Your email address will not be published. Required fields are marked')}}</p>
+              <textarea placeholder="{{__('message.type here')}}" cols="20" rows="4"></textarea>
               <div class="val-info" >
-                <input type="text" placeholder="Name">
-                <input type="email" placeholder="Email">
-                <input type="text" placeholder="Website">
+                <input type="text" placeholder="{{__('message.Name')}}">
+                <input type="email" placeholder="{{__('message.Mail')}}">
+                <input type="text" placeholder="{{__('message.WEB')}}">
               </div>
               <div class="save-info" >
                 <input type="checkbox">
-                <p>Save my name, email, and website in this browser for the next time I comment.</p>
+                <p>{{__('message.Save my name, email, and website in this browser for the next time I comment')}}.</p>
               </div>
               <div class="send">
-                <button>Post Comment    <i class="icofont-send-mail"></i></button>
+                <button>{{__('message.Post Comment')}}    <i class="icofont-send-mail"></i></button>
 
               </div>
 

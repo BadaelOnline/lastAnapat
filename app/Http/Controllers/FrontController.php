@@ -137,14 +137,16 @@ class FrontController extends Controller
         $now = now().date('');
         $carnet = Carnet::where('numero',$request->numero)->whereDate('fecha_de_emision' , '>' ,$now )->first();
         $carnet2 = Carnet::where('numero',$request->numero)->whereDate('fecha_de_emision' , '<=' ,$now )->first();
-//dd($carnet);
+//dd($carnet2);
         if ($carnet2 != null && $carnet == null){
             $test = "Esta Carné ya expiró.";
             return view('front.carnets', compact('general','test'));
         }
         if($carnet != null){
             $operador = Operadores::where('id',$carnet->operador)->firstOrFail();
+
             $curso = Cursos::where('id',$carnet->curso)->firstOrFail();
+//            dd($curso);
             return view ('front.carnet',compact('general','operador','carnet','curso'));
             } else {
             $test = "Ningún Carné coincide con el código buscado.";

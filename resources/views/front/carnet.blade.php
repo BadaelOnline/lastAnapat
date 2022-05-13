@@ -24,7 +24,7 @@
                             <p>Tipos De Pemp : {{$carnet->tipos_de_pemp}}</p>
                             <p>Curso : {{$curso->codigo}}</p>
                             <p>Examen Teorico Realizado: {{$carnet->examen_teorico_realizado}}</p>
-                            <p>Estado : {{$carnet->estado == 0 ? "No" : "Yes"}}</p>
+                            <p>Estado : {{$carnet->estado == 0 ? "No" : "Si"}}</p>
 
                         </div>
                     </div>
