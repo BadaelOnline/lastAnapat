@@ -59,9 +59,12 @@
 
                 <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>
 
-                <input type="file" id="wizard-picture" name="cover">
-
+                <input type="file" id="wizard-picture" name="portada" class=" {{$errors->first('portada') ? "is-invalid" : "" }} ">
+                <div class="invalid-feedback" style="position: absolute;right: 0;bottom: -20px;">
+                    {{ $errors->first('portada') }}
+                </div>
             </div>
+
 
             <h6>{{__('message.Cover')}}</h6>
 
@@ -70,11 +73,11 @@
       </div>
 
       <div class="form-group ml-5">
-        <label for="title" class="col-sm-2 col-form-label">{{__('message.Title')}}</label>
+        <label for="título" class="col-sm-2 col-form-label">{{__('message.Title')}}</label>
         <div class="col-sm-7">
-            <input type="text" name='title' class="form-control {{$errors->first('title') ? "is-invalid" : "" }} " value="{{old('title')}}" id="title" placeholder="Title">
+            <input type="text" name='título' class="form-control {{$errors->first('título') ? "is-invalid" : "" }} " value="{{old('título')}}" id="título" placeholder="título">
             <div class="invalid-feedback">
-                {{ $errors->first('title') }}
+                {{ $errors->first('título') }}
             </div>
         </div>
     </div>

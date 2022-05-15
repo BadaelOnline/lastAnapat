@@ -36,10 +36,15 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'título' => 'required',
+            'descripción' => 'required',
+            'enlace' => 'required',
+        ]);
         $link = new Link();
-        $link->title = $request->name;
-        $link->text = $request->answer;
-        $link->slug = $request->link;
+        $link->title = $request->título;
+        $link->text = $request->descripción;
+        $link->slug = $request->enlace;
 
         if ( $link->save()) {
 
@@ -84,10 +89,15 @@ class LinkController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'título' => 'required',
+            'descripción' => 'required',
+            'enlace' => 'required',
+        ]);
         $link = Link::findOrFail($id);
-        $link->title = $request->name;
-        $link->text = $request->answer;
-        $link->slug = $request->link;
+        $link->title = $request->título;
+        $link->text = $request->descripción;
+        $link->slug = $request->enlace;
 
         if ( $link->save()) {
 

@@ -37,17 +37,21 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'tipo_de_pempa' => 'required',
+            'descripción' => 'required',
+        ]);
         $faq = new Faq();
-        $faq->question = $request->question;
-        $faq->answer = $request->answer;
+        $faq->question = $request->tipo_de_PEMPA;
+        $faq->answer = $request->descripción;
         if ( $faq->save()) {
 
             return redirect()->route('admin.faq')->with('success', 'Data added successfully');
-    
+
            } else {
-               
+
             return redirect()->route('admin.faq.create')->with('error', 'Data failed to add');
-    
+
            }
     }
 
@@ -84,17 +88,21 @@ class FaqController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'tipo_de_pempa' => 'required',
+            'descripción' => 'required',
+        ]);
         $faq = Faq::findOrFail($id);
-        $faq->question = $request->question;
-        $faq->answer = $request->answer;
+        $faq->question = $request->tipo_de_pempa;
+        $faq->answer = $request->descripción;
         if ( $faq->save()) {
 
             return redirect()->route('admin.faq')->with('success', 'Data updated successfully');
-    
+
            } else {
-               
+
             return redirect()->route('admin.faq.create')->with('error', 'Data failed to update');
-    
+
            }
     }
 

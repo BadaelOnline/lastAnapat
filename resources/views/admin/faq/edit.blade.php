@@ -15,14 +15,14 @@
 
         <div class="form-group ml-5">
 
-            <label for="question" class="col-sm-2 col-form-label">{{__('message.Tipo de PEMPA')}}</label>
+            <label for="tipo_de_pempa" class="col-sm-2 col-form-label">{{__('message.Tipo de PEMPA')}}</label>
 
             <div class="col-sm-7">
 
-                <input type="text" name='question' class="form-control {{$errors->first('question') ? "is-invalid" : "" }} " value="{{old('question') ? old('question') : $faq->question}}" id="question" placeholder="{{__('message.Tipo de PEMPA')}}">
+                <input type="text" name='tipo_de_pempa' class="form-control {{$errors->first('tipo_de_pempa') ? "is-invalid" : "" }} " value="{{old('tipo_de_pempa') ? old('tipo_de_pempa') : $faq->question}}" id="tipo_de_pempa" placeholder="{{__('message.Tipo de PEMPA')}}">
 
                 <div class="invalid-feedback">
-                    {{ $errors->first('question') }}
+                    {{ $errors->first('tipo_de_pempa') }}
                 </div>
 
             </div>
@@ -31,13 +31,13 @@
 
         <div class="form-group ml-5">
 
-            <label for="answer" class="col-sm-2 col-form-label">{{__('message.desc')}}</label>
+            <label for="descripción" class="col-sm-2 col-form-label">{{__('message.desc')}}</label>
 
             <div class="col-sm-7">
 
-                <textarea name="answer" class="form-control {{$errors->first('answer') ? "is-invalid" : "" }} "  id="" cols="30" rows="10">{{old('answer') ? old('answer') : $faq->answer}}</textarea>
+                <textarea name="descripción" class="form-control {{$errors->first('descripción') ? "is-invalid" : "" }} "  id="" cols="30" rows="10">{{old('descripción') ? old('descripción') : $faq->answer}}</textarea>
                 <div class="invalid-feedback">
-                    {{ $errors->first('answer') }}
+                    {{ $errors->first('descripción') }}
                 </div>
 
             </div>

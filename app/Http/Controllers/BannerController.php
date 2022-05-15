@@ -38,12 +38,16 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'portada' => 'required',
+            'título' => 'required',
+        ]);
         $banner = new Banner();
-        $banner->title  = $request->title;
-        $banner->link  = $request->link;
-        $banner->desc   = $request->desc;
+        $banner->title  = $request->título;
+//        $banner->link  = $request->link;
+//        $banner->desc   = $request->desc;
 
-        $cover = $request->file('cover');
+        $cover = $request->file('portada');
         if($cover){
         $cover_path = $cover->store('images/banner', 'public');
         $banner->cover = $cover_path;
@@ -53,7 +57,7 @@ class BannerController extends Controller
             return redirect()->route('admin.banner')->with('success', 'Data added successfully');
            } else {
             return redirect()->route('admin.banner.create')->with('error', 'Data failed to add');
-    
+
            }
     }
 
@@ -91,10 +95,11 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'título' => 'required',
+        ]);
         $banner = Banner::findOrFail($id);
-        $banner->title  = $request->title;
-        $banner->link  = $request->link;
-        $banner->desc   = $request->desc;
+        $banner->title  = $request->título;
 
         $new_cover = $request->file('cover');
         if($new_cover){
@@ -105,13 +110,13 @@ class BannerController extends Controller
         $new_cover_path = $new_cover->store('images/banner', 'public');
 
         $banner->cover = $new_cover_path;
-    }   
+    }
     // dd($banner);
         if ($banner->update()) {
             return redirect()->route('admin.banner')->with('success', 'Data updated successfully');
            } else {
             return redirect()->route('admin.banner.edit')->with('error', 'Data failed to update');
-    
+
            }
     }
 
@@ -130,7 +135,7 @@ class BannerController extends Controller
                 \Storage::delete('public/'. $banner->cover);
             }
         }
-        
+
         return redirect()->route('admin.banner')->with('success', 'Data deleted successfully');
     }
 }
