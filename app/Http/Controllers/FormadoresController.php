@@ -61,6 +61,7 @@ class FormadoresController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request);
         $request->validate([
             'codigo' => 'required',
             'entidad' => 'required',
