@@ -10,8 +10,8 @@
 
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">Categories</h1>     
-   
+<h1 class="h3 mb-2 text-gray-800">{{__('message.Categories')}}</h1>
+
 @if (session('success'))
 
 <div class="alert alert-success">
@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.category.create') }}" class="btn btn-success">Create category</a>
+        <a href="{{ route('admin.category.create') }}" class="btn btn-success">{{__('message.Create category')}}</a>
 
     </div>
 
@@ -42,17 +42,17 @@
 
                     <tr>
 
-                        <th>No.</th>
+                        <th>{{__('message.num')}}.</th>
 
-                        <th>Name</th>
+                        <th>{{__('message.Name')}}</th>
 
-                        <th>Slug</th>
+                        <th>{{__('message.Slug')}}</th>
 
-                        <th>Keyword</th>
+                        <th>{{__('message.Palabra clave')}}</th>
 
-                        <th>Meta Desc</th>
+                        <th>{{__('message.Meta Desc')}}</th>
 
-                        <th>Option</th>
+                        <th>{{__('message.Option')}}</th>
 
                     </tr>
 
@@ -61,47 +61,49 @@
                 <tbody>
 
                 @php
-                
-                $no=0;
-                
-                @endphp
-                
-                @foreach ($category as $category)
-                     
-                    <tr> 
-             
-                        <td>{{ ++$no }}</td>  
-                
-                        <td>{{ $category->name }}</td> 
-                        
-                        <td>{{ $category->slug }}</td> 
-                        
-                        <td>{{ $category->keyword }}</td> 
 
-                        <td>{{ $category->meta_desc }}</td> 
-                
-                        <td>    
-                
-                            <a href="{{route('admin.category.edit', [$category->id])}}" class="btn btn-info btn-sm"> Edit </a>
-                
-                            <form method="POST" action="{{route('admin.category.destroy', [$category->id])}}" class="d-inline" onsubmit="return confirm('Delete this category permanently?')">
-                
+                $no=0;
+
+                @endphp
+
+                @foreach ($category as $category)
+
+                    <tr>
+
+                        <td>{{ ++$no }}</td>
+
+                        <td>{{ $category->name }}</td>
+
+                        <td>{{ $category->slug }}</td>
+
+                        <td>{{ $category->keyword }}</td>
+
+                        <td>{{ $category->meta_desc }}</td>
+
+                        <td>
+
+                            <a href="{{route('admin.category.edit', [$category->id])}}" class="btn btn-info btn-sm"> <i class="fas fa-edit"></i> </a>
+
+                            <form method="POST" action="{{route('admin.category.destroy', [$category->id])}}" class="d-inline" onsubmit="return confirm('¿Borrar esta categoría permanentemente?')">
+
                                 @csrf
-                
+
                                 <input type="hidden" name="_method" value="DELETE">
-                
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                
+
+                                <button type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                    <i class='fas fa-trash-alt'></i>
+                                </button>
+
                             </form>
-                
+
                         </td>
-            
+
                     </tr>
-            
+
                     @endforeach
-        
+
                 </tbody>
-    
+
             </table>
 
         </div>

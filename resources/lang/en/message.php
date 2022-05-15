@@ -290,7 +290,19 @@ return [
     'Your email address will not be published. Required fields are marked' => 'Su dirección de correo electrónico no será publicada. Los campos obligatorios están marcados',
     'type here' => 'escriba aquí',
     'Save my name, email, and website in this browser for the next time I comment' => 'Guardar mi nombre, correo electrónico y sitio web en este navegador para la próxima vez que comente',
-    'Post Comment' => 'publicar comentario'
+    'Post Comment' => 'publicar comentario',
+    'Palabra clave' => 'Palabra clave',
+    'Status' => 'Estatus',
+    'Create Post' => 'Crear un puesto',
+    'Categoría' => 'Categoría',
+    'Description' => 'Descripción',
+    'Meta Desc' => 'Meta Descripción',
+    'PUBLISH' => 'PUBLICAR',
+    'DRAFT' => 'PROYECTO',
+    'Create category' => 'Crear categoría',
+    'Slug' => 'Slug',
+    'Create tag' => 'Crear etiqueta',
+    ''
 
 
 
