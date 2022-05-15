@@ -70,11 +70,11 @@
       </div>
 
       <div class="form-group ml-5">
-        <label for="title" class="col-sm-2 col-form-label">{{__('message.Title')}}</label>
+        <label for="título" class="col-sm-2 col-form-label">{{__('message.Title')}}</label>
         <div class="col-sm-7">
-            <input type="text" name='title' class="form-control {{$errors->first('title') ? "is-invalid" : "" }} " value="{{old('title') ? old('title') : $banner->title}}" id="title" placeholder="Title">
+            <input type="text" name='título' class="form-control {{$errors->first('título') ? "is-invalid" : "" }} " value="{{old('título') ? old('título') : $banner->title}}" id="título" placeholder="título">
             <div class="invalid-feedback">
-                {{ $errors->first('title') }}
+                {{ $errors->first('título') }}
             </div>
         </div>
     </div>

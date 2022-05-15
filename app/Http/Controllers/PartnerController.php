@@ -36,11 +36,16 @@ class PartnerController extends Controller
     */
    public function store(Request $request)
    {
+       $request->validate([
+           'logo' => 'required',
+           'nombre' => 'required',
+           'enlace' => 'required',
+       ]);
        $partner = new Partner();
        $partner->name = $request->name;
        $partner->link = $request->link;
 
-       $cover = $request->file('cover');
+       $cover = $request->file('logo');
 
        if($cover){
        $cover_path = $cover->store('images/partner', 'public');
@@ -53,7 +58,7 @@ class PartnerController extends Controller
        return redirect()->route('admin.partner')->with('success', 'partner added successfully');
 
       } else {
-          
+
        return redirect()->route('admin.partner.create')->with('error', 'partner failed to add');
 
       }
@@ -92,9 +97,14 @@ class PartnerController extends Controller
     */
    public function update(Request $request, $id)
    {
+       $request->validate([
+           'nombre' => 'required',
+           'enlace' => 'required',
+       ]);
+//       dd($request);
        $partner = Partner::findOrFail($id);
-       $partner->name = $request->name;
-       $partner->link = $request->link;
+       $partner->name = $request->nombre;
+       $partner->link = $request->enlace;
 
        $new_cover = $request->file('cover');
 
@@ -106,7 +116,7 @@ class PartnerController extends Controller
        $new_cover_path = $new_cover->store('images/partner', 'public');
 
        $partner->cover = $new_cover_path;
-   
+
        }
 
       if ( $partner->save()) {
@@ -114,7 +124,7 @@ class PartnerController extends Controller
        return redirect()->route('admin.partner')->with('success', 'Data added successfully');
 
       } else {
-          
+
        return redirect()->route('admin.partner.create')->with('error', 'Data failed to add');
 
       }
@@ -133,9 +143,9 @@ class PartnerController extends Controller
        if($partner->cover && file_exists(storage_path('app/public/' . $partner->cover))){
         \Storage::delete('public/'. $partner->cover);
     }
-    
+
        $partner->delete();
-       
+
        return redirect()->route('admin.partner')->with('success', 'Data deleted successfully');
    }
 }

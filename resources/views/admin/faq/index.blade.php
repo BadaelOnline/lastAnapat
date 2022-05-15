@@ -70,7 +70,7 @@
 
                         <td>{{ $faq->question }}</td>
 
-                        <td>{{ substr($faq->answer,0,100) }}...</td>
+                        <td>{{ substr($faq->answer,0,75) }}...</td>
 
                         <td>
 

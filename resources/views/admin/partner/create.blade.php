@@ -61,14 +61,16 @@
 
                     <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>
 
-                    <input type="file" id="wizard-picture" name="cover" class="form-control {{$errors->first('cover') ? "is-invalid" : "" }} ">
+                    <input type="file" id="wizard-picture" name="logo" class="form-control {{$errors->first('logo') ? "is-invalid" : "" }} ">
 
-                    <div class="invalid-feedback">
-                        {{ $errors->first('cover') }}
+                    <div class="invalid-feedback" style="position: absolute;right: 0;bottom: -20px;">
+                        {{ $errors->first('logo') }}
                     </div>
 
                 </div>
-
+{{--                <div class="invalid-feedback">--}}
+{{--                    {{ $errors->first('logo') }}--}}
+{{--                </div>--}}
                 <h6>{{__('message.Logo')}}</h6>
 
             </div>
@@ -78,14 +80,14 @@
 
         <div class="form-group ml-5">
 
-            <label for="name" class="col-sm-2 col-form-label">{{__('message.Name')}}</label>
+            <label for="nombre" class="col-sm-2 col-form-label">{{__('message.Name')}}</label>
 
             <div class="col-sm-9">
 
-                <input type="text" name='name' class="form-control {{$errors->first('name') ? "is-invalid" : "" }} " value="{{old('name')}}" id="name" placeholder="ex: Wiklop">
+                <input type="text" name='nombre' class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} " value="{{old('nombre')}}" id="nombre" placeholder="ex: Wiklop">
 
                 <div class="invalid-feedback">
-                    {{ $errors->first('name') }}
+                    {{ $errors->first('nombre') }}
                 </div>
 
             </div>
@@ -94,14 +96,14 @@
 
         <div class="form-group ml-5">
 
-            <label for="link" class="col-sm-2 col-form-label">{{__('message.Link')}}</label>
+            <label for="enlace" class="col-sm-2 col-form-label">{{__('message.Link')}}</label>
 
             <div class="col-sm-9">
 
-                <input type="text" name='link' class="form-control {{$errors->first('link') ? "is-invalid" : "" }} " value="{{old('link')}}" id="link" placeholder="ex: Wiklop.com">
+                <input type="text" name='enlace' class="form-control {{$errors->first('enlace') ? "is-invalid" : "" }} " value="{{old('enlace')}}" id="enlace" placeholder="ex: Wiklop.com">
 
                 <div class="invalid-feedback">
-                    {{ $errors->first('link') }}
+                    {{ $errors->first('enlace') }}
                 </div>
 
             </div>

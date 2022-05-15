@@ -72,7 +72,7 @@
 
                         <td>{{ $link->title }}</td>
 
-                        <td>{{ $link->text}}</td>
+                        <td>{{substr($link->text, 0, 75)}}...</td>
 
 
                         <td>{{ $link->slug}}</td>
