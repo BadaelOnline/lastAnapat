@@ -10,7 +10,7 @@
 
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">Posts</h1>
+<h1 class="h3 mb-2 text-gray-800">{{__('message.Blog')}}</h1>
 
 @if (session('success'))
 
@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.post.create') }}" class="btn btn-success">Create Post</a>
+        <a href="{{ route('admin.post.create') }}" class="btn btn-success">{{__('message.Create Post')}}</a>
 
     </div>
 
@@ -42,15 +42,15 @@
 
                     <tr>
 
-                        <th>No.</th>
+                        <th>{{__('message.num')}}.</th>
 
-                        <th>Title</th>
+                        <th>{{__('message.Title')}}</th>
 
-                        <th>Keyword</th>
+                        <th>{{__('message.Palabra clave')}}</th>
 
-                        <th>Status</th>
+                        <th>{{__('message.Status')}}</th>
 
-                        <th>Option</th>
+                        <th>{{__('message.Option')}}</th>
 
                     </tr>
 
@@ -78,14 +78,16 @@
 
                         <td>
 
-                            <a href="{{route('admin.post.edit', [$post->id])}}" class="btn btn-info btn-sm"> Edit </a>
+                            <a href="{{route('admin.post.edit', [$post->id])}}" class="btn btn-info btn-sm"> <i class="fas fa-edit"></i> </a>
 
-                            <form method="POST" class="d-inline" onsubmit="return confirm('Move post to trash ?')" action="{{route('admin.post.destroy', $post->id)}}">
+                            <form method="POST" class="d-inline" onsubmit="return confirm('¿Mover el post a la basura?')" action="{{route('admin.post.destroy', $post->id)}}">
                                 @csrf
 
                                 <input type="hidden" value="DELETE" name="_method">
 
-                                <input type="submit" value="Trash" class="btn btn-danger btn-sm">
+                                <button type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                    <i class='fas fa-trash-alt'></i>
+                                </button>
 
                             </form>
 

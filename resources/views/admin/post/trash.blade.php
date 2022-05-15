@@ -10,8 +10,8 @@
 
 <!-- Page Heading -->
 
-<h1 class="h3 mb-2 text-gray-800">Posts</h1>     
-   
+<h1 class="h3 mb-2 text-gray-800">{{__('message.Blog')}}</h1>
+
 @if (session('success'))
 
 <div class="alert alert-success">
@@ -28,7 +28,7 @@
 
     <div class="card-header py-3">
 
-        <a href="{{ route('admin.post.create') }}" class="btn btn-success">Create Post</a>
+        <a href="{{ route('admin.post.create') }}" class="btn btn-success">{{__('message.Create Post')}}</a>
 
     </div>
 
@@ -42,15 +42,15 @@
 
                     <tr>
 
-                        <th>No.</th>
+                        <th>{{__('message.num')}}.</th>
 
-                        <th>Title</th>
+                        <th>{{__('message.Title')}}</th>
 
-                        <th>Keyword</th>
+                        <th>{{__('message.Palabra clave')}}</th>
 
-                        <th>Status</th>
+                        <th>{{__('message.Status')}}</th>
 
-                        <th>Option</th>
+                        <th>{{__('message.Option')}}</th>
 
                     </tr>
 
@@ -59,48 +59,50 @@
                 <tbody>
 
                 @php
-                
-                $no=0;
-                
-                @endphp
-                
-                @foreach ($post as $post)
-                     
-                    <tr> 
-             
-                        <td>{{ ++$no }}</td>  
-                
-                        <td>{{ $post->title }}</td> 
-                        
-                        <td>{{ $post->category->name }}</td> 
 
-                        <td>{{ $post->status }}</td> 
-                
-                        <td>    
-                
+                $no=0;
+
+                @endphp
+
+                @foreach ($post as $post)
+
+                    <tr>
+
+                        <td>{{ ++$no }}</td>
+
+                        <td>{{ $post->title }}</td>
+
+                        <td>{{ $post->category->name }}</td>
+
+                        <td>{{ $post->status }}</td>
+
+                        <td>
+
                             <form method="POST" action="{{route('admin.post.restore', $post->id)}}" class="d-inline">
                                 @csrf
-                                <input type="submit" value="Restore" class="btn btn-success btn-sm">
+                                <input type="submit" value="Restaurar" class="btn btn-success btn-sm">
                             </form>
-                
-                            <form method="POST" action="{{route('admin.post.deletePermanent', $post->id)}}" class="d-inline" onsubmit="return confirm('Delete this post permanently?')">
+
+                            <form method="POST" action="{{route('admin.post.deletePermanent', $post->id)}}" class="d-inline" onsubmit="return confirm('¿Borrar este post permanentemente?')">
 
                                 @csrf
-    
+
                                 <input type="hidden" name="_method" value="DELETE">
-    
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-    
+
+                                <button type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                    <i class='fas fa-trash-alt'></i>
+                                </button>
+
                             </form>
-                
+
                         </td>
-            
+
                     </tr>
-            
+
                     @endforeach
-        
+
                 </tbody>
-    
+
             </table>
 
         </div>
