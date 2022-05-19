@@ -8,7 +8,6 @@
     <main id="main">
 
 
-
         <!-- ======= Blog Section ======= -->
         <section id="blog" class="blog">
             <div class="container">
@@ -23,36 +22,51 @@
                             </form>
 
                         </div><!-- End sidebar search formn-->
-                        @foreach ($posts as $post)
-                            <article class="entry" data-aos="fade-up">
+                        <div class="row">
+                            @foreach ($posts as $post)
+                                <div class="col-md-4">
+                                    <article class="entry" data-aos="fade-up">
 
-                                <div class="entry-img">
-                                    <img src="{{asset('storage/' . $post->cover)}}" alt="{{ $post->title }}" class="img-fluid">
+                                        <div class="entry-img blog-image">
+                                            <img src="{{asset('storage/' . $post->cover)}}" alt="{{ $post->title }}"
+                                                 class="img-fluid">
+                                        </div>
+
+                                        <h2 class="entry-title">
+                                            <a href="{{ route('blogshow',$post->slug) }}">{{ $post->title }}</a>
+                                        </h2>
+
+                                        <div class="entry-meta">
+                                            <ul>
+                                                <li class="d-flex align-items-center"><i class="icofont-user"></i> <a
+                                                        href="{{route('blogshow',$post->slug)}}">{{ $post->user->name }}</a>
+                                                </li>
+                                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i>
+                                                    <a href="{{route('blogshow',$post->slug)}}">
+                                                        <time
+                                                            datetime="2020-01-01">{{ Carbon\Carbon::parse($post->created_at)->format("d/m/Y") }}</time>
+                                                    </a></li>
+                                                <li class="d-flex align-items-center"><i class="icofont-eye"></i> <a
+                                                        href="{{route('blogshow',$post->slug)}}">{{ $post->views }} {{__('message.Views')}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="entry-content">
+                                            <p>
+                                                {{ Str::limit( strip_tags( $post->body ), 250 ) }}
+                                            </p>
+                                            <div class="read-more">
+                                                <a href="{{ route('blogshow',$post->slug) }}">{{__('message.Read More')}}</a>
+                                            </div>
+                                        </div>
+
+                                    </article><!-- End blog entry -->
                                 </div>
 
-                                <h2 class="entry-title">
-                                    <a href="{{ route('blogshow',$post->slug) }}">{{ $post->title }}</a>
-                                </h2>
+                            @endforeach
+                        </div>
 
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="{{route('blogshow',$post->slug)}}">{{ $post->user->name }}</a></li>
-                                        <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="{{route('blogshow',$post->slug)}}"><time datetime="2020-01-01">{{ Carbon\Carbon::parse($post->created_at)->format("d F, Y") }}</time></a></li>
-                                        <li class="d-flex align-items-center"><i class="icofont-eye"></i> <a href="{{route('blogshow',$post->slug)}}">{{ $post->views }} {{__('message.Views')}}</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="entry-content">
-                                    <p>
-                                        {{ Str::limit( strip_tags( $post->body ), 250 ) }}
-                                    </p>
-                                    <div class="read-more">
-                                        <a href="{{ route('blogshow',$post->slug) }}">{{__('message.Read More')}}</a>
-                                    </div>
-                                </div>
-
-                            </article><!-- End blog entry -->
-                        @endforeach
 
                         <div class="blog-pagination">
                             <ul class="justify-content-center">
@@ -62,7 +76,6 @@
 
                     </div>
                     <!-- End blog entries list -->
-
 
 
                 </div>

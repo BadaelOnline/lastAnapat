@@ -76,22 +76,29 @@
           <div class="col-lg-8 entries">
 
             <article class="entry entry-single" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="entry-img">
+                            <img src="{{asset('storage/' . $post->cover)}}" alt="{{ $post->title }}" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="entry-meta">
+                            <ul style="display: block">
+                                <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="{{route('blogshow',$post->slug)}}">{{ $post->user->name }}</a></li>
+                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="{{route('blogshow',$post->slug)}}"><time datetime="2020-01-01">{{ Carbon\Carbon::parse($post->created_at)->format("d F, Y") }}</time></a></li>
+                                <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="{{ URL::current()}}#disqus_thread">{{__('message.Comentarios')}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-              <div class="entry-img">
-              <img src="{{asset('storage/' . $post->cover)}}" alt="{{ $post->title }}" class="img-fluid">
-              </div>
 
               <h2 class="entry-title">
                 <a href="{{route('blogshow',$post->slug)}}">{{ $post->title }}</a>
               </h2>
 
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="{{route('blogshow',$post->slug)}}">{{ $post->user->name }}</a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="{{route('blogshow',$post->slug)}}"><time datetime="2020-01-01">{{ Carbon\Carbon::parse($post->created_at)->format("d F, Y") }}</time></a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="{{ URL::current()}}#disqus_thread">{{__('message.Comentarios')}}</a></li>
-                </ul>
-              </div>
+
 
               <div class="entry-content">
                 <p>
