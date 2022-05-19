@@ -653,7 +653,7 @@ section {
     justify-content: center;
 }
 .blog .entries .entry .entry-img img{
-    width: 100%;
+    width: auto;
 }
 .blog .entries .entry .entry-title {
     margin-top: 15px;
@@ -1573,4 +1573,8 @@ section {
 }
 .hList > * + * {
     margin-left: 0;
+}
+
+.blog-image{
+    height: 200px;
 }
