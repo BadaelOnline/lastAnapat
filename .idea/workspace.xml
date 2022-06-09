@@ -19,13 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b9c3d3c-a351-4ab6-90ca-e38cb16d2c4d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/front/css/style-anapat.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/front/css/style-anapat.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/blog.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/blogshow.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/blogshow.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/category.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="4b9c3d3c-a351-4ab6-90ca-e38cb16d2c4d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -263,7 +257,7 @@
       <workItem from="1652179824010" duration="9410000" />
       <workItem from="1652455406803" duration="6276000" />
       <workItem from="1652619096699" duration="7339000" />
-      <workItem from="1652898953170" duration="5066000" />
+      <workItem from="1652898953170" duration="5593000" />
     </task>
     <servers />
   </component>
