@@ -1578,3 +1578,12 @@ section {
 .blog-image{
     height: 200px;
 }
+
+@media (max-width: 568.98px) {
+    #hero {
+  height: 300px;
+}
+}
+#hero-carousel-indicators{
+display: none;
+}

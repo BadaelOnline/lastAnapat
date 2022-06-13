@@ -241,14 +241,14 @@
 
                 <div class="form-group col-md-4">
                     <label for="vencimiento" class="col-sm-4 col-form-label">{{__('message.Vencimiento')}}</label>
-                    <label for="vencimiento" class="col-sm-7 col-form-label">{{$asistent->vencimiento != null ? date('d/m/Y',strtotime($asistent->vencimiento)) : ""}}</label>
+{{--                    <label for="vencimiento" class="col-sm-7 col-form-label">{{$asistent->vencimiento != null ? date('d/m/Y',strtotime($asistent->vencimiento)) : ""}}</label>--}}
 
-{{--                    <div class="col-sm-9">--}}
-{{--                        <input type="date" name='vencimiento' class="form-control {{$errors->first('vencimiento') ? "is-invalid" : "" }} " value="{{old('vencimiento') ? old('vencimiento') : $asistent->vencimiento}}"  id="vencimiento" >--}}
-{{--                        <div class="invalid-feedback">--}}
-{{--                            {{ $errors->first('vencimiento') }}--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    <div class="col-sm-9">
+                        <input type="date" name='vencimiento' class="form-control {{$errors->first('vencimiento') ? "is-invalid" : "" }} " value="{{old('vencimiento') ? old('vencimiento') : $asistent->vencimiento}}"  id="vencimiento" >
+                        <div class="invalid-feedback">
+                            {{ $errors->first('vencimiento') }}
+                        </div>
+                    </div>
                 </div>
 
 
