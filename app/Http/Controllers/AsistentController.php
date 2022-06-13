@@ -227,7 +227,7 @@ class AsistentController extends Controller
         $asistent->observaciones = $request->observaciones;
         $operador = Operadores::findOrFail((int)$request->operador);
         $asistent->emision = $operador->fecha;
-        $asistent->vencimiento = $operador->fecha_nacimiento;
+        $asistent->vencimiento = $request->vencimiento;
         $asistent->tipo_1 = $request->tipo_1;
         if (!$request->tipo_2) {
             $asistent->tipo_2 = 0;

@@ -28,9 +28,9 @@
             <div class="carousel-inner" role="listbox">
                 @foreach($banner as $key=>$ban)
                 <div class="carousel-item {{$key == 0 ? "active" : ""}}" style="background-image: url('{{ asset('storage/'.$ban->cover) }}')">
-                    <div class="carousel-container">
-
-                    </div>
+                <!-- <img src="{{ asset('front/img/baner1.jpg') }}" alt="" style="width: 100%;height: 100%;"> -->
+                <img src="{{ asset('storage/'.$ban->cover) }}" alt="" style="width: 100%;height: 100%;">
+                
                 </div>
                 @endforeach
 
