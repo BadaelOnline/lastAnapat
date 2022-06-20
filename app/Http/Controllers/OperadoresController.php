@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Exports\CursoExport;
 use App\Exports\OperatorExport;
 use App\Models\Asistent;
+use App\Models\Carnet;
 use App\Models\Certificado;
 use App\Models\Cursos;
 use App\Models\EntidadesFormadoreas;
@@ -86,7 +87,7 @@ class OperadoresController extends Controller
 
             $operadores->foto = $fotopath;
         } else {
-            $operadores->dni_img = '';
+            $operadores->foto = '';
         }
         if ($dni_img) {
             $dni_imgpath = $dni_img->store('operadoe/' . $request->nombre, 'public');
@@ -98,6 +99,23 @@ class OperadoresController extends Controller
 
 
         if ($operadores->save()) {
+            if ($request['carnet'] != null){
+                $carnet = new Carnet();
+                $carnet->numero = $request->carnet;
+                $carnet->operador = $operadores->id;
+                $fotoCarnet = $request->file('foto');
+                if ($fotoCarnet) {
+                    $fotopath = $fotoCarnet->store('carnets/' . $request->carnet, 'public');
+
+                    $carnet->foto = $fotopath;
+                } else {
+                    $carnet->foto = '';
+                }
+                $carnet->curso = 0;
+                $carnet->estado = 0 ;
+                $carnet->save();
+
+            }
 
             return redirect()->route('admin.operadores')->with('success', 'Data added successfully');
 
@@ -283,6 +301,23 @@ class OperadoresController extends Controller
 
 
         if ($operadores->save()) {
+            if ($request['carnet'] != null){
+                $carnet = new Carnet();
+                $carnet->numero = $request->carnet;
+                $carnet->operador = $operadores->id;
+                $fotoCarnet = $request->file('foto');
+                if ($fotoCarnet) {
+                    $fotopath = $fotoCarnet->store('carnets/' . $request->carnet, 'public');
+
+                    $carnet->foto = $fotopath;
+                } else {
+                    $carnet->foto = '';
+                }
+                $carnet->curso = 0;
+                $carnet->estado = 0 ;
+                $carnet->save();
+
+            }
 
             return redirect()->route('admin.operadores')->with('success', 'Data added successfully');
 
