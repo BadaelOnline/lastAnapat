@@ -22,10 +22,7 @@
     <list default="true" id="4b9c3d3c-a351-4ab6-90ca-e38cb16d2c4d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AsistentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AsistentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CarnetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CarnetController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OperadoresController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OperadoresController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/carnet/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/carnet/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/certificado/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/certificado/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +266,10 @@
       <workItem from="1654769789605" duration="9154000" />
       <workItem from="1655113080085" duration="1456000" />
       <workItem from="1655380201044" duration="2089000" />
-      <workItem from="1655664479543" duration="5088000" />
+      <workItem from="1655664479543" duration="5889000" />
+      <workItem from="1655728708162" duration="261000" />
+      <workItem from="1655729463108" duration="334000" />
+      <workItem from="1655731405562" duration="498000" />
     </task>
     <servers />
   </component>

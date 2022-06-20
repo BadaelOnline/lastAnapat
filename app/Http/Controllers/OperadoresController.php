@@ -301,21 +301,43 @@ class OperadoresController extends Controller
 
 
         if ($operadores->save()) {
-            if ($request['carnet'] != null){
-                $carnet = new Carnet();
-                $carnet->numero = $request->carnet;
-                $carnet->operador = $operadores->id;
-                $fotoCarnet = $request->file('foto');
-                if ($fotoCarnet) {
-                    $fotopath = $fotoCarnet->store('carnets/' . $request->carnet, 'public');
+            if ($request['carnet'] != null ){
+                if ($operadores->carnett == null){
+                    $carnet = new Carnet();
+                    if ($request->carnet != null){
+                        $carnet->numero = $request->carnet;
+                    }else{
+                        $carnet->numero = substr(md5(microtime()),rand(0,26),8) ;
+                    }
+//                    $carnet->numero = $request->carnet;
+                    $carnet->operador = $operadores->id;
+                    $fotoCarnet = $request->file('foto');
+                    if ($fotoCarnet) {
+                        $fotopath = $fotoCarnet->store('carnets/' . $request->carnet, 'public');
 
-                    $carnet->foto = $fotopath;
-                } else {
-                    $carnet->foto = '';
+                        $carnet->foto = $fotopath;
+                    } else {
+                        $carnet->foto = '';
+                    }
+                    $carnet->curso = 0;
+                    $carnet->estado = 0 ;
+                    $carnet->save();
+                }else{
+                    $carnet = $operadores->carnett;
+                    $carnet->numero = $request->carnet;
+                    $carnet->operador = $operadores->id;
+                    $fotoCarnet = $request->file('foto');
+                    if ($fotoCarnet) {
+                        $fotopath = $fotoCarnet->store('carnets/' . $request->carnet, 'public');
+
+                        $carnet->foto = $fotopath;
+                    } else {
+                        $carnet->foto = '';
+                    }
+
+                    $carnet->save();
                 }
-                $carnet->curso = 0;
-                $carnet->estado = 0 ;
-                $carnet->save();
+
 
             }
 

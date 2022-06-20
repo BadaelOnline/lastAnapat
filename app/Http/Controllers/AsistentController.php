@@ -133,7 +133,7 @@ class AsistentController extends Controller
 
         if ($asistent->save()) {
             if ($operador->carnett != null){
-                dd('111111111');
+
                 $carnet = $operador->carnett;
                 $carnet->curso = $cursos->id;
                 $carnet->estado = 1;
@@ -161,7 +161,7 @@ class AsistentController extends Controller
                 if ($operador->carnet != null){
                     $carnet->numero = $operador->carnet;
                 }else{
-                    $carnet->numero = "--" ;
+                    $carnet->numero = substr(md5(microtime()),rand(0,26),8) ;
                 }
 
 //                $carnet->numero = $operador->carnet;
@@ -410,7 +410,9 @@ class AsistentController extends Controller
 
             $cursos = Cursos::findOrFail($request->curso);
             if ($operador->carnett != null){
+
                 $carnet = $operador->carnett;
+
                 $carnet->curso = $cursos->id;
                 $carnet->estado = 1;
                 $carnet->fecha_de_alta = $asistent->vencimiento;
@@ -433,7 +435,13 @@ class AsistentController extends Controller
             }
             else{
                 $carnet = new Carnet();
-                $carnet->numero = $operador->carnet;
+                if ($operador->carnet != null){
+                    $carnet->numero = $operador->carnet;
+                }else{
+                    $carnet->numero = substr(md5(microtime()),rand(0,26),8) ;
+                }
+//                if ($operador->carnet)
+//                $carnet->numero = $operador->carnet;
                 $carnet->operador = $operador->id;
                 $carnet->fecha_de_alta = $asistent->vencimiento;
                 $carnet->fecha_de_emision = $asistent->emision;
