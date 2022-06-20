@@ -317,7 +317,7 @@ class OperadoresController extends Controller
 
                         $carnet->foto = $fotopath;
                     } else {
-                        $carnet->foto = '';
+                        $carnet->foto = $operadores->foto;
                     }
                     $carnet->curso = 0;
                     $carnet->estado = 0 ;
