@@ -95,8 +95,11 @@
         </nav><!-- .nav-menu -->
 
         <div class="header-social-links">
-            <a href="{{ route('login') }}"><i class="icofont-ui-user"></i></a>
+            <a href="{{ route('login') }}"><i class="icofont-ui-user" style="font-size: 1.5rem"></i></a>
+
         </div>
+
+        <a href="{{ route('login') }}" class="btn btn-outline-primary iniciar" style="margin-left: 12px">{{__('message.iniciar sesión')}}</a>
 
     </div>
 </header><!-- End Header -->

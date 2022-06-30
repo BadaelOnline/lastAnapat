@@ -15,7 +15,7 @@
   color: #FFFFFF;
   /* border-radius: 50%; */
   margin: 5px auto;
-  overflow: hidden;
+  /*overflow: hidden;*/
   transition: all 0.2s;
   -webkit-transition: all 0.2s;
 }
@@ -150,7 +150,7 @@ input[type="radio"]:focus {
                         {{ $errors->first('dni_img') }}
                     </div>
                 </div>
-                <h6>{{__('message.Dni Img')}}</h6>
+                <h6>{{__('message.Dni Img & Pdf')}}</h6>
             </div>
             <div id="dni_pdf" style="display: none">
                 <label for="dni_img" class="col-sm-2 col-form-label text-center">{{__('message.DNI')}}</label>

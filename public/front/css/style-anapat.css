@@ -1587,3 +1587,9 @@ section {
 #hero-carousel-indicators{
 display: none;
 }
+
+@media (max-width: 990px) {
+    .iniciar {
+        display: none;
+    }
+}

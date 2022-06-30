@@ -68,7 +68,9 @@ class OperadoresController extends Controller
             'apellidos' => 'required',
             'nombre' => 'required',
             'entidad' => 'required',
-            'codigo_postal' => 'max:7'
+            'codigo_postal' => 'max:7',
+            'foto' => 'max:2048',
+            'dni_img' => 'max:2048',
         ]);
 
 
@@ -254,7 +256,9 @@ class OperadoresController extends Controller
             'apellidos' => 'required',
             'nombre' => 'required',
             'entidad' => 'required',
-            'codigo_postal' => 'max:7'
+            'codigo_postal' => 'max:7',
+            'foto' => 'max:2048',
+            'dni_img' => 'max:2048',
         ]);
 //dd($request);
         $operadores = Operadores::findOrFail($id);

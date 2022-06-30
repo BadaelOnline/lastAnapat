@@ -68,12 +68,12 @@ input[type="radio"]:focus {
         </div>
     @endif
 
-    <form action="{{ route('admin.operadores.update',$operadores->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.operador.update',$operadores->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="form-groups">
 
-
+<input type="hidden" value="{{$curso}}" name="curso">
             <div class="form-group col-md-4">
 
                 <label for="dni" class="col-sm-12 col-form-label">{{__('message.Dni')}}</label>
