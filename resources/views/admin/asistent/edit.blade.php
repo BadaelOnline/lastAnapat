@@ -402,7 +402,96 @@
 @endsection
 
 @push('scripts')
-
+    <script>
+        $("#nota_p").change(function (){
+            if (this.value == 1){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 0;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 2){
+                document.getElementById('tipo_1').value = 2;
+                document.getElementById('tipo_2').value = 0;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 3){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 2;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 4){
+                document.getElementById('tipo_1').value = 5;
+                document.getElementById('tipo_2').value = 0;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 5){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 5;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 6){
+                document.getElementById('tipo_1').value = 2;
+                document.getElementById('tipo_2').value = 5;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 7){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 2;
+                document.getElementById('tipo_3').value = 6;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 8){
+                document.getElementById('tipo_1').value = 6;
+                document.getElementById('tipo_2').value = 0;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 9){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 6;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 10){
+                document.getElementById('tipo_1').value = 2;
+                document.getElementById('tipo_2').value = 6;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 11){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 2;
+                document.getElementById('tipo_3').value = 5;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 12){
+                document.getElementById('tipo_1').value = 5;
+                document.getElementById('tipo_2').value = 6;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 13){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 5;
+                document.getElementById('tipo_3').value = 6;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 14){
+                document.getElementById('tipo_1').value = 2;
+                document.getElementById('tipo_2').value = 5;
+                document.getElementById('tipo_3').value = 6;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 15){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 2;
+                document.getElementById('tipo_3').value = 5;
+                document.getElementById('tipo_4').value = 6;
+            }else if (this.value == 16){
+                document.getElementById('tipo_1').value = 3;
+                document.getElementById('tipo_2').value = 0;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 17){
+                document.getElementById('tipo_1').value = 4;
+                document.getElementById('tipo_2').value = 0;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }
+        })
+    </script>
     <script>
         // Prepare the preview for profile picture
         $("#wizard-picture").change(function () {

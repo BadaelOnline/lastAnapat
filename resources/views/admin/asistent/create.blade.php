@@ -116,7 +116,7 @@
                         <div class="col-sm-9">
                             @foreach ($cursos as $cur)
                                 @if($id == $cur->id)
-                                    <input readonly type="text"  class="form-control {{$errors->first('tipos_carnet') ? "is-invalid" : "" }} " value="{{old('tipos_carnet') ? old('tipos_carnet') : $cur->tipo_de_curso->tipo_curso == 'Básico' ? 'B' : 'R' }}" id="Nota examen teórico" placeholder="{{__('message.tipo_carnet')}}">
+{{--                                    <input readonly type="text"  class="form-control {{$errors->first('tipos_carnet') ? "is-invalid" : "" }} " value="{{old('tipos_carnet') ? old('tipos_carnet') : $cur->tipo_de_curso->tipo_curso == 'Básico' ? 'B' : 'R' }}" id="Nota examen teórico" placeholder="{{__('message.tipo_carnet')}}">--}}
                                     <select name='tipos_carnet' class="form-control {{$errors->first('tipos_carnet') ? "is-invalid" : "" }} " id="tipos_carnet">
                                         <option disabled selected>{{__('message.Choose_One')}}</option>
                                             <option value="B">B</option>
@@ -134,24 +134,6 @@
                 </div>
             </div>
             <input type="hidden" name="tipo_carnet" value="0">
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-sm">--}}
-{{--                    <label for="tipo_carnet" class="col-sm-2 col-form-label">{{__('message.tipo_carnet')}}</label>--}}
-{{--                    <div class="col-sm-9">--}}
-{{--                        <select name='tipo_carnet' class="form-control {{$errors->first('tipo_carnet') ? "is-invalid" : "" }} " id="tipo_carnet">--}}
-{{--                            <option disabled selected>{{__('message.Choose_One')}}</option>--}}
-{{--                            @foreach ($tipo_carnet as $tipo_carnet)--}}
-{{--                                <option value="{{ $tipo_carnet->id }}" {{old('tipo_carnet') == $tipo_carnet->id ? "selected" : ""}}>{{ $tipo_carnet->formacion }}</option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                        <div class="invalid-feedback">--}}
-{{--                            {{ $errors->first('tipo_carnet') }}--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
         @else
             <input type="hidden" name="tipo_carnet" value="0">
         @endif
@@ -232,76 +214,6 @@
         </div>
 
 
-{{--        @if(auth()->user()->perfil=='Administrador' ) --}}{{--fifth row--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-sm">--}}
-{{--                    <label for="emision" class="col-sm-2 col-form-label">{{__('message.Emision')}}</label>--}}
-{{--                    <div class="col-sm-9">--}}
-{{--                        <input type="date" name='emision' class="form-control {{$errors->first('emision') ? "is-invalid" : "" }} " value="{{old('emision')}}" id="emision" placeholder="Fecha de emisión">--}}
-{{--                        <div class="invalid-feedback">--}}
-{{--                            {{ $errors->first('emision') }}--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-sm">--}}
-{{--                    <label for="vencimiento" class="col-sm-2 col-form-label">{{__('message.Vencimiento')}}</label>--}}
-{{--                    <div class="col-sm-9">--}}
-{{--                        <input type="date" name='vencimiento' class="form-control {{$errors->first('vencimiento') ? "is-invalid" : "" }} " value="{{old('vencimiento')}}" id="vencimiento" >--}}
-{{--                        <div class="invalid-feedback">--}}
-{{--                            {{ $errors->first('vencimiento') }}--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        @else--}}
-{{--            <div class="container">--}}
-{{--                <div class="row">--}}
-{{--                    <div class="col-sm">--}}
-{{--                        <label for="emision" class="col-sm-2 col-form-label">{{__('message.Emision')}}</label>--}}
-{{--                        <div class="col-sm-9">--}}
-{{--                            <input type="date" name='emision' class="form-control {{$errors->first('emision') ? "is-invalid" : "" }} " value="{{old('emision')}}" id="emision" placeholder="Fecha de emisión">--}}
-{{--                            <div class="invalid-feedback">--}}
-{{--                                {{ $errors->first('emision') }}--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="container">--}}
-{{--                <div class="row">--}}
-{{--                    <div class="col-sm">--}}
-{{--                        <label for="vencimiento" class="col-sm-2 col-form-label">{{__('message.Vencimiento')}}</label>--}}
-{{--                        <div class="col-sm-9">--}}
-{{--                            <input type="date" name='vencimiento' class="form-control {{$errors->first('vencimiento') ? "is-invalid" : "" }} " value="{{old('vencimiento')}}" id="vencimiento" >--}}
-{{--                            <div class="invalid-feedback">--}}
-{{--                                {{ $errors->first('vencimiento') }}--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        @endif--}}
-        {{--    <div class="container">--}}
-        {{--        <div class="row">--}}
-        {{--            <div class="col-sm">--}}
-        {{--                <label for="rememberToken" class="col-sm-2 col-form-label">RememberToken</label>--}}
-        {{--                <div class="col-sm-9">--}}
-        {{--                    <input type="text" name='rememberToken' class="form-control {{$errors->first('rememberToken') ? "is-invalid" : "" }} " value="{{old('rememberToken')}}" id="rememberToken" >--}}
-        {{--                    <div class="invalid-feedback">--}}
-        {{--                        {{ $errors->first('rememberToken') }}--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
-        {{--    </div>--}}
-
-        {{--sixth row--}}
         @if(auth()->user()->perfil=='Administrador' )
         <div class="container">
             <div class="row">
@@ -409,6 +321,96 @@
 @endsection
 
 @push('scripts')
+    <script>
+        $("#nota_p").change(function (){
+            if (this.value == 1){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 0;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 2){
+                document.getElementById('tipo_1').value = 2;
+                document.getElementById('tipo_2').value = 0;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 3){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 2;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 4){
+                document.getElementById('tipo_1').value = 5;
+                document.getElementById('tipo_2').value = 0;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 5){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 5;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 6){
+                document.getElementById('tipo_1').value = 2;
+                document.getElementById('tipo_2').value = 5;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 7){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 2;
+                document.getElementById('tipo_3').value = 6;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 8){
+                document.getElementById('tipo_1').value = 6;
+                document.getElementById('tipo_2').value = 0;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 9){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 6;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 10){
+                document.getElementById('tipo_1').value = 2;
+                document.getElementById('tipo_2').value = 6;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 11){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 2;
+                document.getElementById('tipo_3').value = 5;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 12){
+                document.getElementById('tipo_1').value = 5;
+                document.getElementById('tipo_2').value = 6;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 13){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 5;
+                document.getElementById('tipo_3').value = 6;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 14){
+                document.getElementById('tipo_1').value = 2;
+                document.getElementById('tipo_2').value = 5;
+                document.getElementById('tipo_3').value = 6;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 15){
+                document.getElementById('tipo_1').value = 1;
+                document.getElementById('tipo_2').value = 2;
+                document.getElementById('tipo_3').value = 5;
+                document.getElementById('tipo_4').value = 6;
+            }else if (this.value == 16){
+                document.getElementById('tipo_1').value = 3;
+                document.getElementById('tipo_2').value = 0;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }else if (this.value == 17){
+                document.getElementById('tipo_1').value = 4;
+                document.getElementById('tipo_2').value = 0;
+                document.getElementById('tipo_3').value = 0;
+                document.getElementById('tipo_4').value = 0;
+            }
+        })
+    </script>
 
     <script>
         // Prepare the preview for profile picture
