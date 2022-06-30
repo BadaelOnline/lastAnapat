@@ -477,7 +477,7 @@
 
                                     <th>{{__('message.Nombre')}}</th>
 
-                                    <th>{{__('message.Apellido')}}.</th>
+                                    <th>{{__('message.Apellidos')}}</th>
 
                                     <th>{{__('message.Número de asistente')}}</th>
 
@@ -527,6 +527,9 @@
 
                                         <td>
                                             <a href="{{route('admin.asistent.edit', [$asistent->id])}}" class="btn btn-info btn-sm"> {{__('message.Update')}} </a>
+                                            @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion'))
+                                                <a href="{{route('admin.operador.edit', [$asistent->operador,$cursos->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-eye"></i> </a>
+                                            @endif
                                             <a href="{{asset('storage/' . $asistent->examen_t_pdf)}}" class="btn btn-edit btn-sm" download title="descargar Examen T">T</a>
                                             <a href="{{asset('storage/' . $asistent->examen_p_pdf)}}" class="btn btn-edit btn-sm" download title="descargar Examen P">P</a>
                                             @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion'))
