@@ -57,6 +57,7 @@ Route::get('blog', [FrontController::class, 'blog'])->name('blog');
 Route::get('blog/search',[FrontController::class, 'search'])->name('search');
 Route::get('blog/{slug}', [FrontController::class, 'blogshow'])->name('blogshow');
 Route::get('categories/{category:slug}',[FrontController::class, 'category'])->name('category');
+Route::get('privadoCategories/{category:slug}',[FrontController::class, 'privadoCategory'])->name('privadoCategory');
 Route::get('tags/{tag:slug}',[FrontController::class, 'tag'])->name('tag');
 Route::get('pages/{slug}', [FrontController::class, 'page'])->name('page');
 //Route::resource('entidades_formadoreas', 'Entidades_FormadoreasController');

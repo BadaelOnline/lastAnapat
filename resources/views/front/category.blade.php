@@ -23,9 +23,11 @@
 
                         </div><!-- End sidebar search formn-->
                         <div class="row">
+                            @if($posts != null)
                             @foreach ($posts as $post)
                                 <div class="col-md-4">
                                     <article class="entry" data-aos="fade-up">
+{{--                                        <h4>{{$post->public == 1 ? "public" : "private"}}</h4>--}}
 
                                         <div class="entry-img blog-image">
                                             <img src="{{asset('storage/' . $post->cover)}}" alt="{{ $post->title }}"
@@ -65,15 +67,16 @@
                                 </div>
 
                             @endforeach
+                            @endif
                         </div>
 
-
+                        @if($posts != null)
                         <div class="blog-pagination">
                             <ul class="justify-content-center">
                                 {{ $posts->links() }}
                             </ul>
                         </div>
-
+                        @endif
                     </div>
                     <!-- End blog entries list -->
 

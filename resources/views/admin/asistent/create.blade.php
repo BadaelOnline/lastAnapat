@@ -116,7 +116,6 @@
                         <div class="col-sm-9">
                             @foreach ($cursos as $cur)
                                 @if($id == $cur->id)
-{{--                                    <input readonly type="text"  class="form-control {{$errors->first('tipos_carnet') ? "is-invalid" : "" }} " value="{{old('tipos_carnet') ? old('tipos_carnet') : $cur->tipo_de_curso->tipo_curso == 'Básico' ? 'B' : 'R' }}" id="Nota examen teórico" placeholder="{{__('message.tipo_carnet')}}">--}}
                                     <select name='tipos_carnet' class="form-control {{$errors->first('tipos_carnet') ? "is-invalid" : "" }} " id="tipos_carnet">
                                         <option disabled selected>{{__('message.Choose_One')}}</option>
                                             <option value="B">B</option>
