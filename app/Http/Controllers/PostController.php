@@ -69,12 +69,24 @@ class PostController extends Controller
 
         $data['cover'] = $cover_path;
         }
+//        if($request->public == null){
+//            $data['public']->public = 0;
+//        }else{
+//            $data['public']->public = 1;
+//        }
 
         $post = Post::create($data);
 
         $post->tags()->attach(request('tags'));
 
         if ($post) {
+            if($request->public == null){
+                $post->public = 0;
+            }else{
+                $post->public = 1;
+            }
+//                        dd($post->public);
+            $post->save();
 
                 return redirect()->route('admin.post')->with('success', 'Post added successfully');
 
@@ -136,6 +148,8 @@ class PostController extends Controller
 
         $data['category_id'] = request('category');
 
+
+
         $cover = $request->file('cover');
 
         if($cover){
@@ -148,12 +162,20 @@ class PostController extends Controller
 
         $data['cover'] = $cover_path;
         }
-
+//        dd($request);
         $update = $post->update($data);
 
         $post->tags()->sync(request('tags'));
 
         if ($update) {
+
+            if($request->public == "0"){
+                $post->public = 0;
+            }else{
+                $post->public = 1;
+            }
+//                        dd($post->public);
+            $post->save();
 
                 return redirect()->route('admin.post')->with('success', 'Data added successfully');
 

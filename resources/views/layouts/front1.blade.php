@@ -60,7 +60,7 @@
                 <li class="drop-down"><a href="">{{__('message.Anapat')}}</a>
                     <ul>
                         <li ><a href="{{ route('about') }}">{{__('message.Anapat')}}</a></li>
-                        <li><a href="{{ route('homepage') }}#Qué_hacemos">{{__('message.Qué hacemos')}}</a></li>
+                        <li><a href="#Qué_hacemos">{{__('message.Qué hacemos')}}</a></li>
                         <li><a href="{{ route('partners') }}">{{__('message.Partners')}}</a></li>
                     </ul>
                 </li>
