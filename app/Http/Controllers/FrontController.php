@@ -261,6 +261,7 @@ class FrontController extends Controller
 
     public function category(Category $category)
     {
+//        dd($category);
         $user = Auth::user();
         $categories = Category::where('id',$category->id)->firstOrFail();
         $general = General::find(1);
@@ -280,6 +281,7 @@ class FrontController extends Controller
 
     public function privadoCategory(Category $category)
     {
+
         $user = Auth::user();
         $categories = Category::where('id',$category->id)->firstOrFail();
         $general = General::find(1);

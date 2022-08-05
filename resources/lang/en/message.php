@@ -308,7 +308,8 @@ return [
     'LA FORMACIÓN DE ANAPAT. CARACTERÍSTICAS' => 'LA FORMACIÓN DE ANAPAT. CARACTERÍSTICAS',
     'Qué hacemos' => 'Qué hacemos',
     'Publicos' => 'Públicos',
-    "Plantillas" => "Plantillas"
+    "Plantillas" => "Plantillas",
+    'DOCUMENTOS' => 'DOCUMENTOS'
 
 
 

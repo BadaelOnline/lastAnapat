@@ -39,9 +39,9 @@ class CategoryController extends Controller
         \Validator::make($request->all(), [
             "name" => "required",
             "keyword" => "required",
-            "meta_desc" => "required"     
+            "meta_desc" => "required"
         ])->validate();
-        
+
         $category = new Category();
         $category->name = $request->name;
         $category->slug = \Str::slug($request->name);
@@ -51,11 +51,11 @@ class CategoryController extends Controller
         if ( $category->save()) {
 
             return redirect()->route('admin.category')->with('success', 'Data added successfully');
-    
+
            } else {
-               
+
             return redirect()->route('admin.category')->with('error', 'Data failed to add');
-    
+
            }
     }
 
@@ -95,23 +95,23 @@ class CategoryController extends Controller
         \Validator::make($request->all(), [
             "name" => "required",
             "keyword" => "required",
-            "meta_desc" => "required"     
+            "meta_desc" => "required"
         ])->validate();
 
         $category = Category::findOrFail($id);
         $category->name = $request->name;
-        $category->slug = \Str::slug($request->name);
+        $category->slug = $category->slug;
         $category->keyword = $request->keyword;
         $category->meta_desc = $request->meta_desc;
 
         if ( $category->save()) {
 
             return redirect()->route('admin.category')->with('success', 'Data updated successfully');
-    
+
            } else {
-               
+
             return redirect()->route('admin.category')->with('error', 'Data failed to update');
-    
+
            }
     }
 

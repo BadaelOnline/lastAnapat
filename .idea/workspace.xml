@@ -20,27 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b9c3d3c-a351-4ab6-90ca-e38cb16d2c4d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FrontController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/front/css/style-anapat.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/front/css/style-anapat.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/message.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/asistent/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/asistent/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/banner/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/banner/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/faq/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/faq/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/faq/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/faq/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/link/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/link/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/link/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/link/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/post/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/post/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/post/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/post/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/post/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/post/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/blog.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/category.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/partners.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/partners.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/front.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/front.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,7 +279,9 @@
       <workItem from="1657288344217" duration="227000" />
       <workItem from="1658232900897" duration="4255000" />
       <workItem from="1658392295110" duration="3425000" />
-      <workItem from="1659593892036" duration="3590000" />
+      <workItem from="1659593892036" duration="3979000" />
+      <workItem from="1659604955661" duration="97000" />
+      <workItem from="1659706591927" duration="1258000" />
     </task>
     <servers />
   </component>

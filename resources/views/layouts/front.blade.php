@@ -71,27 +71,29 @@
                         <li ><a href="{{ route('carnets') }}">{{__('message.Consulta de carnet')}}</a></li>
                     </ul>
                 </li>
-                <li class="drop-down"><a href="">{{__('message.Documentación')}}</a>
+                <li class="drop-down"><a href="">{{__('message.DOCUMENTOS')}}</a>
                     <ul>
+                        @if(Auth::user())
                         <li class="drop-down"><a href="">{{__('message.Privado')}}</a>
                             <ul>
-                                <li ><a href="{{ route('privadoCategory',"guides") }}">{{__('message.Guías')}}</a></li>
-                                <li ><a href="{{ route('privadoCategory',"manuals") }}">{{__('message.Manuales')}}</a></li>
+                                <li ><a href="{{ route('privadoCategory',"guias") }}">{{__('message.Guías')}}</a></li>
+                                <li ><a href="{{ route('privadoCategory',"manuales") }}">{{__('message.Manuales')}}</a></li>
                                 <li ><a href="{{ route('privadoCategory',"plantillas") }}">{{__('message.Plantillas')}}</a></li>
                             </ul>
 
                         </li>
+                        @endif
                         <li class="drop-down"><a href="">{{__('message.Publicos')}}</a>
                             <ul>
-                                <li ><a href="{{ route('category',"guides") }}">{{__('message.Guías')}}</a></li>
-                                <li ><a href="{{ route('category',"manuals") }}">{{__('message.Manuales')}}</a></li>
+                                <li ><a href="{{ route('category',"guias") }}">{{__('message.Guías')}}</a></li>
+                                <li ><a href="{{ route('category',"manuales") }}">{{__('message.Manuales')}}</a></li>
                                 <li ><a href="{{ route('category',"plantillas") }}">{{__('message.Plantillas')}}</a></li>
                             </ul>
 
                         </li>
                     </ul>
                 </li>
-                <li ><a href="{{ route('category',"news") }}">{{__('message.Noticias')}}</a></li>
+                <li ><a href="{{ route('category',"noticias") }}">{{__('message.Noticias')}}</a></li>
                 <li><a href="{{ route('contact') }}">{{__('message.Contacto')}}</a></li>
             </ul>
         </nav><!-- .nav-menu -->
