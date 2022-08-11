@@ -60,6 +60,7 @@
                         <input class="custom-control-input" type="checkbox" name="remember" id="customCheck" {{ old('remember') ? 'checked' : '' }}>
                         <label class="custom-control-label" for="customCheck">Recuérdame </label>
                     </div>
+
                     {{-- <a href="index.html" class="btn btn-primary btn-user btn-block">
                     Login
                   </a> --}}
@@ -67,6 +68,15 @@
 
                         <span class="button__text">Acceso</span>
                     </button>
+                    <div class="form-group row">
+                        <div class="col-md-12" style="margin-top: 10px">
+                            <div class="checkbox">
+                                <label>
+                                    <a href="{{ route('forget.password.get') }}">{{__('message.Restablecer la contraseña')}}</a>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </form>
                 <!-- <div class="social-login">
                   <h3>log in via</h3>
