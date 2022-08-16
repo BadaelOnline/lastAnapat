@@ -20,17 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b9c3d3c-a351-4ab6-90ca-e38cb16d2c4d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/forgetPassword.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/forgetPasswordLink.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/email/forgetPassword.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/en/message.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/message.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +288,11 @@
       <workItem from="1660050779859" duration="423000" />
       <workItem from="1660061789845" duration="653000" />
       <workItem from="1660200624921" duration="97000" />
-      <workItem from="1660200760907" duration="709000" />
+      <workItem from="1660200760907" duration="1038000" />
+      <workItem from="1660399426298" duration="20000" />
+      <workItem from="1660550423279" duration="38000" />
+      <workItem from="1660550469942" duration="14000" />
+      <workItem from="1660652541613" duration="319000" />
     </task>
     <servers />
   </component>
@@ -316,18 +312,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1800" y="60" key="#Inspections" timestamp="1649324314728">
-      <screen x="1366" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1800" y="60" key="#Inspections/0.0.1366.728/1366.0.1920.1040@1366.0.1920.1040" timestamp="1649324314728" />
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1647866350271">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1647866350271" />
     <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1655712304333">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1655712304333" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1660201689685">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1660201689685" />
     <state x="339" y="17" width="670" height="676" key="search.everywhere.popup" timestamp="1656421551288">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

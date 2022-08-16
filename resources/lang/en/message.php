@@ -310,7 +310,7 @@ return [
     'Publicos' => 'Públicos',
     "Plantillas" => "Plantillas",
     'DOCUMENTOS' => 'DOCUMENTOS',
-    'Restablecer la contraseña' => 'Restablecer la contraseña',
+    'Restablecer la contraseña' => '¿Ha olvidado su contraseña?',
     'Dirección de correo electrónico' => 'Dirección de correo electrónico',
     'Enviar enlace de restablecimiento de contraseña' => 'Enviar enlace de restablecimiento de contraseña',
     'Confirmar contraseña' => 'Confirmar contraseña',
