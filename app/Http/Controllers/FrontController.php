@@ -57,7 +57,17 @@ class FrontController extends Controller
         $team = Team::orderBy('id','asc')->get();
         return view ('front.about',compact('about','faq','general','lpost','partner','team'));
     }
-
+    public function about2()
+    {
+        $about = About::find(1);
+        $faq = Faq::all();
+        $general = General::find(1);
+//        $link = Link::orderBy('name','asc')->get();
+        $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
+        $partner = Partner::orderBy('name','asc')->get();
+        $team = Team::orderBy('id','asc')->get();
+        return view ('front.about2',compact('about','faq','general','lpost','partner','team'));
+    }
     public function contact()
     {
         $about = About::find(1);
@@ -136,10 +146,10 @@ class FrontController extends Controller
 //        dd($request);
         $general = General::find(1);
 //        dd($general);
-        $now = now().date('');
-        $carnet = Carnet::where('numero',$request->numero)->whereDate('fecha_de_emision' , '>' ,$now )->first();
-        $carnet2 = Carnet::where('numero',$request->numero)->whereDate('fecha_de_emision' , '<=' ,$now )->first();
-//dd($carnet2);
+//        $now = now().date('');
+        $carnet = Carnet::where('numero',$request->numero)->whereDate('fecha_de_alta' , '>' ,NOW() )->first();
+        $carnet2 = Carnet::where('numero',$request->numero)->whereDate('fecha_de_emision' , '<=' ,NOW() )->first();
+
         if ($carnet2 != null && $carnet == null){
             $test = "Esta Carné ya expiró.";
             return view('front.carnets', compact('general','test'));
@@ -202,7 +212,7 @@ class FrontController extends Controller
         $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
         $pcategories = Pcategory::all();
         $portfolio = Portfolio::all();
-        $entidadesFormadores = EntidadesFormadoreas::orderBy('id','desc')->where('estado',1)->get();
+        $entidadesFormadores = EntidadesFormadoreas::orderBy('nombre')->where('estado',1)->get();
         return view ('front.entidades_formadoras',compact('general','entidadesFormadores','service','link','lpost','pcategories','portfolio'));
     }
 

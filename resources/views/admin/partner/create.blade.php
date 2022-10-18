@@ -49,78 +49,46 @@
 
 <form action="{{ route('admin.partner.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
-
     <div class="container">
-
         <div class="form-group">
-
             <div class="picture-container">
-
                 <div class="picture">
-
                     <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>
-
                     <input type="file" id="wizard-picture" name="logo" class="form-control {{$errors->first('logo') ? "is-invalid" : "" }} ">
-
                     <div class="invalid-feedback" style="position: absolute;right: 0;bottom: -20px;">
                         {{ $errors->first('logo') }}
                     </div>
-
                 </div>
 {{--                <div class="invalid-feedback">--}}
 {{--                    {{ $errors->first('logo') }}--}}
 {{--                </div>--}}
                 <h6>{{__('message.Logo')}}</h6>
-
             </div>
-
         </div>
-
-
         <div class="form-group ml-5">
-
             <label for="nombre" class="col-sm-2 col-form-label">{{__('message.Name')}}</label>
-
             <div class="col-sm-9">
-
                 <input type="text" name='nombre' class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} " value="{{old('nombre')}}" id="nombre" placeholder="ex: Wiklop">
-
                 <div class="invalid-feedback">
                     {{ $errors->first('nombre') }}
                 </div>
-
             </div>
-
         </div>
-
         <div class="form-group ml-5">
-
             <label for="enlace" class="col-sm-2 col-form-label">{{__('message.Link')}}</label>
-
             <div class="col-sm-9">
-
                 <input type="text" name='enlace' class="form-control {{$errors->first('enlace') ? "is-invalid" : "" }} " value="{{old('enlace')}}" id="enlace" placeholder="ex: Wiklop.com">
-
                 <div class="invalid-feedback">
                     {{ $errors->first('enlace') }}
                 </div>
-
             </div>
-
         </div>
-
         <div class="form-group ml-5">
-
             <div class="col-sm-3">
-
                 <button type="submit" class="btn btn-primary">{{__('message.Create')}}</button>
-
             </div>
-
         </div>
-
     </div>
-
   </form>
 @endsection
 
