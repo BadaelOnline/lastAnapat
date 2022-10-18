@@ -904,7 +904,7 @@ section {
     margin: 0 auto;
 }
 .courses .card .image{
-    width: 45%;
+    width: 150px;
     margin: 10px auto;
 }
 .courses .card button:hover{
