@@ -244,9 +244,9 @@ return [
     'añadir nuevo' => 'añadir nuevo',
     'Link' => 'Enlace',
     'Inform About ANAPAT Training' => 'INFORMAR SOBRE LA FORMACIÓN DE ANAPAT',
-    'about ANAPAT' => 'sobre ANAPAT',
+    'about ANAPAT' => 'CARACTERÍSTICAS',
     'Our Partner' => 'Nuestros PARTNERS',
-    'Company' => 'Empresa',
+    'Company' => 'Organización',
     'Site Map' => 'Mapa del sitio',
     'Home' => 'Inicio',
     'Contact' => 'Contacte con',
@@ -305,7 +305,7 @@ return [
     'Dni Img & Pdf' => 'Dni Img , Pdf',
     'hubo errores' => 'hubo errores',
     'iniciar sesión' => 'iniciar sesión',
-    'LA FORMACIÓN DE ANAPAT. CARACTERÍSTICAS' => 'LA FORMACIÓN DE ANAPAT. CARACTERÍSTICAS',
+    'LA FORMACIÓN DE ANAPAT. CARACTERÍSTICAS' => 'FORMACIÓN DE ANAPAT',
     'Qué hacemos' => 'Qué hacemos',
     'Publicos' => 'Públicos',
     "Plantillas" => "Plantillas",
@@ -314,7 +314,8 @@ return [
     'Dirección de correo electrónico' => 'Dirección de correo electrónico',
     'Enviar enlace de restablecimiento de contraseña' => 'Enviar enlace de restablecimiento de contraseña',
     'Confirmar contraseña' => 'Confirmar contraseña',
-    'Olvidé mi contraseña Correo electrónico' => 'Olvidé mi contraseña Correo electrónico'
+    'Olvidé mi contraseña Correo electrónico' => 'Olvidé mi contraseña Correo electrónico',
+    'Fecha de creación'=>'Fecha de creación'
 
 
 

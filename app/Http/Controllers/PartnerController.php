@@ -42,25 +42,17 @@ class PartnerController extends Controller
            'enlace' => 'required',
        ]);
        $partner = new Partner();
-       $partner->name = $request->name;
-       $partner->link = $request->link;
-
+       $partner->name = $request->nombre;
+       $partner->link = $request->enlace;
        $cover = $request->file('logo');
-
        if($cover){
        $cover_path = $cover->store('images/partner', 'public');
-
        $partner->cover = $cover_path;
        }
-
       if ( $partner->save()) {
-
        return redirect()->route('admin.partner')->with('success', 'partner added successfully');
-
       } else {
-
        return redirect()->route('admin.partner.create')->with('error', 'partner failed to add');
-
       }
    }
 
@@ -106,17 +98,14 @@ class PartnerController extends Controller
        $partner->name = $request->nombre;
        $partner->link = $request->enlace;
 
-       $new_cover = $request->file('cover');
+       $new_cover = $request->file('logo');
 
        if($new_cover){
        if($partner->cover && file_exists(storage_path('app/public/' . $partner->cover))){
            \Storage::delete('public/'. $partner->cover);
        }
-
        $new_cover_path = $new_cover->store('images/partner', 'public');
-
        $partner->cover = $new_cover_path;
-
        }
 
       if ( $partner->save()) {

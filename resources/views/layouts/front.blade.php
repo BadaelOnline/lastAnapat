@@ -60,7 +60,9 @@
                 <li class="drop-down"><a href="">{{__('message.Anapat')}}</a>
                     <ul>
                         <li ><a href="{{ route('about') }}">{{__('message.Anapat')}}</a></li>
-                        <li><a href="{{ route('homepage') }}#Qué_hacemos">{{__('message.Qué hacemos')}}</a></li>
+                        <li ><a href="{{ route('about2') }}">Quienes somos</a></li>
+                        <li><a href="{{ route('homepage') }}#Qué_hacemos">Tipos de PEMP</a></li>
+                        <li><a href="{{ route('homepage') }}#formación">Formación</a></li>
                         <li><a href="{{ route('partners') }}">{{__('message.Partners')}}</a></li>
                     </ul>
                 </li>
@@ -71,17 +73,17 @@
                         <li ><a href="{{ route('carnets') }}">{{__('message.Consulta de carnet')}}</a></li>
                     </ul>
                 </li>
-                <li class="drop-down"><a href="">{{__('message.DOCUMENTOS')}}</a>
+                <li class="drop-down"><a href="">{{__('message.Documentación')}}</a>
                     <ul>
                         @if(Auth::user())
-                        <li class="drop-down"><a href="">{{__('message.Privado')}}</a>
-                            <ul>
-                                <li ><a href="{{ route('privadoCategory',"guias") }}">{{__('message.Guías')}}</a></li>
-                                <li ><a href="{{ route('privadoCategory',"manuales") }}">{{__('message.Manuales')}}</a></li>
-                                <li ><a href="{{ route('privadoCategory',"plantillas") }}">{{__('message.Plantillas')}}</a></li>
-                            </ul>
+                            <li class="drop-down"><a href="">{{__('message.Privado')}}</a>
+                                <ul>
+                                    <li ><a href="{{ route('privadoCategory',"guias") }}">{{__('message.Guías')}}</a></li>
+                                    <li ><a href="{{ route('privadoCategory',"manuales") }}">{{__('message.Manuales')}}</a></li>
+                                    <li ><a href="{{ route('privadoCategory',"plantillas") }}">{{__('message.Plantillas')}}</a></li>
+                                </ul>
 
-                        </li>
+                            </li>
                         @endif
                         <li class="drop-down"><a href="">{{__('message.Publicos')}}</a>
                             <ul>
@@ -122,10 +124,10 @@
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h3>{{__('message.Company')}}</h3>
                     <ul>
-                        <li> {{$general->title}}</li>
+                        <li>ANAPAT</li>
                         <li>   {{$general->address1}}.</li>
                         <li> {{$general->address2}}</li>
-                        <li> <strong>Tel:</strong> {{$general->phone}} /  <strong> FAX:</strong> {{$general->twitter}}</li>
+                        <li> <strong>Tel: </strong> {{$general->phone}}</li>
                         <li> <a href="">{{$general->email}}</a></li>
                     </ul>
                 </div>
@@ -133,7 +135,7 @@
                     <h3>{{__('message.Site Map')}}</h3>
                     <ul>
                         <li> <a href="{{ route('homepage') }}">{{__('message.Home')}}</a></li>
-                        <li> <a href="{{ route('about') }}">{{__('message.About')}}</a></li>
+                        <li> <a href="{{ route('about2') }}">{{__('message.About')}}</a></li>
                         <li><a href="{{ route('contact') }}">{{__('message.Contact')}}</a></li>
                         <li> <a href="{{ route('blog') }}">{{__('message.blog')}}</a></li>
                     </ul>
@@ -141,9 +143,9 @@
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h3>Enlaces de interés</h3>
                     <ul>
-                        <li> <a href="{{ route('entidades_formadoras') }}">{{__('message.Training Entity')}}</a></li>
+                        <li> <a href="{{ route('entidades_formadoras') }}">Entidades Formadoras</a></li>
                         <li> <a href="{{ route('partners') }}">{{__('message.Partner')}}</a></li>
-                        <li><a href="{{ route('cursos') }}">{{__('message.Course')}}</a></li>
+                        <li><a href="{{ route('cursos') }}">Cursos</a></li>
                         <li> <a href="{{ route('carnets') }}">{{__('message.Card')}}</a></li>
                     </ul>
                 </div>
@@ -157,12 +159,6 @@
                 Copyright © 2022 ANAPAT FORMACIÓN Todos los derechos reservados.
             </div>
         </div>
-    <!-- <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="{{ $general->twitter }}" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="{{ $general->facebook }}" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="{{ $general->instagram }}" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="{{ $general->linkedin }}" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div> -->
     </div>
 </footer><!-- End Footer -->
 
@@ -183,7 +179,6 @@
 <!-- Template Main JS File -->
 <script src="{{ asset('front/js/main.js') }}"></script>
 
-{!! $general->tawkto !!}
 
 @stack('scripts')
 

@@ -1,4 +1,4 @@
-@extends('layouts.front1')
+@extends('layouts.front')
 
 @section('meta')
     <!-- Primary Meta Tags -->
@@ -84,7 +84,7 @@
         </section>
         <!-- End about us Section -->
         <!-- ======= about us Section ======= -->
-        <section id="portfolio" class="portfolio about">
+        <section id="formación" class="portfolio about">
             <div class="container">
 
                 <div class="section-title">

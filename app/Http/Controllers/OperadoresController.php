@@ -26,13 +26,9 @@ class OperadoresController extends Controller
     {
         $user = auth()->user();
         if ($user->perfil == 'Responsable_de_Formacion' || $user->perfil == 'Formador')
-
             $operadores = Operadores::orderBy('id', 'desc')->where('entidad', '=', $user->entidad)->get();
-
         else
             $operadores = Operadores::orderBy('id', 'desc')->get();
-
-
         return view('admin.operadores.index', compact('operadores'));
     }
 
@@ -162,12 +158,6 @@ class OperadoresController extends Controller
 //                    dd($asistent);
                 }
             }
-//        dd($activeAsistent);
-
-
-
-//        }
-//        dd($activeAsistent);
 
         $tipos = Tipo_Maquina::orderBy('id', 'asc')->get();
         if ($activeAsistent != null)
@@ -288,18 +278,14 @@ class OperadoresController extends Controller
             if ($operadores->foto && file_exists(storage_path('app/public/' . $operadores->foto))) {
                 \Storage::delete('public/' . $operadores->foto);
             }
-
             $foto_path = $foto->store('operadore/' . $request->nombre, 'public');
-
             $operadores->foto = $foto_path;
         }
         if ($dni_img) {
             if ($operadores->dni_img && file_exists(storage_path('app/public/' . $operadores->dni_img))) {
                 \Storage::delete('public/' . $operadores->dni_img);
             }
-
             $dni_img_path = $dni_img->store('operadore/' . $request->nombre, 'public');
-
             $operadores->dni_img = $dni_img_path;
         }
 
@@ -336,13 +322,10 @@ class OperadoresController extends Controller
 
                         $carnet->foto = $fotopath;
                     } else {
-                        $carnet->foto = '';
+                        $carnet->foto = $operadores->foto;
                     }
-
                     $carnet->save();
                 }
-
-
             }
 
             return redirect()->route('admin.operadores')->with('success', 'Data added successfully');

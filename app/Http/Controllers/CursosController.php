@@ -255,9 +255,9 @@ $now = now().date('');
         $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
         $examen_t=Examen::select('id','nombre','url')->where('tipo',1)->get();
         $examen_p=Examen::select('id','nombre','url')->where('tipo',2)->get();
-        $asistent = Asistent::orderBy('id','desc')->where('curso',$id)->get();
+        $asistent = Asistent::orderBy('id')->where('curso',$id)->get();
         $operador = Operadores::orderBy('id','desc')->get();
-        $horario = Horario::orderBy('id','desc')->where('curso',$id)->get();
+        $horario = Horario::orderBy('id')->where('curso',$id)->get();
 
         return view('admin.cursos.edit',compact('cursos','horario','asistent','operador','entidad','formador','tipo_maquina','tipo_curso','examen_t','examen_p','formadors','formadors2','formadors3'));
     }

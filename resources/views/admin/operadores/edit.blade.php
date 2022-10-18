@@ -259,9 +259,9 @@ input[type="radio"]:focus {
                 <input type="hidden" name="carnet" value="{{$operadores->carnet}}">
             @endif
       <div class="form-group col-md-4">
-            <label for="fecha" class="col-sm-12 col-form-label">{{__('message.Fecha')}}</label>
+            <label for="fecha" class="col-sm-12 col-form-label">Fecha de Emisión</label>
             <div class="col-sm-7">
-                <input type="date" name='fecha' class="form-control {{$errors->first('fecha') ? "is-invalid" : "" }} " value="{{old('fecha') ? old('fecha') : $operadores->fecha}}" id="fecha" placeholder="Fecha de alta">
+                <input type="date" name='fecha' class="form-control {{$errors->first('fecha') ? "is-invalid" : "" }} " value="{{old('fecha') ? old('fecha') : $operadores->fecha}}" id="fecha" placeholder="Fecha de alta" @if(auth()->user()->perfil!='Administrador')disabled @endif>
                 <div class="invalid-feedback">
                     {{ $errors->first('fecha') }}
                 </div>

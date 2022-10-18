@@ -16,7 +16,7 @@
                    <div class="info-text">
                          <h3>{{__('message.Numbers')}}</h3>
                          <p>Tel: {{$general->phone}} </p>
-                         <p>FAX: {{$general->twitter}} </p>
+                         {{--<p>FAX: {{$general->twitter}} </p>--}}
                    </div>
                   </div>
                   <div class="info">

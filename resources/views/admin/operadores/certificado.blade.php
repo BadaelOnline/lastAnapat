@@ -67,8 +67,17 @@ input[type="radio"]:focus {
             </div>
         </div>
         <div class="col-md-3"></div>
+        {{--<div class="col-md-4">--}}
+            {{--<h6>{{__('message.Código del certificado')}} : <br><span>{{@$operador->certificado()->first()->numero}}</span></h6>--}}
+        {{--</div>--}}
         <div class="col-md-4">
-            <h6>{{__('message.Código del certificado')}} : <br><span>{{$cert_numero}}</span></h6>
+            <h6>{{__('message.Número de carné')}} :<br> <span>
+                    @if(isset($operador->carnett))
+                        {{$operador->carnett->numero}}
+                    @else
+                        --------
+                    @endif
+                </span></h6>
         </div>
         <div class="col-md-4">
             <h6>{{__('message.Nombre')}} :<br> <span>{{$operador->nombre}}</span></h6>
@@ -112,9 +121,10 @@ input[type="radio"]:focus {
         </div>
         <div class="col-md-4">
             <h6>{{__('message.Fecha de emisión')}} :<br> <span>
-                    @if(isset($activeAsistent))
-                    {{date('d/m/Y',strtotime($activeAsistent->emision))}}
-                    @endif
+                    {{--@if(isset($activeAsistent))--}}
+                    {{--{{date('d/m/Y',strtotime($activeAsistent->emision))}}--}}
+                    {{--@endif--}}
+                    {{date('d/m/Y',strtotime($operador->fecha))}}
                 </span></h6>
         </div>
         <div class="col-md-4">
@@ -187,15 +197,7 @@ input[type="radio"]:focus {
                     @endif
                 </span></h6>
         </div>
-        <div class="col-md-4">
-            <h6>{{__('message.Número de carné')}} :<br> <span>
-                    @if(isset($operador->carnett))
-                        {{$operador->carnett->numero}}
-                    @else
-                      --------
-                    @endif
-                </span></h6>
-        </div>
+
         <div class="col-md-4">
             <h6>{{__('message.Observaciones')}} :<br> <span>
                     @foreach($operador->asistent as $as)
@@ -203,9 +205,11 @@ input[type="radio"]:focus {
                     @endforeach
                 </span></h6>
         </div>
-        <div class="col-md-4">
-            <h6>{{__('message.Fecha de Exportación')}} :<br> <span></span></h6>
-        </div>
+        {{--<div class="col-md-4">--}}
+            {{--<h6>{{__('message.Fecha de creación')}} :<br> <span>--}}
+                        {{--{{date('d/m/Y',strtotime($operador->certificado()->first()->created_at))}}--}}
+                     {{--</span></h6>--}}
+        {{--</div>--}}
     </div>
 </div>
 @endsection

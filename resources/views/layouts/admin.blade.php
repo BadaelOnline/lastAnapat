@@ -69,7 +69,7 @@
         </a>
 
         <!-- Divider -->
-        @can('isAdmin')
+        {{--@can('isAdmin')--}}
             <nav class="navbar navbar-expand navbar-light bg-white topbar  static-top ">
 
                 <!-- Sidebar Toggle (Topbar) -->
@@ -160,7 +160,7 @@
                 <!-- Topbar Navbar -->
 
             </nav>
-    @endcan
+    {{--@endcan--}}
     <!-- Nav Item - Dashboard -->
         <div class="d-flex item-side" id="show-list">
             <li class="nav-item {{ in_array(Route::currentRouteName(),[
