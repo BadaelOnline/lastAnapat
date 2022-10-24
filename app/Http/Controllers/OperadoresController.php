@@ -114,11 +114,8 @@ class OperadoresController extends Controller
                 $carnet->save();
 
             }
-
             return redirect()->route('admin.operadores')->with('success', 'Data added successfully');
-
         } else {
-
             return redirect()->route('admin.operadores.create')->with('error', 'Data failed to add');
 
         }
@@ -192,20 +189,16 @@ class OperadoresController extends Controller
                 }
                 $certificado->fecha_alta = $curso->fecha_alta;
             }
-
-
-
-
             $certificado->entidad_nombre = $operador->entidades_formadoreas->nombre;
             if ($operador->carnett != null)
                 $certificado->carnet = $operador->carnett->id;
             $certificado->save();
         }
-
+        $certific = Certificado::where('operador',$id)->where('curso',$curso)->first();
 //        $certificado->cer_fecha = $activeAsistent->observaciones;
 //        dd($operador->carnett);
 //        dd($cert_numero);
-        return view('admin.operadores.certificado', compact('operador', 'curso', 'tipos', 'cert_numero', 'activeAsistent'));
+        return view('admin.operadores.certificado', compact('operador', 'curso', 'tipos', 'cert_numero', 'activeAsistent','certific'));
     }
 
     /**

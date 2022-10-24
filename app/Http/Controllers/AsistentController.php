@@ -645,15 +645,15 @@ class AsistentController extends Controller
 
         }elseif (count($tipo_maq) == 2){
             if ($tipo_maq[0] == 1 || $tipo_maq[1] == 1){
-                if ($tipo_maq[0] == 2 || $tipo_maq[1] == 2 || $tipo_maq[2] == 2){
+                if ($tipo_maq[0] == 2 || $tipo_maq[1] == 2 ){
                     array_push($notes,1);
                     array_push($notes,2);
                     array_push($notes,3);
-                }elseif ($tipo_maq[0] == 5 || $tipo_maq[1] == 5 || $tipo_maq[2] == 5){
+                }elseif ($tipo_maq[0] == 5 || $tipo_maq[1] == 5){
                     array_push($notes,1);
                     array_push($notes,4);
                     array_push($notes,5);
-                }elseif ($tipo_maq[0] == 6 || $tipo_maq[1] == 6 || $tipo_maq[2] == 6){
+                }elseif ($tipo_maq[0] == 6 || $tipo_maq[1] == 6 ){
                     array_push($notes,1);
                     array_push($notes,8);
                     array_push($notes,9);
@@ -661,11 +661,11 @@ class AsistentController extends Controller
 
             }
             if ($tipo_maq[0] == 2 || $tipo_maq[1] == 2){
-                if ($tipo_maq[0] == 5 || $tipo_maq[1] == 5 || @$tipo_maq[2] == 5){
+                if ($tipo_maq[0] == 5 || $tipo_maq[1] == 5){
                     array_push($notes,2);
                     array_push($notes,4);
                     array_push($notes,6);
-                }elseif ($tipo_maq[0] == 6 || $tipo_maq[1] == 6 || @$tipo_maq[2] == 6){
+                }elseif ($tipo_maq[0] == 6 || $tipo_maq[1] == 6){
                     array_push($notes,2);
                     array_push($notes,8);
                     array_push($notes,10);
@@ -673,7 +673,7 @@ class AsistentController extends Controller
 
             }
             if ($tipo_maq[0] == 5 || $tipo_maq[1] == 5){
-                if ($tipo_maq[0] == 6 || $tipo_maq[1] == 6 || @$tipo_maq[2] == 6){
+                if ($tipo_maq[0] == 6 || $tipo_maq[1] == 6){
                     array_push($notes,4);
                     array_push($notes,8);
                     array_push($notes,12);
