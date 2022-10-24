@@ -472,7 +472,7 @@
                                     @if($horario->contenido == "Práctica")
                                         {{$horario->tipo_maquinaa != null ? $horario->tipo_maquinaa->tipo_maquina :"Práctica" }}
                                     @else
-                                        Teoria
+                                        Teoría
                                     @endif
                                 </td>
                                 <td>{{ date('d/m/Y H:i:s',strtotime($horario->fecha_inicio)) }}</td>

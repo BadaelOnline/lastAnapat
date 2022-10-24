@@ -205,6 +205,16 @@
                         @endforeach
                 </span></h6>
             </div>
+
+            <div class="col-md-4">
+                <h6>{{__('message.ACTIVO')}} :<br> <span>
+                    @if($operador->estado == 1)
+                            sí
+                        @else
+                            no
+                        @endif
+                </span></h6>
+            </div>
             {{--<div class="col-md-4">--}}
             {{--<h6>{{__('message.Fecha de creación')}} :<br> <span>--}}
             {{--{{date('d/m/Y',strtotime($operador->certificado()->first()->created_at))}}--}}

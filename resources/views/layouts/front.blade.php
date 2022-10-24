@@ -84,7 +84,7 @@
                                 </ul>
 
                             </li>
-                        @endif
+
                         <li class="drop-down"><a href="">{{__('message.Publicos')}}</a>
                             <ul>
                                 <li ><a href="{{ route('category',"guias") }}">{{__('message.Guías')}}</a></li>
@@ -93,6 +93,11 @@
                             </ul>
 
                         </li>
+                        @else
+                            <li ><a href="{{ route('category',"guias") }}">{{__('message.Guías')}}</a></li>
+                            <li ><a href="{{ route('category',"manuales") }}">{{__('message.Manuales')}}</a></li>
+                            <li ><a href="{{ route('category',"plantillas") }}">{{__('message.Plantillas')}}</a></li>
+                        @endif
                     </ul>
                 </li>
                 <li ><a href="{{ route('category',"noticias") }}">{{__('message.Noticias')}}</a></li>

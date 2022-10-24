@@ -147,11 +147,11 @@
 
 
                     @foreach($partner as $partner)
-                        <div class="col-lg-3 col-md-4 col-6">
+                        <div class="col-lg-4 col-md-4 col-6">
                             <div class="client-logo">
                                 <a href="{{ route('partner',$partner->id) }}"  rel="noopener noreferrer">
-                                    <img src="{{ asset('storage/'.$partner->cover) }}" class="img-fluid" alt="">
-                                    <h2 style="text-align: center;"> {{$partner->name}}</h2>
+                                    <img src="{{ asset('storage/'.$partner->cover) }}" class="img-fluid" alt="" style="height: 120px">
+{{--                                    <h2 style="text-align: center;"> {{$partner->name}}</h2>--}}
                                 </a>
                             </div>
                         </div>

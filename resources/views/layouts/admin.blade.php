@@ -62,10 +62,10 @@
     <ul class="navbar-nav sidebar accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
-            <img width="207" height="97" src="{{ asset('admin/img/anapat.png')}}"
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" style="width: 300px" href="{{ route('admin.dashboard') }}">
+            <img  src="{{ asset('admin/img/anapat.png')}}"
                  class="attachment-medium size-medium" alt="" loading="lazy" srcset=""
-                 sizes="(max-width: 207px) 100vw, 207px">
+                  style="height: 140px;width:300px;margin-top: 80px;margin-left: 85px;">
         </a>
 
         <!-- Divider -->

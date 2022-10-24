@@ -44,6 +44,15 @@ class PartnerController extends Controller
        $partner = new Partner();
        $partner->name = $request->nombre;
        $partner->link = $request->enlace;
+
+
+       $partner->empresa = $request->empresa;
+       $partner->direccion = $request->direccion;
+       $partner->codigo_postal = $request->codigo_postal;
+       $partner->poblacion = $request->poblacion;
+       $partner->provincia = $request->provincia;
+       $partner->telefono = $request->telefono;
+       $partner->email = $request->email;
        $cover = $request->file('logo');
        if($cover){
        $cover_path = $cover->store('images/partner', 'public');
@@ -97,6 +106,14 @@ class PartnerController extends Controller
        $partner = Partner::findOrFail($id);
        $partner->name = $request->nombre;
        $partner->link = $request->enlace;
+
+       $partner->empresa = $request->empresa;
+       $partner->direccion = $request->direccion;
+       $partner->codigo_postal = $request->codigo_postal;
+       $partner->poblacion = $request->poblacion;
+       $partner->provincia = $request->provincia;
+       $partner->telefono = $request->telefono;
+       $partner->email = $request->email;
 
        $new_cover = $request->file('logo');
 
