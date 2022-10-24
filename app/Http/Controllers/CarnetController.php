@@ -20,12 +20,15 @@ class CarnetController extends Controller
         $user = auth()->user();
         $now = now() . date('');
         if ($user->perfil == 'Responsable_de_Formacion' || $user->perfil == 'Formador')
-
-            $operadors = Operadores::orderBy('id', 'desc')->where('entidad', '=', $user->entidad)->get();
-
+//            $operadors = Operadores::orderBy('id', 'desc')->where('entidad', '=', $user->entidad)->get();
+            $operadors = Operadores::orderBy('id', 'desc')->where('entidad', '=', $user->entidad)->where('estado',1)->get();
         else
-            $operadors = Operadores::orderBy('id', 'desc')->get();
-        $carnets = Carnet::orderBy('id', 'desc')->whereDate('fecha_de_alta', '>', $now)->get();
+//            $operadors = Operadores::orderBy('id', 'desc')->get();
+        $operadors = Operadores::orderBy('id', 'desc')->where('estado',1)->get();
+//        $carnets = Carnet::orderBy('id', 'desc')->whereDate('fecha_de_alta', '>', $now)->get();
+        $carnets = Carnet::orderBy('id', 'desc')->whereHas('operadores', function ($q) {
+            $q->where('estado', 1);
+        })->get();
 //        dd($carnets);
         return view('admin.carnet.index', compact('operadors', 'carnets'));
     }
@@ -35,12 +38,15 @@ class CarnetController extends Controller
         $user = auth()->user();
         $now = now() . date('');
         if ($user->perfil == 'Responsable_de_Formacion' || $user->perfil == 'Formador')
-
-            $operadors = Operadores::orderBy('id', 'desc')->where('entidad', '=', $user->entidad)->get();
-
+//            $operadors = Operadores::orderBy('id', 'desc')->where('entidad', '=', $user->entidad)->get();
+        $operadors = Operadores::orderBy('id', 'desc')->where('entidad', '=', $user->entidad)->where('estado',0)->get();
         else
-            $operadors = Operadores::orderBy('id', 'desc')->get();
-        $carnets = Carnet::orderBy('id', 'desc')->whereDate('fecha_de_alta', '<=', $now)->get();
+//            $operadors = Operadores::orderBy('id', 'desc')->get();
+        $operadors = Operadores::where('estado',0)->orderBy('id', 'desc')->get();
+//        $carnets = Carnet::orderBy('id', 'desc')->whereDate('fecha_de_alta', '<=', $now)->get();
+        $carnets = Carnet::orderBy('id', 'desc')->whereHas('operadores', function ($q) {
+            $q->where('estado', 0);
+        })->get();
         return view('admin.carnet.index', compact('operadors', 'carnets'));
     }
 

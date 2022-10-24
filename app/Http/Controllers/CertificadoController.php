@@ -26,14 +26,10 @@ class CertificadoController extends Controller
         $user = auth()->user();
         $now = now().date('');
         if($user->perfil=='Responsable_de_Formacion' || $user->perfil=='Formador')
-
             $operadors = Operadores::orderBy('id','desc')->where('entidad','=',$user->entidad)->get();
-
         else
             $operadors = Operadores::orderBy('id','desc')->get();
         $certificados = Certificado::orderBy('id','desc')->get();
-
-
         foreach ($certificados as $key=>$certificado){
             $cerOpe = $certificado->operadorr;
             $cerCurso = $certificado->cursoo;

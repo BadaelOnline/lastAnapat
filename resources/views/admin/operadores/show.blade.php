@@ -13,20 +13,21 @@
                     <div class="d-flex justify-content-center contain-card">
                         <div class="card">
 
-                            <h2>{{$operador->nombre}}{{$operador->apellidos}}</h2>
+
                             <div class="d-flex align-items-center">
-                                <h3>Ciudad : {{$operador->ciudad}} <br>
-                                    dni : {{$operador->dni}}
-                                </h3>
-                                <img class="image" src="{{asset('storage/' . $operador->foto)}}" alt="">
-                            <img class="image" src="{{asset('storage/' . $operador->dni_img)}}" alt=""></div>
+                                <img class="image" src="{{asset('storage/' . $operador->foto)}}" alt="" width="120px">
+                            {{--<img class="image" src="{{asset('storage/' . $operador->dni_img)}}" alt=""></div>--}}
+                            </div>
                             <hr/>
-                            <p>Province : {{$operador->provincia}}</p>
+                            <h2>{{$operador->nombre}}  {{$operador->apellidos}}</h2>
+                            <p>Ciudad : {{$operador->ciudad}} </p>
+                            <p>DNI : {{$operador->dni}}</p>
+                            <p>Provincia : {{$operador->provincia}}</p>
                             <p>Dirección : {{$operador->direccion}}</p>
                             <p>Codigo postal : {{$operador->codigo_postal}}</p>
-                            <p>mail : <a href="mailto:{{$operador->mail}}" > {{$operador->mail}}</a></p>
+                            <p>Mail : <a href="mailto:{{$operador->mail}}" > {{$operador->mail}}</a></p>
                             <p>Fecha Nacimiento : {{date('d/m/Y',strtotime($operador->fecha_nacimiento))}} </p>
-                        <p>Fecha : {{date('d/m/Y',strtotime($operador->fecha))}} </p>
+                            <p>Fecha : {{date('d/m/Y',strtotime($operador->fecha))}} </p>
                             <p>Entidad : {{$operador->entidades_formadoreas->nombre}}</p>
 
                             <p>Asistente :
@@ -35,11 +36,11 @@
                                 @endforeach
                             </p>
                             <p>Carnet :  {{$operador->carnett != null ?$operador->carnett->numero : "----"}}
-                            <p>Certificado :
-                                @foreach($operador->certificado as $certificado)
-                                    {{$certificado->numero}},
-                                @endforeach
-                            </p>
+                            {{--<p>Certificado :--}}
+                                {{--@foreach($operador->certificado as $certificado)--}}
+                                    {{--{{$certificado->numero}},--}}
+                                {{--@endforeach--}}
+                            {{--</p>--}}
                             </p>
                             {{--              <div class="d-flex justify-content-center">--}}
                             {{--              <a href="">Show Assistants</a>--}}

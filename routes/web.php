@@ -42,6 +42,7 @@ use App\Http\Controllers\{Auth\ForgotPasswordController,
 Route::get('/', [FrontController::class, 'home'])->name('homepage');
 Route::post('/', [FrontController::class, 'subscribe'])->name('subscribe');
 Route::get('about-us', [FrontController::class, 'about'])->name('about');
+Route::get('quienes-somos', [FrontController::class, 'about2'])->name('about2');
 Route::get('contact', [FrontController::class, 'contact'])->name('contact');
 Route::get('entidades', [FrontController::class, 'entidades'])->name('entidades');
 Route::get('testimonials', [FrontController::class, 'testi'])->name('testi');

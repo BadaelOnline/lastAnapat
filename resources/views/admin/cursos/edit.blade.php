@@ -218,12 +218,11 @@
 
 
                 {{--fourth row--}}
-
                 <div class="col-md-4">
                     <label for="fecha_inicio" class="col-sm-4 col-form-label">{{__('message.Fecha Inicio')}}:</label>
 {{--                    <label for="fecha_inicio" class="col-sm-7 col-form-label">{{$cursos->fecha_inicio != null ? date('d/m/Y H:i:s',strtotime($cursos->fecha_inicio)) : ""}}</label>--}}
                     <div class="col-sm-9">
-                        <input type="datetime-local" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio') ? old('fecha_inicio') : $cursos->fecha_inicio != null ? date('Y-m-d\TH:i:s',strtotime($cursos->fecha_inicio)) : ""}}" id="fecha_inicio" placeholder="{{$cursos->fecha_inicio}}" >
+                        <input type="datetime-local" name='fecha_inicio' class="form-control {{$errors->first('fecha_inicio') ? "is-invalid" : "" }} " value="{{old('fecha_inicio') ? old('fecha_inicio') : ($cursos->fecha_inicio != null ? date('Y-m-d\TH:i:s',strtotime($cursos->fecha_inicio)) : "")}}" id="fecha_inicio" placeholder="{{$cursos->fecha_inicio}}" >
                         <div class="invalid-feedback">
                             {{ $errors->first('fecha_inicio') }}
                         </div>
@@ -251,11 +250,7 @@
                         </div>
                     </div>
                 </div>
-
-
-
                 {{--fifth row--}}
-
                 <div class="col-md-4">
                     <label for="provincia" class="col-sm-2 col-form-label">{{__('message.Provincia')}}</label>
                     <div class="col-sm-9">
@@ -265,8 +260,6 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="col-md-4">
                     <label for="codigo_postal" class="col-sm-2 col-form-label">{{__('message.Codigo Postal')}}</label>
                     <div class="col-sm-9">
@@ -405,8 +398,6 @@
             @endif
 
 
-
-
                 <div class="col-md-4">
                     <label for="observaciones" class="col-sm-2 col-form-label">{{__('message.Observaciones')}}</label>
                     <div class="col-sm-9">
@@ -425,8 +416,6 @@
             </div>
                 {{--seventh row--}}
                 @if(auth()->user()->perfil=='Administrador' )
-
-
                 <div class="col-md-2 d-flex flex-column justify-content-center">
                     <label for="cerrado" class="col-sm-12 col-form-label text-center">{{__('message.Cerrado')}} </label>
                     <label class="switch">
@@ -448,19 +437,59 @@
                 @endif
             </div>
         <div class="form-group mt-5">
-
             <div class="col-sm-3">
-
                 <button type="submit" class="btn btn-info">{{__('message.Update')}}</button>
                 <a href="{{route('admin.cursos.print', [$cursos->id])}}" class="btn btn-info"> <i class="fas fa-print"></i> </a>
-
             </div>
-
         </div>
-
     </form>
+    <div class="row">
+        <div class="col-sm" style="border: 2px solid #ddd;">
+            <label for="horario" class="col-sm-2 col-form-label">{{__('message.Horario')}}</label>
+            <div class="col-sm-12">
+                <div class="card-header py-3">
+                    <a href="{{ route('admin.horario.create',[$cursos->id]) }}" class="btn btn-success">{{__('message.add_new_Horario')}} </a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>{{__('message.Contenido')}}</th>
 
-            <div class="row">
+                            <th>{{__('message.Fecha Inicio')}}</th>
+
+                            <th>{{__('message.Final')}}</th>
+
+                            <th>{{__('message.Alumnos')}}</th>
+
+                            <th>{{__('message.Option')}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($horario as $horario)
+                            <tr>
+                                <td>
+                                    @if($horario->contenido == "Práctica")
+                                        {{$horario->tipo_maquinaa != null ? $horario->tipo_maquinaa->tipo_maquina :"Práctica" }}
+                                    @else
+                                        Teoria
+                                    @endif
+                                </td>
+                                <td>{{ date('d/m/Y H:i:s',strtotime($horario->fecha_inicio)) }}</td>
+                                <td>{{ date('d/m/Y H:i:s',strtotime($horario->final)) }}</td>
+                                <td>{{ $horario->alumnos }}</td>
+                                <td>
+                                    <a href="{{route('admin.horario.edit', [$horario->id])}}" class="btn btn-info btn-sm"> {{__('message.Update')}} </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
                 <div class="col-sm" style="border: 2px solid #ddd;">
                     <label for="asistent" class="col-sm-2 col-form-label">{{__('message.Asistentes')}}</label>
                     <div class="col-sm-12">
@@ -468,63 +497,37 @@
                             <a href="{{ route('admin.asistent.create',[$cursos->id]) }}" class="btn btn-success">{{__('message.add_new_Asistente')}}</a>
                         </div>
                         <div class="table-responsive">
-
                             <table class="table" id="dataTable" width="100%" cellspacing="0">
-
                                 <thead>
-
                                 <tr>
-
-                                    <th>{{__('message.Nombre')}}</th>
-
-                                    <th>{{__('message.Apellidos')}}</th>
-
                                     <th>{{__('message.Número de asistente')}}</th>
-
+                                    <th>{{__('message.Apellidos')}}</th>
+                                    <th>{{__('message.Nombre')}}</th>
                                     <th>{{__('message.Nota Examen teorico')}}	</th>
-
                                     <th>{{__('message.Nota Examen Practico')}}	</th>
-
                                     <th>{{__('message.Option')}}</th>
-
                                 </tr>
-
                                 </thead>
-
                                 <tbody>
-
                                 @php
-
                                     $no=0;
-
                                 @endphp
-
                                 @foreach ($asistent as $asistent)
-
                                     <tr>
-
+                                        <td>{{ $asistent->orden }}</td>
+                                        <td>
+                                            @foreach($operador as $ope)
+                                                {{$ope->id == $asistent->operador ? $ope->apellidos : "" }}
+                                            @endforeach
+                                        </td>
                                         <td>
                                             @foreach($operador as $ope)
                                                 {{$ope->id == $asistent->operador ? $ope->nombre : "" }}
                                             @endforeach
                                         </td>
 
-                                        <td>
-                                            @foreach($operador as $ope)
-                                                {{$ope->id == $asistent->operador ? $ope->apellidos : "" }}
-                                            @endforeach
-                                        </td>
-
-                                        <td>
-
-                                            {{ $asistent->orden }}
-
-                                        </td>
-
                                         <td>{{ $asistent->nota_t }}</td>
-
                                         <td>{{ $asistent->nota_p }}</td>
-
                                         <td>
                                             <a href="{{route('admin.asistent.edit', [$asistent->id])}}" class="btn btn-info btn-sm"> {{__('message.Update')}} </a>
                                             @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion'))
@@ -536,99 +539,23 @@
 {{--                                                <a href="{{route('admin.operadores.edit', [$asistent->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>--}}
 
                                                 <form method="POST" action="{{route('admin.asistent.destroy', [$asistent->id])}}" class="d-inline" onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
-
                                                     @csrf
-
                                                     <input type="hidden" name="_method" value="DELETE">
-
                                                     <button type="submit" value="Delete" class="btn btn-delete btn-sm">
                                                         <i class='fas fa-trash-alt'></i>
                                                     </button>
-
                                                 </form>
                                             @endif
                                         </td>
-
                                     </tr>
-
                                 @endforeach
-
                                 </tbody>
-
                             </table>
-
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-            <div class="row">
-                <div class="col-sm" style="border: 2px solid #ddd;">
-                    <label for="horario" class="col-sm-2 col-form-label">{{__('message.Horario')}}</label>
-                    <div class="col-sm-12">
-                        <div class="card-header py-3">
-                            <a href="{{ route('admin.horario.create',[$cursos->id]) }}" class="btn btn-success">{{__('message.add_new_Horario')}} </a>
-                        </div>
-                        <div class="table-responsive">
-
-                            <table class="table" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th>{{__('message.Contenido')}}</th>
-
-                                    <th>{{__('message.Fecha Inicio')}}</th>
-
-                                    <th>{{__('message.Final')}}</th>
-
-                                    <th>{{__('message.Alumnos')}}</th>
-
-                                    <th>{{__('message.Option')}}</th>
-
-                                </tr>
-
-                                </thead>
-
-                                <tbody>
-
-
-
-                                @foreach ($horario as $horario)
-
-                                    <tr>
-
-                                        <td>
-                                            @if($horario->contenido == "Práctica")
-                                            {{$horario->tipo_maquinaa != null ? $horario->tipo_maquinaa->tipo_maquina :"Práctica" }}
-                                            @else
-                                                Teoria
-                                            @endif
-                                        </td>
-
-                                        <td>{{ date('d/m/Y H:i:s',strtotime($horario->fecha_inicio)) }}</td>
-
-                                        <td>{{ date('d/m/Y H:i:s',strtotime($horario->final)) }}</td>
-
-                                        <td>{{ $horario->alumnos }}</td>
-                                        <td>
-                                            <a href="{{route('admin.horario.edit', [$horario->id])}}" class="btn btn-info btn-sm"> {{__('message.Update')}} </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-
-                                </tbody>
-
-                            </table>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
     @endsection
-
     @push('scripts')
         <script>
             function print(url){

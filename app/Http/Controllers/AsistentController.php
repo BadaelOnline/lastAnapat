@@ -46,9 +46,9 @@ class AsistentController extends Controller
     {
         $user = auth()->user();
         if ($user->perfil == 'Administrador') {
-            $operador = Operadores::select('id', 'nombre', 'apellidos')->where('estado',0)->get();
+            $operador = Operadores::select('id', 'nombre', 'apellidos')->where('estado',0)->orderby('apellidos')->get();
         } else {
-            $operador = Operadores::select('id', 'nombre', 'apellidos')->where('estado',0)->where('entidad', '=', $user->entidad)->get();
+            $operador = Operadores::select('id', 'nombre', 'apellidos')->where('estado',0)->where('entidad', '=', $user->entidad)->orderby('apellidos')->get();
         }
         $curso = Cursos::select('id', 'codigo')->get();
         $cursos = Cursos::orderBy('id', 'desc')->get();
@@ -144,11 +144,11 @@ class AsistentController extends Controller
 
             }
             if ($tipo_maq[0] == 2 || $tipo_maq[1] == 2){
-                if ($tipo_maq[0] == 5 || $tipo_maq[1] == 5 || $tipo_maq[2] == 5){
+                if ($tipo_maq[0] == 5 || $tipo_maq[1] == 5 || @$tipo_maq[2] == 5){
                     array_push($notes,2);
                     array_push($notes,4);
                     array_push($notes,6);
-                }elseif ($tipo_maq[0] == 6 || $tipo_maq[1] == 6 || $tipo_maq[2] == 6){
+                }elseif ($tipo_maq[0] == 6 || $tipo_maq[1] == 6 || @$tipo_maq[2] == 6){
                     array_push($notes,2);
                     array_push($notes,8);
                     array_push($notes,10);
@@ -156,7 +156,7 @@ class AsistentController extends Controller
 
             }
             if ($tipo_maq[0] == 5 || $tipo_maq[1] == 5){
-                if ($tipo_maq[0] == 6 || $tipo_maq[1] == 6 || $tipo_maq[2] == 6){
+                if ($tipo_maq[0] == 6 || $tipo_maq[1] == 6 || @$tipo_maq[2] == 6){
                     array_push($notes,4);
                     array_push($notes,8);
                     array_push($notes,12);
@@ -178,7 +178,7 @@ class AsistentController extends Controller
                 array_push($notes,8);
             }
         }
-        $x =Asistent::select('orden')->orderBy('id','desc')->latest()->get();
+        $x =Asistent::select('orden')->where('curso',$id)->orderBy('id','desc')->latest()->get();
         if(count($x) > 0){
             $orden = $x[0]->orden +1;
         }else{
@@ -661,11 +661,11 @@ class AsistentController extends Controller
 
             }
             if ($tipo_maq[0] == 2 || $tipo_maq[1] == 2){
-                if ($tipo_maq[0] == 5 || $tipo_maq[1] == 5 || $tipo_maq[2] == 5){
+                if ($tipo_maq[0] == 5 || $tipo_maq[1] == 5 || @$tipo_maq[2] == 5){
                     array_push($notes,2);
                     array_push($notes,4);
                     array_push($notes,6);
-                }elseif ($tipo_maq[0] == 6 || $tipo_maq[1] == 6 || $tipo_maq[2] == 6){
+                }elseif ($tipo_maq[0] == 6 || $tipo_maq[1] == 6 || @$tipo_maq[2] == 6){
                     array_push($notes,2);
                     array_push($notes,8);
                     array_push($notes,10);
@@ -673,7 +673,7 @@ class AsistentController extends Controller
 
             }
             if ($tipo_maq[0] == 5 || $tipo_maq[1] == 5){
-                if ($tipo_maq[0] == 6 || $tipo_maq[1] == 6 || $tipo_maq[2] == 6){
+                if ($tipo_maq[0] == 6 || $tipo_maq[1] == 6 || @$tipo_maq[2] == 6){
                     array_push($notes,4);
                     array_push($notes,8);
                     array_push($notes,12);

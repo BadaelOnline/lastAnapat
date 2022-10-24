@@ -56,7 +56,7 @@
 
                         <th>{{__('message.Apellidos')}}</th>
 
-                        <th>{{__('message.tipo_carnet')}}</th>
+                        <th>Tipo de curso</th>
 
                         <th>{{__('message.Fecha De Emisión')}} </th>
 
