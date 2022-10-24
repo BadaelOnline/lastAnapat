@@ -215,6 +215,7 @@ class OperadoresController extends Controller
 //        $certificado->cer_fecha = $activeAsistent->observaciones;
 //        dd($operador->carnett);
 //        dd($cert_numero);
+//        dd($certificado);
         return view('admin.operadores.certificado', compact('operador', 'curso', 'tipos', 'cert_numero', 'activeAsistent'));
     }
 

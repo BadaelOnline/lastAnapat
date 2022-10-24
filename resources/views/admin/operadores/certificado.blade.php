@@ -68,7 +68,7 @@ input[type="radio"]:focus {
         </div>
         <div class="col-md-3"></div>
         <div class="col-md-4">
-            <h6>{{__('message.Código del certificado')}} : <br><span>{{$cert_numero}}</span></h6>
+            <h6>{{__('message.Código del certificado')}} : <br><span>{{$operador->certificado()->first()->numero}}</span></h6>
         </div>
         <div class="col-md-4">
             <h6>{{__('message.Nombre')}} :<br> <span>{{$operador->nombre}}</span></h6>
