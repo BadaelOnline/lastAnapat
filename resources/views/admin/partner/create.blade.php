@@ -83,6 +83,70 @@
                 </div>
             </div>
         </div>
+
+        <div class="form-group ml-5">
+            <label for="enlace" class="col-sm-2 col-form-label">{{__('message.empresa')}}</label>
+            <div class="col-sm-9">
+                <input type="text" name='empresa' class="form-control {{$errors->first('empresa') ? "is-invalid" : "" }} " value="{{old('empresa')}}" id="empresa" placeholder="empresa">
+                <div class="invalid-feedback">
+                    {{ $errors->first('empresa') }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group ml-5">
+            <label for="direccion" class="col-sm-2 col-form-label">{{__('message.direccion')}}</label>
+            <div class="col-sm-9">
+                <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion')}}" id="direccion" placeholder="direccion">
+                <div class="invalid-feedback">
+                    {{ $errors->first('direccion') }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group ml-5">
+            <label for="codigo_postal" class="col-sm-2 col-form-label">{{__('message.codigo_postal')}}</label>
+            <div class="col-sm-9">
+                <input type="text" name='codigo_postal' class="form-control {{$errors->first('codigo_postal') ? "is-invalid" : "" }} " value="{{old('codigo_postal')}}" id="codigo_postal" placeholder="codigo_postal">
+                <div class="invalid-feedback">
+                    {{ $errors->first('codigo_postal') }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group ml-5">
+            <label for="poblacion" class="col-sm-2 col-form-label">{{__('message.poblacion')}}</label>
+            <div class="col-sm-9">
+                <input type="text" name='poblacion' class="form-control {{$errors->first('poblacion') ? "is-invalid" : "" }} " value="{{old('poblacion')}}" id="poblacion" placeholder="poblacion">
+                <div class="invalid-feedback">
+                    {{ $errors->first('poblacion') }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group ml-5">
+            <label for="provincia" class="col-sm-2 col-form-label">{{__('message.Provincia')}}</label>
+            <div class="col-sm-9">
+                <input type="text" name='provincia' class="form-control {{$errors->first('provincia') ? "is-invalid" : "" }} " value="{{old('provincia')}}" id="provincia" placeholder="provincia">
+                <div class="invalid-feedback">
+                    {{ $errors->first('provincia') }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group ml-5">
+            <label for="telefono" class="col-sm-2 col-form-label">{{__('message.telefono')}}</label>
+            <div class="col-sm-9">
+                <input type="text" name='telefono' class="form-control {{$errors->first('telefono') ? "is-invalid" : "" }} " value="{{old('telefono')}}" id="telefono" placeholder="telefono">
+                <div class="invalid-feedback">
+                    {{ $errors->first('telefono') }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group ml-5">
+            <label for="email" class="col-sm-2 col-form-label">{{__('message.Email')}}</label>
+            <div class="col-sm-9">
+                <input type="email" name='email' class="form-control {{$errors->first('email') ? "is-invalid" : "" }} " value="{{old('email')}}" id="email" placeholder="email">
+                <div class="invalid-feedback">
+                    {{ $errors->first('email') }}
+                </div>
+            </div>
+        </div>
         <div class="form-group ml-5">
             <div class="col-sm-3">
                 <button type="submit" class="btn btn-primary">{{__('message.Create')}}</button>

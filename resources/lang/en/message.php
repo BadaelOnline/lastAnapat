@@ -73,7 +73,7 @@ return [
     'Slogan' => 'Slogan',
     'Title' => 'Título',
     'asistent' => 'Asistentes.',
-    'Número de asistente' => 'Número de asistentes',
+    'Número de asistente' => 'Número de asistente',
     'Nota Examen teorico' => 'Nota de examen teórico',
     'Nota Examen Practico' => 'Nota de examen práctico',
     'Delete this asistent permanently?' => '¿Desea borrar este asistente permanentemente?',
@@ -315,7 +315,13 @@ return [
     'Enviar enlace de restablecimiento de contraseña' => 'Enviar enlace de restablecimiento de contraseña',
     'Confirmar contraseña' => 'Confirmar contraseña',
     'Olvidé mi contraseña Correo electrónico' => 'Olvidé mi contraseña Correo electrónico',
-    'Fecha de creación'=>'Fecha de creación'
+    'Fecha de creación'=>'Fecha de creación',
+    'ACTIVO' => 'ACTIVO',
+    'empresa' => 'Empresa',
+    'poblacion' => 'Población',
+    'telefono' => 'Telèfono',
+    'web' => 'Web'
+
 
 
 

@@ -20,9 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b9c3d3c-a351-4ab6-90ca-e38cb16d2c4d" name="Default Changelist" comment="">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OperadoresController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OperadoresController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/operadores/certificado.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/operadores/certificado.blade.php" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/public/admin/css/sb-admin-2.css" afterPath="$PROJECT_DIR$/public/admin/css/sb-admin-2.css" />
       <change beforePath="$PROJECT_DIR$/public/admin/css/sb-admin-2.min.css" afterPath="$PROJECT_DIR$/public/admin/css/sb-admin-2.min.css" />
       <change beforePath="$PROJECT_DIR$/public/front/css/style-anapat.css" afterPath="$PROJECT_DIR$/public/front/css/style-anapat.css" />
+>>>>>>> 9c97e0511f5e49c9c5af2ccaaa6269e9784436c1
     </list>
     <ignored path="$PROJECT_DIR$/vendor/asm89/stack-cors/" />
     <ignored path="$PROJECT_DIR$/vendor/brick/math/" />
@@ -564,8 +570,13 @@
       <workItem from="1660399426298" duration="20000" />
       <workItem from="1660550423279" duration="38000" />
       <workItem from="1660550469942" duration="14000" />
+<<<<<<< HEAD
+      <workItem from="1660652541613" duration="401000" />
+      <workItem from="1665677571500" duration="2020000" />
+=======
       <workItem from="1660652541613" duration="319000" />
       <workItem from="1666053280903" duration="734000" />
+>>>>>>> 9c97e0511f5e49c9c5af2ccaaa6269e9784436c1
     </task>
     <servers />
   </component>
@@ -621,18 +632,14 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1655712304333">
+    <state x="389" y="97" width="587" height="534" key="find.popup" timestamp="1665678118963">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1655712304333" />
+    <state x="389" y="97" width="587" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1665678118963" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1660201689685">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1660201689685" />
-    <state x="339" y="17" width="670" height="676" key="search.everywhere.popup" timestamp="1656421551288">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="339" y="17" width="670" height="676" key="search.everywhere.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1656421551288" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

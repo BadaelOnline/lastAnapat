@@ -205,6 +205,7 @@ class OperadoresController extends Controller
 //        $certificado->cer_fecha = $activeAsistent->observaciones;
 //        dd($operador->carnett);
 //        dd($cert_numero);
+//        dd($certificado);
         return view('admin.operadores.certificado', compact('operador', 'curso', 'tipos', 'cert_numero', 'activeAsistent'));
     }
 
@@ -301,14 +302,14 @@ class OperadoresController extends Controller
                     }
 //                    $carnet->numero = $request->carnet;
                     $carnet->operador = $operadores->id;
-                    $fotoCarnet = $request->file('foto');
-                    if ($fotoCarnet) {
-                        $fotopath = $fotoCarnet->store('carnets/' . $request->carnet, 'public');
-
-                        $carnet->foto = $fotopath;
-                    } else {
+//                    $fotoCarnet = $request->file('foto');
+//                    if ($fotoCarnet) {
+//                        $fotopath = $fotoCarnet->store('carnets/' . $request->carnet, 'public');
+//
+//                        $carnet->foto = $fotopath;
+//                    } else {
                         $carnet->foto = $operadores->foto;
-                    }
+//                    }
                     $carnet->curso = 0;
                     $carnet->estado = 0 ;
                     $carnet->save();
@@ -316,14 +317,14 @@ class OperadoresController extends Controller
                     $carnet = $operadores->carnett;
                     $carnet->numero = $request->carnet;
                     $carnet->operador = $operadores->id;
-                    $fotoCarnet = $request->file('foto');
-                    if ($fotoCarnet) {
-                        $fotopath = $fotoCarnet->store('carnets/' . $request->carnet, 'public');
-
-                        $carnet->foto = $fotopath;
-                    } else {
+//                    $fotoCarnet = $request->file('foto');
+//                    if ($fotoCarnet) {
+//                        $fotopath = $fotoCarnet->store('carnets/' . $request->carnet, 'public');
+//
+//                        $carnet->foto = $fotopath;
+//                    } else {
                         $carnet->foto = $operadores->foto;
-                    }
+//                    }
                     $carnet->save();
                 }
             }
