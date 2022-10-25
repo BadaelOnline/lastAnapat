@@ -8,6 +8,7 @@ use App\Models\{About,
     Banner,
     Carnet,
     Category,
+    Certificado,
     Cursos,
     EntidadesFormadoreas,
     Faq,
@@ -156,10 +157,10 @@ class FrontController extends Controller
         }
         if($carnet != null){
             $operador = Operadores::where('id',$carnet->operador)->firstOrFail();
-
+            $certificado=Certificado::select('carnet','curso','tipo_1','tipo_2','tipo_3','tipo_4','emision','vencimiento')->where('carnet',$request->numero)->get();
             $curso = Cursos::where('id',$carnet->curso)->firstOrFail();
 //            dd($curso);
-            return view ('front.carnet',compact('general','operador','carnet','curso'));
+            return view ('front.carnet',compact('general','operador','carnet','curso','certificado'));
             } else {
             $test = "Ningún Carné coincide con el código buscado.";
             return view('front.carnets', compact('general','test'));

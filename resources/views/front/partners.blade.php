@@ -4,29 +4,32 @@
     <main id="main">
 
         <!-- ======= Services Section ======= -->
-        <section id="services" class="services section-bg">
+        <section id="partners" class="clients services section-bg" style="padding-top: 125px">
             <div class="container" data-aos="fade-up">
-                <h2 class="title" style="margin-top: 50px;">{{__('message.Our Partner')}}</h2>
-                <div class="row">
-                    @foreach ($partners as $partners)
-                        <div class="col-lg-4 col-md-6 d-flex justify-content-center mt-4" data-aos="zoom-in" data-aos-delay="100">
-                            <div class="icon-box icon-box2" style="width: 100%;">
-                                <div class="imag">
-                                    <img src="{{asset('storage/' . $partners->cover)}}" alt="" height="200px">
-                                </div>
-                                {{--            <h4><a href="{{ route('serviceshow',$service->slug) }}">2100001</a></h4>--}}
-                                <p>{{$partners->name}}</p>
 
-                                <hr>
+                <div class="section-title" >
+                    <h2 style="text-transform: capitalize;">{{__('message.Our Partner')}}</h2>
+                </div>
 
-                                <a href="{{ route('partner',$partners->id) }}"> <button>{{__('message.Details')}}</button></a>
+                <div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">
+
+
+                    @foreach($partners as $partner)
+                        <div class="col-lg-4 col-md-4 col-6">
+                            <div class="client-logo">
+                                <a href="{{ route('partner',$partner->id) }}"  rel="noopener noreferrer">
+                                    <img src="{{ asset('storage/'.$partner->cover) }}" class="img-fluid" alt="" style="height: 120px">
+                                    {{--                                    <h2 style="text-align: center;"> {{$partner->name}}</h2>--}}
+                                </a>
                             </div>
                         </div>
                     @endforeach
+
                 </div>
 
             </div>
-        </section><!-- End Services Section -->
+        </section><!-- End Our Clients Section -->
+
 
     </main><!-- End #main -->
 @endsection

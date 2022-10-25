@@ -60,18 +60,15 @@
 
     <!-- Sidebar  bg-gradient-info sidebar-dark  -->
     <ul class="navbar-nav sidebar accordion" id="accordionSidebar">
-
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
-            <img width="207" height="97" src="{{ asset('admin/img/anapat.png')}}"
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" style="width: 150px" href="{{ route('admin.dashboard') }}">
+            <img  src="{{ asset('admin/img/anapat.png')}}"
                  class="attachment-medium size-medium" alt="" loading="lazy" srcset=""
-                 sizes="(max-width: 207px) 100vw, 207px">
+                  style="height: 100px;width:150px;margin-top: 80px;">
         </a>
-
         <!-- Divider -->
         {{--@can('isAdmin')--}}
             <nav class="navbar navbar-expand navbar-light bg-white topbar  static-top ">
-
                 <!-- Sidebar Toggle (Topbar) -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center d-md-none"
                    href="{{ route('admin.dashboard') }}">
