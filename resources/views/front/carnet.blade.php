@@ -16,34 +16,61 @@
                                 {{--<img class="image" src="{{asset('storage/' . $operador->dni_img)}}" alt=""></div>--}}
                             </div>
                             <h2 class="align-content-center" style="text-align: center;">{{$carnet->numero}}</h2>
-{{--                            <div class="d-flex align-items-center">--}}
-{{--                                <img class="image" src="{{asset('storage/' . $carnet->foto)}}" alt=""--}}
-{{--                                     style="margin-left: 10px;">--}}
+                            {{--                            <div class="d-flex align-items-center">--}}
+                            {{--                                <img class="image" src="{{asset('storage/' . $carnet->foto)}}" alt=""--}}
+                            {{--                                     style="margin-left: 10px;">--}}
 
-{{--                            </div>--}}
+                            {{--                            </div>--}}
                             <hr/>
                             <p>Operador : {{$operador->nombre}} {{$operador->apellidos}}</p>
-                            <p>Fecha De Alta : {{$carnet->fecha_de_alta}}</p>
-                            <p>Fecha De Emision : {{$carnet->fecha_de_emision}}</p>
+                            <p>Fecha De Alta : {{date('d/m/Y',strtotime($carnet->fecha_de_alta))}}</p>
+                            <p>Fecha De Emision : {{date('d/m/Y',strtotime($carnet->fecha_de_emision))}}</p>
+                            <p>Curso :
+                            @foreach($certificado as $certific)
+                                    {{$certific->cursoo->codigo}}       
+                            @endforeach
+                            </p>
                             <p>Tipos De Pemp :</p>
-                            <table class="table-bordered">
+                            <table style="margin-left: 20px">
                                 <thead>
-                                    <tr>
-                                        <th>Tipo</th>
-                                    </tr>
+                                <th>Maquina</th>
+                                <th>{{__('message.Fecha de emisión')}}</th>
+                                <th>{{__('message.Fecha de vencimiento')}}</th>
                                 </thead>
                                 <tbody>
-                                @foreach($carnet->Tipo_Maquinas as $t)
-                                <tr>
-
-                                        <td>{{$t->tipo_maquina}}</td>
-
-                                </tr>
+                                @foreach($certificado as $certific)
+                                    @if($certific->tipo_1 && $certific->tipo_1 != '-----')
+                                        <tr>
+                                            <td>{{$certific->tipo_1}}</td>
+                                            <td>{{date('d/m/Y',strtotime($certific->emision))}}</td>
+                                            <td>{{date('d/m/Y',strtotime($certific->vencimiento))}}</td>
+                                        </tr>
+                                    @endif
+                                    @if($certific->tipo_2 && $certific->tipo_2 != '-----')
+                                        <tr>
+                                            <td>{{$certific->tipo_2}}</td>
+                                            <td>{{date('d/m/Y',strtotime($certific->emision))}}</td>
+                                            <td>{{date('d/m/Y',strtotime($certific->vencimiento))}}</td>
+                                        </tr>
+                                    @endif
+                                    @if($certific->tipo_3 && $certific->tipo_3 != '-----')
+                                        <tr>
+                                            <td>{{$certific->tipo_3}}</td>
+                                            <td>{{date('d/m/Y',strtotime($certific->emision))}}</td>
+                                            <td>{{date('d/m/Y',strtotime($certific->vencimiento))}}</td>
+                                        </tr>
+                                    @endif
+                                    @if($certific->tipo_4 && $certific->tipo_4 != '-----')
+                                        <tr>
+                                            <td>{{$certific->tipo_4 }}</td>
+                                            <td>{{date('d/m/Y',strtotime($certific->emision))}}</td>
+                                            <td>{{date('d/m/Y',strtotime($certific->vencimiento))}}</td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                             </table>
 
-                            <p>Curso : {{$curso->codigo}}</p>
                             {{--                            <p>Examen Teorico Realizado: {{$carnet->examen_teorico_realizado}}</p>--}}
                             {{--                            <p>Estado : {{$carnet->estado == 0 ? "No" : "Si"}}</p>--}}
 

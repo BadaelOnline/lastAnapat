@@ -28,7 +28,7 @@
                             <p>{{__('message.Provincia')}} : {{$partner->provincia}}</p>
                             <p>{{__('message.telefono')}} : {{$partner->telefono}}</p>
                             <p>{{__('message.Email')}} : {{$partner->email}}</p>
-                            <p>{{__('message.Email')}} : {{$partner->email}}</p>
+                            {{--<p>{{__('message.Email')}} : {{$partner->email}}</p>--}}
                             <p>{{__('message.web')}} : {{$partner->link}}</p>
                             {{--              <div class="d-flex justify-content-center">--}}
                             {{--              <a href="">Show Assistants</a>--}}
