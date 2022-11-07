@@ -158,6 +158,7 @@
                     <div class="col-sm-9">
                         <select name='nota_p' class="form-control {{$errors->first('nota_p') ? "is-invalid" : "" }} " id="nota_p">
                             <option disabled selected>{{__('message.Choose_One')}}</option>
+                            <option  value="">Sin Nota</option>
                             @foreach ($notes as $note)
                                 <option value="{{ $note }}">{{$note}}</option>
                             @endforeach

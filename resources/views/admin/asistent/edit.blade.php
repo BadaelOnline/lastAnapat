@@ -176,7 +176,7 @@
                 <div class="col-sm-9">
                     <select name='nota_p' class="form-control {{$errors->first('nota_p') ? "is-invalid" : "" }} "
                             id="nota_p">
-
+                        <option  value="" {{!$asistent->notep ? "selected" : ""}}>Sin Nota</option>
                         @foreach ($notes as $note)
                             <option
                                 value="{{ $note }}" {{$asistent->nota_p == $note ? "selected" : ""}}>{{$note}}</option>

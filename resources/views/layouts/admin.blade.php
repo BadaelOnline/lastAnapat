@@ -14,8 +14,8 @@
     <!-- Custom fonts for this template-->
     <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
 
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400&display=swap"
@@ -31,7 +31,7 @@
     <!-- Nucleo Icons -->
     <link href="{{ asset('admin/css/nucleo-icons.css')}}" rel="stylesheet"/>
     <?php
-        use App\Models\General;$general = General::find(1);
+    use App\Models\General;$general = General::find(1);
     ?>
     <link href="{{ asset('storage/'.$general->favicon) }}" rel="icon">
     <link href="{{ asset('storage/'.$general->favicon) }}" rel="apple-touch-icon">
@@ -44,7 +44,8 @@
     {{-- Summernote CDN --}}
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" integrity ="anonymous"  referrerpolicy="no-referrer">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"
+          integrity="anonymous" referrerpolicy="no-referrer">
 
     {{-- Select2 Style CDN --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
@@ -61,102 +62,105 @@
     <!-- Sidebar  bg-gradient-info sidebar-dark  -->
     <ul class="navbar-nav sidebar accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" style="width: 150px" href="{{ route('admin.dashboard') }}">
-            <img  src="{{ asset('admin/img/anapat.png')}}"
+        <div>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" style="width: 150px"
+           href="{{ route('admin.dashboard') }}">
+            <img src="{{ asset('admin/img/anapat.png')}}"
                  class="attachment-medium size-medium" alt="" loading="lazy" srcset=""
-                  style="height: 100px;width:150px;margin-top: 80px;">
+                 style="height: 100px;width:150px;margin-top: 80px;">
         </a>
+        </div>
         <!-- Divider -->
         {{--@can('isAdmin')--}}
-            <nav class="navbar navbar-expand navbar-light bg-white topbar  static-top ">
-                <!-- Sidebar Toggle (Topbar) -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center d-md-none"
-                   href="{{ route('admin.dashboard') }}">
-                    <img width="207" height="97" src="{{ asset('admin/img/anapat.png')}}"
-                         class="attachment-medium size-medium" alt="" loading="lazy" srcset=""
-                         sizes="(max-width: 207px) 100vw, 207px">
-                </a>
-                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <div class="d-flex nav-setting">
-                @can('isAdmin')
-                    <!-- Nav Item - Pages Collapse Menu -->
-                        <li class="nav-item d-md-block d-none {{ in_array(Route::currentRouteName(),[
+        <nav class="navbar navbar-expand navbar-light bg-white topbar  static-top ">
+            <!-- Sidebar Toggle (Topbar) -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center d-md-none"
+               href="{{ route('admin.dashboard') }}">
+                <img width="207" height="97" src="{{ asset('admin/img/anapat.png')}}"
+                     class="attachment-medium size-medium" alt="" loading="lazy" srcset=""
+                     sizes="(max-width: 207px) 100vw, 207px">
+            </a>
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="d-flex nav-setting">
+            @can('isAdmin')
+                <!-- Nav Item - Pages Collapse Menu -->
+                    <li class="nav-item d-md-block d-none {{ in_array(Route::currentRouteName(),[
             'admin.post',
             'admin.category',
             'admin.tag',
             'admin.post.trash',
         ])? 'active' : ''}}">
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                               aria-expanded="true" aria-controls="collapseTwo">
-                                <i class="fas fa-fw fa-table"></i>
-                                <span>{{__('message.Blog')}}</span>
-                            </a>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                 data-parent="#accordionSidebar">
-                                <div class=" py-2 collapse-inner rounded">
-                                    <a class="collapse-item" href="{{ route('admin.post') }}">{{__('message.Blog')}}</a>
-                                    <a class="collapse-item"
-                                       href="{{ route('admin.category') }}">{{__('message.Categories')}}</a>
-                                    <a class="collapse-item" href="{{ route('admin.tag') }}">{{__('message.Tags')}}</a>
-                                    <a class="collapse-item"
-                                       href="{{ route('admin.post.trash') }}">{{__('message.Trash')}}</a>
-                                </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                           aria-expanded="true" aria-controls="collapseTwo">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>{{__('message.Blog')}}</span>
+                        </a>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                             data-parent="#accordionSidebar">
+                            <div class=" py-2 collapse-inner rounded">
+                                <a class="collapse-item" href="{{ route('admin.post') }}">{{__('message.Blog')}}</a>
+                                <a class="collapse-item"
+                                   href="{{ route('admin.category') }}">{{__('message.Categories')}}</a>
+                                <a class="collapse-item" href="{{ route('admin.tag') }}">{{__('message.Tags')}}</a>
+                                <a class="collapse-item"
+                                   href="{{ route('admin.post.trash') }}">{{__('message.Trash')}}</a>
                             </div>
-                        </li>
-                @endcan
-                @can('isAdmin')
-                    <!-- Nav Item - Utilities Collapse Menu -->
-                        <li class="nav-item d-md-block d-none {{ in_array(Route::currentRouteName(),[
+                        </div>
+                    </li>
+            @endcan
+            @can('isAdmin')
+                <!-- Nav Item - Utilities Collapse Menu -->
+                    <li class="nav-item d-md-block d-none {{ in_array(Route::currentRouteName(),[
             'admin.about',
             'admin.banner',
             'admin.general',
         ])? 'active' : ''}}">
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse"
-                               data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                                <i class="fas fa-fw fa-wrench"></i>
-                                <span>{{__('message.Settings')}}</span>
-                            </a>
-                            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                                 data-parent="#accordionSidebar">
-                                <div class=" py-2 collapse-inner rounded">
-                                <!--<a class="collapse-item" href="{{ route('admin.about') }}">{{__('message.About')}}</a>-->
-                                    <a class="collapse-item"
-                                       href="{{ route('admin.partner') }}">{{__('message.partner')}}</a>
-                                    <a class="collapse-item"
-                                       href="{{ route('admin.banner') }}">{{__('message.banners')}}</a>
-                                    <a class="collapse-item"
-                                       href="{{ route('admin.faq') }}">{{__('message.TIPOS DE PEMPAs')}}</a>
-                                    <a class="collapse-item"
-                                       href="{{ route('admin.link') }}">{{__('message.about home')}}</a>
-                                    <a class="collapse-item"
-                                       href="{{ route('admin.general') }}">{{__('message.General Settings')}}</a>
-                                </div>
-                            </div>
-                        </li>
-                    @endcan
-                    <li class="nav-item nav-logout dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                            <span class="mr-2 d-none d-lg-inline text-gray-800 small">{{ auth::user()->name }}</span>
-
-                            <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse"
+                           data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                            <i class="fas fa-fw fa-wrench"></i>
+                            <span>{{__('message.Settings')}}</span>
                         </a>
-                        <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                             aria-labelledby="userDropdown" style="margin-left: -70px" ;>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{__('message.Logout')}}
-                            </a>
+                        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                             data-parent="#accordionSidebar">
+                            <div class=" py-2 collapse-inner rounded">
+                            <!--<a class="collapse-item" href="{{ route('admin.about') }}">{{__('message.About')}}</a>-->
+                                <a class="collapse-item"
+                                   href="{{ route('admin.partner') }}">{{__('message.partner')}}</a>
+                                <a class="collapse-item"
+                                   href="{{ route('admin.banner') }}">{{__('message.banners')}}</a>
+                                <a class="collapse-item"
+                                   href="{{ route('admin.faq') }}">{{__('message.TIPOS DE PEMPAs')}}</a>
+                                <a class="collapse-item"
+                                   href="{{ route('admin.link') }}">{{__('message.about home')}}</a>
+                                <a class="collapse-item"
+                                   href="{{ route('admin.general') }}">{{__('message.General Settings')}}</a>
+                            </div>
                         </div>
                     </li>
-                </div>
-                <!-- Topbar Navbar -->
+                @endcan
+                <li class="nav-item nav-logout dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-            </nav>
+                        <span class="mr-2 d-none d-lg-inline text-gray-800 small">{{ auth::user()->name }}</span>
+
+                        <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                    </a>
+                    <!-- Dropdown - User Information -->
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                         aria-labelledby="userDropdown" style="margin-left: -70px" ;>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            {{__('message.Logout')}}
+                        </a>
+                    </div>
+                </li>
+            </div>
+            <!-- Topbar Navbar -->
+
+        </nav>
     {{--@endcan--}}
     <!-- Nav Item - Dashboard -->
         <div class="d-flex item-side" id="show-list">
@@ -366,9 +370,7 @@
 
     </ul>
     <div class="showw" id="showw"><i class="fas fa-fw fa-arrow-right"></i></div>
-
     <!-- End of Sidebar -->
-
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -423,7 +425,7 @@
                 </button>
             </div>
             <div
-                class="modal-body">{{__('message.Select "Logout" below if you are ready to end your current session.')}}</div>
+                    class="modal-body">{{__('message.Select "Logout" below if you are ready to end your current session.')}}</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">{{__('message.Cancel')}}</button>
 
@@ -445,7 +447,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" >{{__('message.hubo errores')}}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{__('message.hubo errores')}}</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>

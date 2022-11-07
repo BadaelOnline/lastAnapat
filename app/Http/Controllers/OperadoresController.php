@@ -157,43 +157,43 @@ class OperadoresController extends Controller
             }
 
         $tipos = Tipo_Maquina::orderBy('id', 'asc')->get();
-        if ($activeAsistent != null)
-        $cer = Certificado::where('operador',$id)->where('curso',$activeAsistent->curso)->get();
+//        if ($activeAsistent != null)
+//        $cer = Certificado::where('operador',$id)->where('curso',$activeAsistent->curso)->get();
 //        dd($cer);
 //        dd($activeAsistent);
-        if ($activeAsistent != null && $curso != null && $cert_numero != null && count($cer) == 0){
-            $certificado = new Certificado();
-            $asi_fecha = date('Y', strtotime($activeAsistent->created_at));
-            $asi_orden = $activeAsistent->orden;
-            $cert_numero = $asi_fecha . "" . $asi_orden . "" . $operador->dni;
-            $certificado->numero = $cert_numero;
-            $certificado->cer_apellidos = $operador->apellidos;
-            $certificado->cer_nombre = $operador->nombre;
-            $certificado->operador = $id;
-            $certificado->entidad = $operador->entidad;
-            if ($activeAsistent != null){
-                $certificado->curso = $activeAsistent->curso;
-                $certificado->emision = $activeAsistent->emision;
-                $certificado->vencimiento = $activeAsistent->vencimiento;
-                $certificado->observaciones = $activeAsistent->observaciones;
-            }
-
-            $certificado->dni = $operador->dni;
-            if ($curso != null){
-                if ($curso->tipo_curso == 1){
-                    $certificado->cer_type_course = 'Básico';
-                    $certificado->tipos_carnet = 'B';
-                }else{
-                    $certificado->cer_type_course = 'Renovación';
-                    $certificado->tipos_carnet = 'R';
-                }
-                $certificado->fecha_alta = $curso->fecha_alta;
-            }
-            $certificado->entidad_nombre = $operador->entidades_formadoreas->nombre;
-            if ($operador->carnett != null)
-                $certificado->carnet = $operador->carnett->id;
-            $certificado->save();
-        }
+//        if ($activeAsistent != null && $curso != null && $cert_numero != null && count($cer) == 0){
+//            $certificado = new Certificado();
+//            $asi_fecha = date('Y', strtotime($activeAsistent->created_at));
+//            $asi_orden = $activeAsistent->orden;
+//            $cert_numero = $asi_fecha . "" . $asi_orden . "" . $operador->dni;
+//            $certificado->numero = $cert_numero;
+//            $certificado->cer_apellidos = $operador->apellidos;
+//            $certificado->cer_nombre = $operador->nombre;
+//            $certificado->operador = $id;
+//            $certificado->entidad = $operador->entidad;
+//            if ($activeAsistent != null){
+//                $certificado->curso = $activeAsistent->curso;
+//                $certificado->emision = $activeAsistent->emision;
+//                $certificado->vencimiento = $activeAsistent->vencimiento;
+//                $certificado->observaciones = $activeAsistent->observaciones;
+//            }
+//
+//            $certificado->dni = $operador->dni;
+//            if ($curso != null){
+//                if ($curso->tipo_curso == 1){
+//                    $certificado->cer_type_course = 'Básico';
+//                    $certificado->tipos_carnet = 'B';
+//                }else{
+//                    $certificado->cer_type_course = 'Renovación';
+//                    $certificado->tipos_carnet = 'R';
+//                }
+//                $certificado->fecha_alta = $curso->fecha_alta;
+//            }
+//            $certificado->entidad_nombre = $operador->entidades_formadoreas->nombre;
+//            if ($operador->carnett != null)
+//                $certificado->carnet = $operador->carnett->id;
+//            $certificado->save();
+//        }
         $certific = Certificado::where('operador',$id)->get();
 
 //        $certificado->cer_fecha = $activeAsistent->observaciones;
