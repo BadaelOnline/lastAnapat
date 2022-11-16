@@ -283,8 +283,8 @@
                     </div>
                 </li>
             @endcan
-            @can('isAdmin')
-                <li class="nav-item {{ in_array(Route::currentRouteName(),['privadoCategory', ])? 'active' : ''}}">
+            @cannot('isAdmin')
+                <li class="nav-item {{ in_array(Route::currentRouteName(),['admin.documents', ])? 'active' : ''}}">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages3"
                        aria-expanded="true" aria-controls="collapsePages3">
                         <i class="fas fa-file"></i>
