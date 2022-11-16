@@ -7,16 +7,13 @@
 @endsection
 
 @section('content')
-
     @if($cursos->estado != 0)
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
             <img width="200" height="70" src="{{ asset('admin/img/logo-anpat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">
-
         </div>
         <div class="col-lg-6">
-
         </div>
         <div class="col-lg-3">
             <H2 style="float: right;">{{__('message.Horario del curso')}}</H2>
@@ -66,7 +63,7 @@
                         <td>{{$hora->alumnos}}</td>
                     </tr>
                 @endforeach
-                @if(count($cursos->horario)<10)
+                @if(count($cursos->horario)<10 && count($cursos->horario)!=0)
                     @for($i=10-count($cursos->horario);$i>0;$i--)
                         <tr>
                             <td>-</td>
@@ -74,6 +71,15 @@
                             <td>-</td>
                             <td>-</td>
                         </tr>
+                    @endfor
+                    @elseif(count($cursos->horario)==0)
+                    @for($i=10-count($cursos->horario);$i>0;$i--)
+                    <tr style="height: 35px">
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
                     @endfor
                 @endif
                 </tbody>
@@ -121,7 +127,7 @@
                     </th>
                     <th>
                         <span> {{__('message.Fecha')}}: </span>
-                        <h5 style="text-align: center;">{{$cursos->fecha_inicio}}</h5>
+                        <h5 style="text-align: center;">{{date('d/m/Y',strtotime($cursos->fecha_inicio))}}</h5>
                     </th>
                 </tr>
                 <tr>
@@ -137,11 +143,11 @@
                     </th>
                     <th>
 
-                        <h5 style="text-align: center;">{{$formador2 != null ? $formador2->nombre : "-"}} {{$formador2 != null ? $formador2->apellidos : ""}}</h5>
+                        <h5 style="text-align: center;">{{$formador2 != null ? $formador2->nombre : ""}} {{$formador2 != null ? $formador2->apellidos : ""}}</h5>
                     </th>
                     <th>
 
-                        <h5 style="text-align: center;">{{$formador3 != null ? $formador3->nombre : "-"}} {{$formador3 != null ? $formador3->apellidos : ""}}</h5>
+                        <h5 style="text-align: center;">{{$formador3 != null ? $formador3->nombre : ""}} {{$formador3 != null ? $formador3->apellidos : ""}}</h5>
                     </th>
                 </tr>
                 </thead>
@@ -149,8 +155,8 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th rowspan="2" style="text-align: center;">{{__('message.N-As')}}.</th>
-                    <th rowspan="2" style="text-align: center;">{{__('message.DNI')}}</th>
+                    <th rowspan="2" style="text-align: center;width: 7%">{{__('message.N-As')}}.</th>
+                    <th rowspan="2" style="text-align: center;width:14%">{{__('message.DNI')}}</th>
                     <th rowspan="2" style="text-align: center;">{{__('message.Apellidos y nombre')}}</th>
                     <th style="text-align: center" colspan="2" >
                         <span>{{__('message.NOTAs')}}</span>
@@ -178,7 +184,7 @@
                     <td style="text-align: center;"></td>
                 </tr>
                     @endforeach
-                @if(count($cursos->asistent)<10)
+                @if(count($cursos->asistent)<10 && count($cursos->horario)!=0)
                     @for($i=10-count($cursos->asistent);$i>0;$i--)
                         <tr>
                             <td style="text-align: center;">{{++$no}}</td>
@@ -189,28 +195,39 @@
                             <td></td>
                         </tr>
                     @endfor
+                @elseif(count($cursos->horario)==0)
+                    @for($i=10-count($cursos->horario);$i>0;$i--)
+                        <tr style="height: 35px">
+                            <td style="text-align: center;">{{++$no}} </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                        </tr>
+                    @endfor
                 @endif
                 </tbody>
             </table>
-            <span>{{__('message.Firmas')}}:</span>
+            <span >{{__('message.Firmas')}}:</span>
             <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th width="25%">
-                        <span> {{__('message.Formador')}}:</span>
-                        <h5 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h5>
+                        <span style="font-size: 16px"> {{__('message.Formador')}}:</span>
+                        <h5 style="text-align: center;">{{$cursos->formadores->nombre}} {{$cursos->formadores->apellidos}}</h5>
                     </th>
                     <th width="25%">
-                        <span> {{__('message.Formadores de apoyo')}}: </span>
+                        <span style="font-size: 15px"> {{__('message.Formadores de apoyo')}}: </span>
                         <h5 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h5></th>
                     <th width="25%">
-                        <h5 style="text-align: center;">{{$formador2 != null ? $formador2->nombre : "-"}} {{$formador2 != null ? $formador2->apellidos : ""}}</h5></th></th>
+                        <h5 style="text-align: center;">{{$formador2 != null ? $formador2->nombre : ""}} {{$formador2 != null ? $formador2->apellidos : ""}}</h5></th></th>
                     <th width="25%">
-                        <h5 style="text-align: center;">{{$formador3 != null ? $formador3->nombre : "-"}} {{$formador3 != null ? $formador3->apellidos : ""}}</h5></th></th>
+                        <h5 style="text-align: center;">{{$formador3 != null ? $formador3->nombre : ""}} {{$formador3 != null ? $formador3->apellidos : ""}}</h5></th></th>
                 </tr>
                 <tr>
                     <th colspan="4" style="text-align: center;height: 100px;">
-                        <span>{{__('message.Firma del Responsable de formacion y selio de la Entidad Formadora')}}</span>
+                        <span>Firma del Responsable de formación y sello de la Entidad Formadora</span>
                     </th>
                 </tr>
                 </thead>

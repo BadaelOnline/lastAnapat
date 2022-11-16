@@ -192,7 +192,7 @@ input[type="radio"]:focus {
         <div class="form-group col-md-4">
             <label for="direccion" class="col-sm-12 col-form-label">{{__('message.Direccion')}}</label>
             <div class="col-sm-7">
-                <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion')}}" id="direccion" placeholder="Dirección del formador">
+                <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion')}}" id="direccion" placeholder="Dirección">
                 <div class="invalid-feedback">
                     {{ $errors->first('direccion') }}
                 </div>

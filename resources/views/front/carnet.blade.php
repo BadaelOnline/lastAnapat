@@ -23,13 +23,13 @@
                             {{--                            </div>--}}
                             <hr/>
                             <p>Operador : {{$operador->nombre}} {{$operador->apellidos}}</p>
-                            <p>Fecha De Alta : {{date('d/m/Y',strtotime($carnet->fecha_de_alta))}}</p>
-                            <p>Fecha De Emision : {{date('d/m/Y',strtotime($carnet->fecha_de_emision))}}</p>
-                            <p>Curso :
-                            @foreach($certificado as $certific)
-                                    {{$certific->cursoo->codigo}}       
-                            @endforeach
-                            </p>
+                            {{--<p>Fecha De Alta : {{date('d/m/Y',strtotime($carnet->fecha_de_alta))}}</p>--}}
+                            {{--<p>Fecha De Emision : {{date('d/m/Y',strtotime($carnet->fecha_de_emision))}}</p>--}}
+                            {{--<p>Curso :--}}
+                            {{--@foreach($certificado as $certific)--}}
+                                    {{--{{$certific->cursoo->codigo}}       --}}
+                            {{--@endforeach--}}
+                            {{--</p>--}}
                             <p>Tipos De Pemp :</p>
                             <table style="margin-left: 20px">
                                 <thead>
