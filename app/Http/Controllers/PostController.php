@@ -44,7 +44,7 @@ class PostController extends Controller
     {
         \Validator::make($request->all(), [
             "title" => "required",
-            "cover" => "required",
+            "cover" => "required|max:2048",
             "body" => "required",
             "category" => "required",
             "tags" => "array|required",
@@ -137,7 +137,8 @@ class PostController extends Controller
             "category" => "required",
             "tags" => "array|required",
             "keyword" => "required",
-            "meta_desc" => "required"
+            "meta_desc" => "required",
+            "cover" => "max:2048"
         ])->validate();
 
         $post = Post::findOrFail($id);

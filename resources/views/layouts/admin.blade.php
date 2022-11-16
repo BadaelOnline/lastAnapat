@@ -1,74 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>ANAPAT-FORMACION</title>
-
     <!-- Custom fonts for this template-->
     <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link
-            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            rel="stylesheet">
-
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400&display=swap"
-          rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
     {{--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--}}
     <link id="pagestyle" href="{{ asset('admin/css/material-dashboard.css?v=3.0.0')}}" rel="stylesheet"/>
-
     <link rel="stylesheet" type="text/css"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700"/>
     <!-- Nucleo Icons -->
     <link href="{{ asset('admin/css/nucleo-icons.css')}}" rel="stylesheet"/>
-    <?php
-    use App\Models\General;$general = General::find(1);
-    ?>
+    <?php use App\Models\General;$general = General::find(1); ?>
     <link href="{{ asset('storage/'.$general->favicon) }}" rel="icon">
     <link href="{{ asset('storage/'.$general->favicon) }}" rel="apple-touch-icon">
-
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     {{--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--}}
     {{-- Summernote CDN --}}
-
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"
-          integrity="anonymous" referrerpolicy="no-referrer">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" integrity="anonymous" referrerpolicy="no-referrer">
     {{-- Select2 Style CDN --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
-
+    <link href="{{ asset('front/vendor/icofont/icofont.min.css') }}" rel="stylesheet">
     @yield('styles')
-
 </head>
 
 <body id="page-top">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-
     <!-- Sidebar  bg-gradient-info sidebar-dark  -->
     <ul class="navbar-nav sidebar accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
-        <div>
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" style="width: 150px"
-           href="{{ route('admin.dashboard') }}">
-            <img src="{{ asset('admin/img/anapat.png')}}"
-                 class="attachment-medium size-medium" alt="" loading="lazy" srcset=""
-                 style="height: 100px;width:150px;margin-top: 80px;">
-        </a>
+        <div class="col-lg-2">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" style="width: 150px" href="{{ route('admin.dashboard') }}">
+                <img src="{{ asset('admin/img/anapat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" style="height: 100px;width:150px;margin-top: 80px;">
+            </a>
         </div>
         <!-- Divider -->
         {{--@can('isAdmin')--}}
@@ -213,6 +191,10 @@
                             <a class="collapse-item" href="{{ route('admin.cursos') }}">{{__('message.Cursos')}}</a>
                             <a class="collapse-item"
                                href="{{ route('admin.inactiveCursos') }}">{{__('message.Inactivo Cursos')}}</a>
+                             @can('isAdmin')
+                                <a class="collapse-item"
+                                   href="{{ route('admin.cursos.trashed') }}">Eliminación Cursos</a>
+                                  @endcan
                         </div>
                     </div>
                 </li>
@@ -268,7 +250,6 @@
                         <i class="fas fa-fw fa-id-card"></i>
                         <span>{{__('message.carnet')}}</span>
                     </a>
-
                     <div id="collapsePages1" class="collapse" aria-labelledby="headingPages"
                          data-parent="#accordionSidebar">
                         <div class=" py-2 collapse-inner rounded">
@@ -283,9 +264,7 @@
             @endcan
 
             @can('isAdmin')
-                <li class="nav-item {{ in_array(Route::currentRouteName(),[
-      'admin.certificado',
-  ])? 'active' : ''}}">
+                <li class="nav-item {{ in_array(Route::currentRouteName(),['admin.certificado', ])? 'active' : ''}}">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
                        aria-expanded="true" aria-controls="collapsePages2">
                         <i class="fas fa-fw fa-graduation-cap"></i>
@@ -300,6 +279,24 @@
 
                             <a class="collapse-item"
                                href="{{ route('admin.inactiveCertificado') }}">{{__('message.Certificados Inactivos')}}</a>
+                        </div>
+                    </div>
+                </li>
+            @endcan
+            @can('isAdmin')
+                <li class="nav-item {{ in_array(Route::currentRouteName(),['privadoCategory', ])? 'active' : ''}}">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages3"
+                       aria-expanded="true" aria-controls="collapsePages3">
+                        <i class="fas fa-file"></i>
+                        <span>{{__('message.Documentación')}}</span>
+                    </a>
+
+                    <div id="collapsePages3" class="collapse" aria-labelledby="headingPages"
+                         data-parent="#accordionSidebar">
+                        <div class=" py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="{{ route('admin.documents','guias') }}">{{__('message.Guías')}}</a>
+                            <a class="collapse-item" href="{{ route('admin.documents','manuales') }}">{{__('message.Manuales')}}</a>
+                            <a class="collapse-item" href="{{ route('admin.documents','plantillas') }}">{{__('message.Plantillas')}}</a>
                         </div>
                     </div>
                 </li>
@@ -393,7 +390,7 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white">
+        <footer class="bg-white" style="position: fixed;left: 0;bottom: 0;width: 100%;">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
                     <span>Copyright &copy; ANAPAT </span>

@@ -209,7 +209,6 @@ input[type="radio"]:focus {
             </div>
         </div>
 
-
         <div class="form-group col-md-4">
             <label for="mail" class="col-sm-12 col-form-label">{{__('message.Mail')}}</label>
             <div class="col-sm-7">
@@ -233,9 +232,9 @@ input[type="radio"]:focus {
             <input type="hidden" name="carnet" value="">
         @endif
        <div class="form-group col-md-4">
-            <label for="fecha" class="col-sm-12 col-form-label">Fecha de Emisión</label>
+            <label for="fecha" class="col-sm-12 col-form-label">{{__('message.fecha_de_alta')}}</label>
             <div class="col-sm-7">
-                <input type="date" readonly name='fecha' class="form-control {{$errors->first('fecha') ? "is-invalid" : "" }} " value="{{$now}}" id="fecha" placeholder="Fecha de alta">
+                <input type="date"  name='fecha' class="form-control {{$errors->first('fecha') ? "is-invalid" : "" }} " value="{{$now}}" id="fecha" placeholder="Fecha de alta">
                 <div class="invalid-feedback">
                     {{ $errors->first('fecha') }}
                 </div>

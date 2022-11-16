@@ -4,20 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
     <title>ANAPAT</title>
     <meta content="{{ $general->meta_desc }}" name="description">
     <meta content="{{ $general->keyword }}" name="keywords">
-
     <!-- Favicons -->
     <link href="{{ asset('storage/'.$general->favicon) }}" rel="icon">
     <link href="{{ asset('storage/'.$general->favicon) }}" rel="apple-touch-icon">
-
 @yield('meta')
 
 <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
     <!-- Vendor CSS Files -->
     <link href="{{ asset('front/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('front/vendor/icofont/icofont.min.css') }}" rel="stylesheet">
@@ -50,13 +46,9 @@
     <a href="/" class="logo ml-5">
         <img src="{{ asset('admin/img/logo-anpat.png')}}" alt="" class="img-fluid"></a>
     <div class="container d-flex align-items-center">
-
-
-
         <nav class="nav-menu d-none d-lg-block">
             <ul>
                 <li {{ request()->is('/') ? 'class=active' : '' }}><a href="{{ route('homepage') }}">{{__('message.Home')}}</a></li>
-
                 <li class="drop-down"><a href="">{{__('message.Anapat')}}</a>
                     <ul>
                         <li ><a href="{{ route('about') }}">{{__('message.Anapat')}}</a></li>
@@ -107,11 +99,12 @@
 
         <div class="header-social-links">
             <a href="{{ route('login') }}"><i class="icofont-ui-user" style="font-size: 1.5rem"></i></a>
-
         </div>
-
-        <a href="{{ route('login') }}" class="btn btn-outline-primary iniciar" style="margin-left: 12px">{{__('message.iniciar sesión')}}</a>
-
+       @auth()
+            <a href="{{ route('login') }}" class="btn iniciar" style="margin-left: 12px;color:#0f76b0">{{auth()->user()->name}}</a>
+        @else
+            <a href="{{ route('login') }}" class="btn btn-outline-primary iniciar" style="margin-left: 12px">{{__('message.iniciar sesión')}}</a>
+        @endauth
     </div>
 </header><!-- End Header -->
 

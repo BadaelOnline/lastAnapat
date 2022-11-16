@@ -141,7 +141,7 @@ class CarnetController extends Controller
         $request->validate([
             'numero' => 'required',
             'operador' => 'required',
-//            'foto' => 'required',
+            'foto' => 'max:2048',
 //            'curso' => 'required',
             'examen_teorico_realizado' => 'required',
             'tipos_de_pemp' => "array|required",
@@ -171,9 +171,7 @@ class CarnetController extends Controller
             if ($carnet->foto && file_exists(storage_path('app/public/' . $carnet->foto))) {
                 \Storage::delete('public/' . $carnet->foto);
             }
-
             $foto_path = $foto->store('Carnet/' . $request->numero, 'public');
-
             $carnet->foto = $foto_path;
 //            dd("foto");
         }else{
@@ -253,6 +251,7 @@ class CarnetController extends Controller
             'operador' => 'required',
             'curso' => 'required',
             'examen_teorico_realizado' => 'required',
+            'foto' => 'max:2048'
         ]);
         $carnet = Carnet::findOrFail($id);
         $carnet->numero = $request->numero;

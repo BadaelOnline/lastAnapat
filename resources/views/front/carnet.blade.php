@@ -39,28 +39,28 @@
                                 </thead>
                                 <tbody>
                                 @foreach($certificado as $certific)
-                                    @if($certific->tipo_1 && $certific->tipo_1 != '-----')
+                                    @if($certific->tipo_1)
                                         <tr>
                                             <td>{{$certific->tipo_1}}</td>
                                             <td>{{date('d/m/Y',strtotime($certific->emision))}}</td>
                                             <td>{{date('d/m/Y',strtotime($certific->vencimiento))}}</td>
                                         </tr>
                                     @endif
-                                    @if($certific->tipo_2 && $certific->tipo_2 != '-----')
+                                    @if($certific->tipo_2)
                                         <tr>
                                             <td>{{$certific->tipo_2}}</td>
                                             <td>{{date('d/m/Y',strtotime($certific->emision))}}</td>
                                             <td>{{date('d/m/Y',strtotime($certific->vencimiento))}}</td>
                                         </tr>
                                     @endif
-                                    @if($certific->tipo_3 && $certific->tipo_3 != '-----')
+                                    @if($certific->tipo_3)
                                         <tr>
                                             <td>{{$certific->tipo_3}}</td>
                                             <td>{{date('d/m/Y',strtotime($certific->emision))}}</td>
                                             <td>{{date('d/m/Y',strtotime($certific->vencimiento))}}</td>
                                         </tr>
                                     @endif
-                                    @if($certific->tipo_4 && $certific->tipo_4 != '-----')
+                                    @if($certific->tipo_4)
                                         <tr>
                                             <td>{{$certific->tipo_4 }}</td>
                                             <td>{{date('d/m/Y',strtotime($certific->emision))}}</td>

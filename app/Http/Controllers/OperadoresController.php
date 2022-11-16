@@ -68,21 +68,17 @@ class OperadoresController extends Controller
             'foto' => 'max:2048',
             'dni_img' => 'max:2048',
         ]);
-
-
         $operadores = new operadores($request->except('_token', 'estado'));
-
-        if ($request->estado == null) {
+        if ($request->estado == null)
+        {
             $operadores->estado = 0;
         } else {
             $operadores->estado = 1;
         }
-
         $foto = $request->file('foto');
         $dni_img = $request->file('dni_img');
         if ($foto) {
             $fotopath = $foto->store('operadoe/' . $request->nombre, 'public');
-
             $operadores->foto = $fotopath;
         } else {
             $operadores->foto = '';
@@ -155,7 +151,6 @@ class OperadoresController extends Controller
 //                    dd($asistent);
                 }
             }
-
         $tipos = Tipo_Maquina::orderBy('id', 'asc')->get();
 //        if ($activeAsistent != null)
 //        $cer = Certificado::where('operador',$id)->where('curso',$activeAsistent->curso)->get();
@@ -258,6 +253,8 @@ class OperadoresController extends Controller
         $operadores->codigo_postal = $request->codigo_postal;
         $operadores->mail = $request->mail;
         $operadores->carnet = $request->carnet;
+        if($operadores->fecha != $request->fecha)
+            $this->updateCertificate($id,$request->fecha);
         $operadores->fecha = $request->fecha;
         if ($request->estado == null) {
             $operadores->estado = 0;
@@ -322,13 +319,9 @@ class OperadoresController extends Controller
                     $carnet->save();
                 }
             }
-
             return redirect()->route('admin.operadores')->with('success', 'Data added successfully');
-
         } else {
-
             return redirect()->route('admin.operadores.create')->with('error', 'Data failed to add');
-
         }
     }
 
@@ -345,5 +338,10 @@ class OperadoresController extends Controller
         $operadores->delete();
 
         return redirect()->route('admin.operadores')->with('success', 'Data deleted successfully');
+    }
+    public function updateCertificate($operador,$fecha)
+    {
+        $certificate=Certificado::where('operador',$operador)->firstorfail();
+        $certificate->update(['fecha_alta'=>$fecha]);
     }
 }

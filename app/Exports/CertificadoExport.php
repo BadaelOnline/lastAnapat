@@ -26,17 +26,15 @@ class CertificadoExport implements FromCollection,WithHeadings
 //            $certificados = Certificado::orderBy('id','asc')->whereDate('vencimiento' , '>' ,$now )->get();
             $certificados = Certificado::orderBy('id','desc')->get();
 
-
             foreach ($certificados as $key=>$certificado){
                 $cerOpe = $certificado->operadorr;
                 $cerCurso = $certificado->cursoo;
-                if (!($cerOpe->estado == 1 && $cerCurso->estado == 0)){
+                if (!($cerOpe->estado == 1 && @$cerCurso->estado == 0)){
                     $certificados->forget($key);
                 }
             }
         }else{
             $certificados = Certificado::orderBy('id','desc')->get();
-
 
             foreach ($certificados as $key=>$certificado){
                 $cerOpe = $certificado->operadorr;

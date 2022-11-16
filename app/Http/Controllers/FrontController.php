@@ -210,7 +210,7 @@ class FrontController extends Controller
         $service = Service::orderBy('title','asc')->get();
         $general = General::find(1);
         $link = Link::all();
-        $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
+        $lpost = Post::where('status','=','PUBLISH')->where('public',1)->orderBy('id','desc')->limit(5)->get();
         $pcategories = Pcategory::all();
         $portfolio = Portfolio::all();
         $entidadesFormadores = EntidadesFormadoreas::orderBy('nombre')->where('estado',1)->get();
@@ -221,7 +221,7 @@ class FrontController extends Controller
     {
         $general = General::find(1);
         $link = Link::all();
-        $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
+        $lpost = Post::where('status','=','PUBLISH')->where('public',1)->orderBy('id','desc')->limit(5)->get();
         $entidadesFormadore = EntidadesFormadoreas::where('id', $slug)->firstOrFail();
         return view ('front.entidade_formadora',compact('general','link','lpost','entidadesFormadore'));
     }
@@ -235,12 +235,14 @@ class FrontController extends Controller
         if ($user != null){
             $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
             $posts = Post::where('status','=','PUBLISH')->orderBy('id','desc')->paginate(3);
+            $recent = Post::orderBy('id','desc')->limit(5)->get();
         }else{
             $lpost = Post::where('status','=','PUBLISH')->where('public',1)->orderBy('id','desc')->limit(5)->get();
             $posts = Post::where('status','=','PUBLISH')->where('public',1)->orderBy('id','desc')->paginate(3);
+            $recent = Post::orderBy('id','desc')->where('public',1)->limit(5)->get();
         }
 
-        $recent = Post::orderBy('id','desc')->limit(5)->get();
+
         $tags = Tag::all();
 
         return view ('front.blog',compact('categories','general','link','lpost','posts','recent','tags'));
@@ -252,19 +254,21 @@ class FrontController extends Controller
         $categories = Category::all();
         $general = General::find(1);
         $link = Link::all();
+        $post = Post::where('slug', $slug)->firstOrFail();
+
         if ($user != null){
             $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
-            $post = Post::where('slug', $slug)->firstOrFail();
+            $recent = Post::orderBy('id','desc')->limit(5)->get();
         }else{
             $lpost = Post::where('status','=','PUBLISH')->where('public',1)->orderBy('id','desc')->limit(5)->get();
-            $post = Post::where('slug', $slug)->where('public',1)->firstOrFail();
+            $recent = Post::orderBy('id','desc')->where('public',1)->limit(5)->get();
         }
-
-        $old = $post->views;
-        $new = $old + 1;
-        $post->views = $new;
-        $post->update();
-        $recent = Post::orderBy('id','desc')->limit(5)->get();
+        if($post) {
+            $old = $post->views;
+            $new = $old + 1;
+            $post->views = $new;
+            $post->update();
+        }
         $tags = Tag::get();
 
         return view ('front.blogshow',compact('categories','general','link','lpost','post','recent','tags'));
@@ -277,15 +281,15 @@ class FrontController extends Controller
         $categories = Category::where('id',$category->id)->firstOrFail();
         $general = General::find(1);
         $link = Link::all();
-        if ($user != null){
-            $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
-            $posts = $category->posts()->where('public',1)->latest()->paginate(6);
-        }else{
-            $lpost = Post::where('status','=','PUBLISH')->where('public',1)->orderBy('id','desc')->limit(5)->get();
-            $posts = $category->posts()->where('public',1)->latest()->paginate(6);
-        }
 
-        $recent = Post::orderBy('id','desc')->limit(5)->get();
+            $lpost = Post::where('status','=','PUBLISH')->where('public',1)->orderBy('id','desc')->limit(5)->get();
+            if($categories->slug=='noticias' && @auth()->user())
+                $posts = $category->posts()->latest()->paginate(6);
+            else
+            $posts = $category->posts()->where('public',1)->latest()->paginate(6);
+            $recent = Post::orderBy('id','desc')->where('public',1)->limit(5)->get();
+
+
         $tags = Tag::all();
         return view ('front.category',compact('categories','general','link','lpost','posts','recent','tags'));
     }
@@ -298,16 +302,12 @@ class FrontController extends Controller
         $general = General::find(1);
         $link = Link::all();
         if ($user != null){
-//            dd('1');
             $lpost = Post::where('status','=','PUBLISH')->where('public',0)->orderBy('id','desc')->limit(5)->get();
             $posts = $category->posts()->where('public',0)->latest()->paginate(6);
         }else{
-//            dd('2');
             $lpost = null;
             $posts = null;
         }
-//        dd($posts);
-
         $recent = Post::orderBy('id','desc')->limit(5)->get();
         $tags = Tag::all();
         return view ('front.category',compact('categories','general','link','lpost','posts','recent','tags'));
@@ -329,24 +329,29 @@ class FrontController extends Controller
             $recent = Post::orderBy('id','desc')->where('public',1)->limit(5)->get();
         }
 
-
         $tags = Tag::all();
         return view ('front.blog',compact('categories','general','link','lpost','posts','recent','tags'));
     }
 
     public function search()
     {
-
         $query = request("query");
-
         $categories = Category::all();
         $general = General::find(1);
         $link = Link::all();
-        $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
-        $posts = Post::where("title","like","%$query%")->latest()->paginate(9);
-        $recent = Post::orderBy('id','desc')->limit(5)->get();
+        if(!auth()->user())
+        {
+            $lpost = Post::where('status','=','PUBLISH')->where('public',1)->orderBy('id','desc')->limit(5)->get();
+            $posts = Post::where("title","like","%$query%")->where('public',1)->latest()->paginate(9);
+            $recent = Post::orderBy('id','desc')->where('public',1)->limit(5)->get();
+            $recent = Post::orderBy('id','desc')->where('public',1)->limit(5)->get();
+        }
+        else {
+            $lpost = Post::where('status', '=', 'PUBLISH')->orderBy('id', 'desc')->limit(5)->get();
+            $posts = Post::where("title", "like", "%$query%")->latest()->paginate(9);
+            $recent = Post::orderBy('id','desc')->limit(5)->get();
+        }
         $tags = Tag::all();
-
         return view('front.blog',compact('categories','general','link','lpost','posts','query','recent','tags'));
     }
 
@@ -354,7 +359,7 @@ class FrontController extends Controller
     {
         $general = General::find(1);
         $link = Link::all();
-        $lpost = Post::where('status','=','PUBLISH')->orderBy('id','desc')->limit(5)->get();
+        $lpost = Post::where('status','=','PUBLISH')->where('public',1)->orderBy('id','desc')->limit(5)->get();
         $page = Page::where('slug', $slug)->firstOrFail();
         return view('front.page',compact('general','link','lpost','page'));
     }
