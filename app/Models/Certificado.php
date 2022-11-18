@@ -12,7 +12,7 @@ class Certificado extends Model
     protected $guarded=[];
     protected $table = 'certificados';
     public $timestamps = true;
-
+    protected $hidden = ['created_at', 'updated_at','deleted_at'];
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];

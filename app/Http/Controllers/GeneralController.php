@@ -45,7 +45,8 @@ class GeneralController extends Controller
             "phone" => "required" ,
             "email" => "required",
             "footer" => "required",
-//            "gmaps" => "required"
+            "logo" => "max:2048",
+            "favicon" => "max:2048",
         ])->validate();
 
         $general = General::find(1);

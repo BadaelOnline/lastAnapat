@@ -9,39 +9,39 @@ use App\Models\Operadores;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class CertificadoExport implements FromCollection,WithHeadings
+class CertificadoExport implements FromCollection, WithHeadings
 {
     protected $id;
 
-    function __construct($id) {
+    function __construct($id)
+    {
         $this->id = $id;
     }
+
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     public function collection()
     {
-        $now = now().date('');
-        if ($this->id == "1"){
+        $now = now() . date('');
+        if ($this->id == "1") {
 //            $certificados = Certificado::orderBy('id','asc')->whereDate('vencimiento' , '>' ,$now )->get();
-            $certificados = Certificado::orderBy('id','desc')->get();
+            $certificados = Certificado::orderBy('id', 'desc')->get();
 
-
-            foreach ($certificados as $key=>$certificado){
+            foreach ($certificados as $key => $certificado) {
                 $cerOpe = $certificado->operadorr;
                 $cerCurso = $certificado->cursoo;
-                if (!($cerOpe->estado == 1 && $cerCurso->estado == 0)){
+                if (!($cerOpe->estado == 1 && @$cerCurso->estado == 0)) {
                     $certificados->forget($key);
                 }
             }
-        }else{
-            $certificados = Certificado::orderBy('id','desc')->get();
+        } else {
+            $certificados = Certificado::orderBy('id', 'desc')->get();
 
-
-            foreach ($certificados as $key=>$certificado){
+            foreach ($certificados as $key => $certificado) {
                 $cerOpe = $certificado->operadorr;
                 $cerCurso = $certificado->cursoo;
-                if ($cerOpe->estado != 0 || $cerCurso->estado != 1 || $cerCurso->cerrado != 1){
+                if ($cerOpe->estado != 0 || $cerCurso->estado != 1 || $cerCurso->cerrado != 1) {
                     $certificados->forget($key);
                 }
             }
@@ -49,33 +49,37 @@ class CertificadoExport implements FromCollection,WithHeadings
         }
 
 //        dd($certificados);
-        foreach ($certificados as $certificado){
+        foreach ($certificados as $certificado) {
             $ope = $certificado->operadorr;
-            if($certificado->entidad != 0){
-                $entidad =EntidadesFormadoreas::findOrFail($certificado->entidad);
+            if ($certificado->entidad != 0) {
+                $entidad = EntidadesFormadoreas::findOrFail($certificado->entidad);
                 $certificado->entidad = $entidad->razon_social;
-            }else{
+            } else {
                 $certificado->entidad = "";
             }
 
-            if($certificado->curso != 0){
+            if ($certificado->curso != 0) {
                 $curso = Cursos::findOrFail($certificado->curso);
                 $certificado->curso = $curso->codigo;
-            }else{
+            } else {
                 $certificado->curso = "";
             }
-            $certificado->estado_del_operador = $ope->estado == 1 ? 'activo' : 'inactivo' ;
+            $certificado->estado_del_operador = $ope->estado == 1 ? 'activo' : 'inactivo';
+            $certificado->fecha_alta=date('d/m/Y H:i:s' ,strtotime($certificado->fecha_alta));
+//            $certificado->created_at =date('d/m/Y H:i:s',strtotime($certificado->created_at));
+//            $certificado->updated_at=date('d/m/Y H:i:s',strtotime($certificado->updated_at));
+//            $certificado->deleted_at=date('d/m/Y H:i:s',strtotime($certificado->deleted_at));
+            $certificado->emision=date('d/m/Y',strtotime($certificado->emision));
+            $certificado->vencimiento=date('d/m/Y',strtotime($certificado->vencimiento));
+//            $certificado->cer_fecha=date('d/m/Y',strtotime($certificado->cer_fecha));
         }
         return $certificados;
     }
 
     public function headings(): array
     {
-        return[
+        return [
             'Id',
-            'created_at',
-            'updated_at',
-            'deleted_at',
             'numero',
             'operador',
             'entidad',
@@ -89,7 +93,6 @@ class CertificadoExport implements FromCollection,WithHeadings
             'dni',
             'cer_type_course',
             'fecha_alta',
-
             'entidad_nombre',
             'tipos_carnet',
             'carnet',

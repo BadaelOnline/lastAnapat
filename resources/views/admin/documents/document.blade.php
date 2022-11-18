@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.admin')
 
 @section('title')
 {{ $post->title }} -
@@ -27,54 +27,12 @@
 
 @section('content')
 <main id="main">
-
-
     <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog">
+    <section id="blog" class="blog" style="margin-top: 50px;">
       <div class="container">
-      <h2 class="title">{{ $post->title }}</h2>
-        <div class="row" style="margin-top: 50px;">
-        <div class="col-lg-4">
-
-{{--<div class="sidebar">--}}
-{{--  <h3 class="sidebar-title">{{__('message.categorías')}}</h3>--}}
-{{--  <div class="sidebar-item categories">--}}
-{{--    <ul>--}}
-{{--      @foreach ($categories as $category)--}}
-{{--      <li><a href="{{ route('category',$category->slug) }}">{{ $category->name }} <span>({{ $category->count() }})</span></a></li>--}}
-{{--      @endforeach--}}
-{{--    </ul>--}}
-
-{{--  </div><!-- End sidebar categories-->--}}
-
-{{--  <h3 class="sidebar-title">{{__('message.recent post')}}</h3>--}}
-{{--  <div class="sidebar-item recent-posts">--}}
-
-{{--    @foreach ($recent as $recent)--}}
-{{--    <div class="post-item clearfix">--}}
-
-{{--      <h4><a href="{{route('blogshow',$recent->slug)}}">{{ $recent->title }}</a></h4>--}}
-{{--      <time datetime="2020-01-01">{{ Carbon\Carbon::parse($recent->created_at)->format("d F, Y") }}</time>--}}
-{{--    </div>--}}
-{{--    @endforeach--}}
-
-{{--  </div><!-- End sidebar recent posts-->--}}
-
-{{--  <h3 class="sidebar-title">{{__('message.tags')}}</h3>--}}
-{{--  <div class="sidebar-item tags">--}}
-{{--    <ul>--}}
-{{--      @foreach ($tags as $tag)--}}
-{{--       <li><a href="{{ route('tag',$tag->slug) }}">{{ $tag->name }}</a></li>--}}
-{{--      @endforeach--}}
-{{--    </ul>--}}
-
-{{--  </div><!-- End sidebar tags-->--}}
-
-{{--</div><!-- End sidebar -->--}}
-
-</div><!-- End blog sidebar -->
+      <h2 class="title" style="text-align: center">{{ $post->title }}</h2>
+        <div class="row" style="margin-top: 25px;">
           <div class="col-lg-12 entries">
-
             <article class="entry entry-single" data-aos="fade-up">
                 <div class="row">
                     <div class="col-md-6">
@@ -92,33 +50,20 @@
                         </div>
                     </div>
                 </div>
-
-
               <h2 class="entry-title">
                 <a href="{{route('blogshow',$post->slug)}}">{{ $post->title }}</a>
               </h2>
-
-
-
               <div class="entry-content">
                 <p>
                   {!! $post->body !!}
                 </p>
               </div>
-
             </article><!-- End blog entry -->
-
           </div><!-- End blog entries list -->
-
-
         </div>
-
       </div>
     </section><!-- End Blog Section -->
 
   </main><!-- End #main -->
 @endsection
 
-@push('scripts')
-    {!! $general->disqus !!}
-@endpush

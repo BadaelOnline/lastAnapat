@@ -58,7 +58,6 @@ class CertificadoController extends Controller
             $operadors = Operadores::orderBy('id','desc')->get();
         $certificados = Certificado::orderBy('id','desc')->get();
 
-
         foreach ($certificados as $key=>$certificado){
             $cerOpe = $certificado->operadorr;
             $cerCurso = $certificado->cursoo;
@@ -96,7 +95,6 @@ class CertificadoController extends Controller
         $operadores = Operadores::orderBy('id','desc')->where('estado','=',0)->get();
         foreach ($operadores as $operador){
             $asistents = Asistent::orderBy('id','desc')->where('operador' , $operador->id)->get();
-
             foreach ($asistents as $asistent){
                 $curso = Cursos::where('id',$asistent->curso)->where('estado',1)->where('cerrado',1)->first();
                 $certificado = new Certificado();
@@ -120,8 +118,8 @@ class CertificadoController extends Controller
                     $certificado->entidad_nombre = "";
                 }
                 $certificado->curso = $asistent->curso;
-                $certificado->emision = $asistent->emision;
-                $certificado->vencimiento = $asistent->vencimiento;
+                $certificado->emision =date('d/m/Y',strtotime( $asistent->emision));
+                $certificado->vencimiento = date('d/m/Y',strtotime($asistent->vencimiento));
                 $certificado->observaciones = $asistent->observaciones;
                 $certificado->dni = $operador->dni;
                 if ($curso != null){
@@ -132,7 +130,7 @@ class CertificadoController extends Controller
                         $certificado->cer_type_course = 'Renovación';
                         $certificado->tipos_carnet = 'R';
                     }
-                    $certificado->fecha_alta = $curso->fecha_alta;
+                    $certificado->fecha_alta = date('d/m/Y',strtotime($curso->fecha_alta));
                 }else{
                     $certificado->cer_type_course = '-';
                     $certificado->tipos_carnet = '-';
@@ -146,10 +144,10 @@ class CertificadoController extends Controller
                         $certificado->tipo_1 = $tipo_1->tipo_maquina;
 
                     }else{
-                        $certificado->tipo_1 = '-----';
+                        $certificado->tipo_1 = '';
                     }
                 }else{
-                    $certificado->tipo_1 = '-----';
+                    $certificado->tipo_1 = '';
                 }
                 if ($asistent->tipo_2 != 0) {
                     $tipo_2 = Tipo_Maquina::findOrFail($asistent->tipo_2);
@@ -157,30 +155,30 @@ class CertificadoController extends Controller
                         $certificado->tipo_2 = $tipo_2->tipo_maquina;
 
                     } else {
-                        $certificado->tipo_2 = '-----';
+                        $certificado->tipo_2 = '';
                     }
                 }else{
-                    $certificado->tipo_2 = '-----';
+                    $certificado->tipo_2 = '';
                 }
                 if ($asistent->tipo_3 != 0){
                     $tipo_3 =Tipo_Maquina::findOrFail($asistent->tipo_3);
                     if($tipo_3 != null){
                         $certificado->tipo_3 = $tipo_3->tipo_maquina;
                     }else{
-                        $certificado->tipo_3 = '-----';
+                        $certificado->tipo_3 = '';
                     }
                 }else{
-                    $certificado->tipo_3 = '-----';
+                    $certificado->tipo_3 = '';
                 }
                 if ($asistent->tipo_4 != 0) {
                     $tipo_4 = Tipo_Maquina::findOrFail($asistent->tipo_4);
                     if ($tipo_4 != null) {
                         $certificado->tipo_4 = $tipo_4->tipo_maquina;
                     } else {
-                        $certificado->tipo_4 = '-----';
+                        $certificado->tipo_4 = '';
                     }
                 } else {
-                    $certificado->tipo_4 = '-----';
+                    $certificado->tipo_4 = '';
                 }
 
                 if ($operador->carnett != null){
@@ -188,12 +186,9 @@ class CertificadoController extends Controller
                 }
 
                 $cer = Certificado::where('operador',$operador->id)->where('curso',$asistent->curso)->get();
-
                 if(count($cer) == 0){
-//                    dd($cer);
                     $certificado->save();
                 }
-
             }
              }
         return Excel::download(new CertificadoExport($activo), 'certificado.xlsx');

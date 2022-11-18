@@ -218,7 +218,7 @@ input[type="radio"]:focus {
             <div class="form-group col-md-4">
                 <label for="direccion" class="col-sm-12 col-form-label">{{__('message.Direccion')}}</label>
                 <div class="col-sm-7">
-                    <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion') ? old('direccion') : $operadores->direccion}}" id="direccion" placeholder="Dirección del formador">
+                    <input type="text" name='direccion' class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} " value="{{old('direccion') ? old('direccion') : $operadores->direccion}}" id="direccion" placeholder="Dirección">
                     <div class="invalid-feedback">
                         {{ $errors->first('direccion') }}
                     </div>
@@ -259,9 +259,9 @@ input[type="radio"]:focus {
                 <input type="hidden" name="carnet" value="{{$operadores->carnet}}">
             @endif
       <div class="form-group col-md-4">
-            <label for="fecha" class="col-sm-12 col-form-label">Fecha de Emisión</label>
+            <label for="fecha" class="col-sm-12 col-form-label">{{__('message.fecha_de_alta')}}</label>
             <div class="col-sm-7">
-                <input type="date" name='fecha' class="form-control {{$errors->first('fecha') ? "is-invalid" : "" }} " value="{{old('fecha') ? old('fecha') : $operadores->fecha}}" id="fecha" placeholder="Fecha de alta" @if(auth()->user()->perfil!='Administrador')disabled @endif>
+                <input type="date" name='fecha' class="form-control {{$errors->first('fecha') ? "is-invalid" : "" }} " value="{{old('fecha') ? old('fecha') : $operadores->fecha}}" id="fecha" placeholder="Fecha de alta">
                 <div class="invalid-feedback">
                     {{ $errors->first('fecha') }}
                 </div>

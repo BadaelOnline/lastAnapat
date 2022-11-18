@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DocumentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{Auth\ForgotPasswordController,
     BannerController,
@@ -124,12 +125,14 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::post('cursos/create', [CursosController::class, 'store'])->name('cursos.store');
     Route::get('cursos/edit/{id}', [CursosController::class, 'edit'])->name('cursos.edit');
     Route::post('cursos/edit/{id}', [CursosController::class, 'update'])->name('cursos.update');
-    Route::delete('cursos/destroy/{id}',[CursosController::class, 'destroy'])->name('cursos.destroy');
     Route::post('cursos/activo/{id}',[CursosController::class, 'activo'])->name('cursos.activo');
     Route::get('cursos/export',[CursosController::class, 'export'])->name('cursos.export');
     Route::get('cursos/print/{id}',[CursosController::class, 'print'])->name('cursos.print');
     Route::get('cursos/prnpriview',[CursosController::class, 'prnpriview'])->name('cursos.prnpriview');
-
+    Route::get('trashed-cursos', [CursosController::class, 'trashed'])->name('cursos.trashed');
+    Route::delete('cursos/destroy/{id}',[CursosController::class, 'destroy'])->name('cursos.destroy');
+    Route::post('cursos/force-delete', [CursosController::class,'forceDelete'])->name('cursos.force-delete');
+    Route::post('cursos/restore', [CursosController::class,'restore'])->name('cursos.restore');
     //print
 //    Route::get('/cursos','PrintController@index');
 //    Route::get('/prnpriview','PrintController@prnpriview');
@@ -275,4 +278,10 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
      Route::get('users/edit/{id}', [UserController::class, 'edit'])->middleware('can:isAdminOrResponsable')->name('users.edit');
      Route::post('users/edit/{id}', [UserController::class, 'update'])->middleware('can:isAdminOrResponsable')->name('users.update');
      Route::delete('users/destroy/{id}',[UserController::class, 'destroy'])->middleware('can:isAdmin')->name('users.destroy');
+
+    // Manage Document
+    Route::get('documents/{slug}', [DocumentController::class, 'documents'])->name('documents');
+    Route::get('document/{slug}', [DocumentController::class, 'document'])->name('document');
+    Route::get('docsearch/search',[DocumentController::class, 'documentsSearch'])->name('documents.search');
+
 });

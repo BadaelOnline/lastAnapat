@@ -174,7 +174,7 @@ class AsistentController extends Controller
                 array_push($notes,17);
             }elseif ($tipo_maq[0] == 5){
                 array_push($notes,4);
-            }elseif ($tipo_maq[0] == 3){
+            }elseif ($tipo_maq[0] == 6){
                 array_push($notes,8);
             }
         }
@@ -360,10 +360,10 @@ class AsistentController extends Controller
                     $certificado->tipo_1 = $tipo_1->tipo_maquina;
 
                 }else{
-                    $certificado->tipo_1 = '-----';
+                    $certificado->tipo_1 = '';
                 }
             }else{
-                $certificado->tipo_1 = '-----';
+                $certificado->tipo_1 = '';
             }
             if ($asistent->tipo_2 != 0) {
                 $tipo_2 = Tipo_Maquina::findOrFail($asistent->tipo_2);
@@ -371,30 +371,30 @@ class AsistentController extends Controller
                     $certificado->tipo_2 = $tipo_2->tipo_maquina;
 
                 } else {
-                    $certificado->tipo_2 = '-----';
+                    $certificado->tipo_2 = '';
                 }
             }else{
-                $certificado->tipo_2 = '-----';
+                $certificado->tipo_2 = '';
             }
             if ($asistent->tipo_3 != 0){
                 $tipo_3 =Tipo_Maquina::findOrFail($asistent->tipo_3);
                 if($tipo_3 != null){
                     $certificado->tipo_3 = $tipo_3->tipo_maquina;
                 }else{
-                    $certificado->tipo_3 = '-----';
+                    $certificado->tipo_3 = '';
                 }
             }else{
-                $certificado->tipo_3 = '-----';
+                $certificado->tipo_3 = '';
             }
             if ($asistent->tipo_4 != 0) {
                 $tipo_4 = Tipo_Maquina::findOrFail($asistent->tipo_4);
                 if ($tipo_4 != null) {
                     $certificado->tipo_4 = $tipo_4->tipo_maquina;
                 } else {
-                    $certificado->tipo_4 = '-----';
+                    $certificado->tipo_4 = '';
                 }
             } else {
-                $certificado->tipo_4 = '-----';
+                $certificado->tipo_4 = '';
             }
             if ($operador->carnett != null){
                 $certificado->carnet = $operador->carnett->numero;
@@ -691,7 +691,7 @@ class AsistentController extends Controller
                 array_push($notes,17);
             }elseif ($tipo_maq[0] == 5){
                 array_push($notes,4);
-            }elseif ($tipo_maq[0] == 3){
+            }elseif ($tipo_maq[0] == 6){
                 array_push($notes,8);
             }
         }
@@ -894,10 +894,10 @@ class AsistentController extends Controller
                     $certificado->tipo_1 = $tipo_1->tipo_maquina;
 
                 }else{
-                    $certificado->tipo_1 = '-----';
+                    $certificado->tipo_1 = '';
                 }
             }else{
-                $certificado->tipo_1 = '-----';
+                $certificado->tipo_1 = '';
             }
             if ($asistent->tipo_2 != 0) {
                 $tipo_2 = Tipo_Maquina::findOrFail($asistent->tipo_2);
@@ -905,30 +905,30 @@ class AsistentController extends Controller
                     $certificado->tipo_2 = $tipo_2->tipo_maquina;
 
                 } else {
-                    $certificado->tipo_2 = '-----';
+                    $certificado->tipo_2 = '';
                 }
             }else{
-                $certificado->tipo_2 = '-----';
+                $certificado->tipo_2 = '';
             }
             if ($asistent->tipo_3 != 0){
                 $tipo_3 =Tipo_Maquina::findOrFail($asistent->tipo_3);
                 if($tipo_3 != null){
                     $certificado->tipo_3 = $tipo_3->tipo_maquina;
                 }else{
-                    $certificado->tipo_3 = '-----';
+                    $certificado->tipo_3 = '';
                 }
             }else{
-                $certificado->tipo_3 = '-----';
+                $certificado->tipo_3 = '';
             }
             if ($asistent->tipo_4 != 0) {
                 $tipo_4 = Tipo_Maquina::findOrFail($asistent->tipo_4);
                 if ($tipo_4 != null) {
                     $certificado->tipo_4 = $tipo_4->tipo_maquina;
                 } else {
-                    $certificado->tipo_4 = '-----';
+                    $certificado->tipo_4 = '';
                 }
             } else {
-                $certificado->tipo_4 = '-----';
+                $certificado->tipo_4 = '';
             }
             if ($operador->carnett != null){
                 $certificado->carnet = $operador->carnett->numero;

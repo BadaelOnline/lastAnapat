@@ -29,7 +29,6 @@ class CursosController extends Controller
     public function index()
     {
         $cursos = Cursos::orderBy('id','desc')->where('estado',1)->get();
-
         return view('admin.cursos.index',compact('cursos'));
     }
 
@@ -385,6 +384,27 @@ $now = now().date('');
     }
 
     /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function activo($id)
+    {
+        $cursos = cursos::findOrFail($id);
+        $cursos->estado = 1;
+//        $cursos->delete();
+        $cursos->save();
+
+        return redirect()->route('admin.cursos')->with('success', 'Data deleted successfully');
+    }
+
+    public function trashed()
+    {
+        $cursos = Cursos::onlyTrashed()->get();
+        return view('admin.cursos.trashed',compact('cursos'));
+    }
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -399,18 +419,29 @@ $now = now().date('');
     }
 
     /**
-     * Update the specified resource in storage.
+     *  Restore user data
      *
-     * @param  int  $id
+     * @param Cursos $user
+     *
      * @return \Illuminate\Http\Response
      */
-    public function activo($id)
+    public function restore(Request $request)
     {
-        $cursos = cursos::findOrFail($id);
-        $cursos->estado = 1;
-//        $cursos->delete();
-        $cursos->save();
 
-        return redirect()->route('admin.cursos')->with('success', 'Data deleted successfully');
+        Cursos::where('id',$request->id)->withTrashed()->restore();
+        return redirect()->route('admin.cursos.trashed')->withSuccess(__('Data restored successfully.'));
+    }
+
+    /**
+     * Force delete user data
+     *
+     * @param Cursos $user
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function forceDelete(Request $request)
+    {
+        Cursos::where('id',$request->id)->withTrashed()->forceDelete();
+        return redirect()->route('admin.cursos.trashed')->withSuccess(__('User force deleted successfully.'));
     }
 }
