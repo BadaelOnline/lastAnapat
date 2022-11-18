@@ -253,8 +253,6 @@ class OperadoresController extends Controller
         $operadores->codigo_postal = $request->codigo_postal;
         $operadores->mail = $request->mail;
         $operadores->carnet = $request->carnet;
-        if($operadores->fecha != $request->fecha)
-            $this->updateCertificate($id,$request->fecha);
         $operadores->fecha = $request->fecha;
         if ($request->estado == null) {
             $operadores->estado = 0;
