@@ -35,7 +35,7 @@
                                     {{$asis->cursos->codigo}},
                                 @endforeach
                             </p>
-                            <p>Carnet :  {{$operador->carnett != null ?$operador->carnett->numero : "----"}}
+                            <p>Carnet :  {{$operador->carnett != null ?$operador->carnett->numero : ""}}
                             {{--<p>Certificado :--}}
                                 {{--@foreach($operador->certificado as $certificado)--}}
                                     {{--{{$certificado->numero}},--}}

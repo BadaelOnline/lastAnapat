@@ -11,6 +11,7 @@ class Operadores extends Model
     protected $table = 'operadores';
     public $timestamps = true;
     protected $guarded=[];
+    protected $hidden = ['created_at', 'updated_at','deleted_at'];
 //    use SoftDeletes;
 
     protected $dates = ['deleted_at'];
