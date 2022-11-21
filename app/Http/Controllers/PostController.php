@@ -47,21 +47,18 @@ class PostController extends Controller
             "cover" => "required|max:2048",
             "body" => "required",
             "category" => "required",
-            "tags" => "array|required",
-            "keyword" => "required",
-            "meta_desc" => "required"
+//            "tags" => "array|required",
+//            "keyword" => "required",
+//            "meta_desc" => "required"
         ])->validate();
-
         $data = $request->all();
-
         $data['slug'] = \Str::slug(request('title'));
-
         $data['category_id'] = request('category');
-
         $data['status'] = 'PUBLISH';
-
         $data['author_id'] = Auth::user()->id;
-
+        $data['tags']=[1];
+        $data['keyword']=request('category');
+        $data['meta_desc']=request('category');
         $cover = $request->file('cover');
 
         if($cover){

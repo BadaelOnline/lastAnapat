@@ -3,6 +3,14 @@
 @section('styles')
 
     <link href="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <style>
+        td{
+            line-height: 1.0!important;
+        }
+        .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+            padding: 6px!important;
+        }
+    </style>
 
 @endsection
 
@@ -11,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
-            <img width="200" height="70" src="{{ asset('admin/img/logo-anpat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">
+            <img width="200" height="100" src="{{ asset('admin/img/formacion.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">
         </div>
         <div class="col-lg-6">
         </div>
@@ -90,7 +98,7 @@
                 <thead>
                 <tr>
                     <th style="text-align: center;height: 200px;">
-                        <span>{{__('message.Firma del Responsable de formacion y selio de la Entidad Formadora')}}</span>
+                        <span>Firma del Responsable de formación y sello de la Entidad Formadora</span>
                     </th>
                 </tr>
                 </thead>
@@ -103,14 +111,13 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
-            <img width="200" height="67" src="{{ asset('admin/img/logo-anpat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">
-
+            <img width="200" height="100" src="{{ asset('admin/img/formacion.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">
         </div>
         <div class="col-lg-1">
 
         </div>
         <div class="col-lg-8">
-            <H4 style="float: right;">{{__('message.Control de asistencia y calificaciones')}}</H4>
+            <h4 style="float: right;"><b>{{__('message.Control de asistencia y calificaciones')}}</b></h4>
         </div>
 {{--        <div class="clearfix"></div>--}}
         <div class="col-lg-12">
@@ -118,54 +125,54 @@
                 <thead>
                 <tr>
                     <th>
-                        <span> {{__('message.Curso')}} : </span>
-                        <h5 style="text-align: left;">{{$cursos->codigo}}</h5>
+                        <span style="font-size: 14px!important;"> {{__('message.Curso')}} : </span>
+                        <h6 style="text-align: left;">{{$cursos->codigo}}</h6>
                     </th>
                     <th>
-                        <span> {{__('message.Entidad formadora')}} : </span>
-                        <h5 style="text-align: center;">{{$cursos->entidades_formadoreas->nombre}}</h5>
+                        <span style="font-size: 14px!important;"> {{__('message.Entidad formadora')}} : </span>
+                        <h6 style="text-align: center;">{{$cursos->entidades_formadoreas->nombre}}</h6>
                     </th>
                     <th>
-                        <span> {{__('message.Fecha')}}: </span>
-                        <h5 style="text-align: center;">{{date('d/m/Y',strtotime($cursos->fecha_inicio))}}</h5>
+                        <span style="font-size: 14px!important;"> {{__('message.Fecha')}}: </span>
+                        <h6 style="text-align: center;">{{date('d/m/Y',strtotime($cursos->fecha_inicio))}}</h6>
                     </th>
                 </tr>
                 <tr>
                     <th colspan="3">
-                        <span> {{__('message.Formador')}}: </span>
-                        <span style="text-align: center;">{{$cursos->formadores->nombre}} {{$cursos->formadores->apellidos}}</span>
+                        <span style="font-size: 14px!important;"> {{__('message.Formador')}}: </span>
+                        <span style="text-align: center;font-size:14px">{{$cursos->formadores->nombre}} {{$cursos->formadores->apellidos}}</span>
                     </th>
                 </tr>
                 <tr>
                     <th>
-                        <span> {{__('message.Formadores de apoyo')}}: </span>
-                        <h5 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h5>
+                        <span style="font-size: 14px!important;"> {{__('message.Formadores de apoyo')}}: </span>
+                        <h6 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h6>
                     </th>
                     <th>
 
-                        <h5 style="text-align: center;">{{$formador2 != null ? $formador2->nombre : ""}} {{$formador2 != null ? $formador2->apellidos : ""}}</h5>
+                        <h6 style="text-align: center;">{{$formador2 != null ? $formador2->nombre : ""}} {{$formador2 != null ? $formador2->apellidos : ""}}</h6>
                     </th>
                     <th>
 
-                        <h5 style="text-align: center;">{{$formador3 != null ? $formador3->nombre : ""}} {{$formador3 != null ? $formador3->apellidos : ""}}</h5>
+                        <h6 style="text-align: center;">{{$formador3 != null ? $formador3->nombre : ""}} {{$formador3 != null ? $formador3->apellidos : ""}}</h6>
                     </th>
                 </tr>
                 </thead>
             </table>
-            <table class="table table-bordered">
+            <table class="table table-bordered" style="margin-top:-15px">
                 <thead>
-                <tr>
+                <tr >
                     <th rowspan="2" style="text-align: center;width: 7%">{{__('message.N-As')}}.</th>
                     <th rowspan="2" style="text-align: center;width:14%">{{__('message.DNI')}}</th>
                     <th rowspan="2" style="text-align: center;">{{__('message.Apellidos y nombre')}}</th>
                     <th style="text-align: center" colspan="2" >
-                        <span>{{__('message.NOTAs')}}</span>
+                        <span style="font-size: 13px">{{__('message.NOTAs')}}</span>
                     </th>
                     <th rowspan="2" style="text-align: center;">{{__('message.Firma del alumno')}}</th>
                 </tr>
                 <tr>
-                    <th style="text-align: center;">{{__('message.teoria')}}</th>
-                    <th style="text-align: center;">{{__('message.pract')}}</th>
+                    <th style="text-align: center;font-size: 13px">Teoría</th>
+                    <th style="text-align: center;font-size: 13px">Práct.</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -212,26 +219,30 @@
             <span >{{__('message.Firmas')}}:</span>
             <table class="table table-bordered">
                 <thead>
-                <tr>
+                <tr style="height: 50px!important;">
                     <th width="25%">
-                        <span style="font-size: 16px"> {{__('message.Formador')}}:</span>
-                        <h5 style="text-align: center;">{{$cursos->formadores->nombre}} {{$cursos->formadores->apellidos}}</h5>
+                        <span style="font-size: 14px"> {{__('message.Formador')}}:</span>
+                        <h6 style="text-align: center;">{{$cursos->formadores->nombre}} {{$cursos->formadores->apellidos}}</h6>
                     </th>
                     <th width="25%">
-                        <span style="font-size: 15px"> {{__('message.Formadores de apoyo')}}: </span>
-                        <h5 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h5></th>
+                        <span style="font-size: 14px"> {{__('message.Formadores de apoyo')}}: </span>
+                        <h6 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h6></th>
                     <th width="25%">
-                        <h5 style="text-align: center;">{{$formador2 != null ? $formador2->nombre : ""}} {{$formador2 != null ? $formador2->apellidos : ""}}</h5></th></th>
+                        <h6 style="text-align: center;">{{$formador2 != null ? $formador2->nombre : ""}} {{$formador2 != null ? $formador2->apellidos : ""}}</h6></th></th>
                     <th width="25%">
-                        <h5 style="text-align: center;">{{$formador3 != null ? $formador3->nombre : ""}} {{$formador3 != null ? $formador3->apellidos : ""}}</h5></th></th>
+                        <h6 style="text-align: center;">{{$formador3 != null ? $formador3->nombre : ""}} {{$formador3 != null ? $formador3->apellidos : ""}}</h6></th></th>
                 </tr>
-                <tr>
-                    <th colspan="4" style="text-align: center;height: 100px;">
-                        <span>Firma del Responsable de formación y sello de la Entidad Formadora</span>
+                <tr >
+                    <th colspan="4" style="text-align: center;height: 70px;vertical-align: top;">
+                        <span style="font-size: 16px">Firma del Responsable de formación y sello de la Entidad Formadora</span>
+
                     </th>
                 </tr>
                 </thead>
             </table>
+            <hr style="height:1px;border-width:0;color:black;background-color:black">
+            <p class="s9" style="text-indent: 0pt;text-align: center;color: #3374b7; font-size:12px!important;">ASOCIACIÓN NACIONAL DE ALQUILADORES DE PLATAFORMAS AÉREAS DE TRABAJO (ANAPAT)<br>
+                <span style=" color: #548CD4;">Albasanz, 67 – Of: 47 – 28037 MADRID –Tel. 913 758 122– CIF: G80751860 – Nº Reg. 99004026</span></p>
         </div>
     </div>
 </div>

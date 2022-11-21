@@ -734,7 +734,9 @@ class AsistentController extends Controller
         $asistent->nota_p = $request->nota_p;
         $asistent->observaciones = $request->observaciones;
         $operador = Operadores::findOrFail((int)$request->operador);
-        $asistent->emision = $operador->fecha;
+        if($asistent->emision != $request->emision) {
+            $asistent->emision = $request->emision;
+        }
         $asistent->vencimiento = $request->vencimiento;
         $asistent->tipo_1 = $request->tipo_1;
         if (!$request->tipo_2) {
@@ -753,46 +755,31 @@ class AsistentController extends Controller
             $asistent->tipo_4 = $request->tipo_4;
         }
 
-
         $examen_t_pdf = $request->file('examen_t_pdf');
-
         if ($examen_t_pdf) {
             if ($asistent->examen_t_pdf && file_exists(storage_path('app/public/' . $asistent->examen_t_pdf))) {
                 \Storage::delete('public/' . $asistent->examen_t_pdf);
             }
-
             $examen_t_pdf_path = $examen_t_pdf->store('images/asistent', 'public');
-
             $asistent->examen_t_pdf = $examen_t_pdf_path;
-
         }
         $examen_p_pdf = $request->file('examen_p_pdf');
-
         if ($examen_p_pdf) {
             if ($asistent->examen_p_pdf && file_exists(storage_path('app/public/' . $asistent->examen_p_pdf))) {
                 \Storage::delete('public/' . $asistent->examen_p_pdf);
             }
-
             $examen_p_pdf_path = $examen_p_pdf->store('images/asistent', 'public');
-
             $asistent->examen_p_pdf = $examen_p_pdf_path;
-
         }
-
-
         if ($asistent->save()) {
-
             $cursos = Cursos::findOrFail($request->curso);
             if ($operador->carnett != null){
-
                 $carnet = $operador->carnett;
-
                 $carnet->curso = $cursos->id;
                 $carnet->estado = 1;
                 $carnet->fecha_de_alta = $asistent->vencimiento;
                 $carnet->fecha_de_emision = $asistent->emision;
 //                $carnet->
-
                 $carnet->save();
                 if ($cursos->tipo_maquina_1 != null){
                     $carnet->Tipo_Maquinas()->attach($cursos->tipo_maquina_1);
@@ -814,16 +801,12 @@ class AsistentController extends Controller
                 }else{
                     $carnet->numero = substr(md5(microtime()),rand(0,26),8) ;
                 }
-//                if ($operador->carnet)
-//                $carnet->numero = $operador->carnet;
+//
                 $carnet->operador = $operador->id;
                 $carnet->fecha_de_alta = $asistent->vencimiento;
                 $carnet->fecha_de_emision = $asistent->emision;
 //                dd($cursos->tipo_maquina_1);
-
-
                 $carnet->foto = $operador->foto;
-
                 $carnet->curso = $cursos->id;
                 $carnet->estado = 1 ;
 //                dd($carnet);
@@ -959,4 +942,5 @@ class AsistentController extends Controller
 
         return redirect()->route('admin.cursos.edit', [$curso])->with('success', 'Data deleted successfully');
     }
+
 }

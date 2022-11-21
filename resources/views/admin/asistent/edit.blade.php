@@ -270,15 +270,13 @@
 
             <div class="form-group col-md-4">
                 <label for="emision" class="col-sm-2 col-form-label">{{__('message.Emision')}}</label>
-                <label for="emision"
-                       class="col-sm-7 col-form-label">{{$asistent->emision != null ? date('d/m/Y',strtotime($asistent->emision)) : ""}}</label>
-
-                {{--                    <div class="col-sm-9">--}}
-                {{--                        <input type="date" name='emision' class="form-control {{$errors->first('emision') ? "is-invalid" : "" }} " value="{{old('emision') ? old('emision') : $asistent->emision}}"  id="emision" placeholder="Fecha de emisión">--}}
-                {{--                        <div class="invalid-feedback">--}}
-                {{--                            {{ $errors->first('emision') }}--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
+                <div class="col-sm-9">
+                    <input type="date" name='emision'
+                           class="form-control {{$errors->first('emision') ? "is-invalid" : "" }} "
+                           value="{{old('emision') ? old('emision') : $asistent->emision}}" id="emision"
+                    {{auth()->user()->perfil=='Administrador' ? '' : 'disabled'}}>
+                    <div class="invalid-feedback">{{ $errors->first('emision') }}</div>
+                </div>
             </div>
 
 

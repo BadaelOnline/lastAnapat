@@ -13,6 +13,7 @@ class EntidadesFormadoreas extends Model
    protected $guarded=[];
     protected $table = 'entidades_formadoreas';
     public $timestamps = true;
+    protected $hidden = ['created_at', 'updated_at','deleted_at'];
 
     use SoftDeletes;
 
