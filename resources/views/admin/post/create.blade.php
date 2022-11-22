@@ -198,21 +198,11 @@
 
         var HelloButton = function (context) {
             var ui = $.summernote.ui;
-
             // create button
             var button = ui.button({
                 contents: '<i class="fa fa-file-pdf-o" id="btnImportData"/> PDF',
                 tooltip: 'hello',
-                // click: function () {
-                //     // invoke insertText method with 'hello' on editor module.
-                //     var fileDialog = $('<input type="file">');
-                //     fileDialog.click();
-                //     fileDialog.on("change",onFileSelected);
-                //     return false;
-                // }
-
             });
-
             return button.render();   // return button as jquery object
         }
 
@@ -271,7 +261,6 @@
                 type: "post",
                 success: function (path) {
                     if (path.status == 1) {
-                        console.log(path.path);
                        body='<object data="'+path.path+'" type="application/pdf" width="750px" height="750px">'+
                            '<embed src="'+path.path+'" type="application/pdf"> <p>This browser does not support PDFs. Please download the PDF to view it: <a href="'+path.path+'">Download PDF</a>.</p> </object>'
                         $('.note-editable').html(body);

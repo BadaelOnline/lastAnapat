@@ -118,8 +118,8 @@ class CertificadoController extends Controller
                     $certificado->entidad_nombre = "";
                 }
                 $certificado->curso = $asistent->curso;
-                $certificado->emision =date('d/m/Y',strtotime( $asistent->emision));
-                $certificado->vencimiento = date('d/m/Y',strtotime($asistent->vencimiento));
+                $certificado->emision = $asistent->emision;
+                $certificado->vencimiento = $asistent->vencimiento;
                 $certificado->observaciones = $asistent->observaciones;
                 $certificado->dni = $operador->dni;
                 if ($curso != null){
@@ -130,7 +130,7 @@ class CertificadoController extends Controller
                         $certificado->cer_type_course = 'Renovación';
                         $certificado->tipos_carnet = 'R';
                     }
-                    $certificado->fecha_alta = date('d/m/Y',strtotime($curso->fecha_alta));
+                    $certificado->fecha_alta = $curso->fecha_alta;
                 }else{
                     $certificado->cer_type_course = '-';
                     $certificado->tipos_carnet = '-';
@@ -184,7 +184,6 @@ class CertificadoController extends Controller
                 if ($operador->carnett != null){
                     $certificado->carnet = $operador->carnett->numero;
                 }
-
                 $cer = Certificado::where('operador',$operador->id)->where('curso',$asistent->curso)->get();
                 if(count($cer) == 0){
                     $certificado->save();

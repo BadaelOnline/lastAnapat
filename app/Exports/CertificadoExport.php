@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\Asistent;
 use App\Models\Certificado;
 use App\Models\Cursos;
 use App\Models\EntidadesFormadoreas;
@@ -50,6 +51,7 @@ class CertificadoExport implements FromCollection, WithHeadings
 
 //        dd($certificados);
         foreach ($certificados as $certificado) {
+           $nota_p=Asistent::where('curso',$certificado->curso)->where('operador',$certificado->operador)->first()->nota_p;
             $ope = $certificado->operadorr;
             if ($certificado->entidad != 0) {
                 $entidad = EntidadesFormadoreas::findOrFail($certificado->entidad);
@@ -72,6 +74,7 @@ class CertificadoExport implements FromCollection, WithHeadings
             $certificado->emision=date('d/m/Y',strtotime($certificado->emision));
             $certificado->vencimiento=date('d/m/Y',strtotime($certificado->vencimiento));
             $certificado->cer_fecha=date(Now()->format('d/m/Y'));
+            $certificado->nota_p=$nota_p;
         }
         return $certificados;
     }
@@ -100,7 +103,8 @@ class CertificadoExport implements FromCollection, WithHeadings
             'tipo_2',
             'tipo_3',
             'tipo_4',
-            'estado del operador'
+            'estado del operador',
+            'nota pract.'
 
         ];
     }

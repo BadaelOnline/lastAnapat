@@ -34,7 +34,7 @@ class DocumentController extends Controller
 
         if($file){
             $file_path = $file->store('images/blog', 'public');
-            return response(['status' => 1, 'path' => public_path().'/'.$file_path], 200);
+            return response(['status' => 1, 'path' => asset('storage/'.$file_path)], 200);
         }
         return response(['status' => 0, 'errors' => 'Unexpected error! '], 400);
     }
