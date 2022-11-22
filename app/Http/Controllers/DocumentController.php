@@ -28,4 +28,14 @@ class DocumentController extends Controller
         $documents = Post::where("title","like","%$category%")->where('public',0)->latest()->paginate(9);
         return view('admin.documents.documents',compact('documents','category'));
     }
+    public function uploadPdf(Request $request)
+    {
+        $file= $request->file('file');
+
+        if($file){
+            $file_path = $file->store('images/blog', 'public');
+            return response(['status' => 1, 'path' => public_path().'/'.$file_path], 200);
+        }
+        return response(['status' => 0, 'errors' => 'Unexpected error! '], 400);
+    }
 }

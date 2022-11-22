@@ -499,7 +499,7 @@
     @endif
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<script src="{{ asset('admin/js/summernote.min.js') }}"></script>
 <script src="{{ asset('admin/js/summernote-image-title.js') }}"></script>
 
 <script>

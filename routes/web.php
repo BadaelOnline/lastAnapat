@@ -284,4 +284,5 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::get('document/{slug}', [DocumentController::class, 'document'])->name('document');
     Route::get('docsearch/search',[DocumentController::class, 'documentsSearch'])->name('documents.search');
 
+
 });

@@ -71,7 +71,7 @@ class CertificadoExport implements FromCollection, WithHeadings
 //            $certificado->deleted_at=date('d/m/Y H:i:s',strtotime($certificado->deleted_at));
             $certificado->emision=date('d/m/Y',strtotime($certificado->emision));
             $certificado->vencimiento=date('d/m/Y',strtotime($certificado->vencimiento));
-//            $certificado->cer_fecha=date('d/m/Y',strtotime($certificado->cer_fecha));
+            $certificado->cer_fecha=date(Now()->format('d/m/Y'));
         }
         return $certificados;
     }

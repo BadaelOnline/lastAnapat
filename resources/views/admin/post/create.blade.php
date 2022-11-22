@@ -2,6 +2,7 @@
 
 
 @section('styles')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         .picture-container {
             position: relative;
@@ -53,58 +54,36 @@
 
     <form action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-
         <div class="container">
-
             <div class="form-group">
-
                 <div class="picture-container">
-
                     <div class="picture">
-
                         <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px"
                              title=""/>
-
                         <input type="file" id="wizard-picture" name="cover"
                                class="form-control {{$errors->first('cover') ? "is-invalid" : "" }} ">
-
                         <div class="invalid-feedback">
                             {{ $errors->first('logo') }}
                         </div>
-
                     </div>
-
                     <h6>{{__('message.Cover')}} </h6>
-
                 </div>
-
             </div>
-
-
             <div class="form-group ml-5">
-
                 <label for="title" class="col-sm-2 col-form-label">{{__('message.Title')}} </label>
-
                 <div class="col-sm-9">
-
                     <input type="text" name='title'
                            class="form-control {{$errors->first('title') ? "is-invalid" : "" }} "
                            value="{{old('title')}}" id="title" placeholder="{{__('message.Title')}}">
-
                     <div class="invalid-feedback">
                         {{ $errors->first('title') }}
                     </div>
-
                 </div>
-
             </div>
 
             <div class="form-group ml-5">
-
                 <label for="category" class="col-sm-2 col-form-label">{{__('message.Categoría')}}</label>
-
                 <div class="col-sm-9">
-
                     <select name='category' class="form-control {{$errors->first('category') ? "is-invalid" : "" }} "
                             id="category">
                         <option disabled selected>{{__('message.Choose One!')}}</option>
@@ -115,17 +94,12 @@
                     <div class="invalid-feedback">
                         {{ $errors->first('category') }}
                     </div>
-
                 </div>
-
             </div>
 
             <div class="form-group ml-5">
-
                 <label for="tags" class="col-sm-2 col-form-label">{{__('message.Tags')}}</label>
-
                 <div class="col-sm-9">
-
                     <select name='tags[]' class="form-control {{$errors->first('tags') ? "is-invalid" : "" }} select2"
                             id="tags" multiple>
                         @foreach ($tags as $tags)
@@ -135,33 +109,21 @@
                     <div class="invalid-feedback">
                         {{ $errors->first('tags') }}
                     </div>
-
                 </div>
-
             </div>
-
             <div class="form-group ml-5">
-
                 <label for="body" class="col-sm-2 col-form-label">{{__('message.Description')}}</label>
-
                 <div class="col-sm-9">
-
                     <textarea name="body" class="form-control {{$errors->first('body') ? "is-invalid" : "" }} "
                               id="summernote" cols="30" rows="10">{{old('body')}}</textarea>
                     <div class="invalid-feedback">
                         {{ $errors->first('body') }}
                     </div>
-
                 </div>
-
             </div>
-
             <div class="form-group ml-5">
-
                 <label for="keyword" class="col-sm-2 col-form-label">{{__('message.Palabra clave')}}</label>
-
                 <div class="col-sm-9">
-
                     <input type="text" name='keyword'
                            class="form-control {{$errors->first('keyword') ? "is-invalid" : "" }} "
                            value="{{old('keyword')}}" id="keyword" placeholder="{{__('message.Palabra clave')}}">
@@ -169,28 +131,18 @@
                     <div class="invalid-feedback">
                         {{ $errors->first('keyword') }}
                     </div>
-
                 </div>
-
             </div>
-
-
             <div class="form-group ml-5">
-
                 <label for="meta_desc" class="col-sm-2 col-form-label">{{__('message.Meta Desc')}}</label>
-
                 <div class="col-sm-9">
-
                     <input type="text" name='meta_desc'
                            class="form-control {{$errors->first('meta_desc') ? "is-invalid" : "" }} "
                            value="{{old('meta_desc')}}" id="meta_desc" placeholder="{{__('message.Meta Desc')}}">
-
                     <div class="invalid-feedback">
                         {{ $errors->first('meta_desc') }}
                     </div>
-
                 </div>
-
             </div>
             <div class="form-group ml-5">
                 <div class="col-md-2 d-flex flex-column justify-content-center">
@@ -202,23 +154,23 @@
                 </div>
             </div>
             <div class="form-group ml-5">
-
                 <div class="col-sm-3">
-
                     <button type="submit" class="btn btn-primary">{{__('message.Create')}}</button>
-
                 </div>
-
             </div>
-
         </div>
-
     </form>
 @endsection
 
 @push('scripts')
 
     <script>
+        var CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         // Prepare the preview for profile picture
         $("#wizard-picture").change(function () {
             readURL(this);
@@ -234,5 +186,104 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+        // $('.summernote').summernote({
+        //     toolbar: [
+        //         ['mybutton', ['hello']]
+        //     ],
+        //
+        //     buttons: {
+        //         hello: HelloButton
+        //     }
+        // });
+
+        var HelloButton = function (context) {
+            var ui = $.summernote.ui;
+
+            // create button
+            var button = ui.button({
+                contents: '<i class="fa fa-file-pdf-o" id="btnImportData"/> PDF',
+                tooltip: 'hello',
+                // click: function () {
+                //     // invoke insertText method with 'hello' on editor module.
+                //     var fileDialog = $('<input type="file">');
+                //     fileDialog.click();
+                //     fileDialog.on("change",onFileSelected);
+                //     return false;
+                // }
+
+            });
+
+            return button.render();   // return button as jquery object
+        }
+
+        $('#summernote').summernote({
+            height: 500,
+            focus: true,
+            toolbar: [
+
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'hr']],
+                ['view', ['fullscreen', 'codeview']] ,
+                ['HelloBytton', ['parametros']],
+            ],
+            buttons: {
+                parametros: HelloButton,
+            },
+            hint: {
+                match: /#(\w{2,})$/,
+                search: function(keyword, callback) {
+                    $.ajax({
+                        type: 'POST',
+                        dataType: 'json',
+                        url: 'some_url'
+                    }).then(function (data) {
+                        callback(data.items);
+                    });
+                },
+                template: function(item) {
+                    return '[<strong>' + item.slug + '</strong>] ' + item.name;
+                }
+            }
+        });
+
+        $("#btnImportData").on("click",function (e){
+            var fileDialog = $('<input type="file" name="file" id="file">');
+            fileDialog.click();
+            fileDialog.on("change",onFileSelected);
+        });
+
+        var onFileSelected = function(e){
+            var files = $(this)[0].files;
+            var data = new FormData();
+            data.append("file", files[0]);
+            data.append('_token',CSRF_TOKEN);
+            $.ajax({
+                url: "{{url('/api/uploadpdf')}}",
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: data,
+                type: "post",
+                success: function (path) {
+                    if (path.status == 1) {
+                        console.log(path.path);
+                       body='<object data="'+path.path+'" type="application/pdf" width="750px" height="750px">'+
+                           '<embed src="'+path.path+'" type="application/pdf"> <p>This browser does not support PDFs. Please download the PDF to view it: <a href="'+path.path+'">Download PDF</a>.</p> </object>'
+                        $('.note-editable').html(body);
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        };
+
     </script>
+
+
 @endpush
