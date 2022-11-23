@@ -109,3 +109,37 @@ class CertificadoExport implements FromCollection, WithHeadings
         ];
     }
 }
+
+/*
+ * UPDATE `certificados` SET `tipo_1` = '1a-Estática vertical' WHERE  tipo_1 LIKE '%1a%';
+UPDATE `certificados` SET `tipo_2` = '1a-Estática vertical' WHERE  tipo_2 LIKE '%1a%';
+UPDATE `certificados` SET `tipo_3` = '1a-Estática vertical' WHERE  tipo_3 LIKE '%1a%';
+UPDATE `certificados` SET `tipo_4` = '1a-Estática vertical' WHERE  tipo_4 LIKE '%1a%';
+
+UPDATE `certificados` SET `tipo_1` = '1b-Estática de brazo' WHERE  tipo_1 LIKE '%1b%';
+UPDATE `certificados` SET `tipo_2` = '1b-Estática de brazo' WHERE  tipo_2 LIKE '%1b%';
+UPDATE `certificados` SET `tipo_3` = '1b-Estática de brazo' WHERE  tipo_3 LIKE '%1b%';
+UPDATE `certificados` SET `tipo_4` = '1b-Estática de brazo' WHERE  tipo_4 LIKE '%1b%';
+
+UPDATE `certificados` SET `tipo_1` = '2a-Móvil desde chasis vertical' WHERE  tipo_1 LIKE '%2a%';
+UPDATE `certificados` SET `tipo_2` = '2a-Móvil desde chasis vertical' WHERE  tipo_2 LIKE '%2a%';
+UPDATE `certificados` SET `tipo_3` = '2a-Móvil desde chasis vertical' WHERE  tipo_3 LIKE '%2a%';
+UPDATE `certificados` SET `tipo_4` = '2a-Móvil desde chasis vertical' WHERE  tipo_4 LIKE '%2a%';
+
+UPDATE `certificados` SET `tipo_1` = '2b-Móvil desde chasis de brazo' WHERE  tipo_1 LIKE '%2b%';
+UPDATE `certificados` SET `tipo_2` = '2b-Móvil desde chasis de brazo' WHERE  tipo_2 LIKE '%2b%';
+UPDATE `certificados` SET `tipo_3` = '2b-Móvil desde chasis de brazo' WHERE  tipo_3 LIKE '%2b%';
+UPDATE `certificados` SET `tipo_4` = '2b-Móvil desde chasis de brazo' WHERE  tipo_4 LIKE '%2b%';
+
+UPDATE `certificados` SET `tipo_1` = '3a-Móvil vertical' WHERE  tipo_1 LIKE '%3a%';
+UPDATE `certificados` SET `tipo_2` = '3a-Móvil vertical' WHERE  tipo_2 LIKE '%3a%';
+UPDATE `certificados` SET `tipo_3` = '3a-Móvil vertical' WHERE  tipo_3 LIKE '%3a%';
+UPDATE `certificados` SET `tipo_4` = '3a-Móvil vertical' WHERE  tipo_4 LIKE '%3a%';
+
+UPDATE `certificados` SET `tipo_1` = '3b-Móvil de brazo' WHERE  tipo_1 LIKE '%3b%';
+UPDATE `certificados` SET `tipo_2` = '3b-Móvil de brazo' WHERE  tipo_2 LIKE '%3b%';
+UPDATE `certificados` SET `tipo_3` = '3b-Móvil de brazo' WHERE  tipo_3 LIKE '%3b%';
+UPDATE `certificados` SET `tipo_4` = '3b-Móvil de brazo' WHERE  tipo_4 LIKE '%3b%';
+
+
+ */

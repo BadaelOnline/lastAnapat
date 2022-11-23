@@ -46,6 +46,13 @@ input[type="radio"]:focus {
     outline: 0;
     box-shadow: none;
 }
+   input.masked,
+   .shell span {
+       font-size: 16px;
+       font-family: monospace;
+       padding-right: 10px;
+       background-color: transparent;
+       text-transform: uppercase; }
 </style>
 
 @endsection
@@ -69,7 +76,7 @@ input[type="radio"]:focus {
         <label for="dni" class="col-sm-12 col-form-label">{{__('message.Dni')}}</label>
 
         <div class="col-sm-7">
-            <input type="text" name='dni' class="form-control {{$errors->first('dni') ? "is-invalid" : "" }} " value="{{old('dni')}}" id="dni" placeholder="Documento identificativo">
+            <input type="text" name='dni' class="form-control {{$errors->first('dni') ? "is-invalid" : "" }} " value="{{old('dni')}}" id="dni" placeholder="Documento identificativo"   maxlength="9"/>
             <div class="invalid-feedback">
                 {{ $errors->first('dni') }}
             </div>
@@ -301,6 +308,7 @@ function readURL(input) {
             reader.readAsDataURL(input.files[0]);
         }
     }
+
 </script>
 
 @endpush

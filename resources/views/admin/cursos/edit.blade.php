@@ -71,17 +71,10 @@
             <div class="col-md-4">
                 <label for="curso" class="col-sm-2 col-form-label">{{__('message.Curso')}}</label>
                 <div class="col-sm-9">
-                    @if(auth()->user()->perfil=='Administrador')
                         <input type="text" name='curso'
                                class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} "
-                               value="{{old('curso') ? old('curso') : $cursos->curso}}" id="curso"
-                               placeholder="Código del curso">
-                    @else
-                        <input type="text" name='curso'
-                               class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} "
-                               value="{{old('curso') ? old('curso') : $cursos->curso}}" id="curso"
-                               placeholder="Código del curso" disabled="disabled" readonly>
-                    @endif
+                               value="{{$cursos->curso}}" id="curso"
+                               placeholder="Código del curso"  {{ auth()->user()->perfil!='Administrador' ? 'readonly' : ''}}>
                     <div class="invalid-feedback">
                         {{ $errors->first('curso') }}
                     </div>

@@ -1533,11 +1533,11 @@ section {
     z-index: 101;
     transition: 0.5s border-top;
 }
-/*.menu:not(:hover) > .menu-dropdown {*/
-/*    padding: 4px 0;*/
-/*    background: #ddd;*/
-/*    z-index: 99;*/
-/*}*/
+.menu:not(:hover) > .menu-dropdown {
+    padding: 4px 0;
+    background: #ddd;
+    z-index: 99;
+}
 /*.menu:not(:hover) > .menu-dropdown:after {*/
 /*    border-top-color: #ddd;*/
 /*}*/
