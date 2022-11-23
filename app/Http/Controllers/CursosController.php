@@ -270,6 +270,7 @@ $now = now().date('');
      */
     public function update(Request $request, $id)
     {
+
         $request->validate([
             'curso' => 'required|max:255',
             'tipo_curso' => 'required',

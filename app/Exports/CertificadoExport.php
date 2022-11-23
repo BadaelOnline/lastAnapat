@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\Asistent;
 use App\Models\Certificado;
 use App\Models\Cursos;
 use App\Models\EntidadesFormadoreas;
@@ -50,6 +51,7 @@ class CertificadoExport implements FromCollection, WithHeadings
 
 //        dd($certificados);
         foreach ($certificados as $certificado) {
+           $nota_p=Asistent::where('curso',$certificado->curso)->where('operador',$certificado->operador)->first()->nota_p;
             $ope = $certificado->operadorr;
             if ($certificado->entidad != 0) {
                 $entidad = EntidadesFormadoreas::findOrFail($certificado->entidad);
@@ -71,7 +73,8 @@ class CertificadoExport implements FromCollection, WithHeadings
 //            $certificado->deleted_at=date('d/m/Y H:i:s',strtotime($certificado->deleted_at));
             $certificado->emision=date('d/m/Y',strtotime($certificado->emision));
             $certificado->vencimiento=date('d/m/Y',strtotime($certificado->vencimiento));
-//            $certificado->cer_fecha=date('d/m/Y',strtotime($certificado->cer_fecha));
+            $certificado->cer_fecha=date(Now()->format('d/m/Y'));
+            $certificado->nota_p=$nota_p;
         }
         return $certificados;
     }
@@ -100,8 +103,43 @@ class CertificadoExport implements FromCollection, WithHeadings
             'tipo_2',
             'tipo_3',
             'tipo_4',
-            'estado del operador'
+            'estado del operador',
+            'nota pract.'
 
         ];
     }
 }
+
+/*
+ * UPDATE `certificados` SET `tipo_1` = '1a-Estática vertical' WHERE  tipo_1 LIKE '%1a%';
+UPDATE `certificados` SET `tipo_2` = '1a-Estática vertical' WHERE  tipo_2 LIKE '%1a%';
+UPDATE `certificados` SET `tipo_3` = '1a-Estática vertical' WHERE  tipo_3 LIKE '%1a%';
+UPDATE `certificados` SET `tipo_4` = '1a-Estática vertical' WHERE  tipo_4 LIKE '%1a%';
+
+UPDATE `certificados` SET `tipo_1` = '1b-Estática de brazo' WHERE  tipo_1 LIKE '%1b%';
+UPDATE `certificados` SET `tipo_2` = '1b-Estática de brazo' WHERE  tipo_2 LIKE '%1b%';
+UPDATE `certificados` SET `tipo_3` = '1b-Estática de brazo' WHERE  tipo_3 LIKE '%1b%';
+UPDATE `certificados` SET `tipo_4` = '1b-Estática de brazo' WHERE  tipo_4 LIKE '%1b%';
+
+UPDATE `certificados` SET `tipo_1` = '2a-Móvil desde chasis vertical' WHERE  tipo_1 LIKE '%2a%';
+UPDATE `certificados` SET `tipo_2` = '2a-Móvil desde chasis vertical' WHERE  tipo_2 LIKE '%2a%';
+UPDATE `certificados` SET `tipo_3` = '2a-Móvil desde chasis vertical' WHERE  tipo_3 LIKE '%2a%';
+UPDATE `certificados` SET `tipo_4` = '2a-Móvil desde chasis vertical' WHERE  tipo_4 LIKE '%2a%';
+
+UPDATE `certificados` SET `tipo_1` = '2b-Móvil desde chasis de brazo' WHERE  tipo_1 LIKE '%2b%';
+UPDATE `certificados` SET `tipo_2` = '2b-Móvil desde chasis de brazo' WHERE  tipo_2 LIKE '%2b%';
+UPDATE `certificados` SET `tipo_3` = '2b-Móvil desde chasis de brazo' WHERE  tipo_3 LIKE '%2b%';
+UPDATE `certificados` SET `tipo_4` = '2b-Móvil desde chasis de brazo' WHERE  tipo_4 LIKE '%2b%';
+
+UPDATE `certificados` SET `tipo_1` = '3a-Móvil vertical' WHERE  tipo_1 LIKE '%3a%';
+UPDATE `certificados` SET `tipo_2` = '3a-Móvil vertical' WHERE  tipo_2 LIKE '%3a%';
+UPDATE `certificados` SET `tipo_3` = '3a-Móvil vertical' WHERE  tipo_3 LIKE '%3a%';
+UPDATE `certificados` SET `tipo_4` = '3a-Móvil vertical' WHERE  tipo_4 LIKE '%3a%';
+
+UPDATE `certificados` SET `tipo_1` = '3b-Móvil de brazo' WHERE  tipo_1 LIKE '%3b%';
+UPDATE `certificados` SET `tipo_2` = '3b-Móvil de brazo' WHERE  tipo_2 LIKE '%3b%';
+UPDATE `certificados` SET `tipo_3` = '3b-Móvil de brazo' WHERE  tipo_3 LIKE '%3b%';
+UPDATE `certificados` SET `tipo_4` = '3b-Móvil de brazo' WHERE  tipo_4 LIKE '%3b%';
+
+
+ */
