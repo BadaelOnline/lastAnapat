@@ -24,58 +24,61 @@
                         </div><!-- End sidebar search formn-->
                         <div class="row">
                             @if($posts != null)
-                            @foreach ($posts as $post)
-                                <div class="col-md-4">
-                                    <article class="entry" data-aos="fade-up">
-{{--                                        <h4>{{$post->public == 1 ? "public" : "private"}}</h4>--}}
+                                @foreach ($posts as $post)
+                                    <div class="col-md-4">
+                                        <article class="entry" data-aos="fade-up">
+                                            {{--                                        <h4>{{$post->public == 1 ? "public" : "private"}}</h4>--}}
+                                            @if($post->cover)
+                                                <div class="entry-img blog-image">
+                                                    <img src="{{asset('storage/' . $post->cover)}}"
+                                                         alt="{{ $post->title }}"
+                                                         class="img-fluid">
+                                                </div>
+                                            @endif
+                                            <h2 class="entry-title">
+                                                <a href="{{ route('blogshow',$post->slug) }}">{{ $post->title }}</a>
+                                            </h2>
 
-                                        <div class="entry-img blog-image">
-                                            <img src="{{asset('storage/' . $post->cover)}}" alt="{{ $post->title }}"
-                                                 class="img-fluid">
-                                        </div>
-
-                                        <h2 class="entry-title">
-                                            <a href="{{ route('blogshow',$post->slug) }}">{{ $post->title }}</a>
-                                        </h2>
-
-                                        <div class="entry-meta">
-                                            <ul>
-                                                <li class="d-flex align-items-center"><i class="icofont-user"></i> <a
-                                                        href="{{route('blogshow',$post->slug)}}">{{ $post->user->name }}</a>
-                                                </li>
-                                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i>
-                                                    <a href="{{route('blogshow',$post->slug)}}">
-                                                        <time
-                                                            datetime="2020-01-01">{{ Carbon\Carbon::parse($post->created_at)->format("d/m/Y") }}</time>
-                                                    </a></li>
-                                                <li class="d-flex align-items-center"><i class="icofont-eye"></i> <a
-                                                        href="{{route('blogshow',$post->slug)}}">{{ $post->views }} {{__('message.Views')}}</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="entry-content">
-                                            <p>
-                                                {{ Str::limit( strip_tags( $post->body ), 250 ) }}
-                                            </p>
-                                            <div class="read-more">
-                                                <a href="{{ route('blogshow',$post->slug) }}">{{__('message.Read More')}}</a>
+                                            <div class="entry-meta">
+                                                <ul>
+                                                    <li class="d-flex align-items-center"><i class="icofont-user"></i>
+                                                        <a
+                                                                href="{{route('blogshow',$post->slug)}}">{{ $post->user->name }}</a>
+                                                    </li>
+                                                    <li class="d-flex align-items-center"><i
+                                                                class="icofont-wall-clock"></i>
+                                                        <a href="{{route('blogshow',$post->slug)}}">
+                                                            <time
+                                                                    datetime="2020-01-01">{{ Carbon\Carbon::parse($post->created_at)->format("d/m/Y") }}</time>
+                                                        </a></li>
+                                                    <li class="d-flex align-items-center"><i class="icofont-eye"></i> <a
+                                                                href="{{route('blogshow',$post->slug)}}">{{ $post->views }} {{__('message.Views')}}</a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                        </div>
 
-                                    </article><!-- End blog entry -->
-                                </div>
+                                            <div class="entry-content">
+                                                <p>
+                                                    {{ Str::limit( strip_tags( $post->body ), 250 ) }}
+                                                </p>
+                                                <div class="read-more">
+                                                    <a href="{{ route('blogshow',$post->slug) }}">{{__('message.Read More')}}</a>
+                                                </div>
+                                            </div>
 
-                            @endforeach
+                                        </article><!-- End blog entry -->
+                                    </div>
+
+                                @endforeach
                             @endif
                         </div>
 
                         @if($posts != null)
-                        <div class="blog-pagination">
-                            <ul class="justify-content-center">
-                                {{ $posts->links() }}
-                            </ul>
-                        </div>
+                            <div class="blog-pagination">
+                                <ul class="justify-content-center">
+                                    {{ $posts->links() }}
+                                </ul>
+                            </div>
                         @endif
                     </div>
                     <!-- End blog entries list -->

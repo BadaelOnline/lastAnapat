@@ -42,10 +42,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
         \Validator::make($request->all(), [
             "title" => "required",
-            "cover" => "required|max:2048",
-//            "body" => "required",
+//            "cover" => "required|max:2048",
+            "body" => "required",
             "category" => "required",
             "tags" => "array|required",
             "keyword" => "required",
@@ -112,12 +113,12 @@ class PostController extends Controller
     {
         \Validator::make($request->all(), [
             "title" => "required",
-//            "body" => "required",
+            "body" => "required",
             "category" => "required",
             "tags" => "array|required",
             "keyword" => "required",
             "meta_desc" => "required",
-            "cover" => "max:2048"
+//            "cover" => "max:2048"
         ])->validate();
         $post = Post::findOrFail($id);
         $data = $request->all();

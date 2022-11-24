@@ -65,11 +65,11 @@ Blog -
                   @foreach ($posts as $post)
                       <div class="col-md-6">
                           <article class="entry" data-aos="fade-up">
-
+                              @if($post->cover)
                               <div class="entry-img blog-image">
                                   <img src="{{asset('storage/' . $post->cover)}}" alt="{{ $post->title }}" class="img-fluid">
                               </div>
-
+                              @endif
                               <h2 class="entry-title">
                                   <a href="{{ route('blogshow',$post->slug) }}">{{ $post->title }}</a>
                               </h2>
