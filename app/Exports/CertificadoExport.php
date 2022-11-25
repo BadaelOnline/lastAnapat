@@ -104,7 +104,7 @@ class CertificadoExport implements FromCollection, WithHeadings
             'tipo_3',
             'tipo_4',
             'estado del operador',
-            'nota pract.'
+            'nota_P'
 
         ];
     }

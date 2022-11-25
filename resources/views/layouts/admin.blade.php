@@ -33,6 +33,7 @@
     {{-- Select2 Style CDN --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     <link href="{{ asset('front/vendor/icofont/icofont.min.css') }}" rel="stylesheet">
+
     @yield('styles')
 </head>
 
@@ -521,6 +522,7 @@
             },
         });
     });
+
 </script>
 
 @stack('scripts')
