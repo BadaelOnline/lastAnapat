@@ -6,9 +6,16 @@
     <style>
         td{
             line-height: 1.0!important;
+            font-size:12px!important;
         }
         .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
             padding: 6px!important;
+        }
+        @media print {
+            .myid_print_duo_name { /* Replace class_name with * to target all elements */
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact; /* Non-Webkit Browsers */
+            }
         }
     </style>
 
@@ -19,7 +26,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
-            <img width="200" height="100" src="{{ asset('admin/img/formacion.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">
+            <img width="150" height="75" src="{{ asset('admin/img/formacion.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">
         </div>
         <div class="col-lg-6">
         </div>
@@ -111,7 +118,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3">
-            <img width="200" height="100" src="{{ asset('admin/img/formacion.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">
+            <img width="150" height="75" src="{{ asset('admin/img/formacion.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">
         </div>
         <div class="col-lg-1">
 
@@ -125,54 +132,52 @@
                 <thead>
                 <tr>
                     <th>
-                        <span style="font-size: 14px!important;"> {{__('message.Curso')}} : </span>
-                        <h6 style="text-align: left;">{{$cursos->codigo}}</h6>
+                        <span style="font-size: 12px!important;"> {{__('message.Curso')}} : {{$cursos->codigo}} </span>
                     </th>
                     <th>
-                        <span style="font-size: 14px!important;"> {{__('message.Entidad formadora')}} : </span>
-                        <h6 style="text-align: center;">{{$cursos->entidades_formadoreas->nombre}}</h6>
+                        <span style="font-size: 12px!important;"> {{__('message.Entidad formadora')}} : {{$cursos->entidades_formadoreas->nombre}}</span>
                     </th>
                     <th>
-                        <span style="font-size: 14px!important;"> {{__('message.Fecha')}}: </span>
-                        <h6 style="text-align: center;">{{date('d/m/Y',strtotime($cursos->fecha_inicio))}}</h6>
+                        <span style="font-size: 12px!important;"> {{__('message.Fecha')}}: {{date('d/m/Y',strtotime($cursos->fecha_inicio))}}</span>
                     </th>
                 </tr>
                 <tr>
                     <th colspan="3">
-                        <span style="font-size: 14px!important;"> {{__('message.Formador')}}: </span>
-                        <span style="text-align: center;font-size:14px">{{$cursos->formadores->nombre}} {{$cursos->formadores->apellidos}}</span>
+                        <span style="font-size: 12px!important;"> {{__('message.Formador')}}: </span>
+                        <span style="text-align: center;font-size:12px">{{$cursos->formadores->nombre}} {{$cursos->formadores->apellidos}}</span>
                     </th>
                 </tr>
                 <tr>
                     <th>
-                        <span style="font-size: 14px!important;"> {{__('message.Formadores de apoyo')}}: </span>
+                        <span style="font-size: 12px!important;"> {{__('message.Formadores de apoyo')}}: </span>
+                        <sup style="float: right;margin-top:7px;">(1)</sup>
                         <h6 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h6>
                     </th>
                     <th>
-
+                        <sup style="float: right;margin-top:-10px">(2)</sup>
                         <h6 style="text-align: center;">{{$formador2 != null ? $formador2->nombre : ""}} {{$formador2 != null ? $formador2->apellidos : ""}}</h6>
                     </th>
                     <th>
-
+                        <sup style="float: right;margin-top:-10px;">(3)</sup>
                         <h6 style="text-align: center;">{{$formador3 != null ? $formador3->nombre : ""}} {{$formador3 != null ? $formador3->apellidos : ""}}</h6>
                     </th>
                 </tr>
                 </thead>
             </table>
-            <table class="table table-bordered" style="margin-top:-15px">
+            <table class="table table-bordered" style="margin-top:-20px">
                 <thead>
                 <tr >
-                    <th rowspan="2" style="text-align: center;width: 7%">{{__('message.N-As')}}.</th>
-                    <th rowspan="2" style="text-align: center;width:14%">{{__('message.DNI')}}</th>
-                    <th rowspan="2" style="text-align: center;">{{__('message.Apellidos y nombre')}}</th>
+                    <th rowspan="2" style="text-align: center;width: 7%;vertical-align: middle;font-size: 12px">{{__('message.N-As')}}.</th>
+                    <th rowspan="2" style="text-align: center;width:14%;vertical-align: middle;font-size: 12px">{{__('message.DNI')}}<sup>1</sup></th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;font-size: 12px">{{__('message.Apellidos y nombre')}}</th>
                     <th style="text-align: center" colspan="2" >
-                        <span style="font-size: 13px">{{__('message.NOTAs')}}</span>
+                        <span style="font-size: 11px">{{__('message.NOTAs')}}<sup>2</sup></span>
                     </th>
-                    <th rowspan="2" style="text-align: center;">{{__('message.Firma del alumno')}}</th>
+                    <th rowspan="2" style="text-align: center;vertical-align: middle;font-size: 12px">{{__('message.Firma del alumno')}}<sup>3</sup></th>
                 </tr>
                 <tr>
-                    <th style="text-align: center;font-size: 13px">Teoría</th>
-                    <th style="text-align: center;font-size: 13px">Práct.</th>
+                    <th style="text-align: center;font-size: 10px">Teoría</th>
+                    <th style="text-align: center;font-size: 10px">Práct.</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -191,7 +196,7 @@
                     <td style="text-align: center;"></td>
                 </tr>
                     @endforeach
-                @if(count($cursos->asistent)<10 && count($cursos->horario)!=0)
+                @if(count($cursos->asistent)<10 && count($cursos->asistent)!=0)
                     @for($i=10-count($cursos->asistent);$i>0;$i--)
                         <tr>
                             <td style="text-align: center;">{{++$no}}</td>
@@ -202,8 +207,8 @@
                             <td></td>
                         </tr>
                     @endfor
-                @elseif(count($cursos->horario)==0)
-                    @for($i=10-count($cursos->horario);$i>0;$i--)
+                @elseif(count($cursos->asistent)==0)
+                    @for($i=10-count($cursos->asistent);$i>0;$i--)
                         <tr style="height: 35px">
                             <td style="text-align: center;">{{++$no}} </td>
                             <td> </td>
@@ -225,11 +230,13 @@
                         <h6 style="text-align: center;">{{$cursos->formadores->nombre}} {{$cursos->formadores->apellidos}}</h6>
                     </th>
                     <th width="25%">
-                        <span style="font-size: 14px"> {{__('message.Formadores de apoyo')}}: </span>
+                        <span style="font-size: 14px"> {{__('message.Formadores de apoyo')}}: <sup style="float: right;margin-top:5px">(1)</sup></span>
                         <h6 style="text-align: center;">{{$formador1 != null ? $formador1->nombre : ""}} {{$formador1 != null ? $formador1->apellidos:""}}</h6></th>
                     <th width="25%">
+                        <sup style="float: right;margin-top:-20px">(2)</sup>
                         <h6 style="text-align: center;">{{$formador2 != null ? $formador2->nombre : ""}} {{$formador2 != null ? $formador2->apellidos : ""}}</h6></th></th>
                     <th width="25%">
+                        <sup style="float: right;margin-top:-20px">(3)</sup>
                         <h6 style="text-align: center;">{{$formador3 != null ? $formador3->nombre : ""}} {{$formador3 != null ? $formador3->apellidos : ""}}</h6></th></th>
                 </tr>
                 <tr >
@@ -240,76 +247,24 @@
                 </tr>
                 </thead>
             </table>
-            <hr style="height:1px;border-width:0;color:black;background-color:black">
-            <p class="s9" style="text-indent: 0pt;text-align: center;color: #3374b7; font-size:12px!important;">ASOCIACIÓN NACIONAL DE ALQUILADORES DE PLATAFORMAS AÉREAS DE TRABAJO (ANAPAT)<br>
-                <span style=" color: #548CD4;">Albasanz, 67 – Of: 47 – 28037 MADRID –Tel. 913 758 122– CIF: G80751860 – Nº Reg. 99004026</span></p>
+            <div>
+            <hr style="border-top: solid 1px #000 !important;margin-bottom: 5px!important;margin-top: 2px!important;width:30%;margin-left:20px!important;">
+            <p style="font-size: 10px;  line-height: 1em;margin-left:20px;">
+                <sup>1</sup><b>El Formador acredita</b> la identificación de los Alumnos mediante sus DNI y valida sus firmas en los exámenes y en el presente
+                documento.<br>
+                <sup>2</sup><b>El Formador acredita</b> la veracidad de las notas de los Exámenes obtenidas por cada uno de ellos.<br>
+                <sup>3</sup><b>El alumno reconoce con su firma, que ha asistido a la presente formación y que ha recibido el material didáctico original.</b>
+            </p>
+            </div>
+            <div style="color: ">
+            <hr style="border-top: solid 1px #000 !important;margin-bottom: 2px!important;margin-top: 0px!important;margin-left:20px;">
+            <p class="s9" style="text-align: center;color: #3374b7!important; font-size:12px!important;">ASOCIACIÓN NACIONAL DE ALQUILADORES DE PLATAFORMAS AÉREAS DE TRABAJO (ANAPAT)<br>
+                <span style=" color: #548CD4!important;">Albasanz, 67 – Of: 47 – 28037 MADRID –Tel. 913 758 122– CIF: G80751860 – Nº Reg. 99004026</span></p>
+            </div>
         </div>
     </div>
 </div>
 
-{{--@foreach($cursos->asistent as $asistent)--}}
-{{--<div class="container">--}}
-{{--    <div class="row">--}}
-{{--        <div class="col-lg-3">--}}
-{{--            <img width="207" height="97" src="{{ asset('admin/img/logo-anpat.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" sizes="(max-width: 207px) 100vw, 207px">--}}
-
-{{--        </div>--}}
-{{--        <div class="col-lg-6">--}}
-
-{{--        </div>--}}
-{{--        <div class="col-lg-3">--}}
-{{--            <H3 style="float: right;">Examen Teórico {{$examen_t->codigo}}</H3>--}}
-{{--            <span style="float: right;">version 01</span>--}}
-{{--        </div>--}}
-{{--        <div class="clearfix"></div>--}}
-{{--        <div class="col-lg-12">--}}
-{{--            <table class="table table-bordered">--}}
-{{--                <thead>--}}
-{{--                <tr>--}}
-{{--                    <th>--}}
-{{--                        <span> Codigo Examen : </span>--}}
-{{--                        <h5 style="text-align: left;">{{$examen_t->codigo}},  {{$cursos->curso}},  {{$asistent->orden}}</h5>--}}
-{{--                    </th>--}}
-{{--                    <th>--}}
-{{--                        <span> Fecha : </span>--}}
-{{--                        <h5 style="text-align: left;">{{$cursos->fecha_inicio}}</h5>--}}
-{{--                    </th>--}}
-{{--                </tr>--}}
-{{--                <tr>--}}
-{{--                    <th>--}}
-{{--                        <span> Curso: </span>--}}
-{{--                        <h5 style="text-align: left;">{{$cursos->tipo_curso}},  {{$cursos->codigo}},  {{$cursos->curso}}</h5>--}}
-{{--                    </th>--}}
-{{--                    <th>--}}
-{{--                        <span> Formador : </span>--}}
-{{--                        <h5 style="text-align: left;">{{$cursos->formadores->nombre}} {{$cursos->formadores->apellidos}}</h5>--}}
-{{--                    </th>--}}
-{{--                </tr>--}}
-{{--                <tr>--}}
-{{--                    <th colspan="2">--}}
-{{--                        <span> Nombre del Alumno : </span>--}}
-{{--                        <h5 style="text-align: center;">{{$asistent->operadores->nombre}} {{$asistent->operadores->apellidos}}</h5>--}}
-{{--                    </th>--}}
-{{--                </tr>--}}
-{{--                </thead>--}}
-{{--            </table>--}}
-{{--            <h2 style="text-align: center;text-decoration-line: underline;">Cuestionario de Prequntas</h2>--}}
-{{--            <embed--}}
-{{--                id="myIFrame"--}}
-{{--                src="{{ asset('storage/'.$asistent->examen_t_pdf) }}#toolbar=0&navpanes=0&scrollbar=0"--}}
-{{--                frameBorder="0"--}}
-{{--                scrolling="auto"--}}
-{{--                height="100%"--}}
-{{--                width="100%"--}}
-{{--            >--}}
-{{--                <script>function getIFrame() {--}}
-{{--                        console.log('getIFrame')--}}
-{{--                    }</script>--}}
-{{--            </embed>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
-{{--@endforeach--}}
 <div class="container" id="print-div" style="margin-bottom: 50px;">
     <div class="row">
         <div class="col-lg-12">
@@ -319,10 +274,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 
 <script type="text/javascript">
     function printx(){

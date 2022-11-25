@@ -187,7 +187,7 @@ return [
     'Control de asistencia y calificaciones' => 'Control de asistencia y calificaciones',
     'Fecha' => 'Fecha',
     'Formadores de apoyo' => 'Formadores de apoyo',
-    'N-As' => 'N-As',
+    'N-As' => 'NºAs.',
     'Apellidos y nombre' => 'Apellidos y nombre',
     'NOTAs' => 'Notas',
     'Firma del alumno' => 'Firma del alumno',

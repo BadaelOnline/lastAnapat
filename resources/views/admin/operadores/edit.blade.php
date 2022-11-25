@@ -79,7 +79,7 @@ input[type="radio"]:focus {
                 <label for="dni" class="col-sm-12 col-form-label">{{__('message.Dni')}}</label>
 
                 <div class="col-sm-7">
-                    <input type="text" name='dni' class="form-control {{$errors->first('dni') ? "is-invalid" : "" }} " value="{{old('dni') ? old('dni') : $operadores->dni}}" id="dni" placeholder="Documento identificativo">
+                    <input type="text" name='dni' class="form-control {{$errors->first('dni') ? "is-invalid" : "" }} " value="{{old('dni') ? old('dni') : $operadores->dni}}" id="dni" placeholder="Documento identificativo" pattern="[A-Z0-9][0-9]{7}[A-Z0-9]">
                     <div class="invalid-feedback">
                         {{ $errors->first('dni') }}
                     </div>

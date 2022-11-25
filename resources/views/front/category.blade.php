@@ -59,7 +59,7 @@
 
                                             <div class="entry-content">
                                                 <p>
-                                                    {{ Str::limit( strip_tags( $post->body ), 250 ) }}
+                                                    {!!  Str::limit( strip_tags( $post->body ), 250 ) !!}
                                                 </p>
                                                 <div class="read-more">
                                                     <a href="{{ route('blogshow',$post->slug) }}">{{__('message.Read More')}}</a>
