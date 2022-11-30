@@ -283,7 +283,7 @@
                 success: function (path) {
                     if (path.status == 1) {
                         body='<object data="'+path.path+'" type="application/pdf" width="750px" height="750px">'+
-                            '<embed src="'+path.path+'" type="application/pdf"> <p>This browser does not support PDFs. Please download the PDF to view it: <a href="'+path.path+'">Download PDF</a>.</p> </object>'
+                            '<embed src="'+path.path+'" type="application/pdf"> </object>'
                         $('#summernote').summernote("code", body);
                     }
                 },

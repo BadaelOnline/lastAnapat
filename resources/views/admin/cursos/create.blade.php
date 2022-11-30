@@ -253,7 +253,7 @@
                 <div class="col-sm-9">
                     <input type="text" name='direccion'
                            class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} "
-                           value="{{old('direccion')}}" id="direccion" placeholder="Dirección del curso">
+                           value="{{old('direccion')}}" id="direccion" placeholder="Dirección">
                     <div class="invalid-feedback">
                         {{ $errors->first('direccion') }}
                     </div>
