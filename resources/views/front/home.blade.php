@@ -86,8 +86,8 @@
         </section>
         <!-- End about us Section -->
         <!-- ======= about us Section ======= -->
-        <section id="formación" class="portfolio about">
-            <div class="container">
+        <section id="portfolio" class="portfolio about">
+            <div class="container" id="formación">
 
                 <div class="section-title">
                     <h2>{{__('message.LA FORMACIÓN DE ANAPAT. CARACTERÍSTICAS')}}</h2>
@@ -100,16 +100,15 @@
                                 <h2 class="menu-title menu-title_2nd">{{__('message.about ANAPAT')}}</h2>
                                 <ul id="Inform-list" class="menu-dropdown col-md-3 col-sm-12">
                                     @foreach($pages as $key=>$page)
-                                        <li class="{{$key == 0 ? 'li-active' : ''}}"
-                                            id="{{$key + 1}}">{{$page->title}}</li>
+                                        <li class="{{$key == 0 ? 'li-active' : ''}}" id="{{$key + 1}}">{{$page->title}}</li>
                                     @endforeach
                                 </ul>
                             </a>
                         </li>
                     </ul>
+
                     @foreach($pages as $key=>$page)
-                        <div class="col-md-9 col-sm-12 info info{{$key+1}} {{$key == 0 ? 'active' : ''}} animate__animated animate__backInLeft"
-                             data-aos="fade-up">
+                        <div class="col-md-9 col-sm-12 info info{{$key+1}} {{$key == 0 ? 'active' : ''}} animate__animated animate__backInLeft" data-aos="fade-up">
                             <h2><span>{{$page->title}}</span></h2>
                             <p>
                                 {!! $page->text !!}
