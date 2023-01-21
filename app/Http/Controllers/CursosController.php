@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Exports\CursoExport;
+use App\Models\User;
+use App\Notifications\NewCourse;
 use Illuminate\Http\Request;
 
 use App\Models\{Asistent,
@@ -94,8 +96,8 @@ class CursosController extends Controller
 
         $tipo_maquina=Tipo_Maquina::select('id','tipo_maquina')->get();
         $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
-        $examen_t=Examen::select('id','nombre')->where('tipo',1)->get();
-        $examen_p=Examen::select('id','nombre')->where('tipo',2)->get();
+        $examen_t=Examen::select('id','nombre')->where('tipo',1)->orderby('codigo')->get();
+        $examen_p=Examen::select('id','nombre')->where('tipo',2)->orderby('codigo')->get();
 
         $x =Cursos::select('curso')->orderBy('id','desc')->latest()->get();
 //        dd(count($x));
@@ -205,6 +207,9 @@ $now = now().date('');
             $cursos->asistentes_pdf = $asistentes_pdf_path;
         }
 
+        foreach (User::where('perfil','Administrador')->get() as $admin)
+            $admin->notify(new NewCourse());
+
         if ($cursos->save()) {
 
             return redirect()->route('admin.cursos')->with('success', 'Data added successfully');
@@ -252,8 +257,8 @@ $now = now().date('');
         $cursos = Cursos::findOrFail($id);
         $tipo_maquina=Tipo_Maquina::select('id','tipo_maquina')->get();
         $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
-        $examen_t=Examen::select('id','nombre','url')->where('tipo',1)->get();
-        $examen_p=Examen::select('id','nombre','url')->where('tipo',2)->get();
+        $examen_t=Examen::select('id','nombre','url')->where('tipo',1)->orderby('codigo')->get();
+        $examen_p=Examen::select('id','nombre','url')->where('tipo',2)->orderby('codigo')->get();
         $asistent = Asistent::orderBy('id')->where('curso',$id)->get();
         $operador = Operadores::orderBy('id','desc')->get();
         $horario = Horario::orderBy('id')->where('curso',$id)->get();

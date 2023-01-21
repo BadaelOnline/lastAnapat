@@ -35,7 +35,9 @@
                         <th>{{__('message.Cursos')}}</th>
                         <th>{{__('message.Codigo')}}</th>
                         <th>{{__('message.Provincia')}}</th>
+                        <th>{{__('message.Entidad')}}</th>
                         <th>{{__('message.Direccion')}}</th>
+                        <th>{{__('message.Fecha Inicio')}}</th>
                         <th>{{__('message.Option')}}</th>
                     </tr>
                     </thead>
@@ -44,15 +46,17 @@
                         $no=0;
                     @endphp
                     @foreach ($cursos as $cursos)
-                        @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$cursos->entidad)
-                                               || (auth()->user()->perfil=='Formador' && auth()->user()->entidad==$cursos->entidad))
+                        @can('show_course',$cursos)
                             <tr>
                                 <td>{{ $cursos->curso }}</td>
                                 <td>
                                     {{ $cursos->codigo }}
                                 </td>
                                 <td>{{ $cursos->provincia }}</td>
+                                <td>{{ @$cursos->entidades_formadoreas->nombre }}</td>
                                 <td>{{ $cursos->direccion }}</td>
+                                <td>{{ $cursos->fecha_inicio }}</td>
+
                                 <td>
                                     @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$cursos->entidad) && $cursos->estado ==1
                                                                               || (auth()->user()->perfil=='Formador' && auth()->user()->entidad==$cursos->entidad && $cursos->estado ==1))
@@ -81,7 +85,7 @@
                                         <span class="-align-center">Curso Inactivo</span>
                                     @endif
                                     <a href="{{route('admin.cursos.print', [$cursos->id])}}"
-                                       class="btn btn-edit btn-sm"> <i class="fas fa-print"></i> </a>
+                                       class="btn btn-edit btn-sm" target="_blank"> <i class="fas fa-print"></i> </a>
                                         @if(isset($cursos->asistentes_pdf))
                                             <a title="Descargar lista de asistentes" href="{{asset('storage/' . $cursos->asistentes_pdf)}}" class="btn btn-edit btn-sm" download ><i class="fa fa-download" ></i></a>
 
@@ -90,7 +94,7 @@
                                         @endif
                                 </td>
                             </tr>
-                        @endif
+                        @endcan
                     @endforeach
                     </tbody>
                 </table>

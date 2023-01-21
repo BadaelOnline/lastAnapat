@@ -192,6 +192,7 @@
             {{--fourth row--}}
             <div class="form-group col-md-4">
                 <label for="examen_t_pdf" class="col-sm-4 col-form-label">{{__('message.Exámen Teórico')}}</label>
+                <span class="maxsize"> El tamaño máximo de archivo subido no debe superar 2 MB</span>
                 @if($asistent->examen_t_pdf && file_exists(storage_path('app/public/' . $asistent->examen_t_pdf)))
                     <label for="examen_t_pdf" class="col-sm-1 col-form-label">
                         <a id="examen_t_pdf_download" href="{{asset('storage/' . $asistent->examen_t_pdf)}}" download><i
@@ -223,6 +224,7 @@
 
             <div class="form-group col-md-4">
                 <label for="examen_p_pdf" class="col-sm-4 col-form-label">{{__('message.Exámen Práctico')}}</label>
+                <span class="maxsize"> El tamaño máximo de archivo subido no debe superar 2 MB</span>
                 @if($asistent->examen_p_pdf && file_exists(storage_path('app/public/' . $asistent->examen_p_pdf)))
                     <label for="examen_p_pdf" class="col-sm-1 col-form-label">
                         <a id="examen_p_pdf_download" href="{{asset('storage/' . $asistent->examen_p_pdf)}}" download><i

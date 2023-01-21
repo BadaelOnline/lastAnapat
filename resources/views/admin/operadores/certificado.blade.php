@@ -72,6 +72,7 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
+                <span class="maxsize"> El tamaño máximo de archivo subido no debe superar 2 MB</span>
                 <div class="picture" style="width: 300px;height: 300px;">
                     <img src="{{asset('storage/' . $operador->foto)}}" width="300px" height="300px">
                 </div>

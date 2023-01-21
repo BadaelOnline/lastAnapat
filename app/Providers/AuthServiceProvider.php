@@ -61,10 +61,15 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('isHaveEntitade', function($user) {
-
-
             return $user->perfil ==   ('Responsable_de_Formacion' && !isset($user->entidad)) || $user->perfil == 'Administrador' ;
+        });
 
+        Gate::define('show_course',function($user,$cursos)
+        {
+            return
+                $user->perfil=='Administrador' ||
+                ($user->perfil=='Responsable_de_Formacion' && $user->entidad==$cursos->entidad) ||
+                ($user->perfil=='Formador' && $user->entidad==$cursos->entidad && $cursos->formador=$user->id) ;
         });
         //
     }

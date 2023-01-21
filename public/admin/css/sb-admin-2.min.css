@@ -9321,6 +9321,11 @@ blog .entries .search-form {
 .blog .entries .entry .entry-meta ul li i{
     margin: 0 5px 0 0;
 }
-table{
-    text-align: center;
+/*table{*/
+    /*text-align: center;*/
+/*}*/
+
+.maxsize{
+    color: red;
+    font-size:10px
 }

@@ -51,7 +51,7 @@ class CertificadoExport implements FromCollection, WithHeadings
 
 //        dd($certificados);
         foreach ($certificados as $certificado) {
-           $nota_p=Asistent::where('curso',$certificado->curso)->where('operador',$certificado->operador)->first()->nota_p;
+           $nota_p=@Asistent::where('curso',$certificado->curso)->where('operador',$certificado->operador)->first()->nota_p;
             $ope = $certificado->operadorr;
             if ($certificado->entidad != 0) {
                 $entidad = EntidadesFormadoreas::findOrFail($certificado->entidad);

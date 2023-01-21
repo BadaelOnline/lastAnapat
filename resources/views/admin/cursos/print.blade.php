@@ -45,7 +45,7 @@
                     </th>
                     <th>
                         <span> {{__('message.Entidad formadora')}} : </span>
-                        <h3 style="text-align: center;">{{$cursos->entidades_formadoreas->nombre}}</h3>
+                        <h3 style="text-align: center;">{{$cursos->entidades_formadoreas->razon_social}}</h3>
                     </th>
                 </tr>
                 </thead>
@@ -104,7 +104,7 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th style="text-align: center;height: 200px;">
+                    <th style="text-align: center;height: 300px;">
                         <span>Firma del Responsable de formación y sello de la Entidad Formadora</span>
                     </th>
                 </tr>
@@ -135,7 +135,7 @@
                         <span style="font-size: 12px!important;"> {{__('message.Curso')}} : {{$cursos->codigo}} </span>
                     </th>
                     <th>
-                        <span style="font-size: 12px!important;"> {{__('message.Entidad formadora')}} : {{$cursos->entidades_formadoreas->nombre}}</span>
+                        <span style="font-size: 12px!important;"> {{__('message.Entidad formadora')}} : {{$cursos->entidades_formadoreas->razon_social}}</span>
                     </th>
                     <th>
                         <span style="font-size: 12px!important;"> {{__('message.Fecha')}}: {{date('d/m/Y',strtotime($cursos->fecha_inicio))}}</span>

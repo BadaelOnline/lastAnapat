@@ -26,9 +26,9 @@ class OperadoresController extends Controller
     {
         $user = auth()->user();
         if ($user->perfil == 'Responsable_de_Formacion' || $user->perfil == 'Formador')
-            $operadores = Operadores::orderBy('id', 'desc')->where('entidad', '=', $user->entidad)->get();
+            $operadores = Operadores::with('asistent')->orderBy('id', 'desc')->where('entidad', '=', $user->entidad)->get();
         else
-            $operadores = Operadores::orderBy('id', 'desc')->get();
+            $operadores = Operadores::with('asistent')->orderBy('id', 'desc')->get();
         return view('admin.operadores.index', compact('operadores'));
     }
 
@@ -212,7 +212,7 @@ class OperadoresController extends Controller
         } else {
             $entidad = EntidadesFormadoreas::select('id', 'nombre')->where('id', '=', $user->entidad)->first();
         }
-        $operadores = Operadores::findOrFail($id);
+        $operadores = Operadores::with('asistent')->findOrFail($id);
 
         return view('admin.operadores.edit', compact('operadores', 'entidad'));
     }

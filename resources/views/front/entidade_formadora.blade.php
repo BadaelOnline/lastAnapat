@@ -14,15 +14,15 @@
 
               <h2>{{$entidadesFormadore->nombre}}</h2>
               <div class="d-flex align-items-center">
-                <h3>Ciudad : {{$entidadesFormadore->ciudad}} <br>
                 </h3>
                 <img class="image" src="{{asset('storage/' . $entidadesFormadore->logo)}}" alt=""></div>
               <hr/>
-             <p>Province : {{$entidadesFormadore->province}}</p>
+             <p>Provincia  : {{$entidadesFormadore->province}}</p>
+             <p>Ciudad  : {{$entidadesFormadore->ciudad}} </p>
              <p>Dirección : {{$entidadesFormadore->direccion}}</p>
 {{--             <p>CIF : {{$entidadesFormadore->cif}}</p>--}}
              <p>Razón social : {{$entidadesFormadore->razon_social}}</p>
-             <p>Codigo postal : {{$entidadesFormadore->codigo_postal}}</p>
+             <p>Código postal : {{$entidadesFormadore->codigo_postal}}</p>
             <p>{{__('message.WEB')}}: <a href="{{$entidadesFormadore->web}}" > {{$entidadesFormadore->web}}</a></p>
              <p>{{__('message.Mail')}} : <a href="mailto:{{$entidadesFormadore->mail}}" > {{$entidadesFormadore->mail}}</a></p>
              <p>Certificada : {{$entidadesFormadore->certificado == 0 ? "En Proceso de Certificación" : "Si"}}</p>
