@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use http\Env\Response;
+use Matrix\Exception;
 
 class CursosController extends Controller
 {
@@ -209,12 +210,17 @@ $now = now().date('');
         }
 
         if ($cursos->save()) {
-            $data['cursos']=$cursos;
-            Mail::send('email.newCourse',$data ,function($message){
-                $message->from('info@formacionanapat.es');
-                $message->subject('Nuevo curso');
-                $message->to('formacion@anapat.es');
-            });
+            try {
+                $data['cursos'] = $cursos;
+                Mail::send('email.newCourse', $data, function ($message) {
+                    $message->from('info@formacionanapat.es');
+                    $message->subject('Nuevo curso');
+                    $message->to('formacion@anapat.es');
+                });
+                return redirect()->route('admin.cursos')->with('success', 'Data added successfully');
+            }catch (Exception $e) {
+                return redirect()->route('admin.cursos')->with('success', 'Data added successfully');
+            }
 //            foreach (User::where('perfil','Administrador')->get() as $admin)
 //                $admin->notify(new NewCourse($cursos));
 
