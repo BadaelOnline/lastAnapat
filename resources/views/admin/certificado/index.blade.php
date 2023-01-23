@@ -87,7 +87,7 @@
                         <td> {{ $certificado->tipos_carnet }} </td>
                         <td> {{date('d/m/Y',strtotime($certificado->emision))  }} </td>
                         <td>{{ date('d/m/Y',strtotime($certificado->vencimiento)) }}</td>
-                        <td> {{ @$certificado->cursoo->curso }} </td>
+                        <td> {{ @$certificado->cursoo->codigo }} </td>
                         <td>
 {{--                        <a href="{{route('admin.certificado.edit', [$certificado->id])}}" class="btn btn-edit btn-sm"> <i class="fas fa-eye"></i> </a>--}}
 

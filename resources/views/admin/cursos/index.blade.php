@@ -20,11 +20,11 @@
             @endif
             @if(auth()->user()->perfil=='Administrador')
                 <a href="{{ route('admin.cursos.export',auth()->user()->entidad) }}" class="btn btn-primary">
-                     {{__('message.Exportar Cursos')}}
+                    {{__('message.Exportar Cursos')}}
                 </a>
-                    <a href="{{ route('admin.asistent.export',auth()->user()->entidad) }}" class="btn btn-primary">
-                         {{__('message.Exportar asistent')}}
-                    </a>
+                <a href="{{ route('admin.asistent.export',auth()->user()->entidad) }}" class="btn btn-primary">
+                    {{__('message.Exportar asistent')}}
+                </a>
             @endif
         </div>
         <div class="card-body col-md-12">
@@ -65,17 +65,18 @@
                                                class="btn btn-edit btn-sm"> <i class="fas fa-edit"></i> </a>
                                             @if(auth()->user()->perfil=='Administrador')
                                                 @if(count($cursos->certificados)<1 && count($cursos->carnet)<1 && count($cursos->asistent)<1)
-                                                <form method="POST"
-                                                      action="{{route('admin.cursos.destroy', [$cursos->id])}}"
-                                                      class="d-inline"
-                                                      onsubmit="return confirm('{{__("message.Delete this cursos ?")}}')">
-                                                    @csrf
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <button type="submit" value="Delete" class="btn btn-delete btn-sm">
-                                                        <i class='fas fa-trash-alt'></i>
-                                                    </button>
-                                                </form>
-                                                    @endif
+                                                    <form method="POST"
+                                                          action="{{route('admin.cursos.destroy', [$cursos->id])}}"
+                                                          class="d-inline"
+                                                          onsubmit="return confirm('{{__("message.Delete this cursos ?")}}')">
+                                                        @csrf
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <button type="submit" value="Delete"
+                                                                class="btn btn-delete btn-sm">
+                                                            <i class='fas fa-trash-alt'></i>
+                                                        </button>
+                                                    </form>
+                                                @endif
                                             @endif
                                         @else
                                             <span class="-align-center">Curso Cerrado</span>
@@ -86,12 +87,20 @@
                                     @endif
                                     <a href="{{route('admin.cursos.print', [$cursos->id])}}"
                                        class="btn btn-edit btn-sm" target="_blank"> <i class="fas fa-print"></i> </a>
-                                        @if(isset($cursos->asistentes_pdf))
-                                            <a title="Descargar lista de asistentes" href="{{asset('storage/' . $cursos->asistentes_pdf)}}" class="btn btn-edit btn-sm" download ><i class="fa fa-download" ></i></a>
-
-                                            <a title="mostrar lista de asistentes" target="_blank" href="{{asset('storage/' . $cursos->asistentes_pdf)}}" class="btn btn-edit btn-sm"><i
+                                    @if(isset($cursos->asistentes_pdf))
+                                        <a title="Descargar lista de asistentes"
+                                           href="{{asset('storage/' . $cursos->asistentes_pdf)}}"
+                                           class="btn btn-edit btn-sm" download><i class="fa fa-download"></i></a>
+                                        <a title="mostrar lista de asistentes" target="_blank"
+                                           href="{{asset('storage/' . $cursos->asistentes_pdf)}}"
+                                           class="btn btn-edit btn-sm"><i
                                                     class="fa fa-eye"></i> </a>
-                                        @endif
+                                    @endif
+                                    @if(auth()->user()->perfil=='Administrador')
+                                        <a href="{{route('admin.cursos.asistents',$cursos)}}"
+                                           class="btn btn-edit btn-sm" target="_blank"> <i class="fas fa-user-graduate"></i>
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                         @endcan

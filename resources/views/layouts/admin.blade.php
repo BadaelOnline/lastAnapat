@@ -45,13 +45,14 @@
     <ul class="navbar-nav sidebar accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
         <div class="col-lg-2">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" style="width: 150px" href="{{ route('admin.dashboard') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" id="desktop" style="width: 150px" href="{{ route('admin.dashboard') }}">
                 <img src="{{ asset('admin/img/formacion.png')}}" class="attachment-medium size-medium" alt="" loading="lazy" srcset="" style="height: 100px;width:200px;margin-top: 80px;">
             </a>
         </div>
         <!-- Divider -->
         {{--@can('isAdmin')--}}
         <nav class="navbar navbar-expand navbar-light bg-white topbar  static-top ">
+
             <!-- Sidebar Toggle (Topbar) -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center d-md-none"
                href="{{ route('admin.dashboard') }}">

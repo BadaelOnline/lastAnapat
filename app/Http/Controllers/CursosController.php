@@ -17,6 +17,7 @@ use App\Models\{Asistent,
     Pcategory,
     Tipo_De_Curso,
     Tipo_Maquina};
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use http\Env\Response;
@@ -207,10 +208,15 @@ $now = now().date('');
             $cursos->asistentes_pdf = $asistentes_pdf_path;
         }
 
-        foreach (User::where('perfil','Administrador')->get() as $admin)
-            $admin->notify(new NewCourse());
-
         if ($cursos->save()) {
+            $data['cursos']=$cursos;
+            Mail::send('email.newCourse',$data ,function($message){
+                $message->from('info@formacionanapat.es');
+                $message->subject('Nuevo curso');
+                $message->to('formacion@anapat.es');
+            });
+//            foreach (User::where('perfil','Administrador')->get() as $admin)
+//                $admin->notify(new NewCourse($cursos));
 
             return redirect()->route('admin.cursos')->with('success', 'Data added successfully');
 
@@ -449,5 +455,11 @@ $now = now().date('');
     {
         Cursos::where('id',$request->id)->withTrashed()->forceDelete();
         return redirect()->route('admin.cursos.trashed')->withSuccess(__('User force deleted successfully.'));
+    }
+
+    public function asistents(Cursos $cursos)
+    {
+        $asistents=$cursos->asistent()->with('operadores')->get();
+        return view('admin.cursos.asistents',compact('asistents','cursos'));
     }
 }
