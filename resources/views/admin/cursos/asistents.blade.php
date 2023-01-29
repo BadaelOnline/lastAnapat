@@ -25,12 +25,17 @@
     <!-- DataTales Example -->
 
     <div class="card shadow mb-4">
+        <div class="card-header py-3">
+                <a href="{{asset('storage/'.$cursos->asistentes_pdf)}}" class="btn btn-edit btn-sm" download>
+                   {{'LIST-'.str_replace('-', '', $cursos->codigo)}}</a>
+        </div>
+
         <div class="card-body col-md-12">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr style="font-size: 14px">
-                        <th>{{__('message.Número de asistente')}}</th>
+                        <th>{{__('message.Foto')}}</th>
                         <th>{{__('message.Apellidos')}}</th>
                         <th>{{__('message.Nombre')}}</th>
                         <th>{{__('message.Dni')}}</th>
@@ -48,7 +53,9 @@
                     @endphp
                     @foreach ($asistents as $asistent)
                         <tr>
-                            <td>{{ $asistent->orden }}</td>
+                            <td>
+                            <img src="{{asset('storage/' . @$asistent->operadores->foto)}}" width="96px"/>
+                            </td>
                             <td>{{@$asistent->operadores->nombre}}</td>
                             <td>{{@$asistent->operadores->apellidos }}</td>
                             <td>{{ @$asistent->operadores->dni }}</td>
@@ -56,17 +63,16 @@
                             <td>{{ $asistent->nota_t }}</td>
                             <td>{{ $asistent->nota_p }}</td>
                             <td>
-                                @if($asistent->examen_t_pdf!='')
-                                    <a title="Exámen Teórico"
-                                       href="{{asset('storage/' . $asistent->examen_t_pdf)}}"
-                                       class="btn btn-edit btn-sm" download><i class="fa fa-download"></i></a>
+                                @if($asistent->examen_t_pdf != '')
+                                    <a title="Exámen Teórico" href="{{asset('storage/' . $asistent->examen_t_pdf)}}"
+                                       class="btn btn-edit btn-sm" download>{{'TB-'.$asistent->cursos->curso.'-'.($asistent->orden >10  ? $asistent->orden : '0'.$asistent->orden)}}</a>
                                 @endif
                             </td>
                             <td>
                                 @if($asistent->examen_p_pdf!='')
                                     <a title="Exámen Práctico"
                                        href="{{asset('storage/' . $asistent->examen_p_pdf)}}"
-                                       class="btn btn-edit btn-sm" download><i class="fa fa-download"></i></a>
+                                       class="btn btn-edit btn-sm" download>{{'P'.substr($asistent->cursos->codigo, 1).'-'.($asistent->orden >10  ? $asistent->orden : '0'.$asistent->orden)}}</a>
                                 @endif</td>
                         </tr>
                     @endforeach
