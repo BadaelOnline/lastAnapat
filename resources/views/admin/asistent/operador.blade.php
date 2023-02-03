@@ -131,6 +131,7 @@ input[type="radio"]:focus {
                 <div class="image">
                     <div class="form-group col-md-12">
                         <div class="picture-container">
+                            <span class="maxsize"> El tamaño máximo de archivo subido no debe superar 2 MB</span>
                             <div class="picture" style="width: 200px">
                                 <img src="{{asset('storage/' . $operadores->foto)}}" class="picture-src"
                                      id="wizardPicturePreview" height="200px" width="400px" title=""/>
@@ -147,6 +148,7 @@ input[type="radio"]:focus {
             </div>
 
             <div class="form-group col-md-4">
+                <span class="maxsize"> El tamaño máximo de archivo subido no debe superar 2 MB</span>
                 @if(substr($operadores->dni_img, -3) == 'pdf')
                     @if($operadores->dni_img && file_exists(storage_path('app/public/' . $operadores->operador_pdf)))
                         <label for="dni_img" class="col-sm-1 col-form-label">

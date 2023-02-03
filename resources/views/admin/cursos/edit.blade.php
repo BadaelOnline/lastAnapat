@@ -305,6 +305,7 @@
 
             <div class="form-group col-md-4">
                 <label for="asistentes_pdf" class="col-sm-4 col-form-label">{{__('message.Asistentes Pdf')}}</label>
+                <span class="maxsize"> El tamaño máximo de archivo subido no debe superar 2 MB</span>
                 @if($cursos->asistentes_pdf && file_exists(storage_path('app/public/' . $cursos->asistentes_pdf)))
                     <label for="asistentes_pdf" class="col-sm-1 col-form-label">
                         <a id="asistentes_pdf_download" href="{{asset('storage/' . $cursos->asistentes_pdf)}}" download><i
@@ -460,8 +461,8 @@
                 </div>
             </div>
             <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Publico')}}
-                    - {{__('message.Privado')}}</label>
+                <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Privado')}}
+                    - {{__('message.Publico')}}</label>
                 <label class="switch">
                     <input type="checkbox" name="publico_privado" {{$cursos->publico_privado == 1 ? "checked" : ""}}>
                     <span class="slider round"></span>
@@ -556,10 +557,12 @@
                 <div class="table-responsive">
                     <table class="table" id="dataTable" width="100%" cellspacing="0">
                         <thead>
-                        <tr>
+                        <tr style="font-size: 14px">
                             <th>{{__('message.Número de asistente')}}</th>
                             <th>{{__('message.Apellidos')}}</th>
                             <th>{{__('message.Nombre')}}</th>
+                            <th>{{__('message.Dni')}}</th>
+                            <th>{{__('message.Carnet')}}</th>
                             <th>{{__('message.Nota Examen teorico')}}    </th>
                             <th>{{__('message.Nota Examen Practico')}}    </th>
                             <th>{{__('message.Option')}}</th>
@@ -582,7 +585,8 @@
                                         {{$ope->id == $asistent->operador ? $ope->nombre : "" }}
                                     @endforeach
                                 </td>
-
+                                <td>{{ @$asistent->operadores->dni }}</td>
+                                <td>{{ @$asistent->operadores->carnet }}</td>
                                 <td>{{ $asistent->nota_t }}</td>
                                 <td>{{ $asistent->nota_p }}</td>
                                 <td>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Exports\CursoExport;
+use App\Models\User;
+use App\Notifications\NewCourse;
 use Illuminate\Http\Request;
 
 use App\Models\{Asistent,
@@ -15,9 +17,11 @@ use App\Models\{Asistent,
     Pcategory,
     Tipo_De_Curso,
     Tipo_Maquina};
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use http\Env\Response;
+use Matrix\Exception;
 
 class CursosController extends Controller
 {
@@ -94,8 +98,8 @@ class CursosController extends Controller
 
         $tipo_maquina=Tipo_Maquina::select('id','tipo_maquina')->get();
         $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
-        $examen_t=Examen::select('id','nombre')->where('tipo',1)->get();
-        $examen_p=Examen::select('id','nombre')->where('tipo',2)->get();
+        $examen_t=Examen::select('id','nombre')->where('tipo',1)->orderby('codigo')->get();
+        $examen_p=Examen::select('id','nombre')->where('tipo',2)->orderby('codigo')->get();
 
         $x =Cursos::select('curso')->orderBy('id','desc')->latest()->get();
 //        dd(count($x));
@@ -206,6 +210,19 @@ $now = now().date('');
         }
 
         if ($cursos->save()) {
+            try {
+                $data['cursos'] = $cursos;
+                Mail::send('email.newCourse', $data, function ($message) {
+                    $message->from('info@formacionanapat.es');
+                    $message->subject('Nuevo curso');
+                    $message->to('formacion@anapat.es');
+                });
+                return redirect()->route('admin.cursos')->with('success', 'Data added successfully');
+            }catch (Exception $e) {
+                return redirect()->route('admin.cursos')->with('success', 'Data added successfully');
+            }
+//            foreach (User::where('perfil','Administrador')->get() as $admin)
+//                $admin->notify(new NewCourse($cursos));
 
             return redirect()->route('admin.cursos')->with('success', 'Data added successfully');
 
@@ -252,8 +269,8 @@ $now = now().date('');
         $cursos = Cursos::findOrFail($id);
         $tipo_maquina=Tipo_Maquina::select('id','tipo_maquina')->get();
         $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
-        $examen_t=Examen::select('id','nombre','url')->where('tipo',1)->get();
-        $examen_p=Examen::select('id','nombre','url')->where('tipo',2)->get();
+        $examen_t=Examen::select('id','nombre','url')->where('tipo',1)->orderby('codigo')->get();
+        $examen_p=Examen::select('id','nombre','url')->where('tipo',2)->orderby('codigo')->get();
         $asistent = Asistent::orderBy('id')->where('curso',$id)->get();
         $operador = Operadores::orderBy('id','desc')->get();
         $horario = Horario::orderBy('id')->where('curso',$id)->get();
@@ -444,5 +461,11 @@ $now = now().date('');
     {
         Cursos::where('id',$request->id)->withTrashed()->forceDelete();
         return redirect()->route('admin.cursos.trashed')->withSuccess(__('User force deleted successfully.'));
+    }
+
+    public function asistents(Cursos $cursos)
+    {
+        $asistents=$cursos->asistent()->with('operadores')->get();
+        return view('admin.cursos.asistents',compact('asistents','cursos'));
     }
 }

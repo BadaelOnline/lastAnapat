@@ -30,7 +30,7 @@
                                     {{--{{$certific->cursoo->codigo}}       --}}
                             {{--@endforeach--}}
                             {{--</p>--}}
-                            <p>Tipos De Pemp :</p>
+                            <p>Tipos de PEMP :</p>
                             <table style="margin-left: 20px">
                                 <thead>
                                 <th>Maquina</th>

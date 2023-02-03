@@ -131,6 +131,7 @@ input[type="radio"]:focus {
                 <div class="image">
                     <div class="form-group col-md-12">
                         <div class="picture-container">
+                            <span class="maxsize"> El tamaño máximo de archivo subido no debe superar 2 MB</span>
                             <div class="picture" style="width: 200px">
                                 <img src="{{asset('storage/' . $operadores->foto)}}" class="picture-src"
                                      id="wizardPicturePreview" height="200px" width="400px" title=""/>
@@ -147,6 +148,7 @@ input[type="radio"]:focus {
             </div>
 
             <div class="form-group col-md-4">
+                <span class="maxsize"> El tamaño máximo de archivo subido no debe superar 2 MB</span>
                 @if(substr($operadores->dni_img, -3) == 'pdf')
                     @if($operadores->dni_img && file_exists(storage_path('app/public/' . $operadores->operador_pdf)))
                         <label for="dni_img" class="col-sm-1 col-form-label">
@@ -190,7 +192,8 @@ input[type="radio"]:focus {
             <div class="form-group col-md-4">
                 <label for="fecha_nacimiento" class="col-sm-12 col-form-label">{{__('message.Fecha Nacimiento')}}</label>
                 <div class="col-sm-7">
-                    <input type="date" name='fecha_nacimiento' class="form-control {{$errors->first('fecha_nacimiento') ? "is-invalid" : "" }} " value="{{old('fecha_nacimiento') ? old('fecha_nacimiento') : $operadores->fecha_nacimiento}}" id="fecha_nacimiento" placeholder="fecha nacimiento">
+                    <input type="date" name='fecha_nacimiento' class="form-control {{$errors->first('fecha_nacimiento') ? "is-invalid" : "" }} " value="{{old('fecha_nacimiento') ? old('fecha_nacimiento') : $operadores->fecha_nacimiento}}" id="fecha_nacimiento" placeholder="fecha nacimiento"
+                    required  max="{{now()->subYears(18)->format('Y-m-d')}}">
                     <div class="invalid-feedback">
                         {{ $errors->first('fecha_nacimiento') }}
                     </div>

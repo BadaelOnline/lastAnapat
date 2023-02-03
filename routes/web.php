@@ -107,7 +107,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
      Route::delete('Portfolio-categories/destroy/{id}',[PcategoryController::class, 'destroy'])->name('pcategory.destroy');
 
      // Manage asistent
-    Route::get('asistent', [AsistentController::class, 'index'])->name('asistent');
+//    Route::get('asistents', [AsistentController::class, 'index'])->name('asistent');
     Route::get('asistent/create/{id}', [AsistentController::class, 'create'])->name('asistent.create');
     Route::post('asistent/create', [AsistentController::class, 'store'])->name('asistent.store');
     Route::get('asistent/edit/{id}', [AsistentController::class, 'edit'])->name('asistent.edit');
@@ -133,7 +133,8 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
     Route::delete('cursos/destroy/{id}',[CursosController::class, 'destroy'])->name('cursos.destroy');
     Route::post('cursos/force-delete', [CursosController::class,'forceDelete'])->name('cursos.force-delete');
     Route::post('cursos/restore', [CursosController::class,'restore'])->name('cursos.restore');
-    //print
+    Route::get('cursos/asistents/{cursos}',[CursosController::class, 'asistents'])->name('cursos.asistents');
+
 //    Route::get('/cursos','PrintController@index');
 //    Route::get('/prnpriview','PrintController@prnpriview');
 

@@ -52,6 +52,7 @@
     <div class="container">
         <div class="form-group">
             <div class="picture-container">
+                <span class="maxsize"> El tamaño máximo de archivo subido no debe superar 2 MB</span>
                 <div class="picture">
                     <img src="" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>
                     <input type="file" id="wizard-picture" name="logo" class="form-control {{$errors->first('logo') ? "is-invalid" : "" }} ">
