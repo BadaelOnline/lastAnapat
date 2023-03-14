@@ -205,7 +205,9 @@ $now = now().date('');
         $asistentes_pdf = $request->file('asistentes_pdf');
 
         if($asistentes_pdf){
-            $asistentes_pdf_path = $asistentes_pdf->store('Cursos/'.$request->codigo, 'public');
+            if($asistentes_pdf->getClientOriginalName()!= 'LIST-'.str_replace('-', '', $cursos->codigo).'.pdf')
+                return back()->with('error','Asisstant file name error');
+            $asistentes_pdf_path = $asistentes_pdf->storeAs('Cursos/'.$request->codigo,$asistentes_pdf->getClientOriginalName(), 'public');
             $cursos->asistentes_pdf = $asistentes_pdf_path;
         }
 
@@ -378,13 +380,14 @@ $now = now().date('');
 
 
         $asistentes_pdf = $request->file('asistentes_pdf');
-
         if($asistentes_pdf){
+            if($asistentes_pdf->getClientOriginalName()!= 'LIST-'.str_replace('-', '', $cursos->codigo).'.pdf')
+                return back()->with('error','Asisstant file name error');
             if($cursos->asistentes_pdf && file_exists(storage_path('app/public/' . $cursos->asistentes_pdf))){
                 \Storage::delete('public/'. $cursos->asistentes_pdf);
             }
 
-            $asistentes_pdf_path = $asistentes_pdf->store('images/Cursos', 'public');
+            $asistentes_pdf_path = $asistentes_pdf->storeAs('Cursos/'.$cursos->codigo,$asistentes_pdf->getClientOriginalName() ,'public');
 
             $cursos->asistentes_pdf = $asistentes_pdf_path;
 
