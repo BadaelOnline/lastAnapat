@@ -181,8 +181,8 @@ class CertificadoController extends Controller
                     $certificado->tipo_4 = '';
                 }
 
-                if ($operador->carnett != null){
-                    $certificado->carnet = $operador->carnett->numero;
+                if ($operador->carnet != null){
+                    $certificado->carnet = $operador->carnet;
                 }
                 $cer = Certificado::where('operador',$operador->id)->where('curso',$asistent->curso)->get();
                 if(count($cer) == 0){

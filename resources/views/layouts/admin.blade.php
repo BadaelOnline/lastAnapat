@@ -233,16 +233,16 @@
                     <i class="fa-solid fa-helmet-safety"></i>
                     <span>{{__('message.Operadores')}}</span></a>
             </li>
-            @can('isAdminOrResponsable')
+{{--            @can('isAdminOrResponsable')--}}
                 <li class="nav-item {{ in_array(Route::currentRouteName(),[
             'admin.examen',
         ])? 'active' : ''}}">
                     <a class="nav-link" href="{{ route('admin.examen') }}">
                         <i class="fas fa-fw fa-book-reader"></i>
-                        <span>{{__('message.Examen')}}</span></a>
+                        <span>{{__('message.Exámenes')}}</span></a>
                 </li>
 
-            @endcan
+{{--            @endcan--}}
             @can('isAdmin')
                 <li class="nav-item {{ in_array(Route::currentRouteName(),[
       'admin.carnet',

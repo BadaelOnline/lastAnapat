@@ -239,7 +239,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','middleware'=>'auth'],function ()
 
 
     // Manage Examen
-    Route::get('examen', [ExamenController::class, 'index'])->middleware('can:isAdminOrResponsable')->name('examen');
+    Route::get('examen', [ExamenController::class, 'index'])->name('examen');
     Route::get('examen/create', [ExamenController::class, 'create'])->middleware('can:isAdminOrResponsable')->name('examen.create');
     Route::post('examen/create', [ExamenController::class, 'store'])->middleware('can:isAdminOrResponsable')->name('examen.store');
     Route::get('examen/edit/{id}', [ExamenController::class, 'edit'])->middleware('can:isAdminOrResponsable')->name('examen.edit');

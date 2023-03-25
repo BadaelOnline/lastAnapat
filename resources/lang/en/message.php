@@ -320,7 +320,8 @@ return [
     'empresa' => 'Empresa',
     'poblacion' => 'Población',
     'telefono' => 'Telèfono',
-    'web' => 'Web'
+    'web' => 'Web',
+    'Exámenes' => 'Exámenes'
 
 
 
