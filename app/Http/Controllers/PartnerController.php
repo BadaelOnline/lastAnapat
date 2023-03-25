@@ -37,7 +37,7 @@ class PartnerController extends Controller
    public function store(Request $request)
    {
        $request->validate([
-           'logo' => 'required',
+           'logo' => 'required|max:2048',
            'nombre' => 'required',
            'enlace' => 'required',
        ]);
@@ -101,6 +101,7 @@ class PartnerController extends Controller
        $request->validate([
            'nombre' => 'required',
            'enlace' => 'required',
+           'logo'=>'max:2048'
        ]);
 //       dd($request);
        $partner = Partner::findOrFail($id);

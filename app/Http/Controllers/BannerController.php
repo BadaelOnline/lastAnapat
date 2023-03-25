@@ -39,7 +39,7 @@ class BannerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'portada' => 'required',
+            'portada' => 'required|max:2048',
             'título' => 'required',
         ]);
         $banner = new Banner();
@@ -97,6 +97,7 @@ class BannerController extends Controller
     {
         $request->validate([
             'título' => 'required',
+            'portada' => 'max:2048',
         ]);
         $banner = Banner::findOrFail($id);
         $banner->title  = $request->título;

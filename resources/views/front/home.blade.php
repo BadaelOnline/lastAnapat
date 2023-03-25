@@ -27,11 +27,12 @@
 
             <div class="carousel-inner" role="listbox">
                 @foreach($banner as $key=>$ban)
-                <div class="carousel-item {{$key == 0 ? "active" : ""}}" style="background-image: url('{{ asset('storage/'.$ban->cover) }}')">
-                <!-- <img src="{{ asset('front/img/baner1.jpg') }}" alt="" style="width: 100%;height: 100%;"> -->
-                <img src="{{ asset('storage/'.$ban->cover) }}" alt="" style="width: 100%;height: 100%;">
+                    <div class="carousel-item {{$key == 0 ? "active" : ""}}"
+                         style="background-image: url('{{ asset('storage/'.$ban->cover) }}')">
+                    <!-- <img src="{{ asset('front/img/baner1.jpg') }}" alt="" style="width: 100%;height: 100%;"> -->
+                        <img src="{{ asset('storage/'.$ban->cover) }}" alt="" style="width: 100%;height: 100%;">
 
-                </div>
+                    </div>
                 @endforeach
 
 
@@ -64,19 +65,20 @@
                 <div class="col-lg-12 d-flex justify-content-center">
                     <ul id="portfolio-flters">
                         @foreach($faqs as $key=>$faq)
-                        <li id="{{$key}}" class="{{$key == 0 ? 'filter-active' : ''}}">{{$faq->question}}</li>
+                            <li id="{{$key}}" class="{{$key == 0 ? 'filter-active' : ''}}">{{$faq->question}}</li>
                         @endforeach
                     </ul>
                 </div>
-                <transition-group id="kinds" class="kinds" name="kinds" >
+                <transition-group id="kinds" class="kinds" name="kinds">
                     @foreach($faqs as $key=>$faq)
-                    <div class="item {{$key == 0 ? 'active' : ''}} animate__animated animate__backInDown" id="{{$key}}">
+                        <div class="item {{$key == 0 ? 'active' : ''}} animate__animated animate__backInDown"
+                             id="{{$key}}">
 
-                        <p>
-                         {!! $faq->answer !!}
-                        </p>
+                            <p>
+                                {!! $faq->answer !!}
+                            </p>
 
-                    </div>
+                        </div>
                     @endforeach
 
                 </transition-group>
@@ -84,11 +86,11 @@
         </section>
         <!-- End about us Section -->
         <!-- ======= about us Section ======= -->
-        <section id="formación" class="portfolio about">
-            <div class="container">
+        <section id="portfolio" class="portfolio about">
+            <div class="container" id="formación">
 
                 <div class="section-title">
-                    <h2 >{{__('message.LA FORMACIÓN DE ANAPAT. CARACTERÍSTICAS')}}</h2>
+                    <h2>{{__('message.LA FORMACIÓN DE ANAPAT. CARACTERÍSTICAS')}}</h2>
                 </div>
 
                 <div class="row">
@@ -96,39 +98,24 @@
                         <li>
                             <a href="#click" class="menu">
                                 <h2 class="menu-title menu-title_2nd">{{__('message.about ANAPAT')}}</h2>
-                                <ul id="Inform-list" class="menu-dropdown col-md-3 col-sm-12" >
+                                <ul id="Inform-list" class="menu-dropdown col-md-3 col-sm-12">
                                     @foreach($pages as $key=>$page)
-                                    <li class="{{$key == 0 ? 'li-active' : ''}}" id="{{$key + 1}}">{{$page->title}}</li>
+                                        <li class="{{$key == 0 ? 'li-active' : ''}}" id="{{$key + 1}}">{{$page->title}}</li>
                                     @endforeach
                                 </ul>
                             </a>
                         </li>
                     </ul>
 
-
                     @foreach($pages as $key=>$page)
-                <div class="col-md-9 col-sm-12 info info{{$key+1}} {{$key == 0 ? 'active' : ''}} animate__animated animate__backInLeft" data-aos="fade-up">
-                        <h2><span>{{$page->title}}</span></h2>
-                        <p>
-                            {!! $page->text !!}
-                        </p>
-                    <a href="{{$page->slug}}" class="btn btn-info" >{{__('message.show more')}}</a>
-                    </div>
+                        <div class="col-md-9 col-sm-12 info info{{$key+1}} {{$key == 0 ? 'active' : ''}} animate__animated animate__backInLeft" data-aos="fade-up">
+                            <h2><span>{{$page->title}}</span></h2>
+                            <p>
+                                {!! $page->text !!}
+                            </p>
+                            <a href="{{$page->slug}}" class="btn btn-info">{{__('message.show more')}}</a>
+                        </div>
                     @endforeach
-{{--                    <div class="col-md-9 col-sm-12 info info4 animate__animated animate__backInLeft" data-aos="fade-up">--}}
-{{--                        <h2><span>objectives</span></h2>--}}
-{{--                        <p>--}}
-{{--                        In just over twenty years, Mobile Personnel Platforms (PEMP) have become an essential work equipment for work at height. They are ideal machines for many jobs in construction, industry and services. They are safe equipment that is put into service with the corresponding CE marking that guarantees its compliance with the Machinery Directive, in addition the UNE-58921-IN report defines the instructions for installation, handling, maintenance, reviews and inspections for proper maintenance.--}}
-{{--                        </p>--}}
-{{--                        <button>show more</button>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-md-9 col-sm-12 info info5 animate__animated animate__backInLeft"  data-aos="fade-up">--}}
-{{--                        <h2><span>About us</span></h2>--}}
-{{--                        <p>--}}
-{{--                        The «National Association of Renters of Aerial Work Platforms» (ANAPAT) is a professional business organization of national scope, constituted in November 1993 to defend the general interests of the renters of mobile personal lifting platforms (PEMP, current denomination in force in Europe and now official in Spain), in accordance with the conception, design, manufacture and destination of these machines, usually operated by people outside the owner or lessor’s company and who depend on the lessee or user……..--}}
-{{--                        </p>--}}
-{{--                        <button>show more</button>--}}
-{{--                    </div>--}}
                 </div>
 
 
@@ -149,9 +136,10 @@
                     @foreach($partner as $partner)
                         <div class="col-lg-4 col-md-4 col-6">
                             <div class="client-logo">
-                                <a href="{{ route('partner',$partner->id) }}"  rel="noopener noreferrer">
-                                    <img src="{{ asset('storage/'.$partner->cover) }}" class="img-fluid" alt="" style="height: 120px">
-{{--                                    <h2 style="text-align: center;"> {{$partner->name}}</h2>--}}
+                                <a href="{{ route('partner',$partner->id) }}" rel="noopener noreferrer">
+                                    <img src="{{ asset('storage/'.$partner->cover) }}" class="img-fluid" alt=""
+                                         style="height: 120px">
+                                    {{--                                    <h2 style="text-align: center;"> {{$partner->name}}</h2>--}}
                                 </a>
                             </div>
                         </div>

@@ -158,6 +158,7 @@
                     <div class="col-sm-9">
                         <select name='nota_p' class="form-control {{$errors->first('nota_p') ? "is-invalid" : "" }} " id="nota_p">
                             <option disabled selected>{{__('message.Choose_One')}}</option>
+                            <option  value="">Sin Nota</option>
                             @foreach ($notes as $note)
                                 <option value="{{ $note }}">{{$note}}</option>
                             @endforeach
@@ -175,7 +176,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <label for="examen_t_pdf" class="col-sm-4 col-form-label">{{__('message.Exámen Teórico')}}</label>
+                    <label for="examen_t_pdf" class="col-sm-4 col-form-label">{{__('message.Exámen Teórico')}}  </label> <span class="maxsize"> El tamaño máximo de archivo subido no debe superar 2 MB</span>
                     <div class="col-sm-9">
                         <input type="file" name='examen_t_pdf' class="form-control {{$errors->first('examen_t_pdf') ? "is-invalid" : "" }} " value="{{old('examen_t_pdf')}}" id="examen_t_pdf" >
                         <div class="invalid-feedback">
@@ -188,7 +189,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <label for="examen_p_pdf" class="col-sm-4 col-form-label">{{__('message.Exámen Práctico')}}</label>
+                    <label for="examen_p_pdf" class="col-sm-4 col-form-label">{{__('message.Exámen Práctico')}}</label> <span class="maxsize"> El tamaño máximo de archivo subido no debe superar 2 MB</span>
                     <div class="col-sm-9">
                         <input type="file" name='examen_p_pdf' class="form-control {{$errors->first('examen_p_pdf') ? "is-invalid" : "" }} " value="{{old('examen_p_pdf')}}" id="examen_p_pdf" placeholder="examen_p_pdf ">
                         <div class="invalid-feedback">

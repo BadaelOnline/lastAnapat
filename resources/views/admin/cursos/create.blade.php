@@ -253,7 +253,7 @@
                 <div class="col-sm-9">
                     <input type="text" name='direccion'
                            class="form-control {{$errors->first('direccion') ? "is-invalid" : "" }} "
-                           value="{{old('direccion')}}" id="direccion" placeholder="Dirección del curso">
+                           value="{{old('direccion')}}" id="direccion" placeholder="Dirección">
                     <div class="invalid-feedback">
                         {{ $errors->first('direccion') }}
                     </div>
@@ -304,6 +304,7 @@
 
             <div class="col-md-4">
                 <label for="asistentes_pdf" class="col-sm-12 col-form-label">{{__('message.Asistentes Pdf')}}</label>
+                <span class="maxsize"> El tamaño máximo de archivo subido no debe superar 2 MB</span>
                 <div class="col-sm-9">
                     <input type="file" name='asistentes_pdf'
                            class="form-control {{$errors->first('asistentes_pdf') ? "is-invalid" : "" }} "
@@ -379,8 +380,8 @@
                 </div>
             </div>
             <div class="col-md-2 d-flex flex-column justify-content-center">
-                <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Publico')}}
-                    - {{__('message.Privado')}}</label>
+                <label for="estado" class="col-sm-12 col-form-label text-center">{{__('message.Privado')}}
+                    - {{__('message.Publico')}}</label>
                 <label class="switch">
                     <input type="checkbox" name="publico_privado" {{old('publico_privado') == "on" ? "checked" : ""}} >
                     <span class="slider round"></span>

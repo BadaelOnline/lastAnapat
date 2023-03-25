@@ -176,7 +176,7 @@
                 <div class="col-sm-9">
                     <select name='nota_p' class="form-control {{$errors->first('nota_p') ? "is-invalid" : "" }} "
                             id="nota_p">
-
+                        <option  value="" {{!$asistent->notep ? "selected" : ""}}>Sin Nota</option>
                         @foreach ($notes as $note)
                             <option
                                 value="{{ $note }}" {{$asistent->nota_p == $note ? "selected" : ""}}>{{$note}}</option>
@@ -192,6 +192,7 @@
             {{--fourth row--}}
             <div class="form-group col-md-4">
                 <label for="examen_t_pdf" class="col-sm-4 col-form-label">{{__('message.Exámen Teórico')}}</label>
+                <span class="maxsize"> El tamaño máximo de archivo subido no debe superar 2 MB</span>
                 @if($asistent->examen_t_pdf && file_exists(storage_path('app/public/' . $asistent->examen_t_pdf)))
                     <label for="examen_t_pdf" class="col-sm-1 col-form-label">
                         <a id="examen_t_pdf_download" href="{{asset('storage/' . $asistent->examen_t_pdf)}}" download><i
@@ -223,6 +224,7 @@
 
             <div class="form-group col-md-4">
                 <label for="examen_p_pdf" class="col-sm-4 col-form-label">{{__('message.Exámen Práctico')}}</label>
+                <span class="maxsize"> El tamaño máximo de archivo subido no debe superar 2 MB</span>
                 @if($asistent->examen_p_pdf && file_exists(storage_path('app/public/' . $asistent->examen_p_pdf)))
                     <label for="examen_p_pdf" class="col-sm-1 col-form-label">
                         <a id="examen_p_pdf_download" href="{{asset('storage/' . $asistent->examen_p_pdf)}}" download><i
@@ -270,15 +272,13 @@
 
             <div class="form-group col-md-4">
                 <label for="emision" class="col-sm-2 col-form-label">{{__('message.Emision')}}</label>
-                <label for="emision"
-                       class="col-sm-7 col-form-label">{{$asistent->emision != null ? date('d/m/Y',strtotime($asistent->emision)) : ""}}</label>
-
-                {{--                    <div class="col-sm-9">--}}
-                {{--                        <input type="date" name='emision' class="form-control {{$errors->first('emision') ? "is-invalid" : "" }} " value="{{old('emision') ? old('emision') : $asistent->emision}}"  id="emision" placeholder="Fecha de emisión">--}}
-                {{--                        <div class="invalid-feedback">--}}
-                {{--                            {{ $errors->first('emision') }}--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
+                <div class="col-sm-9">
+                    <input type="date" name='emision'
+                           class="form-control {{$errors->first('emision') ? "is-invalid" : "" }} "
+                           value="{{old('emision') ? old('emision') : $asistent->emision}}" id="emision"
+                    {{auth()->user()->perfil=='Administrador' ? '' : 'disabled'}}>
+                    <div class="invalid-feedback">{{ $errors->first('emision') }}</div>
+                </div>
             </div>
 
 

@@ -1476,10 +1476,10 @@ section {
 .menu-title:hover:before {
     border-top-color: #8db842;
 }
-/*.menu:hover > .menu-title:before {*/
-/*    border-top-width: 0;*/
-/*    transition: 0.2s border-top-width ease-in, 0.3s border-top-color;*/
-/*}*/
+.menu:hover > .menu-title:before {
+    border-top-width: 0;
+    transition: 0.2s border-top-width ease-in, 0.3s border-top-color;
+}
 .menu-title:after {
     content: "";
     display: block;
@@ -1493,10 +1493,10 @@ section {
     z-index: 101;
     transition: 0.2s border-bottom ease-in;
 }
-/*.menu:hover > .menu-title:after {*/
-/*    border-bottom-width: 5px;*/
-/*    transition: 0.2s 0.2s border-bottom-width ease-out;*/
-/*}*/
+.menu:hover > .menu-title:after {
+    border-bottom-width: 5px;
+    transition: 0.2s 0.2s border-bottom-width ease-out;
+}
 .menu-title_2nd {
     background: #4e96b3;
 }
@@ -1533,17 +1533,17 @@ section {
     z-index: 101;
     transition: 0.5s border-top;
 }
-/*.menu:not(:hover) > .menu-dropdown {*/
-/*    padding: 4px 0;*/
-/*    background: #ddd;*/
-/*    z-index: 99;*/
-/*}*/
-/*.menu:not(:hover) > .menu-dropdown:after {*/
-/*    border-top-color: #ddd;*/
-/*}*/
-/*.menu:not(:hover) > .menu-title:after {*/
-/*    border-bottom-color: #ddd;*/
-/*}*/
+.menu:not(:hover) > .menu-dropdown {
+    padding: 4px 0;
+    background: #ddd;
+    z-index: 99;
+}
+.menu:not(:hover) > .menu-dropdown:after {
+    border-top-color: #ddd;
+}
+.menu:not(:hover) > .menu-title:after {
+    border-bottom-color: #ddd;
+}
 .menu-dropdown > * {
     overflow: hidden;
     height: 30px;
@@ -1558,16 +1558,16 @@ section {
 .menu-dropdown .li-active{
     background: rgba(0, 0, 0, 0.1);
 }
-/*.menu:not(:hover) > .menu-dropdown > * {*/
-/*    visibility: hidden;*/
-/*    height: 0;*/
-/*    padding-top: 0;*/
-/*    padding-bottom: 0;*/
-/*    margin: 0;*/
-/*    color: rgba(25, 25, 25, 0);*/
-/*    transition: 0.5s 0.1s height, 0.5s 0.1s padding, 0.5s 0.1s margin, 0.3s color, 0.6s visibility;*/
-/*    z-index: 99;*/
-/*}*/
+.menu:not(:hover) > .menu-dropdown > * {
+    visibility: hidden;
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+    color: rgba(25, 25, 25, 0);
+    transition: 0.5s 0.1s height, 0.5s 0.1s padding, 0.5s 0.1s margin, 0.3s color, 0.6s visibility;
+    z-index: 99;
+}
 .hList > * {
     float: left;
 }
@@ -1597,3 +1597,5 @@ display: none;
         margin-bottom: 160px;
     }
 }
+
+

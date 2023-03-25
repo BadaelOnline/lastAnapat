@@ -9,10 +9,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Certificado extends Model
 {
     use HasFactory;
-    protected $guarded=[];
+    protected $guarded=['created_at', 'updated_at','deleted_at'];
     protected $table = 'certificados';
     public $timestamps = true;
-
+    protected $hidden = ['created_at', 'updated_at','deleted_at'];
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];

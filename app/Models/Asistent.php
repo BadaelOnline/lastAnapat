@@ -10,7 +10,7 @@ class Asistent extends Model
 
     protected $table = 'asistent';
     public $timestamps = true;
-    protected $guarded=[];
+    protected $guarded=['created_at', 'updated_at','deleted_at'];
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];

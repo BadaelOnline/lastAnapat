@@ -10,7 +10,7 @@ class Cursos extends Model
     protected $guarded=[];
     protected $table = 'cursos';
     public $timestamps = true;
-
+    protected $hidden = ['created_at', 'updated_at','deleted_at'];
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
@@ -62,7 +62,7 @@ class Cursos extends Model
 
     public function carnet()
     {
-        return $this->hasMany('App\Model\Carnet', 'curso');
+        return $this->hasMany(Carnet::class, 'curso');
     }
 
 }

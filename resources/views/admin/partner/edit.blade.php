@@ -55,48 +55,31 @@
         <div class="form-group">
 
             <div class="picture-container">
-
+                <span class="maxsize"> El tamaño máximo de archivo subido no debe superar 2 MB</span>
                 <div class="picture">
-
                     <img src="{{ asset('storage/'.$partner->cover) }}" class="picture-src" id="wizardPicturePreview" height="200px" width="400px" title=""/>
-
                     <input type="file" id="wizard-picture" name="logo" class="form-control {{$errors->first('logo') ? "is-invalid" : "" }} ">
-
                     <div class="invalid-feedback">
                         {{ $errors->first('logo') }}
                     </div>
-
                 </div>
-
                 <h6>{{__('message.Logo')}}</h6>
-
             </div>
-
         </div>
 
 
         <div class="form-group ml-5">
-
             <label for="nombre" class="col-sm-2 col-form-label">{{__('message.Name')}}</label>
-
             <div class="col-sm-9">
-
                 <input type="text" name='nombre' class="form-control {{$errors->first('nombre') ? "is-invalid" : "" }} " value="{{old('nombre') ? old('nombre') : $partner->name}}" id="nombre" placeholder="Nombre">
-
                 <div class="invalid-feedback">
                     {{ $errors->first('nombre') }}
                 </div>
-
             </div>
-
         </div>
-
         <div class="form-group ml-5">
-
             <label for="enlace" class="col-sm-2 col-form-label">{{__('message.Link')}}</label>
-
             <div class="col-sm-9">
-
                 <input type="text" name='enlace' class="form-control {{$errors->first('enlace') ? "is-invalid" : "" }} " value="{{old('enlace') ? old('enlace') : $partner->link}}" id="enlace" placeholder="ex: Wiklop.com">
 
                 <div class="invalid-feedback">
