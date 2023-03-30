@@ -224,27 +224,10 @@ class AsistentController extends Controller
             $asistent->tipo_4 = 0;
         }
 
-        $examen_t_pdf = $request->file('examen_t_pdf');
-        if ($examen_t_pdf) {
-            $examen_t_pdf_path = $examen_t_pdf->store('asistent/', 'public');
-
-            $asistent->examen_t_pdf = $examen_t_pdf_path;
-        } else {
-            $asistent->examen_t_pdf = '';
-        }
-        $examen_p_pdf = $request->file('examen_p_pdf');
-        if ($examen_p_pdf) {
-            $examen_p_pdf_path = $examen_p_pdf->store('asistent/', 'public');
-
-            $asistent->examen_p_pdf = $examen_p_pdf_path;
-        } else {
-            $asistent->examen_p_pdf = '';
-        }
         $operador = Operadores::findOrFail((int)$request->operador);
         $asistent->emision = $operador->fecha;
         $ven = new Carbon($operador->fecha);
         $x = $ven->addYears(5);
-//        dd();
         $asistent->vencimiento = Carbon::parse($x)->format('Y-m-d');
         $cursos = Cursos::findOrFail($request->curso);
         $entidad = EntidadesFormadoreas::select('id', 'nombre')->get();
@@ -257,16 +240,34 @@ class AsistentController extends Controller
         $formadors2 = Formadores::select('id', 'nombre')->get();
         $formadors3 = Formadores::select('id', 'nombre')->get();
 
+        $examen_t_pdf = $request->file('examen_t_pdf');
+        if ($examen_t_pdf) {
+            $tFileName = 'TB-' . $asistent->cursos->curso . '-' . ($asistent->orden > 10 ? $asistent->orden : '0' . $asistent->orden . '.pdf');
+            if ($examen_t_pdf->getClientOriginalName() == $tFileName)
+                $examen_t_pdf_path = $examen_t_pdf->storeAs('asistent', $examen_t_pdf->getClientOriginalName(), 'public');
+            else  return back()->with('error', 'File name not correct');
+            $asistent->examen_t_pdf = $examen_t_pdf_path;
+        } else {
+            $asistent->examen_t_pdf = '';
+        }
+        $examen_p_pdf = $request->file('examen_p_pdf');
+        if ($examen_p_pdf) {
+            $pFileName = 'P' . substr($asistent->cursos->codigo, 1) . '-' . ($asistent->orden > 10 ? $asistent->orden : '0' . $asistent->orden . '.pdf');
+            if ($examen_p_pdf->getClientOriginalName() == $pFileName)
+                $examen_p_pdf_path = $examen_p_pdf->storeAs('asistent', $examen_p_pdf->getClientOriginalName(), 'public');
+            else  return back()->with('error', 'File name not correct');
+            $asistent->examen_p_pdf = $examen_p_pdf_path;
+        } else {
+            $asistent->examen_p_pdf = '';
+        }
+
         if ($asistent->save()) {
             if ($operador->carnett != null) {
-
                 $carnet = $operador->carnett;
                 $carnet->curso = $cursos->id;
                 $carnet->estado = 1;
                 $carnet->fecha_de_alta = $asistent->vencimiento;
                 $carnet->fecha_de_emision = $asistent->emision;
-//                $carnet->
-
                 $carnet->save();
                 if ($cursos->tipo_maquina_1 != null) {
                     $carnet->Tipo_Maquinas()->attach($cursos->tipo_maquina_1);
@@ -289,14 +290,12 @@ class AsistentController extends Controller
                     $carnet->numero = substr(md5(microtime()), rand(0, 26), 8);
                 }
 
-//                $carnet->numero = $operador->carnet;
                 $carnet->operador = $operador->id;
                 $carnet->fecha_de_alta = $asistent->vencimiento;
                 $carnet->fecha_de_emision = $asistent->emision;
                 $carnet->foto = $operador->foto;
                 $carnet->curso = $cursos->id;
                 $carnet->estado = 1;
-//                dd($carnet);
                 $carnet->save();
                 if ($cursos->tipo_maquina_1 != null) {
                     $carnet->Tipo_Maquinas()->attach($cursos->tipo_maquina_1);
@@ -745,18 +744,24 @@ class AsistentController extends Controller
 
         $examen_t_pdf = $request->file('examen_t_pdf');
         if ($examen_t_pdf) {
+            $tFileName = 'TB-' . $asistent->cursos->curso . '-' . ($asistent->orden > 10 ? $asistent->orden : '0' . $asistent->orden . '.pdf');
+            if ($examen_t_pdf->getClientOriginalName() != $tFileName)
+                return back()->with('error', 'File name not correct');
             if ($asistent->examen_t_pdf && file_exists(storage_path('app/public/' . $asistent->examen_t_pdf))) {
                 \Storage::delete('public/' . $asistent->examen_t_pdf);
             }
-            $examen_t_pdf_path = $examen_t_pdf->store('images/asistent', 'public');
+            $examen_t_pdf_path = $examen_t_pdf->storeAs('asistent',$examen_t_pdf->getClientOriginalName() ,'public');
             $asistent->examen_t_pdf = $examen_t_pdf_path;
         }
         $examen_p_pdf = $request->file('examen_p_pdf');
         if ($examen_p_pdf) {
+            $pFileName = 'P' . substr($asistent->cursos->codigo, 1) . '-' . ($asistent->orden > 10 ? $asistent->orden : '0' . $asistent->orden . '.pdf');
+            if ($examen_p_pdf->getClientOriginalName() != $pFileName)
+                return back()->with('error', 'File name not correct');
             if ($asistent->examen_p_pdf && file_exists(storage_path('app/public/' . $asistent->examen_p_pdf))) {
                 \Storage::delete('public/' . $asistent->examen_p_pdf);
             }
-            $examen_p_pdf_path = $examen_p_pdf->store('images/asistent', 'public');
+            $examen_p_pdf_path = $examen_p_pdf->storeAs('asistent',$examen_p_pdf->getClientOriginalName() ,'public');
             $asistent->examen_p_pdf = $examen_p_pdf_path;
         }
         if ($asistent->save()) {

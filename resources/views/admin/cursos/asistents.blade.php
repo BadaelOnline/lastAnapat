@@ -26,8 +26,9 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-                <a href="{{asset('storage/'.$cursos->asistentes_pdf)}}" class="btn btn-edit btn-sm" download>
-                   {{'LIST-'.str_replace('-', '', $cursos->codigo)}}</a>
+                {{--<a href="{{asset('storage/'.$cursos->asistentes_pdf)}}" class="btn btn-edit btn-sm" download>--}}
+                   {{--{{'LIST-'.str_replace('-', '', $cursos->codigo)}}</a>--}}
+            {{substr($cursos->asistentes_pdf,18)}}
         </div>
 
         <div class="card-body col-md-12">
@@ -64,15 +65,17 @@
                             <td>{{ $asistent->nota_p }}</td>
                             <td>
                                 @if($asistent->examen_t_pdf != '')
-                                    <a title="Exámen Teórico" href="{{asset('storage/' . $asistent->examen_t_pdf)}}"
-                                       class="btn btn-edit btn-sm" download>{{'TB-'.$asistent->cursos->curso.'-'.($asistent->orden >10  ? $asistent->orden : '0'.$asistent->orden)}}</a>
+                                    {{--<a title="Exámen Teórico" href="{{asset('storage/' . $asistent->examen_t_pdf)}}"--}}
+                                       {{--class="btn btn-edit btn-sm" download>{{'TB-'.$asistent->cursos->curso.'-'.($asistent->orden >10  ? $asistent->orden : '0'.$asistent->orden)}}</a>--}}
+                                    {{substr($asistent->examen_t_pdf,9)}}
                                 @endif
                             </td>
                             <td>
                                 @if($asistent->examen_p_pdf!='')
-                                    <a title="Exámen Práctico"
-                                       href="{{asset('storage/' . $asistent->examen_p_pdf)}}"
-                                       class="btn btn-edit btn-sm" download>{{'P'.substr($asistent->cursos->codigo, 1).'-'.($asistent->orden >10  ? $asistent->orden : '0'.$asistent->orden)}}</a>
+                                    {{--<a title="Exámen Práctico"--}}
+                                       {{--href="{{asset('storage/' . $asistent->examen_p_pdf)}}"--}}
+                                       {{--class="btn btn-edit btn-sm" download>{{'P'.substr($asistent->cursos->codigo, 1).'-'.($asistent->orden >10  ? $asistent->orden : '0'.$asistent->orden)}}</a>--}}
+                                {{substr($asistent->examen_p_pdf,9)}}
                                 @endif</td>
                         </tr>
                     @endforeach

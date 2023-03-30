@@ -13,11 +13,11 @@
         <div class="card">
               <div class="d-flex justify-content-between flex-wrap">
               <h2>{{$curso->codigo}}</h2>
-              <h3>{{$curso->curso}}</h3>
+{{--              <h3>{{$curso->curso}}</h3>--}}
             </div>
               <h3></h3>
               <hr/>
-             <p>Province :{{$curso->provincia}}</p>
+             <p>Provincia :{{$curso->provincia}}</p>
              <p>Ciudad :{{$curso->ciudad}} </p>
              <p>Direccion :{{$curso->direccion}}</p>
              <p>Codigo Postal :{{$curso->codigo_postal}} </p>

@@ -357,7 +357,7 @@
                     <label for="examen-t" class="col-sm-6 col-form-label">{{__('message.Exámen Teórico')}}</label>
                     {{--                    <label class="col-sm-3"></label>--}}
                     @foreach ($examen_t as $exament)
-                        @if($cursos->examen_t == $exament->id && auth()->user()->perfil=='Administrador' && file_exists(storage_path('app/public/' . $exament->url)) || $cursos->examen_t == $exament->id && auth()->user()->perfil=='Responsable_de_Formacion' && file_exists(storage_path('app/public/' . $exament->url)))
+                        @if($cursos->examen_t == $exament->id && file_exists(storage_path('app/public/' . $exament->url)))
                             <a href="{{asset('storage/' . $exament->url)}}" class="button" download><i
                                         class="fa fa-download"></i></a>
                         @endif
@@ -381,7 +381,7 @@
                     <label for="examen-p" class="col-sm-6 col-form-label">{{__('message.Exámen Práctico')}} </label>
                     {{--                    <label class="col-sm-3"></label>--}}
                     @foreach ($examen_p as $examen)
-                        @if($cursos->examen_p == $examen->id && auth()->user()->perfil=='Administrador' && file_exists(storage_path('app/public/' . $examen->url)) || $cursos->examen_p == $examen->id && auth()->user()->perfil=='Responsable_de_Formacion' && file_exists(storage_path('app/public/' . $examen->url)))
+                        @if($cursos->examen_p == $examen->id && file_exists(storage_path('app/public/' . $examen->url)))
                             <a href="{{asset('storage/' . $examen->url)}}" class="button" download><i
                                         class="fa fa-download"></i></a>
                         @endif
@@ -405,7 +405,7 @@
                     <label for="examen-t" class="col-sm-4 col-form-label">{{__('message.Exámen Teórico')}} </label>
                     <label class="col-sm-3"></label>
                     @foreach ($examen_t as $exament)
-                        @if($cursos->examen_t == $exament->id && auth()->user()->perfil=='Administrador' && file_exists(storage_path('app/public/' . $exament->url)) || $cursos->examen_t == $exament->id && auth()->user()->perfil=='Responsable_de_Formacion' && file_exists(storage_path('app/public/' . $exament->url)))
+                        @if($cursos->examen_t == $exament->id && file_exists(storage_path('app/public/' . $exament->url)))
                             <a href="{{asset('storage/' . $exament->url)}}" class="button" download><i
                                         class="fa fa-download"></i></a>
                         @endif
@@ -427,7 +427,7 @@
                     <label for="examen-p" class="col-sm-4 col-form-label">{{__('message.Exámen Práctico')}} </label>
                     <label class="col-sm-3"></label>
                     @foreach ($examen_p as $examen)
-                        @if($cursos->examen_p == $examen->id && auth()->user()->perfil=='Administrador' && file_exists(storage_path('app/public/' . $examen->url)) || $cursos->examen_p == $examen->id && auth()->user()->perfil=='Responsable_de_Formacion' && file_exists(storage_path('app/public/' . $examen->url)))
+                        @if($cursos->examen_p == $examen->id && file_exists(storage_path('app/public/' . $examen->url)))
                             <a href="{{asset('storage/' . $examen->url)}}" class="button" download><i
                                         class="fa fa-download"></i></a>
                         @endif
