@@ -94,8 +94,6 @@ class CursosController extends Controller
             $formadors3=Formadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
         }
 
-
-
         $tipo_maquina=Tipo_Maquina::select('id','tipo_maquina')->get();
         $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
         $examen_t=Examen::select('id','nombre')->where('tipo',1)->orderby('codigo')->get();
@@ -108,8 +106,6 @@ class CursosController extends Controller
         }else{
             $course_code = "2200001";
         }
-
-
 //        dd($course_code);
 
 //        dd($formador[0]->nombre);
@@ -205,8 +201,9 @@ $now = now().date('');
         $asistentes_pdf = $request->file('asistentes_pdf');
 
         if($asistentes_pdf){
-            if($asistentes_pdf->getClientOriginalName()!= 'LIST-'.str_replace('-', '', $cursos->codigo).'.pdf')
-                return back()->with('error','Asisstant file name error');
+            if($asistentes_pdf->getClientOriginalName()!= 'LIST-'.str_replace('-', '', $cursos->codigo).'.pdf' &&
+                $asistentes_pdf->getClientOriginalName()!= 'LIST_'.str_replace('_', '', $cursos->codigo).'.pdf')
+                return back()->with('error','Asisstant file name should be List_'.str_replace('_', '', $cursos->codigo).'.pdf');
             $asistentes_pdf_path = $asistentes_pdf->storeAs('Cursos/'.$request->codigo,$asistentes_pdf->getClientOriginalName(), 'public');
             $cursos->asistentes_pdf = $asistentes_pdf_path;
         }
@@ -381,8 +378,9 @@ $now = now().date('');
 
         $asistentes_pdf = $request->file('asistentes_pdf');
         if($asistentes_pdf){
-            if($asistentes_pdf->getClientOriginalName()!= 'LIST-'.str_replace('-', '', $cursos->codigo).'.pdf')
-                return back()->with('error','Asisstant file name error');
+            if($asistentes_pdf->getClientOriginalName()!= 'LIST-'.str_replace('-', '', $cursos->codigo).'.pdf'
+            &&$asistentes_pdf->getClientOriginalName()!= 'LIST_'.str_replace('_', '', $cursos->codigo).'.pdf')
+                return back()->with('error','Asisstant file name should be List_'.str_replace('_', '', $cursos->codigo).'.pdf');
             if($cursos->asistentes_pdf && file_exists(storage_path('app/public/' . $cursos->asistentes_pdf))){
                 \Storage::delete('public/'. $cursos->asistentes_pdf);
             }
