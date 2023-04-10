@@ -202,8 +202,8 @@ $now = now().date('');
 
         if($asistentes_pdf){
             if($asistentes_pdf->getClientOriginalName()!= 'LIST-'.str_replace('-', '', $cursos->codigo).'.pdf' &&
-                $asistentes_pdf->getClientOriginalName()!= 'LIST_'.str_replace('_', '', $cursos->codigo).'.pdf')
-                return back()->with('error','Asisstant file name should be List_'.str_replace('_', '', $cursos->codigo).'.pdf');
+                $asistentes_pdf->getClientOriginalName()!= 'LIST_'.str_replace('-', '', $cursos->codigo).'.pdf')
+                return back()->with('error','Asisstant file name should be List-'.str_replace('-', '', $cursos->codigo).'.pdf');
             $asistentes_pdf_path = $asistentes_pdf->storeAs('Cursos/'.$request->codigo,$asistentes_pdf->getClientOriginalName(), 'public');
             $cursos->asistentes_pdf = $asistentes_pdf_path;
         }
@@ -379,8 +379,8 @@ $now = now().date('');
         $asistentes_pdf = $request->file('asistentes_pdf');
         if($asistentes_pdf){
             if($asistentes_pdf->getClientOriginalName()!= 'LIST-'.str_replace('-', '', $cursos->codigo).'.pdf'
-            &&$asistentes_pdf->getClientOriginalName()!= 'LIST_'.str_replace('_', '', $cursos->codigo).'.pdf')
-                return back()->with('error','Asisstant file name should be List_'.str_replace('_', '', $cursos->codigo).'.pdf');
+            &&$asistentes_pdf->getClientOriginalName()!= 'LIST_'.str_replace('-', '', $cursos->codigo).'.pdf')
+                return back()->with('error','Asisstant file name should be List-'.str_replace('-', '', $cursos->codigo).'.pdf');
             if($cursos->asistentes_pdf && file_exists(storage_path('app/public/' . $cursos->asistentes_pdf))){
                 \Storage::delete('public/'. $cursos->asistentes_pdf);
             }
