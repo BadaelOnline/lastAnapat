@@ -32,13 +32,13 @@ class CursosController extends Controller
      */
     public function index()
     {
-        $cursos = Cursos::orderBy('id','desc')->where('estado',1)->get();
+        $cursos = Cursos::orderBy('id','desc')->where('estado',1)->with(['entidades_formadoreas','certificados','carnet','asistent'])->get();
         return view('admin.cursos.index',compact('cursos'));
     }
 
     public function prnpriview()
     {
-        $cursos = Cursos::orderBy('id','desc')->where('estado',1)->get();
+        $cursos = Cursos::orderBy('id','desc')->where('estado',1)->with(['entidades_formadoreas','certificados','carnet','asistent'])->get();
         return view('admin.cursos.index',compact('cursos'));
     }
 
@@ -59,7 +59,7 @@ class CursosController extends Controller
      */
     public function index2()
     {
-        $cursos = Cursos::orderBy('id','desc')->where('estado',0)->get();
+        $cursos = Cursos::orderBy('id','desc')->where('estado',0)->with(['entidades_formadoreas','certificados','carnet','asistent'])->get();
         return view('admin.cursos.index',compact('cursos'));
     }
 
@@ -251,9 +251,9 @@ $now = now().date('');
         $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
         $examen_t=Examen::select('id','nombre','url')->where('tipo',1)->orderby('codigo')->get();
         $examen_p=Examen::select('id','nombre','url')->where('tipo',2)->orderby('codigo')->get();
-        $asistent = Asistent::orderBy('id')->where('curso',$id)->get();
+        $asistent = Asistent::orderBy('id')->where('curso',$id)->with('operadores')->get();
         $operador = Operadores::orderBy('id','desc')->get();
-        $horario = Horario::orderBy('id')->where('curso',$id)->get();
+        $horario = Horario::orderBy('id')->where('curso',$id)->with('tipo_maquinaa')->get();
 
         return view('admin.cursos.edit',compact('cursos','horario','asistent','operador','entidad','formador','tipo_maquina','tipo_curso','examen_t','examen_p','formadors','formadors2','formadors3'));
     }
