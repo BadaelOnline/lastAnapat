@@ -29,7 +29,7 @@ class CertificadoController extends Controller
             $operadors = Operadores::orderBy('id','desc')->where('entidad','=',$user->entidad)->get();
         else
             $operadors = Operadores::orderBy('id','desc')->get();
-        $certificados = Certificado::orderBy('id','desc')->get();
+        $certificados = Certificado::orderBy('id','desc')->with(['operadorr','cursoo'])->get();
         foreach ($certificados as $key=>$certificado){
             $cerOpe = $certificado->operadorr;
             $cerCurso = $certificado->cursoo;
@@ -56,7 +56,7 @@ class CertificadoController extends Controller
 
         else
             $operadors = Operadores::orderBy('id','desc')->get();
-        $certificados = Certificado::orderBy('id','desc')->get();
+        $certificados = Certificado::orderBy('id','desc')->with(['operadorr','cursoo'])->get();
 
         foreach ($certificados as $key=>$certificado){
             $cerOpe = $certificado->operadorr;

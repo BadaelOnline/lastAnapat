@@ -28,7 +28,7 @@ class CarnetController extends Controller
 //        $carnets = Carnet::orderBy('id', 'desc')->whereDate('fecha_de_alta', '>', $now)->get();
         $carnets = Carnet::orderBy('id', 'desc')->whereHas('operadores', function ($q) {
             $q->where('estado', 1);
-        })->get();
+        })->with('operadores')->get();
 //        dd($carnets);
         return view('admin.carnet.index', compact('operadors', 'carnets'));
     }
@@ -46,7 +46,7 @@ class CarnetController extends Controller
 //        $carnets = Carnet::orderBy('id', 'desc')->whereDate('fecha_de_alta', '<=', $now)->get();
         $carnets = Carnet::orderBy('id', 'desc')->whereHas('operadores', function ($q) {
             $q->where('estado', 0);
-        })->get();
+        })->with('operadores')->get();
         return view('admin.carnet.index', compact('operadors', 'carnets'));
     }
 

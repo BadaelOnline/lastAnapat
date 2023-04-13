@@ -32,18 +32,15 @@ class CursosController extends Controller
      */
     public function index()
     {
-        $cursos = Cursos::orderBy('id','desc')->where('estado',1)->get();
+        $cursos = Cursos::orderBy('id','desc')->where('estado',1)->with(['entidades_formadoreas','certificados','carnet','asistent'])->get();
         return view('admin.cursos.index',compact('cursos'));
     }
 
     public function prnpriview()
     {
-        $cursos = Cursos::orderBy('id','desc')->where('estado',1)->get();
-
+        $cursos = Cursos::orderBy('id','desc')->where('estado',1)->with(['entidades_formadoreas','certificados','carnet','asistent'])->get();
         return view('admin.cursos.index',compact('cursos'));
     }
-
-
 
     public function print($id)
     {
@@ -52,8 +49,6 @@ class CursosController extends Controller
         $formador2 = Formadores::where('id',$cursos->formador_apoyo_2)->first();
         $formador3 = Formadores::where('id',$cursos->formador_apoyo_3)->first();
         $examen_t = Examen::where('id',$cursos->examen_t)->first();
-
-
         return view('admin.cursos.print',compact('cursos','examen_t','formador1','formador2','formador3'));
     }
 
@@ -64,9 +59,7 @@ class CursosController extends Controller
      */
     public function index2()
     {
-
-        $cursos = Cursos::orderBy('id','desc')->where('estado',0)->get();
-
+        $cursos = Cursos::orderBy('id','desc')->where('estado',0)->with(['entidades_formadoreas','certificados','carnet','asistent'])->get();
         return view('admin.cursos.index',compact('cursos'));
     }
 
@@ -77,9 +70,7 @@ class CursosController extends Controller
      */
     public function create()
     {
-
         $user = auth()->user();
-//        dd($user);
         if($user->perfil=='Administrador'){
             $entidad=EntidadesFormadoreas::select('id','nombre')->get();
             $formador=Formadores::select('id','nombre')->get();
@@ -94,25 +85,17 @@ class CursosController extends Controller
             $formadors3=Formadores::select('id','nombre')->where('entidad','=',$user->entidad)->get();
         }
 
-
-
         $tipo_maquina=Tipo_Maquina::select('id','tipo_maquina')->get();
         $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
         $examen_t=Examen::select('id','nombre')->where('tipo',1)->orderby('codigo')->get();
         $examen_p=Examen::select('id','nombre')->where('tipo',2)->orderby('codigo')->get();
 
         $x =Cursos::select('curso')->orderBy('id','desc')->latest()->get();
-//        dd(count($x));
         if (count($x) > 0){
             $course_code = $x[0]->curso +1;
         }else{
             $course_code = "2200001";
         }
-
-
-//        dd($course_code);
-
-//        dd($formador[0]->nombre);
         return view('admin.cursos.create',compact('entidad','course_code','formador','tipo_maquina','tipo_curso','examen_t','examen_p','formadors','formadors2','formadors3'));
     }
 
@@ -145,9 +128,7 @@ class CursosController extends Controller
             'asistentes_pdf' => 'max:2048',
         ]);
         $cursos = new Cursos($request->except('_token','tipo_maquina','examen-t','examen-p','publico-privado','estado','cerrado','fecha_alta'));
-//        dd($cursos);
 
-//        $cursos = new Cursos();
         if($request->cerrado == null){
             $cursos->cerrado = 0;
         }elseif ($request->cerrado == "1"  ||$request->cerrado == "on"){
@@ -167,7 +148,7 @@ class CursosController extends Controller
         }else{
             $cursos->publico_privado = 0;
         }
-//dd($cursos->cerrado);
+
         if(!$request->formador_apoyo_2){
             $cursos->formador_apoyo_2 = 0;
         }
@@ -194,19 +175,16 @@ $now = now().date('');
             }elseif ($i == 3){
                 $cursos->tipo_maquina_4 = $x[$i];
             }
-
         }
 
         $cursos->examen_t = $request->examen_t;
         $cursos->examen_p = $request->examen_p;
-
-
-
         $asistentes_pdf = $request->file('asistentes_pdf');
 
         if($asistentes_pdf){
-            if($asistentes_pdf->getClientOriginalName()!= 'LIST-'.str_replace('-', '', $cursos->codigo).'.pdf')
-                return back()->with('error','Asisstant file name error');
+            if($asistentes_pdf->getClientOriginalName()!= 'LIST-'.str_replace('-', '', $cursos->codigo).'.pdf' &&
+                $asistentes_pdf->getClientOriginalName()!= 'LIST_'.str_replace('-', '', $cursos->codigo).'.pdf')
+                return back()->with('error','El nombre de archivo debe ser: List-'.str_replace('-', '', $cursos->codigo).'.pdf');
             $asistentes_pdf_path = $asistentes_pdf->storeAs('Cursos/'.$request->codigo,$asistentes_pdf->getClientOriginalName(), 'public');
             $cursos->asistentes_pdf = $asistentes_pdf_path;
         }
@@ -273,9 +251,9 @@ $now = now().date('');
         $tipo_curso=Tipo_De_Curso::select('id','tipo_curso')->get();
         $examen_t=Examen::select('id','nombre','url')->where('tipo',1)->orderby('codigo')->get();
         $examen_p=Examen::select('id','nombre','url')->where('tipo',2)->orderby('codigo')->get();
-        $asistent = Asistent::orderBy('id')->where('curso',$id)->get();
+        $asistent = Asistent::orderBy('id')->where('curso',$id)->with('operadores')->get();
         $operador = Operadores::orderBy('id','desc')->get();
-        $horario = Horario::orderBy('id')->where('curso',$id)->get();
+        $horario = Horario::orderBy('id')->where('curso',$id)->with('tipo_maquinaa')->get();
 
         return view('admin.cursos.edit',compact('cursos','horario','asistent','operador','entidad','formador','tipo_maquina','tipo_curso','examen_t','examen_p','formadors','formadors2','formadors3'));
     }
@@ -377,12 +355,11 @@ $now = now().date('');
             }
 
         }
-
-
         $asistentes_pdf = $request->file('asistentes_pdf');
         if($asistentes_pdf){
-            if($asistentes_pdf->getClientOriginalName()!= 'LIST-'.str_replace('-', '', $cursos->codigo).'.pdf')
-                return back()->with('error','Asisstant file name error');
+            if($asistentes_pdf->getClientOriginalName()!= 'LIST-'.str_replace('-', '', $cursos->codigo).'.pdf'
+            &&$asistentes_pdf->getClientOriginalName() != 'LIST_'.str_replace('-', '', $cursos->codigo).'.pdf')
+                return back()->with('error','El nombre de archivo debe ser: LIST-'.str_replace('-', '', $cursos->codigo).'.pdf');
             if($cursos->asistentes_pdf && file_exists(storage_path('app/public/' . $cursos->asistentes_pdf))){
                 \Storage::delete('public/'. $cursos->asistentes_pdf);
             }
