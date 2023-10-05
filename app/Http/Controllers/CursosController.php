@@ -154,7 +154,7 @@ class CursosController extends Controller
         }
         $x =$request->input('tipo_maquina');
 
-$now = now().date('');
+        $now = now().date('');
         $cursos->fecha_alta = $now;
 //dd($now);
 
@@ -193,7 +193,7 @@ $now = now().date('');
             try {
                 $data['cursos'] = $cursos;
                 Mail::send('email.newCourse', $data, function ($message) {
-                    $message->from('info@formacionanapat.es');
+                    $message->from('formacion@formacionanapat.es');
                     $message->subject('Nuevo curso');
                     $message->to('formacion@anapat.es');
                 });
@@ -358,7 +358,7 @@ $now = now().date('');
         $asistentes_pdf = $request->file('asistentes_pdf');
         if($asistentes_pdf){
             if($asistentes_pdf->getClientOriginalName()!= 'LIST-'.str_replace('-', '', $cursos->codigo).'.pdf'
-            &&$asistentes_pdf->getClientOriginalName() != 'LIST_'.str_replace('-', '', $cursos->codigo).'.pdf')
+                &&$asistentes_pdf->getClientOriginalName() != 'LIST_'.str_replace('-', '', $cursos->codigo).'.pdf')
                 return back()->with('error','El nombre de archivo debe ser: LIST-'.str_replace('-', '', $cursos->codigo).'.pdf');
             if($cursos->asistentes_pdf && file_exists(storage_path('app/public/' . $cursos->asistentes_pdf))){
                 \Storage::delete('public/'. $cursos->asistentes_pdf);
