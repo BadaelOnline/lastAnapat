@@ -253,7 +253,7 @@ class AsistentController extends Controller
         }
         $examen_p_pdf = $request->file('examen_p_pdf');
         if ($examen_p_pdf) {
-            $pFileName1 = 'P' . substr($asistent->cursos->codigo, 1) . '-' . ($asistent->orden > 10 ? $asistent->orden : '0' . '-' . $asistent->orden . '.pdf');
+            $pFileName1 = 'P' . substr($asistent->cursos->codigo, 1) . '-' . ($asistent->orden > 10 ? $asistent->orden : '0'  . $asistent->orden . '.pdf');
             $pFileName2 = 'P' . substr(str_replace('-', '_', $asistent->cursos->codigo),1) . '_' . ($asistent->orden > 10 ? $asistent->orden : '0' . $asistent->orden . '.pdf');
             if ($examen_p_pdf->getClientOriginalName() == $pFileName1 || $examen_p_pdf->getClientOriginalName() == $pFileName2)
                 $examen_p_pdf_path = $examen_p_pdf->storeAs('asistent', $examen_p_pdf->getClientOriginalName(), 'public');
