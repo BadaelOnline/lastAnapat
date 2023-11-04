@@ -96,7 +96,8 @@
                                            class="btn btn-edit btn-sm"><i
                                                     class="fa fa-eye"></i> </a>
                                     @endif
-                                    @if(auth()->user()->perfil=='Administrador')
+                                    @if(auth()->user()->perfil=='Administrador' ||
+                                                                        (auth()->user()->perfil=='Responsable_de_Formacion' && auth()->user()->entidad==$cursos->entidad) )
                                         <a href="{{route('admin.cursos.asistents',$cursos)}}"
                                            class="btn btn-edit btn-sm" target="_blank"> <i class="fas fa-user-graduate"></i>
                                         </a>
