@@ -37,6 +37,7 @@
         padding: 1rem;
         background: black;
         /*font-size: 115%;*/
+        z-index: 999999;
     }
     .gdprcookie-intro ,.gdprcookie-types{
         padding: 0;
