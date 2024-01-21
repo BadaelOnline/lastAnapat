@@ -109,7 +109,7 @@
 </header><!-- End Header -->
 
 @yield('content')
-
+@include('front.cookies')
 <!-- ======= Footer ======= -->
 <footer id="footer">
 
@@ -136,6 +136,9 @@
                         <li> <a href="{{ route('about2') }}">{{__('message.About')}}</a></li>
                         <li><a href="{{ route('contact') }}">{{__('message.Contact')}}</a></li>
                         <li> <a href="{{ route('blog') }}">{{__('message.blog')}}</a></li>
+                        <li> <a href="{{ route('terms') }}">Aviso legal</a></li>
+                        <li> <a href="{{ route('privacy') }}">Política de privacidad</a></li>
+                        <li> <a href="{{ route('cookies') }}">Política de cookies</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 footer-links">
@@ -181,5 +184,5 @@
 @stack('scripts')
 
 </body>
-
+@include('front.cookies')
 </html>
