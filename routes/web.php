@@ -62,7 +62,11 @@ Route::get('blog/{slug}', [FrontController::class, 'blogshow'])->name('blogshow'
 Route::get('categories/{category:slug}',[FrontController::class, 'category'])->name('category');
 Route::get('privadoCategories/{category:slug}',[FrontController::class, 'privadoCategory'])->name('privadoCategory');
 Route::get('tags/{tag:slug}',[FrontController::class, 'tag'])->name('tag');
+Route::get('politica-de-privacidad', [FrontController::class, 'privacyPolicy'])->name('privacy');
+Route::get('politica-de-cookies', [FrontController::class, 'cookiesPolicy'])->name('cookies');
+Route::get('aviso-legal', [FrontController::class, 'terms'])->name('terms');
 Route::get('pages/{slug}', [FrontController::class, 'page'])->name('page');
+
 //Route::resource('entidades_formadoreas', 'Entidades_FormadoreasController');
 //Route::resource('formadores', \App\Http\Controllers\FormadoresController::class);
 
