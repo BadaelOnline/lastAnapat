@@ -104,7 +104,7 @@
 <script src="{{ asset('js/cookies.js') }}"></script>
 <script>
     $.gdprcookie.init({
-        title: "🍪 Accept cookies & privacy policy?",
+        title: "🍪 Aceptar cookies y política de privacidad?",
         message: "FORMACIÓN DE ANAPAT utiliza cookies propias para recopilar información que ayuda a optimizar su visita a sus páginas web. No se utilizarán las cookies para recoger información de carácter personal. Usted puede permitir su uso o rechazarlo, también puede cambiar su configuración siempre que lo desee. Encontrará más información en nuestra <a style='color:#4ea7d9' href={{route('cookies')}}>Política de Cookies</a>.",
         delay: 600,
         expires: 1,
