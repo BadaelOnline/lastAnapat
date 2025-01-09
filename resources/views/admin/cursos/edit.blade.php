@@ -537,6 +537,18 @@
                                 <td>
                                     <a href="{{route('admin.horario.edit', [$horario->id])}}"
                                        class="btn btn-info btn-sm"> {{__('message.Update')}} </a>
+                                    @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion'))
+                                        <form method="POST"
+                                              action="{{route('admin.horario.destroy', [$horario->id])}}"
+                                              class="d-inline"
+                                              onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" value="Delete" class="btn btn-delete btn-sm">
+                                                <i class='fas fa-trash-alt'></i>
+                                            </button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
