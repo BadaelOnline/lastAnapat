@@ -44,8 +44,8 @@
                             <th>{{__('message.Carnet')}}</th>
                             <th>{{__('message.Nota Examen teorico')}}    </th>
                             <th>{{__('message.Nota Examen Practico')}}    </th>
-                            <th>Exámen Teórico</th>
-                            <th>Exámen Práctico</th>
+                            <th>Examen Teórico</th>
+                            <th>Examen Práctico</th>
 
                         </tr>
                         </thead>
@@ -66,14 +66,14 @@
                                 <td>{{ $asistent->nota_p }}</td>
                                 <td>
                                     @if($asistent->examen_t_pdf != '')
-                                        {{--<a title="Exámen Teórico" href="{{asset('storage/' . $asistent->examen_t_pdf)}}"--}}
+                                        {{--<a title="Examen Teórico" href="{{asset('storage/' . $asistent->examen_t_pdf)}}"--}}
                                         {{--class="btn btn-edit btn-sm" download>{{'TB-'.$asistent->cursos->curso.'-'.($asistent->orden >10  ? $asistent->orden : '0'.$asistent->orden)}}</a>--}}
                                         {{substr($asistent->examen_t_pdf,9)}}
                                     @endif
                                 </td>
                                 <td>
                                     @if($asistent->examen_p_pdf!='')
-                                        {{--<a title="Exámen Práctico"--}}
+                                        {{--<a title="Examen Práctico"--}}
                                         {{--href="{{asset('storage/' . $asistent->examen_p_pdf)}}"--}}
                                         {{--class="btn btn-edit btn-sm" download>{{'P'.substr($asistent->cursos->codigo, 1).'-'.($asistent->orden >10  ? $asistent->orden : '0'.$asistent->orden)}}</a>--}}
                                         {{substr($asistent->examen_p_pdf,9)}}

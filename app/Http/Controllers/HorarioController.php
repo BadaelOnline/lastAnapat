@@ -179,6 +179,6 @@ class HorarioController extends Controller
 
         $Horario->delete();
 
-        return redirect()->route('admin.horario')->with('success', 'Data Berhasil Dihapus');
+        return redirect()->back()->with('success', 'Data deleted successfully');
     }
 }

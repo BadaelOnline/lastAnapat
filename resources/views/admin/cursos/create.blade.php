@@ -319,7 +319,7 @@
             {{--sixth row--}}
             @if(auth()->user()->perfil=='Administrador' )
                 <div class="col-md-4">
-                    <label for="examen-t" class="col-sm-12 col-form-label">{{__('message.Exámen Teórico')}}</label>
+                    <label for="examen-t" class="col-sm-12 col-form-label">{{__('message.Examen Teórico')}}</label>
                     <div class="col-sm-9">
                         <select name='examen_t'
                                 class="form-control {{$errors->first('examen_t') ? "is-invalid" : "" }} " id="examen-t">
@@ -337,7 +337,7 @@
 
 
                 <div class="col-md-4">
-                    <label for="examen-p" class="col-sm-12 col-form-label">{{__('message.Exámen Práctico')}}</label>
+                    <label for="examen-p" class="col-sm-12 col-form-label">{{__('message.Examen Práctico')}}</label>
                     <div class="col-sm-9">
                         <select name='examen_p'
                                 class="form-control {{$errors->first('examen_p') ? "is-invalid" : "" }} " id="examen_p">

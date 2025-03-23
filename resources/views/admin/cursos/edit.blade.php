@@ -354,7 +354,7 @@
             {{--sixth row--}}
             @if(auth()->user()->perfil=='Administrador' )
                 <div class="col-md-4">
-                    <label for="examen-t" class="col-sm-6 col-form-label">{{__('message.Exámen Teórico')}}</label>
+                    <label for="examen-t" class="col-sm-6 col-form-label">{{__('message.Examen Teórico')}}</label>
                     {{--                    <label class="col-sm-3"></label>--}}
                     @foreach ($examen_t as $exament)
                         @if($cursos->examen_t == $exament->id && file_exists(storage_path('app/public/' . $exament->url)))
@@ -378,7 +378,7 @@
                 </div>
 
                 <div class="col-md-4">
-                    <label for="examen-p" class="col-sm-6 col-form-label">{{__('message.Exámen Práctico')}} </label>
+                    <label for="examen-p" class="col-sm-6 col-form-label">{{__('message.Examen Práctico')}} </label>
                     {{--                    <label class="col-sm-3"></label>--}}
                     @foreach ($examen_p as $examen)
                         @if($cursos->examen_p == $examen->id && file_exists(storage_path('app/public/' . $examen->url)))
@@ -402,7 +402,7 @@
                 </div>
             @else
                 <div class="col-md-4">
-                    <label for="examen-t" class="col-sm-4 col-form-label">{{__('message.Exámen Teórico')}} </label>
+                    <label for="examen-t" class="col-sm-4 col-form-label">{{__('message.Examen Teórico')}} </label>
                     <label class="col-sm-3"></label>
                     @foreach ($examen_t as $exament)
                         @if($cursos->examen_t == $exament->id && file_exists(storage_path('app/public/' . $exament->url)))
@@ -424,7 +424,7 @@
 
 
                 <div class="col-md-4">
-                    <label for="examen-p" class="col-sm-4 col-form-label">{{__('message.Exámen Práctico')}} </label>
+                    <label for="examen-p" class="col-sm-4 col-form-label">{{__('message.Examen Práctico')}} </label>
                     <label class="col-sm-3"></label>
                     @foreach ($examen_p as $examen)
                         @if($cursos->examen_p == $examen->id && file_exists(storage_path('app/public/' . $examen->url)))
@@ -537,6 +537,18 @@
                                 <td>
                                     <a href="{{route('admin.horario.edit', [$horario->id])}}"
                                        class="btn btn-info btn-sm"> {{__('message.Update')}} </a>
+                                    @if(auth()->user()->perfil=='Administrador' || (auth()->user()->perfil=='Responsable_de_Formacion'))
+                                        <form method="POST"
+                                              action="{{route('admin.horario.destroy', [$horario->id])}}"
+                                              class="d-inline"
+                                              onsubmit="return confirm('{{__("message.Delete permanently?")}}')">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" value="Delete" class="btn btn-delete btn-sm">
+                                                <i class='fas fa-trash-alt'></i>
+                                            </button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

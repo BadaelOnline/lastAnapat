@@ -91,7 +91,7 @@ return [
     'Delete permanently?' => '¿Eliminar permanentemente?',
     'tipo' => 'Tipo',
     'url' => 'URL',
-    'Examen' => 'Exámenes',
+    'Examen' => 'Examenes',
     'carnet' => 'Carnet',
     'numero' => 'Numero',
     'fecha_de_alta' => 'Fecha De Alta',
@@ -142,8 +142,8 @@ return [
     'Exportar Certificado' => 'Exportar Certificados',
     'Nota_t' => 'Nota_T',
     'Nota_p' => 'Nota_P',
-    'Examen Teórico' => 'Exámen Teórico',
-    'Exámen Práctico' => 'Exámen Práctico',
+    'Examen Teórico' => 'Examen Teórico',
+    'Examen Práctico' => 'Examen Práctico',
     'Emision' => 'Emisión',
     'Vencimiento' => 'Vencimiento',
     'Tipo_1' => 'Tipo_1',
@@ -154,7 +154,7 @@ return [
     'Operador' => 'Operador',
     'Numero' => 'Numero',
     'Tipos De Pemp' => 'Tipos De Pemp',
-    'Examen Teorico Realizado' => 'Exámen Teórico Realizado',
+    'Examen Teorico Realizado' => 'Examen Teórico Realizado',
     'Básico' => 'Básico',
     'Extendido' => 'Extendido',
     'Estado' => 'Estado',
@@ -223,9 +223,9 @@ return [
     'Operador PDF' => 'Operador PDF',
     'Vida laboral pdf' => 'Vida laboral PDF',
     'direccion' => 'Dirección',
-    'Theoretical Examen' => ' Exámen Teórico',
-    'Practical Examen' => 'Exámen Practico',
-    'Exámen Teórico' => 'Exámen Teórico',
+    'Theoretical Examen' => ' Examen Teórico',
+    'Practical Examen' => 'Examen Practico',
+    'Examen Teórico' => 'Examen Teórico',
     'Número de Carnet' => 'Número de Carnet',
     'Certificados Inactivos' => 'Certificados Inactivos',
     'Certificados' => 'Certificados',
@@ -321,7 +321,7 @@ return [
     'poblacion' => 'Población',
     'telefono' => 'Telèfono',
     'web' => 'Web',
-    'Exámenes' => 'Exámenes'
+    'Examenes' => 'Examenes'
 
 
 

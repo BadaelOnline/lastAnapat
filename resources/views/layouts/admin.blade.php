@@ -239,7 +239,7 @@
         ])? 'active' : ''}}">
                     <a class="nav-link" href="{{ route('admin.examen') }}">
                         <i class="fas fa-fw fa-book-reader"></i>
-                        <span>{{__('message.Exámenes')}}</span></a>
+                        <span>{{__('message.Examenes')}}</span></a>
                 </li>
 
 {{--            @endcan--}}

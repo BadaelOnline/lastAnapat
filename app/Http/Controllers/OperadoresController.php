@@ -284,11 +284,12 @@ class OperadoresController extends Controller
             if ($request['carnet'] != null ){
                 if ($operadores->carnett == null){
                     $carnet = new Carnet();
-                    if ($request->carnet != null){
+                    if ($request->carnet != null) {
                         $carnet->numero = $request->carnet;
-                    }else{
-                        $carnet->numero = substr(md5(microtime()),rand(0,26),8) ;
                     }
+//                    }else{
+//                        $carnet->numero = substr(md5(microtime()),rand(0,26),8) ;
+//                    }
 //                    $carnet->numero = $request->carnet;
                     $carnet->operador = $operadores->id;
 //                    $fotoCarnet = $request->file('foto');
