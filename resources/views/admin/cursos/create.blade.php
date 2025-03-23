@@ -72,7 +72,7 @@
             <div class="col-md-4">
                 <label for="curso" class="col-sm-12 col-form-label">{{__('message.Curso')}}</label>
                 <div class="col-sm-9">
-                    <input type="text" name='curso'
+                    <input type="text" readonly name='curso'
                            class="form-control {{$errors->first('curso') ? "is-invalid" : "" }} "
                            value="{{$course_code}}" id="curso" placeholder="Código del curso">
                     <div class="invalid-feedback">
@@ -126,7 +126,7 @@
             <div class="col-md-4">
                 <label for="codigo" class="col-sm-12 col-form-label">{{__('message.Codigo')}}</label>
                 <div class="col-sm-9">
-                    <input type="text" name='codigo'
+                    <input type="text" readonly name='codigo'
                            class="form-control {{$errors->first('codigo') ? "is-invalid" : "" }} "
                            value="{{old('codigo')}}" id="codigo" placeholder="Código de prácticas">
                     <div class="invalid-feedback">
