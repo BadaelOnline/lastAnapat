@@ -154,14 +154,13 @@ class FrontController extends Controller
 //        $now = now().date('');
         $carnet = Carnet::where('numero', $request->numero)->whereDate('fecha_de_alta', '>', NOW())->first();
         $carnet2 = Carnet::where('numero', $request->numero)->whereDate('fecha_de_emision', '<=', NOW())->first();
-
         if ($carnet2 != null && $carnet == null) {
             $test = "Esta Carné ya expiró.";
             return view('front.carnets', compact('general', 'test'));
         }
         if ($carnet != null) {
             $operador = Operadores::where('id', $carnet->operador)->firstOrFail();
-            $certificado = Certificado::select('carnet', 'curso', 'tipo_1', 'tipo_2', 'tipo_3', 'tipo_4', 'emision', 'vencimiento')->where('carnet', $request->numero)->get();
+            $certificado = Certificado::select('carnet', 'curso', 'tipo_1', 'tipo_2', 'tipo_3', 'tipo_4', 'emision', 'vencimiento')->where('operador', $operador->id)->get();
             $curso = Cursos::where('id', $carnet->curso)->firstOrFail();
 //            dd($curso);
             return view('front.carnet', compact('general', 'operador', 'carnet', 'curso', 'certificado'));
