@@ -10,7 +10,7 @@
 
     <!-- Page Heading -->
 
-    <h1 class="h3 mb-2 text-gray-800">{{__('message.Exámenes')}}</h1>
+    <h1 class="h3 mb-2 text-gray-800">{{__('message.Examenes')}}</h1>
 
     @if (session('success'))
 

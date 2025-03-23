@@ -107,7 +107,7 @@
                         <option disabled selected>{{__('message.Choose_One')}}</option>
 
                         <option value="T-Theoretical" {{$examen->tipo == "T-Theoretical" ? "selected" : ""}}>{{__('message.Examen Teórico')}}</option>
-                        <option value="P-Practical" {{$examen->tipo == "P-Practical" ? "selected" : ""}}>{{__('message.Exámen Práctico')}}</option>
+                        <option value="P-Practical" {{$examen->tipo == "P-Practical" ? "selected" : ""}}>{{__('message.Examen Práctico')}}</option>
 
                     </select>
                     <div class="invalid-feedback">

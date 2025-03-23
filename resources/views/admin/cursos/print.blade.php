@@ -250,9 +250,9 @@
             <div>
             <hr style="border-top: solid 1px #000 !important;margin-bottom: 5px!important;margin-top: 2px!important;width:30%;margin-left:20px!important;">
             <p style="font-size: 10px;  line-height: 1em;margin-left:20px;">
-                <sup>1</sup><b>El Formador acredita</b> la identificación de los Alumnos mediante sus DNI y valida sus firmas en los exámenes y en el presente
+                <sup>1</sup><b>El Formador acredita</b> la identificación de los Alumnos mediante sus DNI y valida sus firmas en los examenes y en el presente
                 documento.<br>
-                <sup>2</sup><b>El Formador acredita</b> la veracidad de las notas de los Exámenes obtenidas por cada uno de ellos.<br>
+                <sup>2</sup><b>El Formador acredita</b> la veracidad de las notas de los Examenes obtenidas por cada uno de ellos.<br>
                 <sup>3</sup><b>El alumno reconoce con su firma, que ha asistido a la presente formación y que ha recibido el material didáctico original.</b>
             </p>
             </div>
